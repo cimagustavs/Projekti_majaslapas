@@ -10,6 +10,7 @@ const TEXT = {
   lv: {
     title: 'Kafejnīca Clementine — Jelgava',
     langLabel: 'Switch to English',
+    tabs: 'Ēdienkarte',
     days: ['Svētdiena', 'Pirmdiena', 'Otrdiena', 'Trešdiena', 'Ceturtdiena', 'Piektdiena', 'Sestdiena'],
     short: ['Sv', 'P', 'O', 'T', 'C', 'Pk', 'S'],
     byRequest: 'pēc pieprasījuma',
@@ -20,11 +21,15 @@ const TEXT = {
     tomorrow: 'Rīt',
     monday: 'Pirmdienās strādājam pēc pieprasījuma — zvaniet.',
     cakeDefault: 'Daudz laimes!',
-    cakeNote: (words, icing) => `Uzraksts: "${words}". Glazūra: ${icing}.`,
+    cakeNote: (words, icing, est) => `Vintage kūka. Uzraksts: "${words}". Krāsa: ${icing}. ${est}`,
+    estimate: (kg, price) => `≈ ${kg} kg · no ${price} €`,
+    estimateBig: 'Lielākām svinībām — vienosimies',
+    guestsNote: (n) => `Viesi: ${n}.`,
   },
   en: {
     title: 'Clementine Café — Jelgava',
     langLabel: 'Pārslēgt uz latviešu valodu',
+    tabs: 'Menu',
     days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     short: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     byRequest: 'by request',
@@ -35,7 +40,10 @@ const TEXT = {
     tomorrow: 'Tomorrow',
     monday: 'On Mondays we open by request — give us a call.',
     cakeDefault: 'Happy birthday!',
-    cakeNote: (words, icing) => `Writing: "${words}". Icing: ${icing}.`,
+    cakeNote: (words, icing, est) => `Vintage cake. Writing: "${words}". Colour: ${icing}. ${est}`,
+    estimate: (kg, price) => `≈ ${kg} kg · from €${price}`,
+    estimateBig: 'For bigger parties — let us talk',
+    guestsNote: (n) => `Guests: ${n}.`,
   },
 };
 const t = () => TEXT[root.lang];
@@ -146,10 +154,57 @@ words.addEventListener('input', () => renderCake());
 studio.addEventListener('change', () => renderCake());
 studio.addEventListener('submit', (e) => e.preventDefault());
 
+// Size and price from Clementine's own table: 2 kg feeds 10–15, 3 kg 15–20, 4 kg 20–30.
+// Vintage cakes start at 1 kg and €35/kg; under ~7 guests we assume the 1 kg minimum.
+const guests = document.getElementById('guests');
+const guestsOut = document.getElementById('guests-out');
+const estimate = document.getElementById('estimate');
+const VINTAGE_PER_KG = 35;
+function kgFor(n) {
+  if (n <= 7) return 1;
+  if (n <= 15) return 2;
+  if (n <= 20) return 3;
+  if (n <= 30) return 4;
+  return null;
+}
+function estimateText() {
+  const n = Number(guests.value);
+  const kg = kgFor(n);
+  return kg ? t().estimate(kg, kg * VINTAGE_PER_KG) : t().estimateBig;
+}
+function renderEstimate() {
+  guestsOut.textContent = guests.value;
+  estimate.textContent = estimateText();
+}
+guests.addEventListener('input', renderEstimate);
+
 document.querySelector('[data-use-cake]').addEventListener('click', () => {
   const icing = studio.querySelector('input[name="icing"]:checked').closest('.swatch');
   const icingName = icing.querySelector(`[data-l="${root.lang}"]`).textContent.toLowerCase();
-  document.getElementById('note').value = t().cakeNote(words.value.trim(), icingName);
+  document.getElementById('note').value =
+    t().cakeNote(words.value.trim(), icingName, `${t().guestsNote(guests.value)} ${estimateText()}`);
+});
+
+// ---------- Menu tabs ----------
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+function selectTab(tab, focus = false) {
+  tabs.forEach((t) => {
+    const selected = t === tab;
+    t.setAttribute('aria-selected', String(selected));
+    t.tabIndex = selected ? 0 : -1;
+    document.getElementById(t.getAttribute('aria-controls')).hidden = !selected;
+  });
+  if (focus) tab.focus();
+  tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+tabs.forEach((tab) => tab.addEventListener('click', () => selectTab(tab)));
+document.querySelector('[role="tablist"]').addEventListener('keydown', (e) => {
+  const i = tabs.indexOf(document.activeElement);
+  if (i < 0) return;
+  const keys = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+  if (!(e.key in keys)) return;
+  e.preventDefault();
+  selectTab(tabs[(keys[e.key] + tabs.length) % tabs.length], true);
 });
 
 // ---------- Language ----------
@@ -161,12 +216,14 @@ function setLanguage(lang) {
   document.title = t().title;
   langButton.textContent = lang === 'lv' ? 'EN' : 'LV';
   langButton.setAttribute('aria-label', t().langLabel);
+  document.querySelector('[role="tablist"]').setAttribute('aria-label', t().tabs);
   document.querySelectorAll('[data-ph-lv]').forEach((el) => {
     el.placeholder = el.dataset[lang === 'lv' ? 'phLv' : 'phEn'];
   });
   if (!words.value || words.value === previousDefault) words.value = t().cakeDefault;
   renderStatus();
   renderCake(false);
+  renderEstimate();
   try { localStorage.setItem('clementine-lang', lang); } catch {}
 }
 
@@ -180,7 +237,7 @@ document.fonts?.ready.then(() => renderCake(false));
 // ---------- Section entrances: once, staggered within each section ----------
 const reveals = document.querySelectorAll('.reveal');
 document.querySelectorAll('section').forEach((section) => {
-  section.querySelectorAll('.reveal').forEach((el, i) => el.style.setProperty('--d', `${i * 80}ms`));
+  section.querySelectorAll('.reveal').forEach((el, i) => el.style.setProperty('--d', `${Math.min(i, 5) * 80}ms`));
 });
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
