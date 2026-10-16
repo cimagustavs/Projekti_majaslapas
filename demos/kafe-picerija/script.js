@@ -168,6 +168,14 @@ function labelSteppers() {
   });
 }
 
+// Hide the floating order bar while the tray itself (or anything below it) is on screen.
+if ('IntersectionObserver' in window) {
+  const tray = document.getElementById('tray');
+  new IntersectionObserver(([e]) => {
+    bar.classList.toggle('is-away', e.isIntersecting || e.boundingClientRect.top < 0);
+  }).observe(tray);
+}
+
 // ---------- Language ----------
 const langButton = document.querySelector('.lang-toggle');
 function setLanguage(lang) {
