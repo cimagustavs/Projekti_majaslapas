@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kafejnīca Clementine — Jelgava</title>
+  <meta name="description" content="Mājīga kafejnīca Jelgavā, Akadēmijas ielā 4a. Brokastis visu dienu, otrie ēdieni, deserti un tortes pēc pasūtījuma.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="demo-bar">
+  <span data-l="lv">Mājaslapas koncepts — nav oficiālā Clementine lapa.</span>
+  <span data-l="en">Website concept — not the official Clementine site.</span>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="18" r="12" fill="var(--clementine)"/>
+        <path d="M16 6c2-4 7-5 10-3-2 4-6 5-10 3z" fill="var(--leaf)"/>
+      </svg>
+      Clementine
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span data-l="lv">Izvēlne</span><span data-l="en">Menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
+      <a href="#edienkarte"><span data-l="lv">Ēdienkarte</span><span data-l="en">Menu</span></a>
+      <a href="#tortes"><span data-l="lv">Tortes</span><span data-l="en">Cakes</span></a>
+      <a href="#kontakti"><span data-l="lv">Kontakti</span><span data-l="en">Contact</span></a>
+      <a href="tel:+37129587936" class="btn btn-small"><span data-l="lv">Zvanīt</span><span data-l="en">Call us</span></a>
+    </nav>
+
+    <button class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow"><span data-l="lv">Kafejnīca · Jelgava</span><span data-l="en">Café · Jelgava</span></p>
+        <h1>
+          <span data-l="lv">Brokastis visu dienu, <em>mājīgi</em> kā pie draugiem</span>
+          <span data-l="en">Breakfast all day, <em>cosy</em> like at a friend's place</span>
+        </h1>
+        <p class="lead">
+          <span data-l="lv">Silta, mājīga kafejnīca Akadēmijas ielā. Brokastis no rīta līdz vakaram, otrie ēdieni, deserti un kūkas — un ēdienu varam pielāgot jūsu gaumei.</span>
+          <span data-l="en">A warm, homely café on Akadēmijas Street. Breakfast from morning till evening, mains, desserts and cakes — and we're happy to adjust any dish to your taste.</span>
+        </p>
+        <div class="hero-actions">
+          <a href="#edienkarte" class="btn"><span data-l="lv">Skatīt ēdienkarti</span><span data-l="en">See the menu</span></a>
+          <a href="#tortes" class="btn btn-ghost"><span data-l="lv">Pasūtīt torti</span><span data-l="en">Order a cake</span></a>
+        </div>
+      </div>
+
+      <aside class="status-card" aria-labelledby="status-title">
+        <svg class="status-fruit" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="66" r="46" fill="var(--clementine)"/>
+          <circle cx="44" cy="52" r="10" fill="#fff" opacity=".18"/>
+          <path d="M60 22c6-14 26-18 38-10-8 14-24 18-38 10z" fill="var(--leaf)"/>
+          <path d="M60 22v-8" stroke="var(--leaf)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <p class="status-label" id="status-title"><span data-l="lv">Šodien</span><span data-l="en">Today</span></p>
+        <p class="status-hours" id="today-hours">8:00–19:00</p>
+        <p class="status-addr">Akadēmijas iela 4a, Jelgava</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Galvenais">
+    <ul class="wrap strip-list">
+      <li><strong><span data-l="lv">Brokastis</span><span data-l="en">Breakfast</span></strong><span data-l="lv">visas dienas garumā</span><span data-l="en">served all day</span></li>
+      <li><strong><span data-l="lv">Pēc jūsu gaumes</span><span data-l="en">Your way</span></strong><span data-l="lv">ēdienus varam pielāgot</span><span data-l="en">dishes adjusted on request</span></li>
+      <li><strong><span data-l="lv">Tortes</span><span data-l="en">Cakes</span></strong><span data-l="lv">ar piegādi Jelgavā un Ozolniekos</span><span data-l="en">delivered in Jelgava &amp; Ozolnieki</span></li>
+    </ul>
+  </section>
+
+  <section id="edienkarte" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span data-l="lv">Ēdienkarte</span><span data-l="en">Menu</span></h2>
+        <p class="sample-note">
+          <span data-l="lv">Paraugs. Ēdieni ar zīmi ◦ ir piemēri — īsto ēdienkarti ievietosim pēc jūsu datiem.</span>
+          <span data-l="en">Sample. Items marked ◦ are placeholders — we'll add your real menu.</span>
+        </p>
+      </div>
+
+      <div class="menu-grid">
+        <section class="menu-group" aria-labelledby="m-breakfast">
+          <h3 id="m-breakfast"><span data-l="lv">Brokastis</span><span data-l="en">Breakfast</span> <small><span data-l="lv">visu dienu</span><span data-l="en">all day</span></small></h3>
+          <ul class="menu-list">
+            <li><span class="dish"><span data-l="lv">Angļu brokastis</span><span data-l="en">English breakfast</span></span><span class="price">8,50 €</span></li>
+            <li><span class="dish"><span data-l="lv">Pilngraudu grauzdiņš ar avokado pastu</span><span data-l="en">Wholegrain toast with avocado spread</span></span><span class="price">—</span></li>
+            <li class="is-sample"><span class="dish"><span data-l="lv">Omlete ar sezonas dārzeņiem</span><span data-l="en">Omelette with seasonal vegetables</span></span><span class="price">—</span></li>
+            <li class="is-sample"><span class="dish"><span data-l="lv">Pankūkas ar ogu ievārījumu</span><span data-l="en">Pancakes with berry jam</span></span><span class="price">—</span></li>
+          </ul>
+        </section>
+
+        <section class="menu-group" aria-labelledby="m-mains">
+          <h3 id="m-mains"><span data-l="lv">Otrie ēdieni</span><span data-l="en">Mains</span></h3>
+          <ul class="menu-list">
+            <li class="is-sample"><span class="dish"><span data-l="lv">Dienas zupa</span><span data-l="en">Soup of the day</span></span><span class="price">—</span></li>
+            <li class="is-sample"><span class="dish"><span data-l="lv">Vistas fileja ar dārzeņiem</span><span data-l="en">Chicken fillet with vegetables</span></span><span class="price">—</span></li>
+            <li class="is-sample"><span class="dish"><span data-l="lv">Makaroni ar sieru</span><span data-l="en">Mac and cheese</span></span><span class="price">—</span></li>
+          </ul>
+        </section>
+
+        <section class="menu-group" aria-labelledby="m-desserts">
+          <h3 id="m-desserts"><span data-l="lv">Deserti un kūkas</span><span data-l="en">Desserts &amp; cakes</span></h3>
+          <ul class="menu-list">
+            <li class="is-sample"><span class="dish"><span data-l="lv">Biskvīta tortes gabaliņš</span><span data-l="en">Slice of sponge cake</span></span><span class="price">—</span></li>
+            <li class="is-sample"><span class="dish"><span data-l="lv">Siera kūka</span><span data-l="en">Cheesecake</span></span><span class="price">—</span></li>
+            <li class="is-sample"><span class="dish"><span data-l="lv">Kafija / tēja</span><span data-l="en">Coffee / tea</span></span><span class="price">—</span></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="tortes" class="section section-warm">
+    <div class="wrap cakes">
+      <div class="cakes-intro">
+        <h2><span data-l="lv">Tortes pēc pasūtījuma</span><span data-l="en">Cakes to order</span></h2>
+        <p>
+          <span data-l="lv">Biskvīta tortes, tortes ar trafareta zīmējumu un citas — dzimšanas dienām, kāzām un vienkārši tāpat. Piegādājam Jelgavā un Ozolniekos.</span>
+          <span data-l="en">Sponge cakes, stencil-decorated cakes and more — for birthdays, weddings or just because. We deliver in Jelgava and Ozolnieki.</span>
+        </p>
+        <p class="cakes-call">
+          <span data-l="lv">Ātrāk — pa tālruni:</span><span data-l="en">Faster by phone:</span>
+          <a href="tel:+37129587936">+371 29 587 936</a>
+        </p>
+      </div>
+
+      <form class="order-form" id="order-form">
+        <div class="field">
+          <label for="name"><span data-l="lv">Vārds</span><span data-l="en">Name</span> <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-errormessage="name-error">
+          <p id="name-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Lūdzu, ievadiet vārdu.</span><span data-l="en">Please enter your name.</span></p>
+        </div>
+
+        <div class="field">
+          <label for="phone"><span data-l="lv">Tālrunis</span><span data-l="en">Phone</span> <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+0-9 ]{8,}" required aria-errormessage="phone-error">
+          <p id="phone-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Lūdzu, ievadiet tālruņa numuru.</span><span data-l="en">Please enter a phone number.</span></p>
+        </div>
+
+        <div class="field">
+          <label for="cake"><span data-l="lv">Tortes veids</span><span data-l="en">Cake type</span></label>
+          <select id="cake" name="cake">
+            <option value="biskvits" data-lv="Biskvīta torte" data-en="Sponge cake">Biskvīta torte</option>
+            <option value="trafarets" data-lv="Torte ar trafaretu" data-en="Stencil cake">Torte ar trafaretu</option>
+            <option value="cita" data-lv="Cita — aprakstīšu piezīmēs" data-en="Other — see notes">Cita — aprakstīšu piezīmēs</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="date"><span data-l="lv">Datums</span><span data-l="en">Date</span> <span aria-hidden="true">*</span></label>
+          <input id="date" name="date" type="date" required aria-errormessage="date-error">
+          <p id="date-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Izvēlieties datumu.</span><span data-l="en">Please choose a date.</span></p>
+        </div>
+
+        <fieldset class="field field-wide choice">
+          <legend><span data-l="lv">Saņemšana</span><span data-l="en">Pick-up or delivery</span></legend>
+          <label class="chip"><input type="radio" name="delivery" value="pick-up" checked> <span data-l="lv">Izņemšu kafejnīcā</span><span data-l="en">I'll pick it up</span></label>
+          <label class="chip"><input type="radio" name="delivery" value="delivery"> <span data-l="lv">Piegāde (Jelgava, Ozolnieki)</span><span data-l="en">Delivery (Jelgava, Ozolnieki)</span></label>
+        </fieldset>
+
+        <div class="field field-wide">
+          <label for="note"><span data-l="lv">Piezīmes</span><span data-l="en">Notes</span></label>
+          <textarea id="note" name="note" rows="3" data-ph-lv="Garša, porciju skaits, uzraksts uz tortes…" data-ph-en="Flavour, servings, writing on the cake…"></textarea>
+        </div>
+
+        <div class="field-wide form-actions">
+          <button type="submit" class="btn"><span data-l="lv">Nosūtīt pieprasījumu</span><span data-l="en">Send request</span></button>
+          <p class="form-hint"><span data-l="lv">* obligāti aizpildāmie lauki</span><span data-l="en">* required fields</span></p>
+        </div>
+
+        <p class="form-success field-wide" role="status" hidden>
+          <span data-l="lv">Paldies! Šis ir mājaslapas koncepts, tāpēc pieprasījums netika nosūtīts.</span>
+          <span data-l="en">Thank you! This is a website concept, so the request was not sent.</span>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <section id="kontakti" class="section section-dark">
+    <div class="wrap contact">
+      <div>
+        <h2><span data-l="lv">Kontakti</span><span data-l="en">Contact</span></h2>
+        <address>
+          Akadēmijas iela 4a, Jelgava, LV-3001<br>
+          <a href="tel:+37129587936">+371 29 587 936</a>
+        </address>
+        <div class="contact-links">
+          <a class="btn btn-light" href="https://www.google.com/maps/search/?api=1&amp;query=Akad%C4%93mijas+iela+4a%2C+Jelgava" target="_blank" rel="noopener"><span data-l="lv">Atvērt kartē</span><span data-l="en">Open in maps</span></a>
+          <a class="btn btn-outline-light" href="https://www.facebook.com/Kkhandmadq/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+      <div>
+        <h3><span data-l="lv">Darba laiks</span><span data-l="en">Opening hours</span></h3>
+        <dl class="hours" id="hours">
+          <div data-days="1"><dt><span data-l="lv">Pirmdiena</span><span data-l="en">Monday</span></dt><dd><span data-l="lv">pēc pieprasījuma</span><span data-l="en">by request</span></dd></div>
+          <div data-days="2 3 4"><dt><span data-l="lv">Otrdiena–ceturtdiena</span><span data-l="en">Tuesday–Thursday</span></dt><dd>8:00–19:00</dd></div>
+          <div data-days="5"><dt><span data-l="lv">Piektdiena</span><span data-l="en">Friday</span></dt><dd>8:00–21:00</dd></div>
+          <div data-days="6"><dt><span data-l="lv">Sestdiena</span><span data-l="en">Saturday</span></dt><dd>9:00–21:00</dd></div>
+          <div data-days="0"><dt><span data-l="lv">Svētdiena</span><span data-l="en">Sunday</span></dt><dd>9:00–18:00</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© SIA Clementine ·
+      <span data-l="lv">Mājaslapas koncepts, sagatavots no publiski pieejamas informācijas.</span>
+      <span data-l="en">Website concept based on publicly available information.</span>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
