@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="lv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restorāns Kalme — Rīga</title>
+  <meta name="description" content="Restorāns Kalme — latviešu virtuve, pagatavota šodienai. Ēdienkarte, darba laiks un galdiņa rezervācija.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">Kalme</a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span data-l="lv">Izvēlne</span><span data-l="en">Menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
+      <a href="#par-mums"><span data-l="lv">Par mums</span><span data-l="en">About</span></a>
+      <a href="#edienkarte"><span data-l="lv">Ēdienkarte</span><span data-l="en">Menu</span></a>
+      <a href="#kontakti"><span data-l="lv">Kontakti</span><span data-l="en">Contact</span></a>
+      <a href="#rezervacija" class="btn btn-small"><span data-l="lv">Rezervēt galdiņu</span><span data-l="en">Book a table</span></a>
+    </nav>
+
+    <button class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow"><span data-l="lv">Restorāns · Vecrīga</span><span data-l="en">Restaurant · Old Riga</span></p>
+        <h1>
+          <span data-l="lv">Latviešu virtuve, pagatavota šodienai</span>
+          <span data-l="en">Latvian cooking, made for today</span>
+        </h1>
+        <p class="lead">
+          <span data-l="lv">Sezonāli produkti no vietējām saimniecībām, uz vietas cepta maize un galds, pie kura gribas pakavēties.</span>
+          <span data-l="en">Seasonal produce from local farms, bread baked in-house, and a table you'll want to linger at.</span>
+        </p>
+        <div class="hero-actions">
+          <a href="#rezervacija" class="btn"><span data-l="lv">Rezervēt galdiņu</span><span data-l="en">Book a table</span></a>
+          <a href="#edienkarte" class="btn btn-ghost"><span data-l="lv">Skatīt ēdienkarti</span><span data-l="en">See the menu</span></a>
+        </div>
+      </div>
+
+      <aside class="today-card" aria-labelledby="today-title">
+        <p class="today-label" id="today-title"><span data-l="lv">Šefpavāra ieteikums</span><span data-l="en">Chef's pick</span></p>
+        <p class="today-dish">
+          <span data-l="lv">Cepts zandarts ar brūnā sviesta mērci un jaunajiem kartupeļiem</span>
+          <span data-l="en">Pan-fried pikeperch with brown butter sauce and new potatoes</span>
+        </p>
+        <p class="today-price">21,00 €</p>
+        <dl class="today-hours">
+          <div><dt><span data-l="lv">Šodien atvērts</span><span data-l="en">Open today</span></dt><dd id="today-open">12:00–22:00</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section id="par-mums" class="section">
+    <div class="wrap about">
+      <h2><span data-l="lv">Par mums</span><span data-l="en">About us</span></h2>
+      <div class="about-text">
+        <p>
+          <span data-l="lv">Kalme sākās kā ģimenes virtuve ar vienu vienkāršu ideju: gatavot tos ēdienus, ko paši gribētu ēst svētdienā pie vecmāmiņas galda — tikai mazliet vieglāk un ar šodienas garšu.</span>
+          <span data-l="en">Kalme began as a family kitchen with one simple idea: cook the dishes we'd want at grandmother's Sunday table — just a little lighter, with today's flavour.</span>
+        </p>
+        <p>
+          <span data-l="lv">Gaļu un dārzeņus ņemam no saimniecībām Vidzemē un Zemgalē, zivis — no Rīgas jūras līča piekrastes zvejniekiem. Ēdienkarte mainās līdz ar gadalaikiem.</span>
+          <span data-l="en">Our meat and vegetables come from farms in Vidzeme and Zemgale, our fish from the fishermen of the Gulf of Riga. The menu changes with the seasons.</span>
+        </p>
+      </div>
+      <ul class="facts">
+        <li><strong>12</strong><span data-l="lv">vietējie piegādātāji</span><span data-l="en">local suppliers</span></li>
+        <li><strong>48</strong><span data-l="lv">vietas zālē</span><span data-l="en">seats inside</span></li>
+        <li><strong>2014</strong><span data-l="lv">atvērti kopš</span><span data-l="en">open since</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="edienkarte" class="section section-alt">
+    <div class="wrap">
+      <h2><span data-l="lv">Ēdienkarte</span><span data-l="en">Menu</span></h2>
+      <p class="section-note">
+        <span data-l="lv">Par alergēniem lūdzam jautāt viesmīlim. Cenas norādītas ar PVN.</span>
+        <span data-l="en">Please ask your server about allergens. Prices include VAT.</span>
+      </p>
+
+      <div class="menu-grid">
+        <section class="menu-group" aria-labelledby="m-starters">
+          <h3 id="m-starters"><span data-l="lv">Uzkodas</span><span data-l="en">Starters</span></h3>
+          <ul class="menu-list">
+            <li><span class="dish"><span data-l="lv">Rupjmaizes grauzdiņi ar ķiploku un siera mērci</span><span data-l="en">Rye bread croutons with garlic and cheese dip</span></span><span class="price">6,50 €</span></li>
+            <li><span class="dish"><span data-l="lv">Kūpināta zivs ar mazsālītiem gurķiem</span><span data-l="en">Smoked fish with lightly salted cucumbers</span></span><span class="price">9,80 €</span></li>
+            <li><span class="dish"><span data-l="lv">Biešu salāti ar kazas sieru un valriekstiem</span><span data-l="en">Beetroot salad with goat cheese and walnuts</span></span><span class="price">8,90 €</span></li>
+          </ul>
+        </section>
+
+        <section class="menu-group" aria-labelledby="m-soups">
+          <h3 id="m-soups"><span data-l="lv">Zupas</span><span data-l="en">Soups</span></h3>
+          <ul class="menu-list">
+            <li><span class="dish"><span data-l="lv">Skābeņu zupa ar olu</span><span data-l="en">Sorrel soup with egg</span></span><span class="price">6,20 €</span></li>
+            <li><span class="dish"><span data-l="lv">Zivju zupa ar dillēm</span><span data-l="en">Fish soup with dill</span></span><span class="price">7,40 €</span></li>
+          </ul>
+        </section>
+
+        <section class="menu-group" aria-labelledby="m-mains">
+          <h3 id="m-mains"><span data-l="lv">Pamatēdieni</span><span data-l="en">Mains</span></h3>
+          <ul class="menu-list">
+            <li><span class="dish"><span data-l="lv">Cūkgaļas karbonāde ar sautētiem kāpostiem</span><span data-l="en">Pork chop with braised cabbage</span></span><span class="price">16,50 €</span></li>
+            <li><span class="dish"><span data-l="lv">Cepts zandarts ar brūnā sviesta mērci</span><span data-l="en">Pan-fried pikeperch with brown butter sauce</span></span><span class="price">21,00 €</span></li>
+            <li><span class="dish"><span data-l="lv">Pelēkie zirņi ar speķi un sīpoliem</span><span data-l="en">Grey peas with bacon and onions</span></span><span class="price">11,80 €</span></li>
+            <li><span class="dish"><span data-l="lv">Gaileņu rizoto ar parmezānu</span><span data-l="en">Chanterelle risotto with parmesan</span></span><span class="price">15,20 €</span></li>
+          </ul>
+        </section>
+
+        <section class="menu-group" aria-labelledby="m-desserts">
+          <h3 id="m-desserts"><span data-l="lv">Deserti</span><span data-l="en">Desserts</span></h3>
+          <ul class="menu-list">
+            <li><span class="dish"><span data-l="lv">Rupjmaizes kārtojums ar dzērvenēm</span><span data-l="en">Layered rye bread dessert with cranberries</span></span><span class="price">6,80 €</span></li>
+            <li><span class="dish"><span data-l="lv">Biezpiena plātsmaize</span><span data-l="en">Curd cheese tart</span></span><span class="price">5,90 €</span></li>
+            <li><span class="dish"><span data-l="lv">Sezonas ogas ar putukrējumu</span><span data-l="en">Seasonal berries with whipped cream</span></span><span class="price">7,20 €</span></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="rezervacija" class="section">
+    <div class="wrap booking">
+      <div class="booking-intro">
+        <h2><span data-l="lv">Rezervēt galdiņu</span><span data-l="en">Book a table</span></h2>
+        <p>
+          <span data-l="lv">Rezervācijas apstiprinām pa tālruni vai e-pastu dažu stundu laikā. Kompānijām virs 8 cilvēkiem lūdzam zvanīt.</span>
+          <span data-l="en">We confirm bookings by phone or email within a few hours. For groups larger than 8, please call us.</span>
+        </p>
+      </div>
+
+      <form class="booking-form" id="booking-form">
+        <div class="field">
+          <label for="name"><span data-l="lv">Vārds</span><span data-l="en">Name</span> <span aria-hidden="true">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-errormessage="name-error">
+          <p id="name-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Lūdzu, ievadiet vārdu.</span><span data-l="en">Please enter your name.</span></p>
+        </div>
+
+        <div class="field">
+          <label for="phone"><span data-l="lv">Tālrunis</span><span data-l="en">Phone</span> <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[+0-9 ]{8,}" required aria-errormessage="phone-error">
+          <p id="phone-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Lūdzu, ievadiet tālruņa numuru.</span><span data-l="en">Please enter a phone number.</span></p>
+        </div>
+
+        <div class="field field-wide">
+          <label for="email"><span data-l="lv">E-pasts</span><span data-l="en">Email</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" aria-errormessage="email-error">
+          <p id="email-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Pārbaudiet e-pasta adresi.</span><span data-l="en">Please check the email address.</span></p>
+        </div>
+
+        <div class="field">
+          <label for="date"><span data-l="lv">Datums</span><span data-l="en">Date</span> <span aria-hidden="true">*</span></label>
+          <input id="date" name="date" type="date" required aria-errormessage="date-error">
+          <p id="date-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Izvēlieties datumu.</span><span data-l="en">Please choose a date.</span></p>
+        </div>
+
+        <div class="field">
+          <label for="time"><span data-l="lv">Laiks</span><span data-l="en">Time</span> <span aria-hidden="true">*</span></label>
+          <select id="time" name="time" required aria-errormessage="time-error">
+            <option value="">—</option>
+            <option>12:00</option><option>13:00</option><option>14:00</option>
+            <option>17:00</option><option>18:00</option><option>19:00</option>
+            <option>20:00</option><option>21:00</option>
+          </select>
+          <p id="time-error" class="error-msg"><span aria-hidden="true">✕</span> <span data-l="lv">Izvēlieties laiku.</span><span data-l="en">Please choose a time.</span></p>
+        </div>
+
+        <div class="field">
+          <label for="guests"><span data-l="lv">Viesu skaits</span><span data-l="en">Guests</span> <span aria-hidden="true">*</span></label>
+          <select id="guests" name="guests" required>
+            <option>1</option><option selected>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+          </select>
+        </div>
+
+        <div class="field field-wide">
+          <label for="note"><span data-l="lv">Piezīmes</span><span data-l="en">Notes</span></label>
+          <textarea id="note" name="note" rows="3" data-ph-lv="Piemēram, dzimšanas diena, alerģijas, bērnu krēsls" data-ph-en="E.g. birthday, allergies, high chair"></textarea>
+        </div>
+
+        <div class="field-wide form-actions">
+          <button type="submit" class="btn"><span data-l="lv">Nosūtīt rezervāciju</span><span data-l="en">Send booking</span></button>
+          <p class="form-hint"><span data-l="lv">* obligāti aizpildāmie lauki</span><span data-l="en">* required fields</span></p>
+        </div>
+
+        <p class="form-success field-wide" role="status" hidden>
+          <span data-l="lv">Paldies! Šī ir demonstrācijas lapa, tāpēc rezervācija netika nosūtīta.</span>
+          <span data-l="en">Thank you! This is a demo site, so the booking was not sent.</span>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <section id="kontakti" class="section section-dark">
+    <div class="wrap contact">
+      <div>
+        <h2><span data-l="lv">Kontakti</span><span data-l="en">Contact</span></h2>
+        <address>
+          Krasta iela 12, Rīga, LV-1050<br>
+          <a href="tel:+37120000000">+371 20 000 000</a><br>
+          <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+      </div>
+      <div>
+        <h3><span data-l="lv">Darba laiks</span><span data-l="en">Opening hours</span></h3>
+        <dl class="hours">
+          <div><dt><span data-l="lv">Pirmdiena–ceturtdiena</span><span data-l="en">Monday–Thursday</span></dt><dd>12:00–22:00</dd></div>
+          <div><dt><span data-l="lv">Piektdiena–sestdiena</span><span data-l="en">Friday–Saturday</span></dt><dd>12:00–23:00</dd></div>
+          <div><dt><span data-l="lv">Svētdiena</span><span data-l="en">Sunday</span></dt><dd>12:00–20:00</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© Kalme ·
+      <span data-l="lv">Demonstrācijas lapa — uzņēmums, adrese un kontakti ir izdomāti.</span>
+      <span data-l="en">Demo site — the business, address and contact details are fictional.</span>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
