@@ -100,7 +100,9 @@ function renderOrder() {
     if (!li) {
       li = document.createElement('li');
       li.dataset.id = id;
-      li.innerHTML = `<img src="${el.querySelector('img').getAttribute('src')}" alt=""><span class="name"></span><span class="sum"></span>`;
+      const photo = el.querySelector('img');
+      const thumb = photo ? `<img src="${photo.getAttribute('src')}" alt="">` : '<span class="thumb-none" aria-hidden="true"></span>';
+      li.innerHTML = `${thumb}<span class="name"></span><span class="sum"></span>`;
       lines.append(li);
     }
     li.querySelector('.name').textContent = `${qty} × ${nameOf(el)}`;
