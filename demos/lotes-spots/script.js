@@ -30,35 +30,103 @@ if (matchMedia('(pointer: fine)').matches && !reduceMotion) {
   });
 }
 
-// ---------- Hero scroll: the sign comes closer, the words part, the neon switches off ----------
+// ---------- Hero scroll: the sign comes closer, flickers, then dissolves into drifting grains ----------
+// Scroll-linked, so scrolling back up reassembles it.
 const stick = document.querySelector('.street-stick');
-const tubes = [document.querySelector('.sign-wrap'), ...document.querySelectorAll('.tube .w')];
-const OFF_AT = 0.62;
-let isOff = false;
+const signImg = document.querySelector('.sign');
+const dust = document.querySelector('.dust');
+const ctx = dust.getContext('2d');
+const APPROACH_END = 0.3;   // p where the sign stops growing
+const DISSOLVE_START = 0.3; // ...and starts to fall apart
+let grains = [];
 let ticking = false;
-function flicker() {
-  tubes.forEach((el, i) => el.animate(
-    [{ opacity: 0.7 }, { opacity: 0.12 }, { opacity: 0.9 }, { opacity: 0.2 }, {}],
-    { duration: 420, delay: i * 40, easing: 'linear' }
-  ));
+let dissolving = false;
+
+function buildGrains() {
+  const w = Math.round(signImg.offsetWidth), h = Math.round(signImg.offsetHeight);
+  if (!w || !h) return;
+  const dpr = Math.min(2, devicePixelRatio || 1);
+  const cw = dust.offsetWidth, ch = dust.offsetHeight;
+  dust.width = Math.round(cw * dpr); dust.height = Math.round(ch * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // sample the sign
+  const off = document.createElement('canvas');
+  off.width = w; off.height = h;
+  const o = off.getContext('2d', { willReadFrequently: true });
+  o.drawImage(signImg, 0, 0, w, h);
+  const data = o.getImageData(0, 0, w, h).data;
+  const step = Math.max(2, Math.round(w / 170));
+  const ox = (cw - w) / 2, oy = ch * 0.58 - h / 2;  // matches .dust translate(-50%, -58%)
+  grains = [];
+  for (let y = 0; y < h; y += step) {
+    for (let x = 0; x < w; x += step) {
+      const i = (y * w + x) * 4;
+      const a = data[i + 3];
+      if (a < 70) continue;
+      const r = data[i], g = data[i + 1], b = data[i + 2];
+      if (Math.max(r, g, b) < 60) continue;
+      const nx = x / w - 0.5;
+      grains.push({
+        x: ox + x, y: oy + y, size: step * 0.9,
+        color: `rgb(${r},${g},${b})`, alpha: a / 255,
+        // drift up and outward, like sparks lifting off a sign
+        dx: nx * w * (0.5 + Math.random() * 0.9) + (Math.random() - 0.5) * w * 0.35,
+        dy: -(0.35 + Math.random() * 0.9) * h,
+        spin: (Math.random() - 0.5) * 2,
+        // the sign comes apart from the top down, with some noise
+        t0: (y / h) * 0.55 + Math.random() * 0.2,
+      });
+    }
+  }
 }
+
+function drawGrains(q) {
+  ctx.clearRect(0, 0, dust.width, dust.height);
+  ctx.globalCompositeOperation = 'lighter';
+  for (const gr of grains) {
+    const k = Math.min(1, Math.max(0, (q - gr.t0) / 0.35));
+    const e = 1 - (1 - k) * (1 - k);              // ease-out drift
+    const a = gr.alpha * (1 - k);
+    if (a <= 0.01) continue;
+    const wobble = Math.sin(k * 6 + gr.spin * 3) * 6 * k;
+    ctx.globalAlpha = a;
+    ctx.fillStyle = gr.color;
+    const s = gr.size * (1 - k * 0.6);
+    ctx.fillRect(gr.x + gr.dx * e + wobble, gr.y + gr.dy * e, s, s);
+  }
+  ctx.globalAlpha = 1;
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+function flicker() {
+  signImg.animate([{ opacity: 0.7 }, { opacity: 0.15 }, { opacity: 0.9 }, { opacity: 0.25 }, {}], { duration: 380, easing: 'linear' });
+}
+
 function onHeroScroll() {
   ticking = false;
   const r = street.getBoundingClientRect();
   const travel = street.offsetHeight - innerHeight;
   const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0;
-  stick.style.setProperty('--p', p.toFixed(4));
-  const off = p > OFF_AT;
-  if (off !== isOff) {
-    isOff = off;
-    stick.classList.toggle('is-off', off);
-    flicker();
+  const approach = Math.min(1, p / APPROACH_END);
+  const q = Math.max(0, (p - DISSOLVE_START) / (1 - DISSOLVE_START)); // 0 → 1 across the dissolve
+  stick.style.setProperty('--approach', approach.toFixed(4));
+  stick.style.setProperty('--fade', Math.min(1, q * 1.6).toFixed(4));
+
+  const nowDissolving = q > 0.001 && grains.length > 0;
+  if (nowDissolving !== dissolving) {
+    dissolving = nowDissolving;
+    stick.classList.toggle('is-dust', dissolving);
+    if (!dissolving) { ctx.clearRect(0, 0, dust.width, dust.height); flicker(); }
   }
+  if (dissolving) drawGrains(q * 1.12);
 }
+
 if (!reduceMotion) {
+  const ready = () => { buildGrains(); onHeroScroll(); };
+  if (signImg.complete) ready(); else signImg.addEventListener('load', ready, { once: true });
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onHeroScroll); } }, { passive: true });
-  addEventListener('resize', onHeroScroll);
-  onHeroScroll();
+  let rt;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(ready, 150); });
 }
 
 // ---------- The panda's day ----------
