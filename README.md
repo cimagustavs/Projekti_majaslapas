@@ -13,6 +13,7 @@ Or watch the `.mp4` recordings in the same folder.
 |------|-------------|---------|-----------|
 | Clementine (café) | `demos/clementine/` | `preview/clementine/clementine-demo.html` | LV / EN |
 | Kafe-Picērija (pizzeria) | `demos/kafe-picerija/` | `preview/kafe-picerija/picerija-demo.html` | LV / RU |
+| Lotes Spots (family café) | `demos/lotes-spots/` | `preview/lotes-spots/lotes-spots-demo.html` | LV / RU |
 
 To open the full source version instead: GitHub → **Code → Download ZIP**, unzip, open `demos/<demo>/index.html`.
 
