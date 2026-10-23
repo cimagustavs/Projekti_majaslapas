@@ -194,7 +194,7 @@ img { max-width: 100%; }
 
 /* ---------- 5. Office ---------- */
 .office { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2rem 3rem; align-items: center; padding: clamp(4rem, 8vw, 6rem) var(--gutter); background: var(--green); color: var(--ink); }
-.office-panda { width: clamp(8rem, 16vw, 12rem); height: auto; padding: 1rem; background: var(--night); border-radius: var(--r); }
+.office-panda { width: clamp(9rem, 17vw, 13rem); height: auto; aspect-ratio: 1; object-fit: contain; padding: 1.4rem; background: var(--night); border-radius: 50%; box-shadow: 0 0 0 6px rgb(16 16 16 / 0.12); }
 .office h2 { font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1.02; }
 .office p { margin-top: 1rem; font-size: 1.25rem; font-weight: 800; max-width: 42ch; }
 @media (max-width: 640px) { .office { grid-template-columns: minmax(0, 1fr); } }
@@ -202,7 +202,29 @@ img { max-width: 100%; }
 /* ---------- 6. Find ---------- */
 .find { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 3rem 7.5rem; align-items: center; padding: clamp(5rem, 10vw, 8rem) var(--gutter); max-width: 84rem; margin-inline: auto; }
 .window { position: relative; margin: 0; }
-.window > img:first-child { display: block; width: 100%; height: auto; border-radius: var(--r); box-shadow: 0 0 80px rgb(79 220 74 / 0.15), 0 0 120px rgb(255 155 26 / 0.12); }
+/* A shop window drawn in CSS: dark glass, a frame, the sign inside, the address in tube letters. */
+.glass {
+  position: relative; display: grid; justify-items: center; align-content: center; gap: 1.25rem;
+  aspect-ratio: 4 / 3; padding: 2rem; overflow: hidden;
+  background:
+    linear-gradient(115deg, transparent 38%, rgb(255 255 255 / 0.05) 44%, transparent 52%),
+    radial-gradient(ellipse at 50% 40%, #1c140c 0%, #09090b 70%);
+  border: 10px solid #1c1c21; border-radius: var(--r);
+  box-shadow: 0 0 80px rgb(79 220 74 / 0.12), 0 0 120px rgb(255 155 26 / 0.10), inset 0 0 60px rgb(0 0 0 / 0.8);
+}
+.glass-sign {
+  width: min(55%, 15rem); height: auto;
+  -webkit-mask-image: radial-gradient(circle, #000 58%, transparent 70%);
+          mask-image: radial-gradient(circle, #000 58%, transparent 70%);
+}
+.glass-text { font: 800 clamp(1.8rem, 3.6vw, 2.8rem)/1 var(--font); letter-spacing: -0.01em; }
+.glass-text span { text-shadow: 0 0 6px currentColor, 0 0 20px currentColor, 0 0 44px currentColor; }
+.glass-open {
+  position: absolute; top: 1rem; right: 1rem; padding: 0.35rem 0.7rem;
+  font: 800 0.85rem/1 var(--font); letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--tube-2); border: 2px solid currentColor; border-radius: var(--r);
+}
+.glass-open.is-open { color: var(--red, #ff4b55); text-shadow: 0 0 10px currentColor; box-shadow: 0 0 14px rgb(255 75 85 / 0.5), inset 0 0 10px rgb(255 75 85 / 0.35); }
 .peek { position: absolute; left: calc(100% - 1.4rem); bottom: 0.5rem; width: clamp(5.5rem, 9vw, 7rem); height: auto; opacity: 0; transform: translateX(-40%); transition: transform 700ms var(--ease-out) 300ms, opacity 400ms ease 300ms; }
 .window.in .peek { opacity: 1; transform: none; }
 .find h2 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 1.02; }

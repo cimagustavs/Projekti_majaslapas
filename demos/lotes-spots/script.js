@@ -12,6 +12,8 @@ function renderStatus() {
   const open = h >= from && h < to;
   el.textContent = open ? `Atvērts līdz ${to}:00` : h < from ? `Atveram ${from}:00` : `Rīt atveram ${HOURS[(d + 1) % 7][0]}:00`;
   el.classList.toggle('is-open', open);
+  const mini = document.querySelector('[data-status-mini]');
+  if (mini) { mini.textContent = open ? 'atvērts' : 'slēgts'; mini.classList.toggle('is-open', open); }
   document.querySelectorAll('#hours [data-days]').forEach((r) => r.classList.toggle('is-today', r.dataset.days.split(' ').includes(String(d))));
 }
 renderStatus();
