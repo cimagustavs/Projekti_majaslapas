@@ -257,6 +257,13 @@ img { max-width: 100%; }
 .glass-open.is-open { color: var(--red, #ff4b55); text-shadow: 0 0 10px currentColor; box-shadow: 0 0 14px rgb(255 75 85 / 0.5), inset 0 0 10px rgb(255 75 85 / 0.35); }
 .peek { position: absolute; left: calc(100% - 1.4rem); bottom: 0.5rem; width: clamp(5.5rem, 9vw, 7rem); height: auto; opacity: 0; transform: translateX(-40%); transition: transform 700ms var(--ease-out) 300ms, opacity 400ms ease 300ms; }
 .window.in .peek { opacity: 1; transform: none; }
+/* Without JavaScript (e.g. the iPhone file preview) the page is a plain, finished layout:
+   no pinned hero to scroll through, every story step fully visible. */
+html:not(.js) .street { height: auto; }
+html:not(.js) .step { opacity: 1; min-height: 0; padding-block: 2.5rem; }
+html:not(.js) .stage { position: relative; height: auto; padding-block: 4rem 0; }
+html:not(.js) .clock { display: none; }
+html:not(.js) .peek { opacity: 1; transform: none; }
 .find h2 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 1.02; }
 .addr { margin-top: 0.5rem; font-size: 1.4rem; font-weight: 800; color: var(--tube-2); }
 .hours { margin: 1.75rem 0 0; display: grid; gap: 0.45rem; }
