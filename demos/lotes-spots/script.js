@@ -30,139 +30,22 @@ if (matchMedia('(pointer: fine)').matches && !reduceMotion) {
   });
 }
 
-// ---------- Hero scroll: the sign comes closer, then dissolves into drifting sparks ----------
-// Scroll-linked, so scrolling back up reassembles it. The part of the sign that has not come
-// apart yet stays the real, sharp image (masked from the top); only detached pieces are sparks.
+// ---------- Hero scroll: the sign comes closer and the three words leave the frame ----------
+// Scroll-linked, so scrolling back up brings everything back.
 const stick = document.querySelector('.street-stick');
-const signImg = document.querySelector('.sign');
-const dust = document.querySelector('.dust');
-const ctx = dust.getContext('2d');
-const APPROACH_END = 0.3;   // p where the sign stops growing
-const DISSOLVE_START = 0.3; // ...and starts to fall apart
-const SPREAD = 0.6;         // how much of the dissolve the top-to-bottom sweep takes
-const NOISE = 0.12;         // ragged edge
-const LIFE = 0.32;          // how long one spark lives
-let grains = [];
 let ticking = false;
-let dissolving = false;
-const sprites = new Map();
-
-// A soft round spark with a hot core, tinted to the sign's colour. Cached per colour bucket.
-function sprite(r, g, b) {
-  const key = `${r >> 4},${g >> 4},${b >> 4}`;
-  let s = sprites.get(key);
-  if (s) return s;
-  s = document.createElement('canvas');
-  s.width = s.height = 32;
-  const c = s.getContext('2d');
-  const grd = c.createRadialGradient(16, 16, 0, 16, 16, 16);
-  grd.addColorStop(0, `rgba(${Math.min(255, r + 70)},${Math.min(255, g + 70)},${Math.min(255, b + 70)},1)`);
-  grd.addColorStop(0.25, `rgba(${r},${g},${b},0.95)`);
-  grd.addColorStop(0.6, `rgba(${r},${g},${b},0.28)`);
-  grd.addColorStop(1, `rgba(${r},${g},${b},0)`);
-  c.fillStyle = grd;
-  c.fillRect(0, 0, 32, 32);
-  sprites.set(key, s);
-  return s;
-}
-
-function buildGrains() {
-  const w = signImg.offsetWidth, h = signImg.offsetHeight;
-  if (!w || !h) return;
-  const dpr = Math.min(2, devicePixelRatio || 1);
-  const cw = dust.offsetWidth, ch = dust.offsetHeight;
-  dust.width = Math.round(cw * dpr); dust.height = Math.round(ch * dpr);
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-  // Sample the sign at the resolution it is shown on screen.
-  const sw = Math.round(w * dpr), sh = Math.round(h * dpr);
-  const off = document.createElement('canvas');
-  off.width = sw; off.height = sh;
-  const o = off.getContext('2d', { willReadFrequently: true });
-  o.imageSmoothingQuality = 'high';
-  o.drawImage(signImg, 0, 0, sw, sh);
-  const data = o.getImageData(0, 0, sw, sh).data;
-
-  // Pick a sampling step that gives a dense but smooth field of sparks.
-  let bright = 0;
-  for (let i = 0; i < data.length; i += 16) if (data[i + 3] > 80 && Math.max(data[i], data[i + 1], data[i + 2]) > 90) bright++;
-  bright *= 4;
-  const target = innerWidth < 700 ? 7000 : 12000;
-  const step = Math.max(1, Math.round(Math.sqrt(bright / target)));
-
-  const ox = (cw - w) / 2, oy = ch * 0.58 - h / 2; // matches .dust translate(-50%, -58%)
-  grains = [];
-  for (let y = 0; y < sh; y += step) {
-    for (let x = 0; x < sw; x += step) {
-      const i = (y * sw + x) * 4;
-      const a = data[i + 3];
-      const r = data[i], g = data[i + 1], b = data[i + 2];
-      if (a < 80 || Math.max(r, g, b) < 90) continue;
-      const fx = x / sw, fy = y / sh;
-      grains.push({
-        x: ox + fx * w, y: oy + fy * h,
-        img: sprite(r, g, b),
-        size: (step / dpr) * (2.2 + Math.random() * 1.6),
-        alpha: (a / 255) * (0.75 + Math.random() * 0.25),
-        dx: (fx - 0.5) * w * (0.4 + Math.random() * 0.9) + (Math.random() - 0.5) * w * 0.3,
-        dy: -(0.3 + Math.random() * 0.9) * h,
-        sway: Math.random() * Math.PI * 2,
-        t0: fy * SPREAD + Math.random() * NOISE,
-      });
-    }
-  }
-}
-
-function drawGrains(Q) {
-  ctx.clearRect(0, 0, dust.width, dust.height);
-  ctx.globalCompositeOperation = 'lighter';
-  for (const gr of grains) {
-    const k = (Q - gr.t0) / LIFE;
-    if (k <= 0 || k >= 1) continue;          // still part of the sign, or already gone
-    const e = 1 - (1 - k) * (1 - k);         // ease-out drift
-    const fade = k < 0.15 ? 1 : 1 - (k - 0.15) / 0.85;
-    ctx.globalAlpha = gr.alpha * fade;
-    const s = gr.size * (1 - k * 0.55);
-    const x = gr.x + gr.dx * e + Math.sin(gr.sway + k * 5) * 5 * k;
-    const y = gr.y + gr.dy * e;
-    ctx.drawImage(gr.img, x - s / 2, y - s / 2, s, s);
-  }
-  ctx.globalAlpha = 1;
-  ctx.globalCompositeOperation = 'source-over';
-}
-
-function flicker() {
-  signImg.animate([{ opacity: 0.7 }, { opacity: 0.15 }, { opacity: 0.9 }, { opacity: 0.25 }, {}], { duration: 380, easing: 'linear' });
-}
-
 function onHeroScroll() {
   ticking = false;
   const r = street.getBoundingClientRect();
   const travel = street.offsetHeight - innerHeight;
   const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0;
-  const approach = Math.min(1, p / APPROACH_END);
-  const q = Math.max(0, (p - DISSOLVE_START) / (1 - DISSOLVE_START)); // 0 → 1 across the dissolve
-  const Q = q * (SPREAD + NOISE + LIFE);                              // all sparks gone at q = 1
+  const approach = p * p * (3 - 2 * p); // smoothstep: eases in and out of the move
   stick.style.setProperty('--approach', approach.toFixed(4));
-  stick.style.setProperty('--fade', Math.min(1, q * 1.6).toFixed(4));
-  // Rows whose every spark has left are hidden on the real image.
-  stick.style.setProperty('--cut', (q > 0 ? (Q - NOISE * 0.5) / SPREAD : -0.2).toFixed(4));
-
-  const nowDissolving = q > 0.001 && grains.length > 0;
-  if (nowDissolving !== dissolving) {
-    dissolving = nowDissolving;
-    stick.classList.toggle('is-dust', dissolving);
-    if (!dissolving) { ctx.clearRect(0, 0, dust.width, dust.height); flicker(); }
-  }
-  if (dissolving) drawGrains(Q);
 }
-
 if (!reduceMotion) {
-  const ready = () => { buildGrains(); onHeroScroll(); };
-  if (signImg.complete) ready(); else signImg.addEventListener('load', ready, { once: true });
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onHeroScroll); } }, { passive: true });
-  let rt;
-  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(ready, 150); });
+  addEventListener('resize', onHeroScroll);
+  onHeroScroll();
 }
 
 // ---------- The panda's day ----------
