@@ -124,15 +124,18 @@ img { max-width: 100%; }
 .step-time { font: 800 1.15rem/1 var(--font); color: var(--orange); font-variant-numeric: tabular-nums; }
 .step h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.02; }
 .step p:not(.step-time) { font-size: clamp(1.15rem, 1.6vw, 1.35rem); max-width: 34ch; }
+.step-panda { display: none; }
 .pill { align-self: flex-start; margin-top: 0.5rem; padding: 0.8rem 1.3rem; border-radius: var(--r); background: rgb(255 255 255 / 0.1); font-weight: 800; text-decoration: none; transition: transform 160ms var(--ease-out); }
 .pill:active { transform: scale(0.97); }
+/* On a phone a pinned stage would cover half the screen, so each step carries its own panda. */
 @media (max-width: 820px) {
   .day { grid-template-columns: minmax(0, 1fr); }
-  .stage { grid-column: 1; height: 42dvh; top: 0; padding-top: 3.5rem; z-index: 1; background: linear-gradient(var(--sky) 88%, transparent); transition: background-color 700ms ease; }
-  .clock { top: 3.75rem; font-size: 3.5rem; }
-  .actor { width: min(56vw, 14rem); }
-  .steps { grid-row: 2; }
-  .step { min-height: 75dvh; margin-left: 0; justify-content: flex-start; padding-block: 2rem 3rem; }
+  .stage { display: none; }
+  .steps { grid-column: 1; }
+  .step { min-height: 0; margin-left: 0; padding-block: 3.5rem; opacity: 1; }
+  .step-panda { display: block; width: min(58vw, 15rem); height: auto; align-self: center; margin-bottom: 0.75rem; }
+  .step.on .step-panda { animation: catch 600ms linear; }
+}
 }
 
 /* ---------- 3. Tray builder ---------- */
@@ -290,6 +293,7 @@ html:not(.js) .peek { opacity: 1; transform: none; }
   .sign, .tube span, .street-foot > * { animation: fade 400ms ease backwards !important; }
   .actor { transition: opacity 200ms ease; transform: none; }
   .actor.on { animation: none; transform: none; }
+  .step.on .step-panda { animation: none; }
   .js .reveal { transform: none; transition-property: opacity; }
   .peek { transform: none !important; }
   .tray-panda img.pop, .total b.bump { animation: none; }
