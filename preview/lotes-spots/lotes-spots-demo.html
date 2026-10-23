@@ -68,12 +68,12 @@ img { max-width: 100%; }
 @media (max-width: 560px) { .bar-status { display: none; } }
 
 /* ---------- 1. Night street ----------
-   The section is taller than the screen; its content stays pinned while you scroll through it.
-   script.js writes --p (0 → 1) as you scroll: the sign comes toward you, the words part, then the
-   neon switches off. Scrolling back up plays it in reverse and the sign switches back on. */
-.street { position: relative; height: 175dvh; background: var(--night); }
+   A normal full-screen section that scrolls away like any other — nothing is pinned.
+   script.js writes --p (0 → 1 as the section scrolls out) from the very first pixel:
+   the sign drifts, grows and tilts with parallax, the words fly out of the frame. */
+.street { position: relative; background: var(--night); }
 .street-stick {
-  position: sticky; top: 0; height: 100dvh; overflow: hidden;
+  position: relative; height: 100dvh; overflow: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; gap: clamp(1rem, 3dvh, 2.25rem);
   padding: 4.5rem var(--gutter) 1.5rem;
@@ -86,7 +86,7 @@ img { max-width: 100%; }
 }
 .sign-wrap {
   position: relative;
-  transform: translateY(calc(var(--approach, 0) * 4dvh)) scale(calc(1 + var(--approach, 0) * 0.35));
+  transform: translateY(calc(var(--p, 0) * 48dvh)) scale(calc(1 + var(--p, 0) * 0.3)) rotate(calc(var(--p, 0) * -9deg));
   will-change: transform;
 }
 .sign {
@@ -97,12 +97,12 @@ img { max-width: 100%; }
 
 .tube { position: relative; font-size: clamp(2.6rem, min(10vw, 11dvh), 8.5rem); line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
 .tube .w { display: inline-block; will-change: transform; }
-.tube .w-1 { transform: translateX(calc(var(--approach, 0) * -78vw)); }
-.tube .w-2 { transform: translateY(calc(var(--approach, 0) * 62dvh)); }
-.tube .w-3 { transform: translateX(calc(var(--approach, 0) * 78vw)); }
+.tube .w-1 { transform: translateX(calc(var(--q, 0) * -80vw)) rotate(calc(var(--q, 0) * -12deg)); }
+.tube .w-2 { transform: translateY(calc(var(--q, 0) * 115dvh)); }
+.tube .w-3 { transform: translateX(calc(var(--q, 0) * 80vw)) rotate(calc(var(--q, 0) * 12deg)); }
 .tube .w > span { display: inline-block; text-shadow: 0 0 6px currentColor, 0 0 22px currentColor, 0 0 60px currentColor; transition: opacity 180ms linear; }
 .tube .t-w { text-shadow: 0 0 6px #fff, 0 0 22px rgb(255 255 255 / 0.7), 0 0 50px rgb(255 255 255 / 0.4); }
-.street-foot { display: grid; justify-items: center; gap: clamp(0.75rem, 2dvh, 1.25rem); opacity: calc(1 - var(--approach, 0) * 3); transform: translateY(calc(var(--approach, 0) * 4rem)); }
+.street-foot { display: grid; justify-items: center; gap: clamp(0.75rem, 2dvh, 1.25rem); opacity: calc(1 - var(--q, 0) * 2.5); transform: translateY(calc(var(--q, 0) * 5rem)); }
 .street-sub { font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-weight: 800; color: var(--tube-2); }
 .street-down {
   padding: 0.9rem 1.5rem; border-radius: var(--r);
@@ -259,7 +259,6 @@ img { max-width: 100%; }
 .window.in .peek { opacity: 1; transform: none; }
 /* Without JavaScript (e.g. the iPhone file preview) the page is a plain, finished layout:
    no pinned hero to scroll through, every story step fully visible. */
-html:not(.js) .street { height: auto; }
 html:not(.js) .step { opacity: 1; min-height: 0; padding-block: 2.5rem; }
 html:not(.js) .stage { position: relative; height: auto; padding-block: 4rem 0; }
 html:not(.js) .clock { display: none; }
@@ -303,8 +302,6 @@ html:not(.js) .peek { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .sign, .tube span, .street-foot > * { animation: fade 400ms ease backwards !important; }
-  .street { height: auto; }
-  .street-stick { position: relative; }
   .actor { transition: opacity 200ms ease; transform: none; }
   .actor.on { animation: none; transform: none; }
   .js .reveal { transform: none; transition-property: opacity; }
@@ -536,17 +533,16 @@ if (matchMedia('(pointer: fine)').matches && !reduceMotion) {
   });
 }
 
-// ---------- Hero scroll: the sign comes closer and the three words leave the frame ----------
-// Scroll-linked, so scrolling back up brings everything back.
+// ---------- Hero scroll: motion starts with the first pixel of scrolling, nothing is pinned ----------
 const stick = document.querySelector('.street-stick');
 let ticking = false;
 function onHeroScroll() {
   ticking = false;
-  const r = street.getBoundingClientRect();
-  const travel = street.offsetHeight - innerHeight;
-  const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0;
-  const approach = p * p * (3 - 2 * p); // smoothstep: eases in and out of the move
-  stick.style.setProperty('--approach', approach.toFixed(4));
+  const h = street.offsetHeight || innerHeight;
+  const p = Math.min(1, Math.max(0, scrollY / h));       // 0 at the top, 1 once the hero has scrolled away
+  const q = Math.min(1, p * 1.7);                          // words leave faster than the panda
+  stick.style.setProperty('--p', p.toFixed(4));
+  stick.style.setProperty('--q', (1 - (1 - q) * (1 - q)).toFixed(4)); // ease-out: they react immediately
 }
 if (!reduceMotion) {
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onHeroScroll); } }, { passive: true });

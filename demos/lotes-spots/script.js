@@ -30,17 +30,16 @@ if (matchMedia('(pointer: fine)').matches && !reduceMotion) {
   });
 }
 
-// ---------- Hero scroll: the sign comes closer and the three words leave the frame ----------
-// Scroll-linked, so scrolling back up brings everything back.
+// ---------- Hero scroll: motion starts with the first pixel of scrolling, nothing is pinned ----------
 const stick = document.querySelector('.street-stick');
 let ticking = false;
 function onHeroScroll() {
   ticking = false;
-  const r = street.getBoundingClientRect();
-  const travel = street.offsetHeight - innerHeight;
-  const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0;
-  const approach = p * p * (3 - 2 * p); // smoothstep: eases in and out of the move
-  stick.style.setProperty('--approach', approach.toFixed(4));
+  const h = street.offsetHeight || innerHeight;
+  const p = Math.min(1, Math.max(0, scrollY / h));       // 0 at the top, 1 once the hero has scrolled away
+  const q = Math.min(1, p * 1.7);                          // words leave faster than the panda
+  stick.style.setProperty('--p', p.toFixed(4));
+  stick.style.setProperty('--q', (1 - (1 - q) * (1 - q)).toFixed(4)); // ease-out: they react immediately
 }
 if (!reduceMotion) {
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onHeroScroll); } }, { passive: true });
