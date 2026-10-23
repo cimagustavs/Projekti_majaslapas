@@ -1,124 +1,144 @@
-const root = document.documentElement;
-const euro = (cents) => `${(cents / 100).toFixed(2).replace('.', ',')} €`;
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const euro = (c) => `${(c / 100).toFixed(2).replace('.', ',')} €`;
 
-const TEXT = {
-  lv: {
-    title: 'Lotes Spots — ģimenes kafejnīca Jelgavā, Lielā iela 3',
-    langLabel: 'Переключить на русский', langButton: 'RU', tabs: 'Ko šodien gribas?',
-    sets: (n, price) => `${n} × ${price === 900 ? 'zupa + otrais + saldais' : 'zupa + otrais'}`,
-    free: 'bez maksas',
-    hintFree: 'Virs 15 € — piegāde bez maksas.',
-    hintAlmost: 'Pasūtot virs 15 € — piegāde bez maksas.',
-    hintTakeaway: 'Izņem Lielajā ielā 3 — piegādes maksas nav.',
-    hintHere: 'Gaidīsim pie galdiņa Lielajā ielā 3.',
-    minus: 'Mazāk cilvēku', plus: 'Vairāk cilvēku',
-  },
-  ru: {
-    title: 'Lotes Spots — семейное кафе в Елгаве, ул. Лиела, 3',
-    langLabel: 'Pārslēgt uz latviešu valodu', langButton: 'LV', tabs: 'Чего сегодня хочется?',
-    sets: (n, price) => `${n} × ${price === 900 ? 'суп + второе + десерт' : 'суп + второе'}`,
-    free: 'бесплатно',
-    hintFree: 'От 15 € — доставка бесплатно.',
-    hintAlmost: 'При заказе от 15 € — доставка бесплатно.',
-    hintTakeaway: 'Заберите на улице Лиела, 3 — без платы за доставку.',
-    hintHere: 'Ждём вас за столиком на улице Лиела, 3.',
-    minus: 'Меньше человек', plus: 'Больше человек',
-  },
-};
-const t = () => TEXT[root.lang];
+// ---------- Opening hours (sample) + live status ----------
+const HOURS = [[10, 20], [9, 21], [9, 21], [9, 21], [9, 21], [9, 21], [10, 20]]; // 0 = Sunday
+function renderStatus() {
+  const now = new Date();
+  const d = now.getDay();
+  const h = now.getHours() + now.getMinutes() / 60;
+  const [from, to] = HOURS[d];
+  const el = document.querySelector('[data-status]');
+  const open = h >= from && h < to;
+  el.textContent = open ? `Atvērts līdz ${to}:00` : h < from ? `Atveram ${from}:00` : `Rīt atveram ${HOURS[(d + 1) % 7][0]}:00`;
+  el.classList.toggle('is-open', open);
+  document.querySelectorAll('#hours [data-days]').forEach((r) => r.classList.toggle('is-today', r.dataset.days.split(' ').includes(String(d))));
+}
+renderStatus();
+setInterval(renderStatus, 60_000);
+
+// ---------- Street lamp follows the pointer ----------
+const street = document.querySelector('.street');
+if (matchMedia('(pointer: fine)').matches && !reduceMotion) {
+  street.addEventListener('pointermove', (e) => {
+    const r = street.getBoundingClientRect();
+    street.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    street.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+}
+
+// ---------- The panda's day ----------
+const day = document.querySelector('.day');
+const steps = [...document.querySelectorAll('.step')];
+const actors = [...document.querySelectorAll('.actor')];
+const clock = document.getElementById('clock');
+let current = -1;
+function showStep(i) {
+  if (i === current) return;
+  current = i;
+  day.dataset.step = i;
+  steps.forEach((s, k) => s.classList.toggle('on', k === i));
+  actors.forEach((a, k) => a.classList.toggle('on', k === i));
+  clock.textContent = steps[i].dataset.time;
+}
+showStep(0);
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) showStep(steps.indexOf(e.target)); });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  steps.forEach((s) => io.observe(s));
+} else steps.forEach((s) => s.classList.add('on'));
+
+// ---------- Build your tray ----------
+// Real rule from their poster: soup + main = 7 €, + dessert = 9 €. Item prices are samples.
+const picks = document.getElementById('picks');
+const lines = document.getElementById('tray-lines');
+const panda = document.getElementById('tray-panda');
+const bubble = document.getElementById('bubble');
+const saveEl = document.getElementById('save');
+const totalEl = document.getElementById('total');
+const qtyEl = document.getElementById('qty');
+const minus = document.querySelector('.tray .minus');
+const plus = document.querySelector('.tray .plus');
+let qty = 1;
+let mood = 'peek';
+
+const pick = (course) => picks.querySelector(`input[name="${course}"]:checked`);
 const bump = (el) => { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); };
 
-// ---------- Panda signs as tabs ----------
-const tablist = document.querySelector('.signs');
-const tabs = [...tablist.querySelectorAll('[role="tab"]')];
-function selectTab(tab, focus = false) {
-  tabs.forEach((x) => {
-    const on = x === tab;
-    x.setAttribute('aria-selected', String(on));
-    x.tabIndex = on ? 0 : -1;
-    document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
-  });
-  if (focus) tab.focus();
-  tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+function setPanda(next, text) {
+  bubble.textContent = text;
+  if (next === mood) return;
+  mood = next;
+  panda.src = `img/panda/${next}.webp`;
+  panda.classList.remove('pop'); void panda.offsetWidth; panda.classList.add('pop');
 }
-tabs.forEach((tab) => tab.addEventListener('click', () => selectTab(tab)));
-tablist.addEventListener('keydown', (e) => {
-  const i = tabs.indexOf(document.activeElement);
-  if (i < 0) return;
-  const keys = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
-  if (!(e.key in keys)) return;
-  e.preventDefault();
-  selectTab(tabs[(keys[e.key] + tabs.length) % tabs.length], true);
+
+function renderTray(animate = false) {
+  const soup = pick('soup'), main = pick('main'), dessert = pick('dessert'), drink = pick('drink');
+  const chosen = [soup, main, dessert, drink].filter(Boolean);
+  const loose = chosen.reduce((s, i) => s + Number(i.dataset.price), 0);
+  const isSet = Boolean(soup && main);
+  const one = isSet ? (dessert ? 900 : 700) + (drink ? Number(drink.dataset.price) : 0) : loose;
+
+  lines.replaceChildren(...chosen.map((i) => {
+    const li = document.createElement('li');
+    const name = document.createElement('span'); name.textContent = i.value;
+    const price = document.createElement('b'); price.textContent = euro(Number(i.dataset.price));
+    li.append(name, price);
+    return li;
+  }));
+
+  const delivery = document.querySelector('input[name="mode"]:checked').value === 'delivery';
+  const food = one * qty;
+  const fee = delivery && food > 0 && food <= 1500 ? 350 : 0;
+  totalEl.textContent = euro(food + fee);
+  if (animate) bump(totalEl);
+
+  const saved = (loose - one) * qty;
+  const deliveryNote = !delivery || !food ? '' : fee ? ' Piegāde 3,50 € (virs 15 € — bez maksas).' : ' Piegāde bez maksas!';
+  saveEl.textContent = (isSet && saved > 0 ? `Komplekts! Ietaupi ${euro(saved)}.` : '') + deliveryNote;
+
+  qtyEl.textContent = qty;
+  minus.disabled = qty <= 1;
+
+  if (!chosen.length) setPanda('peek', 'Nu, ko ņemsim?');
+  else if (isSet && dessert && drink) setPanda('heart-eyes', 'Ideāla paplāte!');
+  else if (isSet && dessert) setPanda('love-fries', 'Ar saldo — tikai 9 €!');
+  else if (isSet) setPanda('thumbs-up', 'Komplekts — 7 €!');
+  else if (drink && chosen.length === 1) setPanda('snack', 'Tikai iedzert? Var!');
+  else setPanda('eating', soup ? 'Un otrais?' : main ? 'Zupu klāt?' : 'Vēl kaut ko?');
+}
+
+picks.addEventListener('change', () => renderTray(true));
+document.querySelectorAll('input[name="mode"]').forEach((i) => i.addEventListener('change', () => renderTray(true)));
+plus.addEventListener('click', () => { qty = Math.min(30, qty + 1); renderTray(true); });
+minus.addEventListener('click', () => { qty = Math.max(1, qty - 1); renderTray(true); });
+document.getElementById('clear').addEventListener('click', () => {
+  picks.querySelectorAll('input:checked').forEach((i) => { i.checked = false; });
+  qty = 1;
+  renderTray(true);
 });
-
-// ---------- Office lunch calculator ----------
-// From their posters: sets 7 € / 9 €, delivery in Jelgava 3,50 €, free when the order is over 15 €.
-const DELIVERY = 350, FREE_OVER = 1500, MAX_PEOPLE = 40;
-let people = 5;
-const $ = (id) => document.getElementById(id);
-const calc = $('calc');
-const minus = calc.querySelector('.minus');
-const plus = calc.querySelector('.plus');
-
-function renderCalc(animate = false) {
-  const price = Number(calc.querySelector('input[name="set"]:checked').value);
-  const mode = calc.querySelector('input[name="mode"]:checked').value;
-  const subtotal = people * price;
-  const isDelivery = mode === 'delivery';
-  const fee = isDelivery && subtotal <= FREE_OVER ? DELIVERY : 0;
-
-  $('people').textContent = people;
-  minus.disabled = people <= 1;
-  plus.disabled = people >= MAX_PEOPLE;
-  $('sets-label').textContent = t().sets(people, price);
-  $('sets-sum').textContent = euro(subtotal);
-  $('fee-row').hidden = !isDelivery;
-  $('fee').textContent = fee ? euro(fee) : t().free;
-  $('fee').classList.toggle('free', !fee);
-  $('total').textContent = euro(subtotal + fee);
-  if (animate) bump($('total'));
-
-  const hint = $('hint');
-  const freeDelivery = isDelivery && !fee;
-  hint.textContent = !isDelivery ? (mode === 'takeaway' ? t().hintTakeaway : t().hintHere) : fee ? t().hintAlmost : t().hintFree;
-  hint.classList.toggle('good', freeDelivery);
-  $('calc-panda').classList.toggle('on', freeDelivery);
-}
-calc.querySelectorAll('[data-step]').forEach((btn) => btn.addEventListener('click', () => {
-  people = Math.min(MAX_PEOPLE, Math.max(1, people + Number(btn.dataset.step)));
-  bump($('people'));
-  renderCalc(true);
-}));
-calc.addEventListener('change', () => renderCalc(true));
-calc.addEventListener('submit', (e) => e.preventDefault());
-
-// ---------- Language ----------
-const langButton = document.querySelector('.lang-toggle');
-function setLanguage(lang) {
-  root.lang = lang;
-  document.title = t().title;
-  langButton.textContent = t().langButton;
-  langButton.setAttribute('aria-label', t().langLabel);
-  tablist.setAttribute('aria-label', t().tabs);
-  minus.setAttribute('aria-label', t().minus);
-  plus.setAttribute('aria-label', t().plus);
-  renderCalc();
-  try { localStorage.setItem('lotes-lang', lang); } catch {}
-}
-let saved = null;
-try { saved = localStorage.getItem('lotes-lang'); } catch {}
-if (!saved && navigator.language?.toLowerCase().startsWith('ru')) saved = 'ru';
-setLanguage(saved === 'ru' ? 'ru' : 'lv');
-langButton.addEventListener('click', () => setLanguage(root.lang === 'lv' ? 'ru' : 'lv'));
+// Tapping a chosen dish again takes it off the tray.
+picks.addEventListener('pointerdown', (e) => {
+  const input = e.target.closest('.food')?.querySelector('input');
+  if (input) input.dataset.wasChecked = input.checked ? '1' : '0';
+});
+picks.addEventListener('click', (e) => {
+  const input = e.target.closest('.food')?.querySelector('input');
+  if (input && e.target === input && input.dataset.wasChecked === '1') {
+    input.checked = false;
+    input.dataset.wasChecked = '0';
+    renderTray(true);
+  }
+});
+renderTray();
 
 // ---------- Entrances ----------
 const reveals = document.querySelectorAll('.reveal');
-document.querySelectorAll('section').forEach((s) => {
-  s.querySelectorAll('.reveal').forEach((el, i) => el.style.setProperty('--d', `${Math.min(i, 4) * 80}ms`));
-});
 if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { rootMargin: '0px 0px -12% 0px' });
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -12% 0px' });
   reveals.forEach((el) => io.observe(el));
 } else reveals.forEach((el) => el.classList.add('in'));

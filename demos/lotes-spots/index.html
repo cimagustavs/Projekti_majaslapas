@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lotes Spots — ģimenes kafejnīca Jelgavā, Lielā iela 3</title>
-  <meta name="description" content="Ģimenes kafejnīca Jelgavā, Lielajā ielā 3. Pusdienu komplekts no 7 €, piegāde birojam bez maksas virs 15 €, ģimenes diena ar bērnu ēdienkarti. Tālr. 20 09 66 00.">
-  <meta property="og:title" content="Lotes Spots — Jelgava">
-  <meta property="og:description" content="Good food vibes Lielajā ielā 3.">
+  <title>Lotes Spots — Good Food Vibes, Lielā iela 3, Jelgava</title>
+  <meta name="description" content="Ģimenes kafejnīca Jelgavā, Lielajā ielā 3. Brokastis, pusdienu komplekti no 7 €, burgeri, frī un ģimenes vakari. Tālr. 20 09 66 00.">
+  <meta property="og:title" content="Lotes Spots — Good Food Vibes">
   <link rel="icon" href="img/panda/logo.webp">
   <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,213 +15,171 @@
 </head>
 <body>
 
-<p class="concept">
-  <span data-l="lv">Mājaslapas koncepts — nav oficiālā Lotes Spots lapa.</span>
-  <span data-l="ru">Концепт сайта — не официальная страница Lotes Spots.</span>
-</p>
-
-<a class="skip" href="#main"><span data-l="lv">Pāriet uz saturu</span><span data-l="ru">Перейти к содержанию</span></a>
-
 <header class="bar">
-  <div class="bar-inner">
-    <a href="#top" class="brand"><span class="o">Lotes</span> <span class="g">Spots</span></a>
-    <a href="tel:+37120096600" class="bar-call">20 09 66 00</a>
-    <button class="lang-toggle" type="button" aria-label="Переключить на русский">RU</button>
-  </div>
+  <a href="#top" class="brand"><span class="o">Lotes</span> <span class="g">Spots</span></a>
+  <p class="bar-status" data-status></p>
+  <a href="tel:+37120096600" class="bar-call">20 09 66 00</a>
 </header>
 
-<main id="main">
+<main>
 
-  <!-- 1. The sign switches on -->
-  <section id="top" class="hero">
-    <img class="hero-logo" src="img/panda/logo.webp" width="284" height="280" fetchpriority="high"
-         alt="Lotes Spots zīmols: neona panda ar frī kartupeļiem.">
-    <h1>
-      <span class="line"><span data-l="lv">Pusdienas birojam.</span><span data-l="ru">Обеды для офиса.</span></span>
-      <span class="line"><span data-l="lv">Svētki ģimenei.</span><span data-l="ru">Праздник для семьи.</span></span>
+  <!-- 1. Night street: the sign switches on -->
+  <section id="top" class="street">
+    <div class="street-light" aria-hidden="true"></div>
+    <div class="sign-wrap">
+      <img class="sign" src="img/panda/logo.webp" width="284" height="280" fetchpriority="high"
+           alt="Lotes Spots neona zīme: panda ar frī kartupeļiem.">
+    </div>
+    <h1 class="tube">
+      <span class="t-o">Good</span> <span class="t-w">Food</span> <span class="t-g flick">Vibes</span>
     </h1>
-    <p class="hero-sub">
-      <span data-l="lv">Ģimenes kafejnīca Jelgavā, Lielajā ielā 3.</span>
-      <span data-l="ru">Семейное кафе в Елгаве, улица Лиела, 3.</span>
-    </p>
-    <a href="#ko" class="hero-down" aria-label="Uz leju">
-      <span data-l="lv">Ko šodien gribas?</span><span data-l="ru">Чего сегодня хочется?</span>
-    </a>
+    <p class="street-sub">Ģimenes kafejnīca Lielajā ielā 3, Jelgavā.</p>
+    <a class="street-down" href="#diena">Paskaties, kā paiet pandas diena</a>
   </section>
 
-  <!-- 2. The pandas are the navigation -->
-  <section id="ko" class="mood">
-    <h2 class="mood-title"><span data-l="lv">Ko šodien gribas?</span><span data-l="ru">Чего сегодня хочется?</span></h2>
+  <!-- 2. The panda's day: scroll story -->
+  <section id="diena" class="day" data-step="0">
+    <div class="stage" aria-hidden="true">
+      <div class="clock"><span id="clock">09:00</span></div>
+      <img class="actor on" src="img/panda/eating.webp" width="295" height="298" alt="">
+      <img class="actor" src="img/panda/courier.webp" width="303" height="299" alt="">
+      <img class="actor" src="img/panda/heart-eyes.webp" width="320" height="273" alt="">
+      <img class="actor" src="img/panda/burger-cap.webp" width="315" height="307" alt="">
+      <img class="actor" src="img/panda/sleepy.webp" width="326" height="268" alt="">
+    </div>
+    <ol class="steps">
+      <li class="step" data-time="09:00">
+        <p class="step-time">09:00</p>
+        <h2>Rīts sākas ar kafiju.</h2>
+        <p>Latte, siera kūka un sāļais franču tosts. Durvis veras deviņos — panda jau ir pie loga.</p>
+      </li>
+      <li class="step" data-time="12:00">
+        <p class="step-time">12:00</p>
+        <h2>Pusdienas brauc uz biroju.</h2>
+        <p>Zupa + otrais par 7&nbsp;€. Pasūti visam birojam — virs 15&nbsp;€ piegāde Jelgavā bez maksas.</p>
+        <a class="pill" href="#paplate">Saliec savu paplāti →</a>
+      </li>
+      <li class="step" data-time="14:00">
+        <p class="step-time">14:00</p>
+        <h2>Ģimenes laiks.</h2>
+        <p>Rotaļu stūrītis, bērnu ēdienkarte un saldējuma kokteiļi. Katrs mazais viesis saņem saldu pārsteigumu.</p>
+      </li>
+      <li class="step" data-time="17:00">
+        <p class="step-time">17:00</p>
+        <h2>Burgeru stunda.</h2>
+        <p>Pandas burgers, dubultais un kraukšķīgi frī. Vakarā šeit smaržo pēc grila.</p>
+        <a class="pill" href="#burgeri">Skatīt tāfeli →</a>
+      </li>
+      <li class="step" data-time="21:00">
+        <p class="step-time">21:00</p>
+        <h2>Labu nakti, Jelgava.</h2>
+        <p>Neons nodziest, panda aizmieg. Rīt deviņos — atkal Good Food Vibes.</p>
+      </li>
+    </ol>
+  </section>
 
-    <div class="signs" role="tablist" aria-label="Ko šodien gribas?">
-      <button class="sign" role="tab" id="t-pusdienas" aria-controls="p-pusdienas" aria-selected="true">
-        <img src="img/panda/lunch.webp" width="306" height="299" alt="">
-        <span><span data-l="lv">Paēst pusdienas</span><span data-l="ru">Пообедать</span></span>
-      </button>
-      <button class="sign" role="tab" id="t-birojam" aria-controls="p-birojam" aria-selected="false" tabindex="-1">
-        <img src="img/panda/courier.webp" width="303" height="299" alt="">
-        <span><span data-l="lv">Pasūtīt birojam</span><span data-l="ru">Заказать в офис</span></span>
-      </button>
-      <button class="sign" role="tab" id="t-gimenei" aria-controls="p-gimenei" aria-selected="false" tabindex="-1">
-        <img src="img/panda/heart-eyes.webp" width="320" height="273" alt="">
-        <span><span data-l="lv">Nākt ar bērniem</span><span data-l="ru">Прийти с детьми</span></span>
-      </button>
-      <button class="sign" role="tab" id="t-dzert" aria-controls="p-dzert" aria-selected="false" tabindex="-1">
-        <img src="img/panda/snack.webp" width="273" height="272" alt="">
-        <span><span data-l="lv">Kaut ko iedzert</span><span data-l="ru">Что-нибудь выпить</span></span>
-      </button>
+  <!-- 3. Build your tray -->
+  <section id="paplate" class="tray-sec">
+    <div class="tray-head">
+      <h2>Saliec savu paplāti.</h2>
+      <p>Zupa + otrais = <b>7&nbsp;€</b>. Pieliec saldo — <b>9&nbsp;€</b>. Panda pateiks, cik ietaupīji.</p>
     </div>
 
-    <!-- Lunch -->
-    <div class="panel" role="tabpanel" id="p-pusdienas" aria-labelledby="t-pusdienas" tabindex="0">
-      <div class="panel-inner lunch">
-        <h3><span data-l="lv">Pusdienu komplekts.</span><span data-l="ru">Комплексный обед.</span></h3>
-        <div class="sums">
-          <p class="sum"><span class="sum-parts"><span data-l="lv">zupa + otrais</span><span data-l="ru">суп + второе</span></span><span class="sum-eq">= 7&nbsp;€</span></p>
-          <p class="sum"><span class="sum-parts"><span data-l="lv">zupa + otrais + saldais</span><span data-l="ru">суп + второе + десерт</span></span><span class="sum-eq">= 9&nbsp;€</span></p>
-        </div>
-        <ul class="menu-lines">
-          <li><span><span data-l="lv">Maltās gaļas bumbiņas tomātu mērcē ar rīsiem vai kartupeļiem un salātiem</span><span data-l="ru">Тефтели в томатном соусе с рисом или картофелем и салатом</span></span><b>5,00&nbsp;€</b></li>
-          <li><span><span data-l="lv">Zemeņu zupa ar biezpiena krēmu</span><span data-l="ru">Клубничный суп с творожным кремом</span></span><b>2,50&nbsp;€</b></li>
-          <li><span><span data-l="lv">Kefīrs vai dzērveņu morss</span><span data-l="ru">Кефир или клюквенный морс</span></span><b>0,70&nbsp;€</b></li>
-        </ul>
-        <div class="chef">
-          <img src="img/panda/chef.webp" width="286" height="298" loading="lazy" alt="">
-          <p>
-            <span data-l="lv">Piedāvājums mainās katru dienu. Šodienas zupu un otro uzzini pa tālruni</span>
-            <span data-l="ru">Меню меняется каждый день. Сегодняшний суп и второе — по телефону</span>
-            <a class="text-link" href="tel:+37120096600">20 09 66 00</a>.
-          </p>
-        </div>
+    <div class="tray-grid">
+      <div class="picks" id="picks">
+        <fieldset class="course" data-course="soup">
+          <legend>Zupa</legend>
+          <label class="food"><input type="radio" name="soup" value="Dienas zupa" data-price="250"><span>Dienas zupa</span><i>2,50</i></label>
+          <label class="food"><input type="radio" name="soup" value="Zemeņu zupa ar biezpiena krēmu" data-price="250"><span>Zemeņu zupa ar biezpiena krēmu</span><i>2,50</i></label>
+          <label class="food"><input type="radio" name="soup" value="Soļanka" data-price="320"><span>Soļanka</span><i>3,20</i></label>
+        </fieldset>
+        <fieldset class="course" data-course="main">
+          <legend>Otrais</legend>
+          <label class="food"><input type="radio" name="main" value="Gaļas bumbiņas tomātu mērcē" data-price="500"><span>Gaļas bumbiņas tomātu mērcē</span><i>5,00</i></label>
+          <label class="food"><input type="radio" name="main" value="Vistas fileja ar dārzeņiem" data-price="550"><span>Vistas fileja ar dārzeņiem</span><i>5,50</i></label>
+          <label class="food"><input type="radio" name="main" value="Cepta zivs ar biezeni" data-price="590"><span>Cepta zivs ar biezeni</span><i>5,90</i></label>
+          <label class="food"><input type="radio" name="main" value="Pankūkas ar ievārījumu" data-price="450"><span>Pankūkas ar ievārījumu</span><i>4,50</i></label>
+        </fieldset>
+        <fieldset class="course" data-course="dessert">
+          <legend>Saldais</legend>
+          <label class="food"><input type="radio" name="dessert" value="Siera kūka" data-price="320"><span>Siera kūka</span><i>3,20</i></label>
+          <label class="food"><input type="radio" name="dessert" value="Pankūkas ar saldējumu" data-price="350"><span>Pankūkas ar saldējumu</span><i>3,50</i></label>
+          <label class="food"><input type="radio" name="dessert" value="Ogu kēksiņš" data-price="240"><span>Ogu kēksiņš</span><i>2,40</i></label>
+        </fieldset>
+        <fieldset class="course" data-course="drink">
+          <legend>Dzēriens</legend>
+          <label class="food"><input type="radio" name="drink" value="Dzērveņu morss" data-price="70"><span>Dzērveņu morss</span><i>0,70</i></label>
+          <label class="food"><input type="radio" name="drink" value="Latte" data-price="280"><span>Latte</span><i>2,80</i></label>
+          <label class="food"><input type="radio" name="drink" value="Mango Mākonis" data-price="450"><span>Mango Mākonis</span><i>4,50</i></label>
+        </fieldset>
       </div>
-    </div>
 
-    <!-- Office -->
-    <div class="panel" role="tabpanel" id="p-birojam" aria-labelledby="t-birojam" tabindex="0" hidden>
-      <div class="panel-inner office">
-        <div class="office-copy">
-          <h3><span data-l="lv">Pusdienas visam birojam.</span><span data-l="ru">Обед на весь офис.</span></h3>
-          <p>
-            <span data-l="lv">Saskaiti kolēģus, izvēlies komplektu — un zvani. Piegāde Jelgavā 3,50&nbsp;€, virs 15&nbsp;€ — bez maksas.</span>
-            <span data-l="ru">Посчитайте коллег, выберите комплекс — и звоните. Доставка по Елгаве 3,50&nbsp;€, от 15&nbsp;€ — бесплатно.</span>
-          </p>
+      <aside class="tray" aria-live="polite">
+        <div class="tray-panda">
+          <img id="tray-panda" src="img/panda/peek.webp" width="246" height="296" alt="">
+          <p class="bubble" id="bubble">Nu, ko ņemsim?</p>
         </div>
-
-        <form class="calc" id="calc" aria-label="Aprēķins">
-          <div class="calc-row">
-            <span class="calc-label" id="people-label"><span data-l="lv">Cik cilvēku?</span><span data-l="ru">Сколько человек?</span></span>
-            <div class="stepper" role="group" aria-labelledby="people-label">
-              <button type="button" class="minus" data-step="-1">−</button>
-              <output id="people" class="people">5</output>
-              <button type="button" class="plus" data-step="1">+</button>
-            </div>
-          </div>
-          <fieldset class="calc-row">
-            <legend class="calc-label"><span data-l="lv">Komplekts</span><span data-l="ru">Комплекс</span></legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" name="set" value="700" checked><span data-l="lv">Zupa + otrais · 7&nbsp;€</span><span data-l="ru">Суп + второе · 7&nbsp;€</span></label>
-              <label class="chip"><input type="radio" name="set" value="900"><span data-l="lv">+ saldais · 9&nbsp;€</span><span data-l="ru">+ десерт · 9&nbsp;€</span></label>
-            </div>
-          </fieldset>
-          <fieldset class="calc-row">
-            <legend class="calc-label"><span data-l="lv">Saņemšana</span><span data-l="ru">Получение</span></legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" name="mode" value="delivery" checked><span data-l="lv">Piegāde</span><span data-l="ru">Доставка</span></label>
-              <label class="chip"><input type="radio" name="mode" value="takeaway"><span data-l="lv">Līdzņemšanai</span><span data-l="ru">Навынос</span></label>
-              <label class="chip"><input type="radio" name="mode" value="here"><span data-l="lv">Uz vietas</span><span data-l="ru">В кафе</span></label>
-            </div>
-          </fieldset>
-          <dl class="calc-sum" aria-live="polite">
-            <div><dt id="sets-label"></dt><dd id="sets-sum"></dd></div>
-            <div id="fee-row"><dt><span data-l="lv">Piegāde</span><span data-l="ru">Доставка</span></dt><dd id="fee"></dd></div>
-            <div class="total"><dt><span data-l="lv">Kopā</span><span data-l="ru">Итого</span></dt><dd id="total"></dd></div>
-          </dl>
-          <p class="calc-hint" id="hint"></p>
-          <img class="calc-panda" id="calc-panda" src="img/panda/thumbs-up.webp" width="332" height="294" alt="">
-          <a href="tel:+37120096600" class="btn btn-block"><span data-l="lv">Zvanīt un pasūtīt</span><span data-l="ru">Позвонить и заказать</span><span class="btn-phone"> · 20&nbsp;09&nbsp;66&nbsp;00</span></a>
-        </form>
-      </div>
-    </div>
-
-    <!-- Family -->
-    <div class="panel" role="tabpanel" id="p-gimenei" aria-labelledby="t-gimenei" tabindex="0" hidden>
-      <div class="panel-inner family">
-        <h3><span data-l="lv">Ģimenes diena, 12:00–17:00.</span><span data-l="ru">Семейный день, 12:00–17:00.</span></h3>
-        <p class="family-lead">
-          <span data-l="lv">Mazajiem priekiem un lieliem smaidiem. Īpaši gaidām ģimenes ar bērniem.</span>
-          <span data-l="ru">Маленькие радости и большие улыбки. Особенно ждём семьи с детьми.</span>
-        </p>
-        <ul class="perks">
-          <li><span data-l="lv">Saldi pārsteigumi katram mazajam viesim</span><span data-l="ru">Сладкие сюрпризы каждому маленькому гостю</span></li>
-          <li><span data-l="lv">Papildināts rotaļu stūrītis</span><span data-l="ru">Обновлённый игровой уголок</span></li>
-          <li><span data-l="lv">Ģimenei piemērotas dziesmas</span><span data-l="ru">Семейная музыка</span></li>
-          <li><span data-l="lv">Saldējuma kokteiļi</span><span data-l="ru">Молочные коктейли</span></li>
-        </ul>
-        <div class="kids">
-          <img src="img/panda/burger-cap.webp" width="315" height="307" loading="lazy" alt="">
-          <div>
-            <h4><span data-l="lv">Bērnu ēdienkarte</span><span data-l="ru">Детское меню</span></h4>
-            <p class="kids-list">
-              <span data-l="lv">burgeri · nageti · korndogi · frī kartupeļi</span>
-              <span data-l="ru">бургеры · наггетсы · корндоги · картофель фри</span>
-            </p>
+        <ul class="tray-lines" id="tray-lines"></ul>
+        <div class="tray-row">
+          <span>Porcijas</span>
+          <div class="stepper">
+            <button type="button" class="minus" aria-label="Mazāk porciju">−</button>
+            <output id="qty">1</output>
+            <button type="button" class="plus" aria-label="Vairāk porciju">+</button>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Drinks -->
-    <div class="panel" role="tabpanel" id="p-dzert" aria-labelledby="t-dzert" tabindex="0" hidden>
-      <div class="panel-inner drinks">
-        <figure class="drinks-photo">
-          <img src="img/mojito.webp" width="394" height="328" loading="lazy"
-               alt="Bezalkoholiskais mango mojito ar ledu un piparmētru vīna glāzē uz terases.">
-        </figure>
-        <ul class="drink-list">
-          <li><strong>Mango Mākonis</strong><span data-l="lv">bezalkoholiskais mojito</span><span data-l="ru">безалкогольный мохито</span></li>
-          <li><strong>Tropu Brīze</strong><span data-l="lv">svaigu augļu aromāts</span><span data-l="ru">аромат свежих фруктов</span></li>
-          <li><strong>Electric Iced Tea</strong><span data-l="lv">ledus tēja</span><span data-l="ru">холодный чай</span></li>
-          <li><strong><span data-l="lv">Saldējuma kokteiļi</span><span data-l="ru">Молочные коктейли</span></strong><span data-l="lv">ģimenes dienā</span><span data-l="ru">в семейный день</span></li>
-        </ul>
-      </div>
+        <div class="modes" role="radiogroup" aria-label="Saņemšana">
+          <label class="mode"><input type="radio" name="mode" value="here" checked><span>Uz vietas</span></label>
+          <label class="mode"><input type="radio" name="mode" value="delivery"><span>Piegāde</span></label>
+        </div>
+        <p class="save" id="save"></p>
+        <p class="total"><span>Kopā</span><b id="total">0,00&nbsp;€</b></p>
+        <button type="button" class="clear" id="clear">Notīrīt paplāti</button>
+        <a href="tel:+37120096600" class="btn">Zvanīt un pasūtīt</a>
+      </aside>
     </div>
   </section>
 
-  <!-- 3. Referral -->
-  <section class="referral">
-    <div class="wrap referral-inner">
-      <img class="reveal" src="img/panda/cool-thumb.webp" width="306" height="306" loading="lazy" alt="">
-      <div class="reveal">
-        <p class="referral-big">20&nbsp;€</p>
-        <p class="referral-text">
-          <span data-l="lv">Iesaki uzņēmumu, kura darbiniekiem garšotu mūsu pusdienas. Ja tas noslēgs ar mums sadarbības līgumu, tu saņemsi 20&nbsp;€ dāvanu karti.</span>
-          <span data-l="ru">Порекомендуйте компанию, сотрудникам которой понравятся наши обеды. Если она заключит с нами договор, вы получите подарочную карту на 20&nbsp;€.</span>
-        </p>
-      </div>
+  <!-- 4. Neon menu board -->
+  <section id="burgeri" class="board">
+    <h2 class="board-title"><span class="t-o">Burgeri</span> <span class="t-w">&amp;</span> <span class="t-g">frī</span></h2>
+    <ul class="board-list">
+      <li><span>Pandas burgers</span><i>liellopa, čedars, Lotes mērce</i><b>7,90</b></li>
+      <li><span>Dubultais panda</span><i>divas kotletes, bekons</i><b>9,90</b></li>
+      <li><span>Vistas burgers</span><i>kraukšķīga vista, kāposti</i><b>7,50</b></li>
+      <li><span>Frī kartupeļi</span><i>lielā porcija</i><b>2,90</b></li>
+      <li><span>Nageti</span><i>6 gab. ar mērci</i><b>4,50</b></li>
+      <li><span>Korndogs</span><i>bērnu iecienītākais</i><b>2,80</b></li>
+    </ul>
+    <img class="board-panda" src="img/panda/love-fries.webp" width="291" height="291" loading="lazy" alt="">
+  </section>
+
+  <!-- 5. Office + referral -->
+  <section class="office">
+    <img class="office-panda reveal" src="img/panda/boss.webp" width="238" height="276" loading="lazy" alt="">
+    <div class="office-copy reveal">
+      <h2>Iesaki birojam — saņem 20&nbsp;€.</h2>
+      <p>Ja tavs ieteiktais uzņēmums noslēgs ar mums pusdienu līgumu, tev — 20&nbsp;€ dāvanu karte. Kolēģiem — siltas pusdienas katru dienu.</p>
     </div>
   </section>
 
-  <!-- 4. Find the panda in the window -->
+  <!-- 6. Find us -->
   <section id="kur" class="find">
-    <div class="wrap find-inner">
-      <figure class="window reveal">
-        <img src="img/neons.webp" width="1005" height="460" loading="lazy"
-             alt="Lotes Spots neona izkārtne kafejnīcas logā Lielajā ielā.">
-        <img class="peek" src="img/panda/peek.webp" width="246" height="296" alt="">
-      </figure>
-      <div class="find-copy reveal">
-        <h2><span data-l="lv">Meklē pandu logā.</span><span data-l="ru">Ищите панду в окне.</span></h2>
-        <p class="find-addr"><span data-l="lv">Lielā iela 3, Jelgava</span><span data-l="ru">ул. Лиела, 3, Елгава</span></p>
-        <dl class="contacts">
-          <div><dt><span data-l="lv">Pasūtījumi</span><span data-l="ru">Заказы</span></dt><dd><a href="tel:+37120096600">20 09 66 00</a></dd></div>
-          <div><dt><span data-l="lv">Piegāde Jelgavā</span><span data-l="ru">Доставка по Елгаве</span></dt><dd><span data-l="lv">3,50&nbsp;€ · virs 15&nbsp;€ bez maksas</span><span data-l="ru">3,50&nbsp;€ · от 15&nbsp;€ бесплатно</span></dd></div>
-          <div><dt><span data-l="lv">Ģimenes diena</span><span data-l="ru">Семейный день</span></dt><dd>12:00–17:00</dd></div>
-        </dl>
-        <div class="find-actions">
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Liel%C4%81+iela+3%2C+Jelgava" target="_blank" rel="noopener"><span data-l="lv">Atvērt kartē</span><span data-l="ru">Открыть на карте</span></a>
-          <a class="text-link" href="https://www.instagram.com/lotesspotss/" target="_blank" rel="noopener">Instagram</a>
-          <a class="text-link" href="https://www.tiktok.com/@lotesspotss" target="_blank" rel="noopener">TikTok</a>
-        </div>
+    <figure class="window reveal">
+      <img src="img/neons.webp" width="1005" height="460" loading="lazy" alt="Lotes Spots neona izkārtne kafejnīcas logā.">
+      <img class="peek" src="img/panda/peek.webp" width="246" height="296" alt="">
+    </figure>
+    <div class="find-copy reveal">
+      <h2>Meklē pandu logā.</h2>
+      <p class="addr">Lielā iela 3, Jelgava</p>
+      <dl class="hours" id="hours">
+        <div data-days="1 2 3 4 5"><dt>Pirmdiena–piektdiena</dt><dd>9:00–21:00</dd></div>
+        <div data-days="6 0"><dt>Sestdiena–svētdiena</dt><dd>10:00–20:00</dd></div>
+      </dl>
+      <div class="find-actions">
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Liel%C4%81+iela+3%2C+Jelgava" target="_blank" rel="noopener">Atvērt kartē</a>
+        <a class="link" href="https://www.instagram.com/lotesspotss/" target="_blank" rel="noopener">Instagram</a>
+        <a class="link" href="https://www.tiktok.com/@lotesspotss" target="_blank" rel="noopener">TikTok</a>
       </div>
     </div>
   </section>
@@ -230,18 +187,10 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-inner">
-    <img class="foot-vibes" src="img/panda/vibes.webp" width="327" height="285" loading="lazy" alt="Panda ar uzrakstu Good Food Vibes uz muguras.">
-    <div class="foot-copy">
-      <p class="foot-bye"><span data-l="lv">Uz tikšanos Lielajā ielā!</span><span data-l="ru">До встречи на улице Лиела!</span></p>
-      <p>Lotes Spots · Lielā iela 3, Jelgava · <a href="tel:+37120096600">20 09 66 00</a></p>
-      <p class="foot-note">
-        <span data-l="lv">Mājaslapas koncepts, sagatavots no Lotes Spots Instagram un TikTok ierakstiem. Nav oficiālā lapa.</span>
-        <span data-l="ru">Концепт сайта на основе публикаций Lotes Spots в Instagram и TikTok. Не официальная страница.</span>
-      </p>
-    </div>
-    <img class="foot-sleepy" src="img/panda/sleepy.webp" width="326" height="268" loading="lazy" alt="">
-  </div>
+  <img src="img/panda/vibes.webp" width="327" height="285" loading="lazy" alt="Panda ar uzrakstu Good Food Vibes uz muguras.">
+  <p class="foot-big">Uz tikšanos Lielajā ielā.</p>
+  <p class="foot-small">Lotes Spots · Lielā iela 3, Jelgava · <a href="tel:+37120096600">20 09 66 00</a></p>
+  <p class="foot-note">Mājaslapas demo. Ēdienkarte, cenas un darba laiks — paraugs, ko aizstās īstie dati.</p>
 </footer>
 
 <script src="script.js"></script>
