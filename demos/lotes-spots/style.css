@@ -82,7 +82,11 @@ img { max-width: 100%; }
 }
 /* The dissolve: script.js samples the sign into glowing grains and lets them drift away. */
 .dust { position: absolute; left: 50%; top: 50%; width: 220%; height: 220%; transform: translate(-50%, -58%); pointer-events: none; }
-.street-stick.is-dust .sign { visibility: hidden; }
+/* The sharp sign is wiped away from the top as its sparks leave. */
+.sign {
+  -webkit-mask-image: linear-gradient(to bottom, transparent calc(var(--cut, -0.2) * 100% - 4%), #000 calc(var(--cut, -0.2) * 100% + 4%));
+          mask-image: linear-gradient(to bottom, transparent calc(var(--cut, -0.2) * 100% - 4%), #000 calc(var(--cut, -0.2) * 100% + 4%));
+}
 .tube { position: relative; font-size: clamp(2.6rem, min(10vw, 11dvh), 8.5rem); line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
 .tube .w { display: inline-block; will-change: transform; }
 .tube .w-1 { transform: translateX(calc(var(--approach, 0) * -38vw)); }
