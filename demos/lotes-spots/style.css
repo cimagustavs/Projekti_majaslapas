@@ -53,36 +53,57 @@ img { max-width: 100%; }
 .bar-call { font-weight: 800; text-decoration: none; padding: 0.7rem 1rem; border-radius: var(--r); background: rgb(255 255 255 / 0.08); white-space: nowrap; }
 @media (max-width: 560px) { .bar-status { display: none; } }
 
-/* ---------- 1. Night street ---------- */
-.street {
-  position: relative; min-height: 100dvh; overflow: hidden;
+/* ---------- 1. Night street ----------
+   The section is taller than the screen; its content stays pinned while you scroll through it.
+   script.js writes --p (0 → 1) as you scroll: the sign comes toward you, the words part, then the
+   neon switches off. Scrolling back up plays it in reverse and the sign switches back on. */
+.street { position: relative; height: 190dvh; background: var(--night); }
+.street-stick {
+  position: sticky; top: 0; height: 100dvh; overflow: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; gap: 1.25rem; padding: 6rem var(--gutter) 4rem;
-  background: radial-gradient(ellipse at 50% 35%, #1a1410 0%, var(--night) 60%);
+  text-align: center; gap: clamp(1rem, 3dvh, 2.25rem);
+  padding: 4.5rem var(--gutter) 1.5rem;
+  background: radial-gradient(ellipse at 50% 40%, #1d150c 0%, var(--night) 62%);
+  --p: 0;
 }
-/* A soft pool of light that follows the pointer. */
 .street-light {
   position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 35%), rgb(255 155 26 / 0.10), transparent 70%);
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 38%), rgb(255 155 26 / 0.10), transparent 70%);
+}
+.sign-wrap {
+  position: relative;
+  transform: translateY(calc(var(--p) * 6dvh)) scale(calc(1 + var(--p) * 0.55));
+  will-change: transform;
 }
 .sign {
-  position: relative; display: block; width: min(60vw, 21rem); height: auto;
+  display: block; width: min(86vw, 54dvh, 36rem); height: auto;
   -webkit-mask-image: radial-gradient(circle, #000 58%, transparent 70%);
           mask-image: radial-gradient(circle, #000 58%, transparent 70%);
-  /* the wet pavement */
-  -webkit-box-reflect: below 1.5rem linear-gradient(transparent 50%, rgb(255 255 255 / 0.25));
+  -webkit-box-reflect: below 0.5rem linear-gradient(transparent 55%, rgb(255 255 255 / 0.22));
+  transition: opacity 180ms linear;
 }
-.tube { position: relative; margin-top: clamp(3rem, 10vw, 7rem); font-size: clamp(3rem, 10vw, 8.5rem); line-height: 1; letter-spacing: -0.01em; }
-.tube span { display: inline-block; text-shadow: 0 0 6px currentColor, 0 0 22px currentColor, 0 0 60px currentColor; }
+.sign-wrap, .tube .w { transition: opacity 160ms linear; }
+.street-stick.is-off .sign-wrap { opacity: 0.1; }
+.tube { position: relative; font-size: clamp(2.6rem, min(10vw, 11dvh), 8.5rem); line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
+.tube .w { display: inline-block; will-change: transform; }
+.tube .w-1 { transform: translateX(calc(var(--p) * -38vw)); }
+.tube .w-2 { transform: translateY(calc(var(--p) * 18dvh)) scale(calc(1 - var(--p) * 0.3)); }
+.tube .w-3 { transform: translateX(calc(var(--p) * 38vw)); }
+.tube .w > span { display: inline-block; text-shadow: 0 0 6px currentColor, 0 0 22px currentColor, 0 0 60px currentColor; transition: opacity 180ms linear; }
 .tube .t-w { text-shadow: 0 0 6px #fff, 0 0 22px rgb(255 255 255 / 0.7), 0 0 50px rgb(255 255 255 / 0.4); }
-.street-sub { position: relative; font-size: clamp(1.1rem, 1.8vw, 1.35rem); font-weight: 800; color: var(--tube-2); }
+.street-stick.is-off .tube .w { opacity: 0.14; }
+.street-stick.is-off .tube .w > span { text-shadow: none; }
+.street-foot { display: grid; justify-items: center; gap: clamp(0.75rem, 2dvh, 1.25rem); opacity: calc(1 - var(--p) * 3); transform: translateY(calc(var(--p) * 4rem)); }
+.street-sub { font-size: clamp(1.05rem, 1.8vw, 1.35rem); font-weight: 800; color: var(--tube-2); }
 .street-down {
-  position: relative; margin-top: 1.25rem; padding: 0.9rem 1.5rem; border-radius: var(--r);
+  padding: 0.9rem 1.5rem; border-radius: var(--r);
   font-weight: 800; text-decoration: none; background: rgb(255 255 255 / 0.08);
   transition: transform 160ms var(--ease-out), background-color 200ms ease;
 }
 .street-down::after { content: " ↓"; }
 .street-down:active { transform: scale(0.97); }
+/* The switch-off/on flicker is played from script.js with the Web Animations API,
+   so it never restarts the CSS entrance animations. */
 
 /* ---------- 2. The panda's day ---------- */
 .day {
@@ -255,18 +276,19 @@ img { max-width: 100%; }
 @keyframes buzz { 0%, 93%, 100% { opacity: 1; } 94% { opacity: 0.35; } 95.5% { opacity: 1; } 97% { opacity: 0.5; } 98% { opacity: 1; } }
 
 .sign { animation: sign-on 1400ms linear 200ms backwards; }
-.tube .t-o { animation: sign-on 1000ms linear 1100ms backwards; }
-.tube .t-w { animation: sign-on 1000ms linear 1400ms backwards; }
-.tube .t-g { animation: sign-on 1000ms linear 1700ms backwards, buzz 7s linear 4s infinite; }
-.street-sub { animation: rise 800ms var(--ease-out) 2200ms backwards; }
-.street-down { animation: rise 800ms var(--ease-out) 2350ms backwards; }
+.tube .w-1 > span { animation: sign-on 1000ms linear 1100ms backwards; }
+.tube .w-2 > span { animation: sign-on 1000ms linear 1400ms backwards; }
+.tube .w-3 > span { animation: sign-on 1000ms linear 1700ms backwards, buzz 7s linear 4s infinite; }
+.street-foot > * { animation: rise 800ms var(--ease-out) 2200ms backwards; }
 
 .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
 .js .reveal.in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .sign, .tube span, .street-sub, .street-down { animation: fade 400ms ease backwards !important; }
+  .sign, .tube span, .street-foot > * { animation: fade 400ms ease backwards !important; }
+  .street { height: auto; }
+  .street-stick { position: relative; --p: 0 !important; }
   .actor { transition: opacity 200ms ease; transform: none; }
   .actor.on { animation: none; transform: none; }
   .js .reveal { transform: none; transition-property: opacity; }

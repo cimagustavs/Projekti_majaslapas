@@ -22,11 +22,43 @@ setInterval(renderStatus, 60_000);
 // ---------- Street lamp follows the pointer ----------
 const street = document.querySelector('.street');
 if (matchMedia('(pointer: fine)').matches && !reduceMotion) {
-  street.addEventListener('pointermove', (e) => {
-    const r = street.getBoundingClientRect();
-    street.style.setProperty('--mx', `${e.clientX - r.left}px`);
-    street.style.setProperty('--my', `${e.clientY - r.top}px`);
+  const lamp = document.querySelector('.street-stick');
+  lamp.addEventListener('pointermove', (e) => {
+    const r = lamp.getBoundingClientRect();
+    lamp.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    lamp.style.setProperty('--my', `${e.clientY - r.top}px`);
   });
+}
+
+// ---------- Hero scroll: the sign comes closer, the words part, the neon switches off ----------
+const stick = document.querySelector('.street-stick');
+const tubes = [document.querySelector('.sign-wrap'), ...document.querySelectorAll('.tube .w')];
+const OFF_AT = 0.62;
+let isOff = false;
+let ticking = false;
+function flicker() {
+  tubes.forEach((el, i) => el.animate(
+    [{ opacity: 0.7 }, { opacity: 0.12 }, { opacity: 0.9 }, { opacity: 0.2 }, {}],
+    { duration: 420, delay: i * 40, easing: 'linear' }
+  ));
+}
+function onHeroScroll() {
+  ticking = false;
+  const r = street.getBoundingClientRect();
+  const travel = street.offsetHeight - innerHeight;
+  const p = travel > 0 ? Math.min(1, Math.max(0, -r.top / travel)) : 0;
+  stick.style.setProperty('--p', p.toFixed(4));
+  const off = p > OFF_AT;
+  if (off !== isOff) {
+    isOff = off;
+    stick.classList.toggle('is-off', off);
+    flicker();
+  }
+}
+if (!reduceMotion) {
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onHeroScroll); } }, { passive: true });
+  addEventListener('resize', onHeroScroll);
+  onHeroScroll();
 }
 
 // ---------- The panda's day ----------
