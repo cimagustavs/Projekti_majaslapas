@@ -162,3 +162,99 @@ if ('IntersectionObserver' in window) {
   }), { rootMargin: '0px 0px -12% 0px' });
   reveals.forEach((el) => io.observe(el));
 } else reveals.forEach((el) => el.classList.add('in'));
+
+// ---------- Neon cursor, sparks on every choice, and dishes that fly onto the tray ----------
+const SELECTABLE = 'a, button, label.food, label.mode';
+const SPARK_COLOURS = ['#ff9b1a', '#4fdc4a', '#fffaf2', '#ff4b55'];
+
+function sparks(x, y, count = 12) {
+  if (reduceMotion) return;
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('span');
+    s.className = 'spark';
+    s.style.setProperty('--c', SPARK_COLOURS[i % SPARK_COLOURS.length]);
+    document.body.append(s);
+    const a = (i / count) * Math.PI * 2 + Math.random() * 0.4;
+    const d = 28 + Math.random() * 42;
+    s.animate([
+      { transform: `translate(${x}px, ${y}px) scale(1)`, opacity: 1 },
+      { transform: `translate(${x + Math.cos(a) * d}px, ${y + Math.sin(a) * d}px) scale(0.2)`, opacity: 0 },
+    ], { duration: 480 + Math.random() * 220, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' }).finished.then(() => s.remove());
+  }
+}
+
+function flyToTray(fromEl, text) {
+  if (reduceMotion) return;
+  const a = fromEl.getBoundingClientRect();
+  const target = document.getElementById('tray-panda').getBoundingClientRect();
+  const onScreen = target.bottom > 0 && target.top < innerHeight;
+  const x0 = a.left + a.width - 40, y0 = a.top + a.height / 2;
+  const x1 = onScreen ? target.left + target.width / 2 : innerWidth / 2;
+  const y1 = onScreen ? target.top + target.height / 2 : innerHeight + 30;
+  const chip = document.createElement('span');
+  chip.className = 'fly';
+  chip.textContent = text;
+  document.body.append(chip);
+  const mx = (x0 + x1) / 2, my = Math.min(y0, y1) - 120; // arc over the top
+  chip.animate([
+    { transform: `translate(${x0}px, ${y0}px) translate(-50%, -50%) scale(1)`, opacity: 1 },
+    { transform: `translate(${mx}px, ${my}px) translate(-50%, -50%) scale(1.15)`, opacity: 1, offset: 0.45 },
+    { transform: `translate(${x1}px, ${y1}px) translate(-50%, -50%) scale(0.35)`, opacity: 0.2 },
+  ], { duration: 700, easing: 'cubic-bezier(0.32, 0.72, 0, 1)' }).finished.then(() => {
+    chip.remove();
+    if (onScreen) sparks(x1, y1, 10);
+  });
+}
+
+// Sparks wherever something is chosen (mouse or finger).
+addEventListener('pointerdown', (e) => {
+  if (e.target.closest(SELECTABLE)) sparks(e.clientX, e.clientY);
+});
+
+// A dish that becomes checked flies onto the tray.
+picks.addEventListener('change', (e) => {
+  const input = e.target;
+  if (input.checked) flyToTray(input.closest('.food'), `+ ${euro(Number(input.dataset.price))}`);
+});
+
+// The cursor itself: desktop with a real mouse only.
+if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
+  const cur = document.querySelector('.cursor');
+  const dot = cur.querySelector('.cursor-dot');
+  const ring = cur.querySelector('.cursor-ring');
+  const label = cur.querySelector('.cursor-label');
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+  document.documentElement.classList.add('has-cursor');
+  cur.classList.add('is-hidden');
+
+  addEventListener('pointermove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    cur.classList.remove('is-hidden');
+    dot.style.transform = `translate(${mx}px, ${my}px)`;
+    const hit = e.target.closest(SELECTABLE);
+    const food = hit?.matches('label.food') ? hit : null;
+    cur.classList.toggle('is-hover', Boolean(hit));
+    cur.classList.toggle('is-food', Boolean(food));
+    const picked = Boolean(food?.querySelector('input').checked);
+    cur.classList.toggle('is-picked', picked);
+    label.textContent = food ? (picked ? '✓' : '+') : '';
+  }, { passive: true });
+  addEventListener('pointerdown', () => cur.classList.add('is-down'));
+  addEventListener('pointerup', () => cur.classList.remove('is-down'));
+  document.addEventListener('pointerleave', () => cur.classList.add('is-hidden'));
+  // After a click on a dish its state changes under a still mouse — refresh the label.
+  picks.addEventListener('change', () => {
+    const food = document.elementFromPoint(mx, my)?.closest('label.food');
+    if (!food) return;
+    const picked = food.querySelector('input').checked;
+    cur.classList.toggle('is-picked', picked);
+    label.textContent = picked ? '✓' : '+';
+  });
+
+  (function follow() {
+    rx += (mx - rx) * 0.2;
+    ry += (my - ry) * 0.2;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(follow);
+  })();
+}
