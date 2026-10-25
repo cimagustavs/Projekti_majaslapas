@@ -486,6 +486,13 @@ html[data-hero='c'] .brand-sub { color: rgb(255 255 255 / 0.6); }
   .hc-hair { height: min(74dvh, 46rem); }
 }
 
+/* opening: the headline and the text under it rise in while the hair draws itself */
+.js .hero .hero-title, .js .hero .hero-more { animation: hero-in 900ms var(--ease-out) both; }
+.js .hero .hero-more { animation-delay: 220ms; }
+.js .hero .hero-title em { display: inline-block; animation: hero-em 1100ms 350ms var(--ease-out) both; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(28px); } }
+@keyframes hero-em { from { opacity: 0; transform: translateY(0.25em) skewX(-6deg); } }
+
 /* reveal on scroll */
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
 .js .reveal.in { opacity: 1; transform: none; }
@@ -493,6 +500,7 @@ html[data-hero='c'] .brand-sub { color: rgb(255 255 255 / 0.6); }
 .code-word.in { color: var(--paper); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out), color 1200ms 500ms; }
 
 @media (prefers-reduced-motion: reduce) {
+  .js .hero .hero-title, .js .hero .hero-more, .js .hero .hero-title em { animation: none; }
   html { scroll-behavior: auto; }
   .js .reveal, .js .chat:not(.done) .msg { opacity: 1; transform: none; transition: none; }
   .hero-hair { transform: none; }
