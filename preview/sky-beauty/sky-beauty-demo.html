@@ -304,6 +304,103 @@ html:not(.js) .lab { display: none; }
 
 .foot { padding: 1.5rem var(--gutter) 2.5rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); }
 
+/* online booking */
+.hero-link { display: inline-block; margin-top: 1rem; font-weight: 500; text-underline-offset: 4px; }
+.book { padding: clamp(4rem, 10vw, 8rem) var(--gutter); border-top: 1px solid var(--line); }
+.book-head { display: grid; gap: 1rem; margin-bottom: 2.5rem; max-width: 46rem; }
+.book-head p { color: var(--ink-2); }
+.book-head .demo-note { color: var(--muted); font-size: 0.88rem; border-left: 2px solid var(--rose); padding-left: 0.7rem; }
+.book-nojs { display: none; }
+html:not(.js) .book-nojs { display: block; }
+html:not(.js) .book-form { display: none; }
+
+.book-form { display: grid; gap: 2.2rem; }
+.book-right { display: grid; gap: 2.2rem; align-content: start; }
+.bstep { border: 0; margin: 0; padding: 0; min-width: 0; transition: opacity 300ms; }
+.bstep legend { display: flex; align-items: baseline; gap: 0.6rem; font: 600 1.12rem/1.2 var(--body); margin-bottom: 0.9rem; padding: 0; }
+.bstep.locked { opacity: 0.35; }
+
+.svc-list { display: grid; gap: 0.5rem; }
+.svc {
+  position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0.1rem 1rem; align-items: center;
+  padding: 0.8rem 1rem; min-height: 3.25rem; border: 1.5px solid var(--line); border-radius: var(--r);
+  background: var(--paper); cursor: pointer;
+  transition: background-color 180ms, color 180ms, border-color 180ms, transform 140ms var(--ease-out);
+}
+.svc input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.svc-name { font-weight: 600; }
+.svc-meta { text-align: right; font-size: 0.9rem; color: var(--muted); white-space: nowrap; }
+.svc-meta .sample { margin-top: 0.1rem; }
+.svc:active { transform: scale(0.985); }
+.svc:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.svc:has(input:checked) .svc-meta, .svc:has(input:checked) .sample { color: color-mix(in srgb, var(--paper) 75%, transparent); }
+.svc:has(input:focus-visible) { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+.days { display: flex; gap: 0.45rem; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 0.4rem; scrollbar-width: thin; }
+.day {
+  flex: 0 0 4.1rem; display: grid; justify-items: center; gap: 0.1rem; padding: 0.55rem 0;
+  border: 1.5px solid var(--line); border-radius: var(--r); background: var(--paper); color: var(--ink);
+  font: inherit; cursor: pointer; scroll-snap-align: start;
+  transition: background-color 180ms, color 180ms, border-color 180ms, transform 140ms var(--ease-out);
+}
+.day-w { font-size: 0.78rem; color: var(--muted); }
+.day-n { font: 800 1.5rem/1.1 var(--display); font-optical-sizing: none; font-variation-settings: 'opsz' 11; }
+.day-m { font-size: 0.75rem; color: var(--muted); }
+.day.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.day.on .day-w, .day.on .day-m { color: color-mix(in srgb, var(--paper) 75%, transparent); }
+.day:disabled { opacity: 0.35; cursor: not-allowed; }
+.day:active:not(:disabled) { transform: scale(0.96); }
+
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(4.6rem, 1fr)); gap: 0.45rem; }
+.slot {
+  min-height: 2.75rem; border: 1.5px solid var(--line); border-radius: var(--r); background: var(--paper);
+  font: 600 0.95rem var(--body); color: var(--ink); cursor: pointer;
+  animation: slot-in 360ms var(--ease-out) both; animation-delay: calc(var(--i) * 18ms);
+  transition: background-color 180ms, color 180ms, border-color 180ms, transform 140ms var(--ease-out);
+}
+.slot:disabled { color: var(--muted); text-decoration: line-through; opacity: 0.45; cursor: not-allowed; }
+.slot.on { background: var(--rose); border-color: var(--rose); color: #fff; }
+.slot:active:not(:disabled) { transform: scale(0.95); }
+@keyframes slot-in { from { opacity: 0; transform: translateY(6px); } }
+@media (hover: hover) and (pointer: fine) {
+  .svc:hover, .day:hover:not(:disabled), .slot:hover:not(:disabled) { border-color: var(--ink); }
+}
+
+.pick { margin-bottom: 1rem; padding: 0.8rem 1rem; background: var(--paper-2); border-radius: var(--r); }
+.pick:empty { display: none; }
+.field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; font-size: 0.92rem; color: var(--ink-2); }
+.field input, .field textarea {
+  width: 100%; min-height: 3rem; padding: 0.7rem 0.9rem; border: 1.5px solid var(--line); border-radius: var(--r);
+  background: #fffaf4; font: 400 1rem var(--body); color: var(--ink);
+}
+.field textarea { resize: vertical; min-height: 4.5rem; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--ink); }
+.form-error { color: var(--rose); font-weight: 600; min-height: 1.4em; margin-bottom: 0.4rem; }
+
+.ticket {
+  max-width: 34rem; margin-inline: auto; padding: 2rem 1.5rem; text-align: center;
+  background: #fffaf4; border: 1.5px solid var(--ink); border-radius: var(--r);
+}
+.ticket:focus { outline: none; }
+.ticket.show { animation: rise 600ms var(--ease-out) both; }
+.tick { width: 3.5rem; height: 3.5rem; margin: 0 auto 0.8rem; display: block; }
+.tick circle { fill: none; stroke: var(--rose); stroke-width: 2.5; }
+.tick path { fill: none; stroke: var(--rose); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; }
+.ticket.show .tick path { animation: tick 500ms 350ms var(--ease-out) forwards; }
+@keyframes tick { to { stroke-dashoffset: 0; } }
+.ticket h3 { font-size: clamp(2.2rem, 7vw, 3rem); margin-bottom: 1.4rem; }
+.ticket-rows { margin: 0 0 1.4rem; text-align: left; display: grid; }
+.ticket-rows div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: 0.6rem 0; border-top: 1px dashed var(--line); }
+.ticket-rows dt { color: var(--muted); }
+.ticket-rows dd { margin: 0; font-weight: 600; }
+.ticket-note { color: var(--muted); font-size: 0.88rem; text-align: left; margin-bottom: 1.4rem; }
+.ticket-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+
+@media (min-width: 900px) {
+  .book-form { grid-template-columns: minmax(0, 26rem) minmax(0, 1fr); column-gap: 4rem; align-items: start; }
+  .book-right .bstep[data-step="4"] { max-width: 30rem; }
+}
+
 /* reveal on scroll */
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
 .js .reveal.in { opacity: 1; transform: none; }
@@ -316,6 +413,8 @@ html:not(.js) .lab { display: none; }
   .js .hair.intro .strands path, .js .hair.intro .mass { animation: none; stroke-dasharray: none; }
   .hero-hair { transform: none; }
   .code-word.in { transition: none; }
+  .slot, .ticket.show, .ticket.show .tick path { animation: none; }
+  .tick path { stroke-dashoffset: 0; }
 }
 
 /* the `font` shorthand resets optical sizing, so pin the small-size cut again wherever it is used */
@@ -338,6 +437,7 @@ html:not(.js) .lab { display: none; }
   <nav class="nav" aria-label="Galvenā">
     <a href="#formula"><span data-l="lv">Formula</span><span data-l="ru">Формула</span></a>
     <a href="#cenas"><span data-l="lv">Pakalpojumi</span><span data-l="ru">Услуги</span></a>
+    <a href="#pieraksts"><span data-l="lv">Pieraksts</span><span data-l="ru">Запись</span></a>
     <a href="#atsauksmes"><span data-l="lv">Atsauksmes</span><span data-l="ru">Отзывы</span></a>
     <a href="#kur"><span data-l="lv">Kontakti</span><span data-l="ru">Контакты</span></a>
   </nav>
@@ -372,9 +472,10 @@ html:not(.js) .lab { display: none; }
         <span data-l="ru">Реконструкция волос, кератин, парикмахер, маникюр, косметолог и солярий. В Елгаве, Svētes iela 7.</span>
       </p>
       <div class="hero-actions">
-        <a class="btn btn-ink" href="tel:+37120177678"><span data-l="lv">Zvanīt 20 177 678</span><span data-l="ru">Позвонить 20 177 678</span></a>
-        <a class="btn btn-line" href="#formula"><span data-l="lv">Atrast savu formulu</span><span data-l="ru">Подобрать формулу</span></a>
+        <a class="btn btn-ink" href="#pieraksts"><span data-l="lv">Pierakstīties online</span><span data-l="ru">Записаться онлайн</span></a>
+        <a class="btn btn-line" href="tel:+37120177678"><span data-l="lv">Zvanīt 20 177 678</span><span data-l="ru">Позвонить 20 177 678</span></a>
       </div>
+      <a class="hero-link" href="#formula"><span data-l="lv">Nezini, ko izvēlēties? Atrodi savu formulu</span><span data-l="ru">Не знаешь, что выбрать? Подбери формулу</span> →</a>
     </div>
 
     <a class="hero-offer" href="#rudens">
@@ -429,7 +530,7 @@ html:not(.js) .lab { display: none; }
           <p class="result-price" id="result-price"></p>
           <p class="result-note"><span data-l="lv">Tā ir tikai sākuma doma. Galīgo formulu izvēlamies salonā, kad redzam tavus matus.</span><span data-l="ru">Это только отправная точка. Окончательную формулу подбираем в салоне, когда видим твои волосы.</span></p>
           <div class="result-actions">
-            <a class="btn btn-ink" id="result-sms" href="sms:+37120177678"><span data-l="lv">Nosūtīt salonam</span><span data-l="ru">Отправить в салон</span></a>
+            <a class="btn btn-ink" id="result-book" href="#pieraksts" data-book=""><span data-l="lv">Pierakstīties</span><span data-l="ru">Записаться</span></a>
             <a class="btn btn-line" href="tel:+37120177678"><span data-l="lv">Zvanīt</span><span data-l="ru">Позвонить</span></a>
           </div>
         </div>
@@ -536,6 +637,56 @@ html:not(.js) .lab { display: none; }
     </div>
   </section>
 
+  <section class="book" id="pieraksts">
+    <div class="book-head reveal">
+      <h2><span data-l="lv">Pieraksties tiešsaistē.</span><span data-l="ru">Запишись онлайн.</span></h2>
+      <p><span data-l="lv">Procedūra, diena, laiks. Bez zvana un bez gaidīšanas uz atbildi.</span><span data-l="ru">Процедура, день, время. Без звонка и без ожидания ответа.</span></p>
+      <p class="demo-note"><span data-l="lv">Demo: pieraksts netiek nosūtīts salonam, brīvie laiki un ilgumi ir paraugi.</span><span data-l="ru">Демо: запись не отправляется в салон, свободное время и длительность для примера.</span></p>
+    </div>
+
+    <p class="book-nojs"><span data-l="lv">Pierakstam vajadzīgs JavaScript. Zvani: </span><span data-l="ru">Для записи нужен JavaScript. Звони: </span><a href="tel:+37120177678">20 177 678</a></p>
+
+    <form class="book-form" id="book" novalidate>
+      <fieldset class="bstep" data-step="1">
+        <legend><span class="num">1</span><span data-l="lv">Procedūra</span><span data-l="ru">Процедура</span></legend>
+        <div class="svc-list" id="svc-list"></div>
+      </fieldset>
+
+      <div class="book-right">
+        <fieldset class="bstep locked" data-step="2">
+          <legend><span class="num">2</span><span data-l="lv">Diena</span><span data-l="ru">День</span></legend>
+          <div class="days" id="days"></div>
+        </fieldset>
+
+        <fieldset class="bstep locked" data-step="3">
+          <legend><span class="num">3</span><span data-l="lv">Laiks</span><span data-l="ru">Время</span></legend>
+          <div class="slots" id="slots"></div>
+        </fieldset>
+
+        <fieldset class="bstep locked" data-step="4">
+          <legend><span class="num">4</span><span data-l="lv">Tavi dati</span><span data-l="ru">Твои данные</span></legend>
+          <p class="pick" id="pick"></p>
+          <label class="field"><span><span data-l="lv">Vārds</span><span data-l="ru">Имя</span></span><input name="vards" autocomplete="given-name" required minlength="2"></label>
+          <label class="field"><span><span data-l="lv">Tālrunis</span><span data-l="ru">Телефон</span></span><input name="talr" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+371"></label>
+          <label class="field"><span><span data-l="lv">Piezīme (nav obligāti)</span><span data-l="ru">Комментарий (не обязательно)</span></span><textarea name="piez" rows="2"></textarea></label>
+          <p class="form-error" id="book-error" role="alert"></p>
+          <button class="btn btn-ink" type="submit"><span data-l="lv">Apstiprināt pierakstu</span><span data-l="ru">Подтвердить запись</span></button>
+        </fieldset>
+      </div>
+    </form>
+
+    <div class="ticket" id="ticket" hidden tabindex="-1">
+      <svg class="tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg>
+      <h3><span data-l="lv">Pieraksts pieņemts</span><span data-l="ru">Запись принята</span></h3>
+      <dl class="ticket-rows" id="ticket-rows"></dl>
+      <p class="ticket-note"><span data-l="lv">Īstajā lapā pieraksts uzreiz parādītos salona kalendārā, un tu saņemtu SMS apstiprinājumu un atgādinājumu dienu iepriekš. Šajā demo nekas netiek nosūtīts.</span><span data-l="ru">На настоящем сайте запись сразу появилась бы в календаре салона, а ты получила бы SMS с подтверждением и напоминание за день. В этом демо ничего не отправляется.</span></p>
+      <div class="ticket-actions">
+        <button class="btn btn-ink" type="button" id="ics"><span data-l="lv">Pievienot kalendāram</span><span data-l="ru">Добавить в календарь</span></button>
+        <button class="btn btn-line" type="button" id="book-again"><span data-l="lv">Jauns pieraksts</span><span data-l="ru">Новая запись</span></button>
+      </div>
+    </div>
+  </section>
+
   <section class="reviews" id="atsauksmes">
     <div class="reviews-head reveal">
       <h2><span data-l="lv">Raksta pēc procedūras.</span><span data-l="ru">Пишут после процедуры.</span></h2>
@@ -558,7 +709,7 @@ html:not(.js) .lab { display: none; }
       <p><span data-l="lv">Pierakstoties nosauc kodu <b>RUDENS</b>. Vietu skaits ierobežots.</span><span data-l="ru">При записи назови код <b>ОСЕНЬ</b>. Количество мест ограничено.</span></p>
       <div class="code-actions">
         <button class="btn btn-paper" type="button" id="copy"><span data-l="lv">Kopēt kodu</span><span data-l="ru">Скопировать код</span></button>
-        <a class="btn btn-line-paper" href="tel:+37120177678"><span data-l="lv">Pierakstīties</span><span data-l="ru">Записаться</span></a>
+        <a class="btn btn-line-paper" href="#pieraksts" data-book="keratins"><span data-l="lv">Pierakstīties</span><span data-l="ru">Записаться</span></a>
       </div>
     </div>
   </section>
@@ -981,10 +1132,9 @@ function showResult(animate) {
   document.getElementById('result-title').textContent = title;
   document.getElementById('result-text').textContent = text + (key === 'keratin' && kas.value === 'vilni' ? WAVE_NOTE[root.lang] : '');
   document.getElementById('result-price').textContent = price;
-  const body = root.lang === 'lv'
-    ? `Sveiki! Mani mati: ${tips.label}, ${kas.label}, ${garums.label}. Gribētu pierakstīties uz konsultāciju (${title}).`
-    : `Здравствуйте! Мои волосы: ${tips.label}, ${kas.label}, ${garums.label}. Хочу записаться на консультацию (${title}).`;
-  document.getElementById('result-sms').href = 'sms:+37120177678?&body=' + encodeURIComponent(body);
+  const bookLink = document.getElementById('result-book');
+  bookLink.dataset.book = { keratin: 'keratins', rekon: 'rekonstrukcija', gloss: 'konsultacija' }[key];
+  bookLink.dataset.note = `${tips.label}, ${kas.label}, ${garums.label}`;
   resultEl.hidden = false;
   if (animate) {
     resultEl.classList.remove('show');
@@ -1079,6 +1229,244 @@ const io = new IntersectionObserver((entries) => {
 }, { rootMargin: '0px 0px -10% 0px' });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
+/* ---------- online booking (demo: nothing is sent) ---------- */
+
+// durations and most prices are samples until the salon gives real ones
+const SERVICES = [
+  { id: 'keratins', lv: 'Keratīna taisnošana', ru: 'Кератиновое выпрямление', min: 180, price: { lv: '100 €', ru: '100 €' }, sample: true },
+  { id: 'rekonstrukcija', lv: 'Matu rekonstrukcija', ru: 'Реконструкция волос', min: 120, price: { lv: 'no 60 €', ru: 'от 60 €' }, sample: true },
+  { id: 'gludinasana', lv: 'Gludināšana vieglām lokām', ru: 'Разглаживание лёгкой волны', min: 150, price: { lv: 'no 70 €', ru: 'от 70 €' }, sample: true },
+  { id: 'konsultacija', lv: 'Matu konsultācija', ru: 'Консультация по волосам', min: 20, price: { lv: 'bez maksas', ru: 'бесплатно' }, sample: true },
+  { id: 'frizieris', lv: 'Griezums', ru: 'Стрижка', min: 60, price: { lv: 'no 20 €', ru: 'от 20 €' }, sample: true },
+  { id: 'manikirs', lv: 'Manikīrs', ru: 'Маникюр', min: 90, price: { lv: 'no 30 €', ru: 'от 30 €' }, sample: true },
+  { id: 'deepclean', lv: 'Deep Clean', ru: 'Deep Clean', min: 40, price: { lv: '35 €', ru: '35 €' }, sample: false },
+  { id: 'glow', lv: 'Glow', ru: 'Glow', min: 40, price: { lv: '35 €', ru: '35 €' }, sample: false },
+  { id: 'solarijs', lv: 'Solārijs', ru: 'Солярий', min: 15, price: { lv: '0,70 €/min', ru: '0,70 €/мин' }, sample: true },
+];
+// sample opening hours: Mon–Fri 10–19, Sat 10–16, Sun closed (index = getDay())
+const OPEN = [null, [10, 19], [10, 19], [10, 19], [10, 19], [10, 19], [10, 16]];
+const DAY = { lv: ['Sv', 'P', 'O', 'T', 'C', 'Pk', 'S'], ru: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'] };
+const MONTH = {
+  lv: ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī'],
+  ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+};
+const SAMPLE_TAG = '<small class="sample"><span data-l="lv">paraugs</span><span data-l="ru">пример</span></small>';
+
+const bookForm = document.getElementById('book');
+const svcList = document.getElementById('svc-list');
+const daysEl = document.getElementById('days');
+const slotsEl = document.getElementById('slots');
+const pickEl = document.getElementById('pick');
+const ticket = document.getElementById('ticket');
+const bookError = document.getElementById('book-error');
+const steps = [...bookForm.querySelectorAll('.bstep')];
+const booking = { svc: null, day: null, time: null };
+
+const pad = (n) => String(n).padStart(2, '0');
+const hm = (m) => `${pad(Math.floor(m / 60))}:${pad(m % 60)}`;
+const svcById = (id) => SERVICES.find((x) => x.id === id);
+function duration(min, lang) {
+  const h = Math.floor(min / 60), m = min % 60;
+  const hs = lang === 'lv' ? 'h' : 'ч', ms = lang === 'lv' ? 'min' : 'мин';
+  return [h ? `${h} ${hs}` : '', m ? `${m} ${ms}` : ''].filter(Boolean).join(' ');
+}
+const both = (fn) => `<span data-l="lv">${fn('lv')}</span><span data-l="ru">${fn('ru')}</span>`;
+
+svcList.innerHTML = SERVICES.map((x) => `
+  <label class="svc">
+    <input type="radio" name="svc" value="${x.id}">
+    <span class="svc-name">${both((l) => x[l])}</span>
+    <span class="svc-meta">${both((l) => `${duration(x.min, l)} · ${x.price[l]}`)}${x.sample ? SAMPLE_TAG : ''}</span>
+  </label>`).join('');
+
+// the next 14 days the salon is open
+function openDays() {
+  const out = [], d = new Date();
+  d.setHours(0, 0, 0, 0);
+  for (let i = 0; out.length < 12 && i < 21; i++, d.setDate(d.getDate() + 1)) {
+    if (OPEN[d.getDay()]) out.push(new Date(d));
+  }
+  return out;
+}
+const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
+// stable pseudo-random existing appointments per day (1–3 h blocks), so the calendar looks lived-in
+const dayBlocks = new Map();
+function blocks(day) {
+  const key = iso(day);
+  if (!dayBlocks.has(key)) {
+    let h = 2166136261;
+    for (const c of key) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+    const rnd = () => ((h = Math.imul(h ^ (h >>> 15), 2246822507) >>> 0) / 4294967296);
+    const [o, c] = OPEN[day.getDay()];
+    const list = [];
+    for (let n = 1 + Math.floor(rnd() * 3); n > 0; n--) {
+      const start = o * 60 + Math.floor(rnd() * ((c - o) * 2)) * 30;
+      list.push([start, start + (2 + Math.floor(rnd() * 5)) * 30]);
+    }
+    dayBlocks.set(key, list);
+  }
+  return dayBlocks.get(key);
+}
+const busy = (day, minute) => blocks(day).some(([a, b]) => minute >= a && minute < b);
+
+function freeSlots(day, svc) {
+  const [o, c] = OPEN[day.getDay()];
+  const now = new Date(), isToday = iso(day) === iso(now);
+  const earliest = isToday ? now.getHours() * 60 + now.getMinutes() + 60 : 0;
+  const out = [];
+  for (let t = o * 60; t + svc.min <= c * 60; t += 30) {
+    let ok = t >= earliest;
+    for (let k = t; ok && k < t + svc.min; k += 30) if (busy(day, k)) ok = false;
+    out.push({ t, ok });
+  }
+  return out;
+}
+
+function renderDays() {
+  const days = openDays();
+  daysEl.innerHTML = days.map((d) => {
+    const free = booking.svc ? freeSlots(d, svcById(booking.svc)).some((x) => x.ok) : true;
+    return `<button type="button" class="day${booking.day === iso(d) ? ' on' : ''}" data-day="${iso(d)}" ${free ? '' : 'disabled'} aria-pressed="${booking.day === iso(d)}">
+      <span class="day-w">${both((l) => DAY[l][d.getDay()])}</span><span class="day-n">${d.getDate()}</span>
+      <span class="day-m">${both((l) => MONTH[l][d.getMonth()].slice(0, 3))}</span></button>`;
+  }).join('');
+}
+
+function renderSlots() {
+  if (!booking.day || !booking.svc) { slotsEl.innerHTML = ''; return; }
+  const day = new Date(booking.day + 'T00:00');
+  const list = freeSlots(day, svcById(booking.svc));
+  slotsEl.innerHTML = list.map((x, i) =>
+    `<button type="button" class="slot${booking.time === x.t ? ' on' : ''}" data-time="${x.t}" style="--i:${i}" ${x.ok ? '' : 'disabled'} aria-pressed="${booking.time === x.t}">${hm(x.t)}</button>`).join('');
+}
+
+function dateText(lang) {
+  const d = new Date(booking.day + 'T00:00');
+  const wd = lang === 'lv'
+    ? ['svētdien', 'pirmdien', 'otrdien', 'trešdien', 'ceturtdien', 'piektdien', 'sestdien'][d.getDay()]
+    : ['в воскресенье', 'в понедельник', 'во вторник', 'в среду', 'в четверг', 'в пятницу', 'в субботу'][d.getDay()];
+  return lang === 'lv' ? `${wd}, ${d.getDate()}. ${MONTH.lv[d.getMonth()]}` : `${wd}, ${d.getDate()} ${MONTH.ru[d.getMonth()]}`;
+}
+
+function renderPick() {
+  if (booking.time === null) { pickEl.innerHTML = ''; return; }
+  const x = svcById(booking.svc);
+  pickEl.innerHTML = both((l) => `<b>${x[l]}</b>, ${dateText(l)}, ${hm(booking.time)}–${hm(booking.time + x.min)}`);
+}
+
+function unlock() {
+  const reached = [true, !!booking.svc, !!booking.day, booking.time !== null];
+  steps.forEach((el, i) => {
+    el.classList.toggle('locked', !reached[i]);
+    el.disabled = !reached[i];
+  });
+}
+
+function bringIntoView(el) {
+  if (innerWidth < 900) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+}
+
+function chooseService(id) {
+  booking.svc = id;
+  bookForm.querySelector(`input[value="${id}"]`).checked = true;
+  // a longer procedure may no longer fit the chosen day or time
+  if (booking.day && !freeSlots(new Date(booking.day + 'T00:00'), svcById(id)).some((x) => x.ok)) booking.day = null;
+  booking.time = null;
+  renderDays(); renderSlots(); renderPick(); unlock();
+}
+
+svcList.addEventListener('change', (e) => {
+  chooseService(e.target.value);
+  bringIntoView(steps[1]);
+});
+daysEl.addEventListener('click', (e) => {
+  const b = e.target.closest('.day');
+  if (!b || b.disabled) return;
+  booking.day = b.dataset.day; booking.time = null;
+  renderDays(); renderSlots(); renderPick(); unlock();
+  bringIntoView(steps[2]);
+});
+slotsEl.addEventListener('click', (e) => {
+  const b = e.target.closest('.slot');
+  if (!b || b.disabled) return;
+  booking.time = Number(b.dataset.time);
+  slotsEl.querySelectorAll('.slot').forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+  renderPick(); unlock();
+  bringIntoView(steps[3]);
+});
+
+// "Pierakstīties" buttons elsewhere on the page pick the service for you
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-book]');
+  if (!a || !a.dataset.book) return;
+  if (!ticket.hidden) resetBooking();
+  chooseService(a.dataset.book);
+  if (a.dataset.note) bookForm.elements.piez.value = a.dataset.note;
+});
+
+const ERR = {
+  name: { lv: 'Ieraksti savu vārdu.', ru: 'Напиши своё имя.' },
+  phone: { lv: 'Ieraksti tālruņa numuru, lai salons var apstiprināt.', ru: 'Напиши номер телефона, чтобы салон мог подтвердить.' },
+};
+bookForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = bookForm.elements.vards.value.trim(), phone = bookForm.elements.talr.value.replace(/[^\d+]/g, '');
+  bookError.textContent = '';
+  if (name.length < 2) { bookError.textContent = ERR.name[root.lang]; bookForm.elements.vards.focus(); return; }
+  if (phone.replace('+', '').length < 8) { bookError.textContent = ERR.phone[root.lang]; bookForm.elements.talr.focus(); return; }
+  booking.name = name; booking.phone = phone; booking.note = bookForm.elements.piez.value.trim();
+  renderTicket();
+  bookForm.hidden = true;
+  ticket.hidden = false;
+  ticket.classList.remove('show'); void ticket.offsetWidth; ticket.classList.add('show');
+  ticket.focus({ preventScroll: true });
+  ticket.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+});
+
+function renderTicket() {
+  if (ticket.hidden && !booking.name) return;
+  const x = svcById(booking.svc);
+  const row = (lv, ru, v) => `<div><dt>${both((l) => (l === 'lv' ? lv : ru))}</dt><dd>${v}</dd></div>`;
+  document.getElementById('ticket-rows').innerHTML =
+    row('Procedūra', 'Процедура', both((l) => x[l])) +
+    row('Laiks', 'Время', both((l) => `${dateText(l)}, ${hm(booking.time)}`)) +
+    row('Ilgums', 'Длительность', both((l) => duration(x.min, l))) +
+    row('Kur', 'Где', 'Svētes iela 7, Jelgava') +
+    row('Vārds', 'Имя', booking.name.replace(/[<>&]/g, ''));
+}
+
+function resetBooking() {
+  Object.assign(booking, { svc: null, day: null, time: null, name: null });
+  bookForm.reset();
+  bookForm.hidden = false;
+  ticket.hidden = true;
+  renderDays(); renderSlots(); renderPick(); unlock();
+}
+document.getElementById('book-again').addEventListener('click', () => {
+  resetBooking();
+  steps[0].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+});
+
+// a real calendar file the visitor can save
+document.getElementById('ics').addEventListener('click', () => {
+  const x = svcById(booking.svc);
+  const stamp = (m) => booking.day.replace(/-/g, '') + 'T' + hm(m).replace(':', '') + '00';
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//SKY BEAUTY demo//LV', 'BEGIN:VEVENT',
+    `UID:${Date.now()}@skybeauty-demo`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').slice(0, 15)}Z`,
+    `DTSTART:${stamp(booking.time)}`, `DTEND:${stamp(booking.time + x.min)}`,
+    `SUMMARY:SKY BEAUTY: ${x[root.lang]}`, 'LOCATION:Svētes iela 7\\, Jelgava', 'DESCRIPTION:+371 20 177 678',
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+  const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+  const a = Object.assign(document.createElement('a'), { href: url, download: 'sky-beauty-pieraksts.ics' });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
+renderDays(); unlock();
+
 /* ---------- language ---------- */
 
 const langBtn = document.querySelector('.lang');
@@ -1088,6 +1476,7 @@ function setLang(lang) {
   langBtn.setAttribute('aria-label', lang === 'lv' ? 'Переключить на русский' : 'Pārslēgt uz latviešu valodu');
   try { localStorage.setItem('sky-lang', lang); } catch {}
   if (lastResult) showResult(false);
+  if (bookError.textContent) bookError.textContent = '';
 }
 let savedLang = null;
 try { savedLang = localStorage.getItem('sky-lang'); } catch {}

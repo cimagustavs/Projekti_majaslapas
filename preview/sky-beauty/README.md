@@ -6,6 +6,12 @@
 
 Generated from `demos/sky-beauty/`. Regenerate after changing the page.
 
+## Online booking (demo)
+
+The "Pieraksties tiešsaistē" section is a front-end demo: service → day → time → name and phone → confirmation
+with a downloadable .ics calendar file. Nothing is sent anywhere. Free times are generated, durations are samples.
+For a real site it has to be connected to a booking system the salon uses for its calendar.
+
 ## What is real and what still needs the owner
 
 Real, from the salon's public Facebook and Instagram pages: name, address, phone, Instagram handle, services

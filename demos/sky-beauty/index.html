@@ -25,6 +25,7 @@
   <nav class="nav" aria-label="Galvenā">
     <a href="#formula"><span data-l="lv">Formula</span><span data-l="ru">Формула</span></a>
     <a href="#cenas"><span data-l="lv">Pakalpojumi</span><span data-l="ru">Услуги</span></a>
+    <a href="#pieraksts"><span data-l="lv">Pieraksts</span><span data-l="ru">Запись</span></a>
     <a href="#atsauksmes"><span data-l="lv">Atsauksmes</span><span data-l="ru">Отзывы</span></a>
     <a href="#kur"><span data-l="lv">Kontakti</span><span data-l="ru">Контакты</span></a>
   </nav>
@@ -59,9 +60,10 @@
         <span data-l="ru">Реконструкция волос, кератин, парикмахер, маникюр, косметолог и солярий. В Елгаве, Svētes iela 7.</span>
       </p>
       <div class="hero-actions">
-        <a class="btn btn-ink" href="tel:+37120177678"><span data-l="lv">Zvanīt 20 177 678</span><span data-l="ru">Позвонить 20 177 678</span></a>
-        <a class="btn btn-line" href="#formula"><span data-l="lv">Atrast savu formulu</span><span data-l="ru">Подобрать формулу</span></a>
+        <a class="btn btn-ink" href="#pieraksts"><span data-l="lv">Pierakstīties online</span><span data-l="ru">Записаться онлайн</span></a>
+        <a class="btn btn-line" href="tel:+37120177678"><span data-l="lv">Zvanīt 20 177 678</span><span data-l="ru">Позвонить 20 177 678</span></a>
       </div>
+      <a class="hero-link" href="#formula"><span data-l="lv">Nezini, ko izvēlēties? Atrodi savu formulu</span><span data-l="ru">Не знаешь, что выбрать? Подбери формулу</span> →</a>
     </div>
 
     <a class="hero-offer" href="#rudens">
@@ -116,7 +118,7 @@
           <p class="result-price" id="result-price"></p>
           <p class="result-note"><span data-l="lv">Tā ir tikai sākuma doma. Galīgo formulu izvēlamies salonā, kad redzam tavus matus.</span><span data-l="ru">Это только отправная точка. Окончательную формулу подбираем в салоне, когда видим твои волосы.</span></p>
           <div class="result-actions">
-            <a class="btn btn-ink" id="result-sms" href="sms:+37120177678"><span data-l="lv">Nosūtīt salonam</span><span data-l="ru">Отправить в салон</span></a>
+            <a class="btn btn-ink" id="result-book" href="#pieraksts" data-book=""><span data-l="lv">Pierakstīties</span><span data-l="ru">Записаться</span></a>
             <a class="btn btn-line" href="tel:+37120177678"><span data-l="lv">Zvanīt</span><span data-l="ru">Позвонить</span></a>
           </div>
         </div>
@@ -223,6 +225,56 @@
     </div>
   </section>
 
+  <section class="book" id="pieraksts">
+    <div class="book-head reveal">
+      <h2><span data-l="lv">Pieraksties tiešsaistē.</span><span data-l="ru">Запишись онлайн.</span></h2>
+      <p><span data-l="lv">Procedūra, diena, laiks. Bez zvana un bez gaidīšanas uz atbildi.</span><span data-l="ru">Процедура, день, время. Без звонка и без ожидания ответа.</span></p>
+      <p class="demo-note"><span data-l="lv">Demo: pieraksts netiek nosūtīts salonam, brīvie laiki un ilgumi ir paraugi.</span><span data-l="ru">Демо: запись не отправляется в салон, свободное время и длительность для примера.</span></p>
+    </div>
+
+    <p class="book-nojs"><span data-l="lv">Pierakstam vajadzīgs JavaScript. Zvani: </span><span data-l="ru">Для записи нужен JavaScript. Звони: </span><a href="tel:+37120177678">20 177 678</a></p>
+
+    <form class="book-form" id="book" novalidate>
+      <fieldset class="bstep" data-step="1">
+        <legend><span class="num">1</span><span data-l="lv">Procedūra</span><span data-l="ru">Процедура</span></legend>
+        <div class="svc-list" id="svc-list"></div>
+      </fieldset>
+
+      <div class="book-right">
+        <fieldset class="bstep locked" data-step="2">
+          <legend><span class="num">2</span><span data-l="lv">Diena</span><span data-l="ru">День</span></legend>
+          <div class="days" id="days"></div>
+        </fieldset>
+
+        <fieldset class="bstep locked" data-step="3">
+          <legend><span class="num">3</span><span data-l="lv">Laiks</span><span data-l="ru">Время</span></legend>
+          <div class="slots" id="slots"></div>
+        </fieldset>
+
+        <fieldset class="bstep locked" data-step="4">
+          <legend><span class="num">4</span><span data-l="lv">Tavi dati</span><span data-l="ru">Твои данные</span></legend>
+          <p class="pick" id="pick"></p>
+          <label class="field"><span><span data-l="lv">Vārds</span><span data-l="ru">Имя</span></span><input name="vards" autocomplete="given-name" required minlength="2"></label>
+          <label class="field"><span><span data-l="lv">Tālrunis</span><span data-l="ru">Телефон</span></span><input name="talr" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+371"></label>
+          <label class="field"><span><span data-l="lv">Piezīme (nav obligāti)</span><span data-l="ru">Комментарий (не обязательно)</span></span><textarea name="piez" rows="2"></textarea></label>
+          <p class="form-error" id="book-error" role="alert"></p>
+          <button class="btn btn-ink" type="submit"><span data-l="lv">Apstiprināt pierakstu</span><span data-l="ru">Подтвердить запись</span></button>
+        </fieldset>
+      </div>
+    </form>
+
+    <div class="ticket" id="ticket" hidden tabindex="-1">
+      <svg class="tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg>
+      <h3><span data-l="lv">Pieraksts pieņemts</span><span data-l="ru">Запись принята</span></h3>
+      <dl class="ticket-rows" id="ticket-rows"></dl>
+      <p class="ticket-note"><span data-l="lv">Īstajā lapā pieraksts uzreiz parādītos salona kalendārā, un tu saņemtu SMS apstiprinājumu un atgādinājumu dienu iepriekš. Šajā demo nekas netiek nosūtīts.</span><span data-l="ru">На настоящем сайте запись сразу появилась бы в календаре салона, а ты получила бы SMS с подтверждением и напоминание за день. В этом демо ничего не отправляется.</span></p>
+      <div class="ticket-actions">
+        <button class="btn btn-ink" type="button" id="ics"><span data-l="lv">Pievienot kalendāram</span><span data-l="ru">Добавить в календарь</span></button>
+        <button class="btn btn-line" type="button" id="book-again"><span data-l="lv">Jauns pieraksts</span><span data-l="ru">Новая запись</span></button>
+      </div>
+    </div>
+  </section>
+
   <section class="reviews" id="atsauksmes">
     <div class="reviews-head reveal">
       <h2><span data-l="lv">Raksta pēc procedūras.</span><span data-l="ru">Пишут после процедуры.</span></h2>
@@ -245,7 +297,7 @@
       <p><span data-l="lv">Pierakstoties nosauc kodu <b>RUDENS</b>. Vietu skaits ierobežots.</span><span data-l="ru">При записи назови код <b>ОСЕНЬ</b>. Количество мест ограничено.</span></p>
       <div class="code-actions">
         <button class="btn btn-paper" type="button" id="copy"><span data-l="lv">Kopēt kodu</span><span data-l="ru">Скопировать код</span></button>
-        <a class="btn btn-line-paper" href="tel:+37120177678"><span data-l="lv">Pierakstīties</span><span data-l="ru">Записаться</span></a>
+        <a class="btn btn-line-paper" href="#pieraksts" data-book="keratins"><span data-l="lv">Pierakstīties</span><span data-l="ru">Записаться</span></a>
       </div>
     </div>
   </section>
