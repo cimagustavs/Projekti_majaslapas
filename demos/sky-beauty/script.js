@@ -11,9 +11,10 @@ let lastResult = null;
 
 const heroSection = document.querySelector('.hero');
 const heroFig = document.querySelector('.hero-hair');
-const heroSvg = document.getElementById('hero-hair');
+const heroSvg = document.getElementById('hero-canvas');
 const combEl = heroFig.querySelector('.comb');
-const hero = Hair.mount(heroSvg, { id: 'h', n: 110, pts: 56, seed: 11 });
+const hero = Hair.mount(heroSvg, { n: innerWidth < 700 ? 170 : 200, pts: 30, seed: 11, reveal: reduce ? 1 : 0 });
+const revealStart = performance.now();
 hero.draw();
 
 let fTarget = 1;
@@ -32,19 +33,33 @@ function setCap(n) {
 }
 
 function combTo(svgX, svgY, width) {
-  const m = heroSvg.getScreenCTM();
+  const q = hero.toScreen(svgX, svgY);
   const fig = heroFig.getBoundingClientRect();
-  const x = m.a * svgX + m.e - fig.left, y = m.d * svgY + m.f - fig.top;
+  const x = q.x - fig.left, y = q.y - fig.top;
   const w = width || combEl.offsetWidth;
   if (width) combEl.style.width = w + 'px';
   combEl.style.transform = `translate(${(x - w / 2).toFixed(1)}px, ${(y - w * 0.12).toFixed(1)}px)`;
 }
 
+// Drop detail on devices that can't keep up: measured once the opening animation is over.
+function watchSpeed(hair) {
+  let ema = 1 / 60, frames = 0;
+  return (dt, settled) => {
+    if (!settled || hair.quality >= 2) return;
+    ema += (dt - ema) * 0.1;
+    if (++frames > 24 && ema > 1 / 38) { hair.setQuality(hair.quality + 1); frames = 0; ema = 1 / 60; }
+  };
+}
+const heroSpeed = watchSpeed(hero);
+
 function heroFrame(now) {
-  const dt = Math.min(0.05, (now - last) / 1000);
+  const rawDt = (now - last) / 1000;
+  const dt = Math.min(0.05, rawDt);
   last = now;
+  heroSpeed(rawDt, hero.st.reveal >= 1 && sweepStart === null);
   const st = hero.st;
   if (!reduce) st.time += dt;
+  if (st.reveal < 1) st.reveal = Math.min(1, (now - revealStart) / 1600);
   st.f += (fTarget - st.f) * Math.min(1, dt * 7);
 
   // the brush stroke that plays once after the hair has drawn in
@@ -52,8 +67,7 @@ function heroFrame(now) {
     const k = clamp((now - sweepStart) / 1500, 0, 1);
     const u = smooth(k) * 1.1;
     hero.brush(u, 1.6);
-    const m = heroSvg.getScreenCTM();
-    combTo(200, TOP + Math.min(u, 1) * (HEM - TOP), 250 * m.a);
+    combTo(200, TOP + Math.min(u, 1) * (HEM - TOP), 250 * hero.toScreen(0, 0).k);
     // lift the comb away before it reaches the caption under the hair
     if (k > 0.82) combEl.classList.remove('on');
     if (k >= 1) {
@@ -66,8 +80,7 @@ function heroFrame(now) {
   }
 
   const sleek = 1 - st.f;
-  st.shine = sleek * sleek * 0.85;
-  st.shineY = 0.12 + sleek * 0.32;
+  st.shineY = 0.14 + sleek * 0.12;
   hero.draw();
 
   if (heroVisible) requestAnimationFrame(heroFrame);
@@ -102,20 +115,18 @@ onHeroScroll();
 if (reduce) {
   setCap(1);
 } else {
-  heroSvg.classList.add('intro');
-  setTimeout(() => heroSvg.classList.remove('intro'), 1500 + 40 * 16 + 100);
   setTimeout(() => {
     if (cap === 2) { introDone = true; return; }
     setCap(0);
     combEl.classList.add('on');
     sweepStart = performance.now();
     introDone = true;
-  }, 1700);
+  }, 1900);
 }
 
 // comb with the mouse, or with a finger while scrolling
 function combAt(clientX, clientY, reach = 30, hold) {
-  const p = new DOMPoint(clientX, clientY).matrixTransform(heroSvg.getScreenCTM().inverse());
+  const p = hero.toView(clientX, clientY);
   const over = p.y > TOP - 30 && p.y < HEM + 30 && p.x > 40 && p.x < 360;
   if (over) hero.comb(p.x, p.y, reach, hold);
   return { over, p };
@@ -180,7 +191,7 @@ heroSvg.addEventListener('pointercancel', () => combEl.classList.remove('on'));
 const form = document.getElementById('quiz');
 const quizSvg = document.getElementById('quiz-hair');
 const resultEl = document.getElementById('result');
-const quizHair = Hair.mount(quizSvg, { id: 'q', n: 80, pts: 48, seed: 5, f: 0.95, fuzz: 60 });
+const quizHair = Hair.mount(quizSvg, { n: 120, pts: 26, seed: 5, f: 0.95, fuzz: 70 });
 const qTarget = { f: 0.95, curl: 0, shine: 0 };
 let quizVisible = false, quizRunning = false, qLast = 0;
 
@@ -220,6 +231,7 @@ function lookFromForm() {
   quizSvg.classList.toggle('tone-kraasoti', tips === 'kraasoti');
   quizSvg.classList.toggle('tone-balinati', tips === 'balinati');
   quizSvg.style.filter = kas === 'blavi' ? 'saturate(0.55) brightness(0.92)' : '';
+  quizHair.refresh();
   Object.assign(qTarget, LOOK[kas], { shine: 0 });
 }
 
@@ -258,9 +270,12 @@ form.addEventListener('submit', (e) => {
   if (innerWidth < 900) resultEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
 });
 
+const quizSpeed = watchSpeed(quizHair);
 function quizFrame(now) {
-  const dt = Math.min(0.05, (now - qLast) / 1000);
+  const rawDt = (now - qLast) / 1000;
+  const dt = Math.min(0.05, rawDt);
   qLast = now;
+  quizSpeed(rawDt, true);
   const st = quizHair.st, k = Math.min(1, dt * 3.5);
   if (!reduce) st.time += dt;
   st.f += (qTarget.f - st.f) * k;

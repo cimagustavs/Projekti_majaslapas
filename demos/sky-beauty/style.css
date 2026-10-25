@@ -102,6 +102,9 @@ p { margin: 0; }
 
 .hero-hair { grid-area: hair; position: relative; margin: 0.6rem 0 0; display: grid; justify-items: center; align-content: start; }
 .hair { display: block; overflow: visible; }
+.hair-live { display: none; }
+.js .hair-live { display: block; }
+.js .hair-static { display: none; }
 .hero .hair {
   height: min(54dvh, 36rem); width: auto; aspect-ratio: 9 / 14;
   transform-origin: 50% 0;
@@ -110,19 +113,15 @@ p { margin: 0; }
 .hair .cape { fill: var(--ink); }
 .hair .mass { opacity: 0.94; }
 .hair .strands path { opacity: 0.9; }
-.js .hair.intro .strands path {
-  stroke-dasharray: 1; stroke-dashoffset: 1;
-  animation: draw 1500ms var(--ease-out) forwards;
-  animation-delay: calc(var(--i) * 16ms);
-}
-.js .hair.intro .mass { animation: fade 900ms 500ms both; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes fade { from { opacity: 0; } }
 
 .comb { position: absolute; left: 0; top: 0; width: 9rem; pointer-events: none; opacity: 0; transition: opacity 200ms; z-index: 3; }
 .comb svg { display: block; width: 100%; }
-.comb path:first-child { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
-.comb path:last-child { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; fill: none; }
+.comb svg { filter: drop-shadow(0 3px 4px rgb(0 0 0 / 0.35)); }
+.comb-body { fill: #1c1816; }
+.comb-teeth { stroke: #1c1816; stroke-width: 2.4; stroke-linecap: round; fill: none; }
+.comb-shine { stroke: rgb(255 255 255 / 0.28); stroke-width: 1.2; stroke-linecap: round; fill: none; }
 .comb.on { opacity: 1; }
 
 .hair-cap { display: grid; justify-items: center; margin-top: 0.4rem; font-size: 0.9rem; color: var(--muted); min-height: 1.4em; position: relative; z-index: 2; }
@@ -412,7 +411,6 @@ html:not(.js) .book-form { display: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal, .js .chat:not(.done) .msg { opacity: 1; transform: none; transition: none; }
-  .js .hair.intro .strands path, .js .hair.intro .mass { animation: none; stroke-dasharray: none; }
   .hero-hair { transform: none; }
   .code-word.in { transition: none; }
   .slot, .ticket.show, .ticket.show .tick path { animation: none; }
