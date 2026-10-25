@@ -103,7 +103,7 @@ p { margin: 0; }
 .hero-hair { grid-area: hair; position: relative; margin: 0.6rem 0 0; display: grid; justify-items: center; align-content: start; }
 .hair { display: block; overflow: visible; }
 .hero .hair {
-  height: min(44dvh, 34rem); width: auto; aspect-ratio: 2 / 3;
+  height: min(54dvh, 36rem); width: auto; aspect-ratio: 9 / 14;
   transform-origin: 50% 0;
   touch-action: pan-y;
 }
@@ -172,7 +172,7 @@ html:not(.js) .cap[data-cap='2'] { opacity: 1; transform: none; }
 .quiz .btn { justify-self: start; margin-top: 0.4rem; }
 
 .lab { position: relative; display: grid; gap: 1.5rem; align-content: start; justify-items: center; }
-.hair-small { width: min(62vw, 17rem); height: auto; aspect-ratio: 2 / 3; }
+.hair-small { width: min(62vw, 17rem); height: auto; aspect-ratio: 9 / 14; }
 html:not(.js) .lab { display: none; }
 .tone-kraasoti { --hair-root: #2a140e; --hair-mid0: #6c2f1f; --hair-end0: #a2553b; --hair-mid1: #7f3a26; --hair-end1: #b8694a; --hair-mid2: #592618; --hair-end2: #8c4430; }
 .tone-balinati { --hair-root: #5b4a3a; --hair-mid0: #b9a487; --hair-end0: #eadcc3; --hair-mid1: #cdb999; --hair-end1: #f3e8d3; --hair-mid2: #a8927a; --hair-end2: #dccab0; }
@@ -197,23 +197,22 @@ html:not(.js) .lab { display: none; }
 .work { padding: clamp(4rem, 10vw, 8rem) var(--gutter); display: grid; gap: 2rem; }
 .work-head { display: grid; gap: 1rem; }
 .work-head p { color: var(--ink-2); }
-.compare { position: relative; display: block; width: 100%; padding: 0; border: 0; background: var(--ink); cursor: pointer; aspect-ratio: 600 / 494; overflow: hidden; border-radius: var(--r); }
-.compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.compare-before { clip-path: inset(0 0 0 0); transition: clip-path 900ms var(--ease-out); }
-.compare[aria-pressed='true'] .compare-before { clip-path: inset(0 0 0 100%); }
-.compare-tag { position: absolute; bottom: 0.8rem; padding: 0.35rem 0.7rem; background: var(--paper); color: var(--ink); font-weight: 600; font-size: 0.85rem; border-radius: var(--r); transition: opacity 400ms; }
-.tag-before { left: 0.8rem; }
-.tag-after { right: 0.8rem; opacity: 0.35; }
-.compare[aria-pressed='true'] .tag-before { opacity: 0.35; }
-.compare[aria-pressed='true'] .tag-after { opacity: 1; }
+.pair { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 0.6rem; }
+.pp { margin: 0; display: grid; gap: 0.5rem; }
+.pp img { width: 100%; aspect-ratio: 380 / 317; object-fit: cover; border-radius: var(--r); }
+.pp-label { font: 800 clamp(2.3rem, 8vw, 3rem)/1 var(--display); font-optical-sizing: none; font-variation-settings: 'opsz' 11; }
+.pp-after .pp-label { color: var(--rose); }
+.pp figcaption { color: var(--muted); font-size: 0.9rem; line-height: 1.3; }
+.pp-arrow { font-size: 1.5rem; color: var(--rose); align-self: center; }
+.js .pp-after.reveal { transition-delay: 350ms; }
 .strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 .strip img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
 
 @media (min-width: 900px) {
-  .work { grid-template-columns: 1fr minmax(0, 40rem); grid-template-areas: 'head compare' 'strip compare'; align-items: start; column-gap: 4rem; }
+  .work { grid-template-columns: minmax(0, 44rem) minmax(0, 22rem); grid-template-areas: 'head head' 'pair strip'; align-items: end; column-gap: 3rem; }
   .work-head { grid-area: head; }
-  .compare { grid-area: compare; }
-  .strip { grid-area: strip; align-self: end; }
+  .pair { grid-area: pair; gap: 1.2rem; }
+  .strip { grid-area: strip; }
 }
 
 /* services */
@@ -230,7 +229,9 @@ html:not(.js) .lab { display: none; }
 .row-name { font-weight: 600; font-size: 1.08rem; }
 .row-note { grid-column: 1; color: var(--muted); font-size: 0.93rem; }
 .row-price { grid-column: 2; grid-row: 1 / span 2; align-self: center; text-align: right; font-weight: 600; white-space: nowrap; }
-.row-price span { font-weight: 500; color: var(--muted); font-size: 0.9rem; }
+.row-price-text { font-weight: 500; color: var(--muted); font-size: 0.9rem; }
+.sample { display: block; margin-top: 0.15rem; font: 500 0.68rem/1.2 var(--body); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.where-list .sample { display: inline-block; margin: 0 0 0 0.4rem; vertical-align: 1px; }
 .row.hot .row-price { color: var(--rose); font: 800 1.6rem/1 var(--display); }
 .group-img { width: 9rem; aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
 @media (min-width: 900px) {
@@ -262,9 +263,9 @@ html:not(.js) .lab { display: none; }
 /* code */
 .code { background: var(--ink); color: var(--paper); padding: clamp(4rem, 10vw, 8rem) 0; overflow: clip; }
 .code-word {
-  font: 900 clamp(5.5rem, 26vw, 22rem)/0.85 var(--display); letter-spacing: -0.03em; white-space: nowrap;
+  font: 900 clamp(4rem, 19vw, 19rem)/0.85 var(--display); letter-spacing: -0.03em; white-space: nowrap;
+  padding: 0 var(--gutter);
   color: transparent; -webkit-text-stroke: 1.5px color-mix(in srgb, var(--paper) 70%, transparent);
-  transform: translateX(calc(4vw - var(--c, 0.5) * 24vw));
 }
 .code-body { padding: 2rem var(--gutter) 0; display: grid; gap: 1rem; max-width: 52rem; }
 .code-body p { color: color-mix(in srgb, var(--paper) 80%, transparent); }
@@ -288,13 +289,15 @@ html:not(.js) .lab { display: none; }
 /* reveal on scroll */
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
 .js .reveal.in { opacity: 1; transform: none; }
+/* the code outline fills in once it is on screen */
+.code-word.in { color: var(--paper); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out), color 1200ms 500ms; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal, .js .chat:not(.done) .msg { opacity: 1; transform: none; transition: none; }
   .js .hair.intro .strands path, .js .hair.intro .mass { animation: none; stroke-dasharray: none; }
-  .hero-hair, .code-word { transform: none; }
-  .compare-before { transition: none; }
+  .hero-hair { transform: none; }
+  .code-word.in { transition: none; }
 }
 
 /* the `font` shorthand resets optical sizing, so pin the small-size cut again wherever it is used */

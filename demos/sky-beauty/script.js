@@ -13,7 +13,7 @@ const heroSection = document.querySelector('.hero');
 const heroFig = document.querySelector('.hero-hair');
 const heroSvg = document.getElementById('hero-hair');
 const combEl = heroFig.querySelector('.comb');
-const hero = Hair.mount(heroSvg, { id: 'h', n: 110, pts: 46, seed: 11 });
+const hero = Hair.mount(heroSvg, { id: 'h', n: 110, pts: 56, seed: 11 });
 hero.draw();
 
 let fTarget = 1;
@@ -52,7 +52,9 @@ function heroFrame(now) {
     const u = smooth(k) * 1.1;
     hero.brush(u, 1.6);
     const m = heroSvg.getScreenCTM();
-    combTo(200, TOP + u * (HEM - TOP), 250 * m.a);
+    combTo(200, TOP + Math.min(u, 1) * (HEM - TOP), 250 * m.a);
+    // lift the comb away before it reaches the caption under the hair
+    if (k > 0.82) combEl.classList.remove('on');
     if (k >= 1) {
       sweepStart = null;
       combEl.classList.remove('on');
@@ -138,7 +140,7 @@ heroSvg.addEventListener('touchmove', (e) => {
 const form = document.getElementById('quiz');
 const quizSvg = document.getElementById('quiz-hair');
 const resultEl = document.getElementById('result');
-const quizHair = Hair.mount(quizSvg, { id: 'q', n: 80, pts: 40, seed: 5, f: 0.95 });
+const quizHair = Hair.mount(quizSvg, { id: 'q', n: 80, pts: 48, seed: 5, f: 0.95, fuzz: 60 });
 const qTarget = { f: 0.95, curl: 0, shine: 0 };
 let quizVisible = false, quizRunning = false, qLast = 0;
 
@@ -244,18 +246,6 @@ lookFromForm();
 Object.assign(quizHair.st, qTarget);
 quizHair.draw();
 
-/* ---------- before / after ---------- */
-
-const compare = document.querySelector('.compare');
-compare.addEventListener('click', () => {
-  compare.setAttribute('aria-pressed', compare.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
-});
-new IntersectionObserver(([e], obs) => {
-  if (!e.isIntersecting) return;
-  obs.disconnect();
-  setTimeout(() => compare.setAttribute('aria-pressed', 'true'), 900);
-}, { threshold: 0.6 }).observe(compare);
-
 /* ---------- reviews arrive like messages ---------- */
 
 const chat = document.getElementById('chat');
@@ -284,15 +274,6 @@ if (reduce) {
 }
 
 /* ---------- autumn code ---------- */
-
-const codeSection = document.getElementById('rudens');
-function onCodeScroll() {
-  const r = codeSection.getBoundingClientRect();
-  if (r.bottom < 0 || r.top > innerHeight) return;
-  codeSection.style.setProperty('--c', clamp((innerHeight - r.top) / (innerHeight + r.height), 0, 1).toFixed(4));
-}
-addEventListener('scroll', onCodeScroll, { passive: true });
-onCodeScroll();
 
 const copyBtn = document.getElementById('copy');
 const copyHTML = copyBtn.innerHTML;

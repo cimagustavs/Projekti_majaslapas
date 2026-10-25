@@ -12,6 +12,8 @@ Real, from the salon's public Facebook page: name, address, phone, Instagram han
 (frizieris, manikīrs, kosmetologs, solārijs, matu rekonstrukcija), the RUDENS / ОСЕНЬ keratin offer (100 €),
 Deep Clean and Glow (40 min, 35 €), the keratin suitability rules, the client messages, and all photos.
 
-Missing: opening hours, prices for everything except the three above, the real name of the
-"light wave smoothing" procedure, full-resolution photos (the current ones are cut from phone screenshots),
-and a native check of the Russian text.
+Sample, marked "paraugs" on the page: opening hours and the prices for reconstruction, light-wave smoothing,
+haircuts, manicure and solarium. Replace with the salon's real numbers.
+
+Missing: the real name of the "light wave smoothing" procedure, full-resolution photos (the current ones are
+cut from phone screenshots), and a native check of the Russian text.

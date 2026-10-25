@@ -19,11 +19,25 @@
         ph: r() * 6.283, ph2: r() * 6.283,
         k: 0.75 + r() * 0.6, a: 0.5 + r(), cut: r(),
         w: (1 + r() * 1.5).toFixed(2), tone: Math.floor(r() * 3),
-        fly: r() < 0.14, comb: 0, cu: 0, hold: 0,
+        fly: r() < 0.22, comb: 0, cu: 0, hold: 0,
       });
     }
     // outer strands wrap round the head, so they sit underneath the ones down the middle
     list.sort((a, b) => Math.abs(b.t) - Math.abs(a.t));
+    return list;
+  }
+
+  // short broken-off hairs that stand out from the surface: the actual "pūka"
+  function makeFuzz(n, seed) {
+    const r = rng(seed + 101);
+    const list = [];
+    for (let i = 0; i < n; i++) {
+      list.push({
+        side: r() < 0.5 ? -1 : 1, ya: TOP + 6 + Math.pow(r(), 0.8) * (HEM - TOP - 40),
+        inset: 0.55 + r() * 0.45, len: 10 + r() * 26, tilt: (r() - 0.5) * 1.3,
+        bend: (r() - 0.5) * 26, ph: r() * 6.283, w: (0.5 + r() * 0.7).toFixed(2),
+      });
+    }
     return list;
   }
 
@@ -48,14 +62,30 @@
       const y = TOP + 2 + u * len * (1 - f * 0.09 * s.cut);
       const e = Math.pow(u, 1.2);
       let x = CX + s.t * half(y) * (1 + f * 0.24 * u * u + c * 0.1 * u);
-      x += f * e * (8 * s.a * Math.sin(u * s.k * 23 + s.ph + st.time * 0.7) + 3.5 * Math.sin(u * 63 * s.k + s.ph2 - st.time * 1.1));
-      if (s.fly) x += f * e * 26 * (s.t < 0 ? -1 : 1) * Math.sin(u * 2.6 + s.ph * 0.2);
+      // frizz is fine and irregular, not big waves: a little body wave plus a dense kink
+      x += f * e * (3.5 * s.a * Math.sin(u * s.k * 23 + s.ph + st.time * 0.7) + 2.6 * Math.sin(u * 95 * s.k + s.ph2 - st.time * 1.1) + 1.4 * Math.sin(u * 160 * s.k + s.ph));
+      if (s.fly) x += f * e * 30 * (s.t < 0 ? -1 : 1) * Math.sin(u * 2.6 + s.ph * 0.2);
       x += c * e * 10 * Math.sin(u * s.k * 30 + s.ph);
       x += Math.sin(st.time * 0.9 + s.t * 2) * u * u * 1.6;
       const yy = y + f * e * 3 * Math.sin(u * 47 * s.k + s.ph2);
       d += (j ? 'L' : 'M') + x.toFixed(1) + ' ' + yy.toFixed(1);
     }
     return d;
+  }
+
+  function fuzzPath(z, st, amt) {
+    const u = uAt(z.ya);
+    const hx = half(z.ya) * (1 + st.f * 0.24 * u * u);
+    const x0 = CX + z.side * hx * z.inset, y0 = z.ya;
+    // outward normal: round over the skull, sideways further down
+    let nx = z.side, ny = 0;
+    if (z.ya < HY) { nx = (x0 - CX) / R; ny = (z.ya - HY) / R; const l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l; }
+    const c = Math.cos(z.tilt), sn = Math.sin(z.tilt);
+    const dx = nx * c - ny * sn, dy = nx * sn + ny * c;
+    const L = z.len * amt * (1 + 0.12 * Math.sin(st.time * 1.3 + z.ph)) + 0.01;
+    const x1 = x0 + dx * L, y1 = y0 + dy * L;
+    const mx = (x0 + x1) / 2 - dy * z.bend * amt, my = (y0 + y1) / 2 + dx * z.bend * amt;
+    return 'M' + x0.toFixed(1) + ' ' + y0.toFixed(1) + 'Q' + mx.toFixed(1) + ' ' + my.toFixed(1) + ' ' + x1.toFixed(1) + ' ' + y1.toFixed(1);
   }
 
   function massPath(st) {
@@ -73,7 +103,7 @@
     return 'M' + l.concat(r).map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + 'Z';
   }
 
-  function markup(id, strands, st, pts) {
+  function markup(id, strands, st, pts, fuzz) {
     const tone = (i) =>
       `<linearGradient id="${id}-t${i}" gradientUnits="userSpaceOnUse" x1="0" y1="${TOP}" x2="0" y2="${HEM}">` +
       `<stop offset="0" style="stop-color:var(--hair-root)"/>` +
@@ -90,6 +120,10 @@
     strands.forEach((x, i) => {
       s += `<path pathLength="1" stroke="url(#${id}-t${x.tone})" stroke-width="${x.w}" style="--i:${i % 40}" d="${strandPath(x, st, pts)}"/>`;
     });
+    s += `</g><g class="fuzz" fill="none" stroke-linecap="round" opacity="${Math.min(1, st.f * 1.3).toFixed(3)}">`;
+    (fuzz || []).forEach((z) => {
+      s += `<path stroke="url(#${id}-t1)" stroke-width="${z.w}" d="${fuzzPath(z, st, st.f)}"/>`;
+    });
     s += `</g><g clip-path="url(#${id}-clip)"><rect class="gloss" x="0" y="${(TOP + st.shineY * len).toFixed(1)}" width="400" height="90" fill="url(#${id}-gloss)" opacity="${st.shine.toFixed(3)}"/></g>`;
     return s;
   }
@@ -98,17 +132,25 @@
   function mount(svg, opts) {
     const id = opts.id, pts = opts.pts || 46;
     const strands = makeStrands(opts.n || 110, opts.seed || 11);
+    const fuzz = makeFuzz(opts.fuzz ?? 90, opts.seed || 11);
     const st = { f: opts.f ?? 1, curl: 0, time: 0, shine: 0, shineY: 0.25 };
     if (!svg.querySelector('.strands') || svg.querySelectorAll('.strands path').length !== strands.length) {
-      svg.innerHTML = markup(id, strands, st, pts);
+      svg.innerHTML = markup(id, strands, st, pts, fuzz);
     }
     const paths = svg.querySelectorAll('.strands path');
+    const fuzzG = svg.querySelector('.fuzz'), fuzzPaths = svg.querySelectorAll('.fuzz path');
     const mass = svg.querySelector('.mass'), clip = svg.querySelector('.mass-clip'), gloss = svg.querySelector('.gloss');
 
     return {
       st, strands,
       draw() {
         strands.forEach((s, i) => paths[i].setAttribute('d', strandPath(s, st, pts)));
+        // a brush stroke over the whole head flattens the fuzz too
+        let combed = 0;
+        strands.forEach((s) => { combed += s.comb * clamp(s.cu, 0, 1); });
+        const amt = st.f * (1 - combed / strands.length);
+        fuzzG.setAttribute('opacity', Math.min(1, amt * 1.3).toFixed(3));
+        if (amt > 0.01) fuzz.forEach((z, i) => fuzzPaths[i].setAttribute('d', fuzzPath(z, st, amt)));
         const m = massPath(st);
         mass.setAttribute('d', m); clip.setAttribute('d', m);
         gloss.setAttribute('y', (TOP + st.shineY * len - 45).toFixed(1));
@@ -148,5 +190,5 @@
     };
   }
 
-  g.Hair = { mount, markup, makeStrands, geometry: { CX, TOP, HEM, len } };
+  g.Hair = { mount, markup, makeStrands, makeFuzz, geometry: { CX, TOP, HEM, len } };
 })(typeof window !== 'undefined' ? window : globalThis);
