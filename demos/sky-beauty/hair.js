@@ -157,7 +157,7 @@
         gloss.setAttribute('opacity', st.shine.toFixed(3));
       },
       // comb strands near (x, y) in viewBox units, from the root down to y
-      comb(x, y, reach) {
+      comb(x, y, reach, hold = 2.4) {
         const u = uAt(y);
         if (y < TOP - 10 || y > HEM + 10) return false;
         let hit = false;
@@ -167,7 +167,7 @@
           if (d < reach) {
             const k = 1 - (d / reach) ** 2;
             s.cu = s.comb > 0.5 ? Math.max(s.cu, u + 0.06) : u + 0.06;
-            s.comb = Math.max(s.comb, k); s.hold = 2.4; hit = true;
+            s.comb = Math.max(s.comb, k); s.hold = Math.max(s.hold, hold); hit = true;
           }
         });
         return hit;

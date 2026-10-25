@@ -127,8 +127,24 @@ p { margin: 0; }
 
 .hair-cap { display: grid; justify-items: center; margin-top: 0.4rem; font-size: 0.9rem; color: var(--muted); min-height: 1.4em; position: relative; z-index: 2; }
 .cap { grid-area: 1 / 1; opacity: 0; transform: translateY(4px); transition: opacity 400ms, transform 400ms var(--ease-out); }
-.hero-hair[data-cap='0'] .cap[data-cap='0'], .hero-hair[data-cap='1'] .cap[data-cap='1'], .hero-hair[data-cap='2'] .cap[data-cap='2'] { opacity: 1; transform: none; }
+.hero-hair[data-cap='0'] .cap[data-cap='0'], .hero-hair[data-cap='1'] .cap[data-cap='1'], .hero-hair[data-cap='2'] .cap[data-cap='2'], .hero-hair[data-cap='3'] .cap[data-cap='3'] { opacity: 1; transform: none; }
 .cap-hint { display: none; }
+.comb-toggle { display: none; }
+html:not(.js) .comb-toggle { display: none !important; }
+@media (pointer: coarse) {
+  .comb-toggle {
+    display: inline-flex; align-items: center; gap: 0.4rem; grid-area: 2 / 1; margin-top: 0.6rem;
+    min-height: 2.75rem; padding: 0 1rem; border: 1.5px solid var(--ink); border-radius: var(--r);
+    background: var(--paper); color: var(--ink); font: 600 0.92rem var(--body); cursor: pointer;
+    transition: background-color 180ms, color 180ms, transform 140ms var(--ease-out);
+  }
+  .comb-toggle:active { transform: scale(0.97); }
+  .comb-toggle .t-on, .comb-toggle[aria-pressed='true'] .t-off { display: none; }
+  .comb-toggle[aria-pressed='true'] .t-on { display: inline; }
+  .comb-toggle[aria-pressed='true'] { background: var(--ink); color: var(--paper); }
+  .hero-hair.touch-comb .hair { touch-action: none; }
+  .hero-hair.touch-comb .comb { transition: opacity 120ms; }
+}
 html:not(.js) .cap[data-cap='2'] { opacity: 1; transform: none; }
 
 .hero-offer {
