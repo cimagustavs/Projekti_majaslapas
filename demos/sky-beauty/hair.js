@@ -26,8 +26,11 @@
         ph: r() * 6.283, ph2: r() * 6.283,
         k: 0.75 + r() * 0.6, a: 0.5 + r(), cut: r(), flow: (r() - 0.5) * 2,
         w: 0.55 + r() * r() * 1.6, tone: Math.floor(r() * 3), lum: r(),
-        fly: r() < 0.18, comb: 0, cu: 0, hold: 0,
+        fly: r() < 0.2, comb: 0, cu: 0, hold: 0,
       });
+      // flyaways are the fine, broken hairs: thinner than the rest
+      const last = list[list.length - 1];
+      if (last.fly) last.w = 0.35 + r() * 0.3;
     }
     // outer strands wrap round the head, so they sit underneath the ones down the middle
     list.sort((a, b) => Math.abs(b.t) - Math.abs(a.t));
@@ -40,8 +43,9 @@
     const list = [];
     for (let i = 0; i < n; i++) {
       list.push({
-        side: r() < 0.5 ? -1 : 1, ya: TOP + 6 + Math.pow(r(), 0.8) * (HEM - TOP - 40),
-        inset: 0.55 + r() * 0.45, len: 8 + r() * 24, tilt: (r() - 0.5) * 1.3,
+        // a third of the fuzz stands up around the crown, the rest along the sides
+        side: r() < 0.5 ? -1 : 1, ya: r() < 0.35 ? TOP + 4 + r() * 70 : TOP + 30 + Math.pow(r(), 0.8) * (HEM - TOP - 70),
+        inset: 0.6 + r() * 0.4, len: 6 + r() * 16, tilt: (r() - 0.5) * 1.4,
         bend: (r() - 0.5) * 26, ph: r() * 6.283, w: 0.35 + r() * 0.5,
       });
     }
@@ -57,26 +61,43 @@
     return R + (y - HY) * 0.07;
   }
 
-  const len = HEM - TOP - 2;
-  const uAt = (y) => clamp((y - TOP - 2) / len, 0, 1);
+  // strands start at the crown whorl (half-width 0), so the top of the head is round, not flat
+  const len = HEM - TOP;
+  const uAt = (y) => clamp((y - TOP) / len, 0, 1);
+  // a salon blunt cut is slightly longer in the middle than at the sides
+  const cutCurve = (t) => 1 + 0.028 * (1 - t * t);
+  // points along a strand: dense over the crown so the top of the head stays round,
+  // evenly spaced further down where the waves are
+  const TOP_U = [0, 0.004, 0.014, 0.03, 0.052];
+  const uOf = (j, pts) => (j < TOP_U.length - 1 ? TOP_U[j] : TOP_U[TOP_U.length - 1] + ((j - TOP_U.length + 1) / (pts - TOP_U.length + 1)) * (1 - TOP_U[TOP_U.length - 1]));
   const combedAt = (s, u) => s.comb * clamp((s.cu - u) / 0.1 + 0.5, 0, 1);
 
   // one point of a strand at fraction u of its length → writes into out[0], out[1]
   function strandPoint(s, st, u, out) {
     const m = combedAt(s, u);
     const f = st.f * (1 - m), c = st.curl * (1 - m), cl = s.cl;
-    const y = TOP + 2 + u * len * (1 - f * 0.09 * s.cut);
+    const y = TOP + u * len * cutCurve(s.t) * (1 - f * 0.09 * s.cut);
     const e = Math.pow(u, 1.2);
     let x = CX + s.t * half(y) * (1 + f * 0.24 * u * u + c * 0.1 * u);
     // frizz: the clump bends together, single hairs kink on their own
-    x += f * e * (4.5 * cl.a * Math.sin(u * cl.k * 21 + cl.ph + st.time * 0.6)
-      + 2.6 * s.a * Math.sin(u * 62 * s.k + s.ph2 - st.time));
-    if (s.fly) x += f * e * 28 * (s.t < 0 ? -1 : 1) * Math.sin(u * 2.6 + s.ph * 0.2);
+    // frizz: the body of the hair stays together, so keep the clump wave small
+    x += f * e * (3 * cl.a * Math.sin(u * cl.k * 21 + cl.ph + st.time * 0.6)
+      + 2.2 * s.a * Math.sin(u * 62 * s.k + s.ph2 - st.time));
+    // fine broken hairs spring out of it and kink on their own
+    if (s.fly) x += f * e * ((s.t < 0 ? -1 : 1) * 24 * Math.sin(u * 2.6 + s.ph * 0.2) + 3 * Math.sin(u * 90 * s.k + s.ph));
     x += c * e * 10 * Math.sin(u * cl.k * 30 + cl.ph);
     // sleek hair still flows a little, splits into pieces at the ends and tucks in at the cut
     const sleek = 1 - f;
     x += sleek * (s.flow * 1.1 * Math.sin(u * 3 + s.ph) + cl.sep * 2.4 * Math.pow(u, 4) - s.t * 7 * Math.pow(u, 7));
     x += Math.sin(st.time * 0.9 + s.t * 2) * u * u * 1.6;
+    // the comb gathers the hairs it passes through a little towards itself
+    const pull = st.pull;
+    if (pull && pull.amt > 0) {
+      const dy = y - pull.y, dx = pull.x - x, r2 = pull.r * 1.4;
+      if (dy > -80 && dy < 14 && Math.abs(dx) < r2) {
+        x += dx * 0.24 * pull.amt * (1 - Math.abs(dx) / r2) * Math.exp(-((dy + 24) ** 2) / 900);
+      }
+    }
     out[0] = x;
     out[1] = y + f * e * 3 * Math.sin(u * 47 * s.k + s.ph2);
   }
@@ -97,15 +118,18 @@
 
   function massPoints(st) {
     const f = st.f * 0.55, c = st.curl, steps = 30, out = [];
-    for (const sign of [-1, 1]) {
-      const side = [];
-      for (let j = 0; j <= steps; j++) {
-        const u = j / steps;
-        const y = TOP + 2 + u * len * (1 - f * 0.05);
-        side.push([CX + sign * half(y) * 0.95 * (1 + f * 0.24 * u * u + c * 0.1 * u), y]);
-      }
-      out.push(...(sign < 0 ? side : side.reverse()));
+    const edge = (sign, u) => {
+      const y = TOP + u * len * cutCurve(sign) * (1 - f * 0.05);
+      return [CX + sign * half(y) * 0.95 * (1 + f * 0.24 * u * u + c * 0.1 * u), y];
+    };
+    for (let j = 0; j <= steps; j++) out.push(edge(-1, (j / steps) ** 1.8));
+    // the curved hem between the two sides
+    const [lx, ly] = edge(-1, 1), [rx] = edge(1, 1);
+    for (let k = 1; k < 10; k++) {
+      const t = -1 + (2 * k) / 10;
+      out.push([lx + ((rx - lx) * k) / 10, ly + len * 0.028 * (1 - t * t) * (1 - f * 0.05)]);
     }
+    for (let j = steps; j >= 0; j--) out.push(edge(1, (j / steps) ** 1.8));
     return out;
   }
 
@@ -131,7 +155,7 @@
       `<path class="mass" d="${mass}" fill="url(#${id}-t0)"/><g class="strands" fill="none" stroke-linecap="round">`;
     strands.forEach((x) => {
       let d = '';
-      for (let j = 0; j <= pts; j++) { strandPoint(x, st, j / pts, p); d += (j ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }
+      for (let j = 0; j <= pts; j++) { strandPoint(x, st, uOf(j, pts), p); d += (j ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }
       s += `<path stroke="url(#${id}-t${x.tone})" stroke-width="${(x.w * 1.4).toFixed(2)}" d="${d}"/>`;
     });
     s += '</g>';
@@ -144,7 +168,7 @@
   function mount(canvas, opts) {
     const pts = opts.pts || 44, n = opts.n || 240;
     const strands = makeStrands(n, opts.seed || 11);
-    const fuzz = makeFuzz(opts.fuzz ?? 110, opts.seed || 11);
+    const fuzz = makeFuzz(opts.fuzz ?? 200, opts.seed || 11);
     const st = { f: opts.f ?? 1, curl: 0, time: 0, shine: 0.9, shineY: 0.2, reveal: opts.reveal ?? 1 };
     const ctx = canvas.getContext('2d');
     const P = pts + 1;
@@ -196,7 +220,7 @@
       for (let i = 0; i < n; i++) {
         const s = strands[i], o = i * P;
         for (let j = 0; j < P; j++) {
-          strandPoint(s, st, j / pts, pt);
+          strandPoint(s, st, uOf(j, pts), pt);
           xs[o + j] = pt[0]; ys[o + j] = pt[1];
         }
       }
@@ -346,6 +370,7 @@
       // comb strands near (x, y) in viewBox units, from the root down to y
       comb(x, y, reach, hold = 2.4) {
         const u = uAt(y);
+        st.pull = { x, y, r: reach, amt: 1 };
         if (y < TOP - 10 || y > HEM + 10) return false;
         let hit = false;
         strands.forEach((s) => {
@@ -366,6 +391,7 @@
       // combed strands frizz back up after a moment; returns true while anything is still moving
       relax(dt, speed) {
         let busy = false;
+        if (st.pull) st.pull.amt = Math.max(0, st.pull.amt - dt * 3);
         strands.forEach((s) => {
           if (s.comb <= 0) return;
           busy = true;
