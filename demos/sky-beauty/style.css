@@ -402,6 +402,90 @@ html:not(.js) .book-form { display: none; }
   .book-right .bstep[data-step="4"] { max-width: 30rem; }
 }
 
+/* ---------- three hero versions: html[data-hero] picks one ---------- */
+.hero-b, .hero-c { display: none; }
+html[data-hero='b'] .hero, html[data-hero='c'] .hero { display: none; }
+html[data-hero='b'] .hero-b, html[data-hero='c'] .hero-c { display: grid; }
+
+/* B: the salon's own photos, combed open */
+.hero-b {
+  grid-template-areas: 'photo' 'text' 'offer';
+  min-height: calc(100dvh - 60px); padding: 0 var(--gutter); gap: 0 3rem;
+}
+.hb-text { grid-area: text; align-self: center; padding: 1.4rem 0 2rem; }
+.hero-b .hero-title { font-size: clamp(2.6rem, 11vw, 6.6rem); padding-top: 0; }
+.hero-b .hero-lead { margin-top: 1rem; }
+.hb-photo { grid-area: photo; margin: 1rem 0 0; display: grid; gap: 0.6rem; justify-items: center; }
+.hb-frame {
+  position: relative; width: min(100%, 26rem); aspect-ratio: 3 / 4; max-height: 62dvh;
+  overflow: hidden; border-radius: var(--r); background: var(--ink); user-select: none; -webkit-user-select: none;
+}
+.hb-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.hb-after { clip-path: inset(0 0 calc(100% - var(--cut) * 1%) 0); }
+/* a soft shadow line where the comb is, so the edge reads as hair being combed, not a hard cut */
+.hb-frame::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 2.4rem; top: calc(var(--cut) * 1% - 1.2rem);
+  background: linear-gradient(transparent, rgb(0 0 0 / 0.28) 50%, transparent); pointer-events: none;
+  opacity: calc(min(1, var(--cut) * 0.2));
+}
+.hb-tag { position: absolute; left: 0.8rem; padding: 0.3rem 0.65rem; border-radius: var(--r); background: var(--paper); color: var(--ink); font-weight: 600; font-size: 0.85rem; z-index: 2; transition: opacity 250ms; }
+.hb-tag-after { top: 0.8rem; color: var(--rose); opacity: calc(min(1, var(--cut) * 0.08)); }
+.hb-tag-before { bottom: 0.8rem; opacity: calc(1 - min(1, max(0, var(--cut) - 85) * 0.08)); }
+.hb-comb {
+  position: absolute; left: -2%; right: -2%; top: calc(var(--cut) * 1%); transform: translateY(-40%);
+  z-index: 3; cursor: grab; touch-action: none; outline-offset: 2px;
+}
+.hb-comb svg { display: block; width: 100%; height: 2.6rem; filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.4)); }
+.hb-comb:active { cursor: grabbing; }
+.hb-grip {
+  position: absolute; right: 6%; top: 0; transform: translateY(-110%);
+  display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: var(--r);
+  background: var(--rose); color: #fff; font-weight: 700; box-shadow: 0 4px 10px rgb(0 0 0 / 0.25);
+}
+.hb-photo figcaption { color: var(--muted); font-size: 0.88rem; text-align: center; max-width: 26rem; }
+.hero-b .hero-offer { grid-area: offer; }
+@media (min-width: 900px) {
+  .hero-b { grid-template-areas: 'text photo' 'offer offer'; grid-template-columns: 1.1fr 0.9fr; grid-template-rows: 1fr auto; }
+  .hb-photo { align-self: center; margin: 1.5rem 0; }
+  .hb-frame { width: auto; height: min(74dvh, 46rem); max-height: none; }
+}
+
+/* C: dark, editorial, the flat iron does the work */
+.hero-c {
+  --hair-root: #1a110c; --hair-mid0: #4d3426; --hair-end0: #a07455; --hair-mid1: #604232; --hair-end1: #b68a62; --hair-mid2: #3b281e; --hair-end2: #7d5840;
+  --cape-top: #2e2622; --cape-bottom: #1d1815;
+  grid-template-areas: 'text' 'stage' 'offer';
+  min-height: calc(100dvh - 60px); padding: 0 var(--gutter); background: #16110e; color: var(--paper); overflow: clip;
+}
+html[data-hero='c'] .bar { background: color-mix(in srgb, #16110e 88%, transparent); color: var(--paper); border-color: rgb(255 255 255 / 0.1); }
+html[data-hero='c'] .bar .btn-ink { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+html[data-hero='c'] .bar .lang { color: var(--paper); border-color: rgb(255 255 255 / 0.25); }
+html[data-hero='c'] .brand-sub { color: rgb(255 255 255 / 0.6); }
+.hc-text { grid-area: text; padding: 1.2rem 0 0.5rem; position: relative; z-index: 2; }
+.hero-c .hero-title { font-size: clamp(2.6rem, 11vw, 7.4rem); padding-top: 0; }
+.hero-c .hero-title em { color: #f0a7bd; }
+.hero-c .hero-lead { color: rgb(255 255 255 / 0.72); margin-top: 1rem; }
+.hc-stage { grid-area: stage; position: relative; margin: 0; display: grid; justify-items: center; align-content: start; }
+.hc-hair { height: min(56dvh, 40rem); width: auto; aspect-ratio: 9 / 14; }
+.hc-iron { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 3; will-change: transform; }
+.hc-iron svg { display: block; width: 100%; overflow: visible; filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.55)); }
+.hc-plate { fill: #2b2b2e; stroke: #4a4a50; stroke-width: 1; }
+.hc-heat { fill: #f0a7bd; opacity: 0.85; }
+.hc-hinge { fill: #1e1e21; stroke: #4a4a50; }
+.hc-led { fill: #ff5a7e; }
+.hc-cord { fill: none; stroke: #1e1e21; stroke-width: 5; stroke-linecap: round; }
+.hc-steam { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: visible; }
+.hc-puff { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 70%); }
+.hc-cap { margin-top: 0.6rem; color: rgb(255 255 255 / 0.6); font-size: 0.9rem; }
+.hero-c .hero-offer { grid-area: offer; background: #16110e; border-color: rgb(255 255 255 / 0.12); color: var(--paper); }
+.hero-c .hero-offer b { color: #f0a7bd; }
+@media (min-width: 900px) {
+  .hero-c { grid-template-areas: 'text stage' 'offer offer'; grid-template-columns: 1.15fr 0.85fr; grid-template-rows: 1fr auto; }
+  .hc-text { align-self: center; padding-bottom: 3rem; }
+  .hc-stage { align-content: center; padding-top: 1rem; }
+  .hc-hair { height: min(74dvh, 46rem); }
+}
+
 /* reveal on scroll */
 .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
 .js .reveal.in { opacity: 1; transform: none; }

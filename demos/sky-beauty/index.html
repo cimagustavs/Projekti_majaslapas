@@ -7,7 +7,11 @@
   <meta name="description" content="Matu rekonstrukcija, keratīna taisnošana, frizieris, manikīrs, kosmetologs un solārijs Jelgavā. Tālr. 20 177 678.">
   <meta name="theme-color" content="#f3eee7">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141110'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-weight='900' font-size='20' text-anchor='middle' fill='%23f3eee7'%3ES%3C/text%3E%3C/svg%3E">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // three hero versions to compare: ?hero=a | b | c
+    (function (h) { var q = new URLSearchParams(location.search).get('hero'); if (q) h.dataset.hero = q; if (!/^[abc]$/.test(h.dataset.hero || '')) h.dataset.hero = 'a'; })(document.documentElement);
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -73,6 +77,88 @@
     </div>
 
     <a class="hero-offer" href="#rudens">
+      <span data-l="lv">Rudens akcija: keratīna taisnošana <b>100 €</b> jebkuram garumam, kods <b>RUDENS</b></span>
+      <span data-l="ru">Осенняя акция: кератиновое выпрямление <b>100 €</b> на любую длину, код <b>ОСЕНЬ</b></span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+
+
+  <!-- Hero B: the salon's own before/after photos, combed open -->
+  <section class="hero-b" id="top-b">
+    <div class="hb-text">
+      <h1 class="hero-title">
+      <span data-l="lv">Tavi <em>ideālie</em> mati šeit.</span>
+      <span data-l="ru">Твои <em>идеальные</em> волосы здесь.</span>
+    </h1>
+      <p class="hero-lead">
+        <span data-l="lv">Matu rekonstrukcija, keratīns, frizieris, manikīrs, kosmetologs un solārijs. Jelgavā, Svētes ielā 7.</span>
+        <span data-l="ru">Реконструкция волос, кератин, парикмахер, маникюр, косметолог и солярий. В Елгаве, Svētes iela 7.</span>
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-ink" href="#pieraksts"><span data-l="lv">Pierakstīties online</span><span data-l="ru">Записаться онлайн</span></a>
+        <a class="btn btn-line" href="tel:+37120177678"><span data-l="lv">Zvanīt 20 177 678</span><span data-l="ru">Позвонить 20 177 678</span></a>
+      </div>
+    </div>
+    <figure class="hb-photo">
+      <div class="hb-frame" style="--cut: 0">
+        <img class="hb-before" src="img/pirms.webp" alt="Pirms: tumši mati, sausi un pūkaini" width="840" height="1120">
+        <img class="hb-after" src="img/pec.webp" alt="Pēc: tie paši mati gludi un spīdīgi" width="840" height="1120">
+        <span class="hb-tag hb-tag-after"><span data-l="lv">Pēc</span><span data-l="ru">После</span></span>
+        <span class="hb-tag hb-tag-before"><span data-l="lv">Pirms</span><span data-l="ru">До</span></span>
+        <div class="hb-comb" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Ķemme: velc uz leju, lai redzētu rezultātu">
+          <svg viewBox="0 0 120 40" preserveAspectRatio="none"><path class="comb-teeth" d="M7 15.5v21 M12 15.5v19 M17 15.5v21 M22 15.5v19 M27 15.5v21 M32 15.5v19 M37 15.5v21 M42 15.5v19 M47 15.5v21 M52 15.5v19 M57 15.5v21 M62 15.5v19 M67 15.5v21 M72 15.5v19 M77 15.5v21 M82 15.5v19 M87 15.5v21 M92 15.5v19 M97 15.5v21 M102 15.5v19 M107 15.5v21 M112 15.5v19"/><path class="comb-body" d="M5 5h110a3 3 0 0 1 3 3v8H2V8a3 3 0 0 1 3-3z"/><path class="comb-shine" d="M6 8.5h108"/></svg>
+          <span class="hb-grip" aria-hidden="true">↕</span>
+        </div>
+      </div>
+      <figcaption>
+        <span data-l="lv">Viena kliente, kadri no salona Instagram video. Velc ķemmi uz leju.</span>
+        <span data-l="ru">Одна клиентка, кадры из видео салона в Instagram. Тяни расчёску вниз.</span>
+      </figcaption>
+    </figure>
+    <a class="hero-offer" href="#rudens">
+      <span data-l="lv">Rudens akcija: keratīna taisnošana <b>100 €</b> jebkuram garumam, kods <b>RUDENS</b></span>
+      <span data-l="ru">Осенняя акция: кератиновое выпрямление <b>100 €</b> на любую длину, код <b>ОСЕНЬ</b></span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <!-- Hero C: dark, a flat iron slides down the hair as you scroll -->
+  <section class="hero-c" id="top-c">
+    <div class="hc-text">
+      <h1 class="hero-title">
+      <span data-l="lv">Tavi <em>ideālie</em> mati šeit.</span>
+      <span data-l="ru">Твои <em>идеальные</em> волосы здесь.</span>
+    </h1>
+      <p class="hero-lead">
+        <span data-l="lv">Matu rekonstrukcija, keratīns, frizieris, manikīrs, kosmetologs un solārijs. Jelgavā, Svētes ielā 7.</span>
+        <span data-l="ru">Реконструкция волос, кератин, парикмахер, маникюр, косметолог и солярий. В Елгаве, Svētes iela 7.</span>
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-paper" href="#pieraksts"><span data-l="lv">Pierakstīties online</span><span data-l="ru">Записаться онлайн</span></a>
+        <a class="btn btn-line-paper" href="tel:+37120177678"><span data-l="lv">Zvanīt 20 177 678</span><span data-l="ru">Позвонить 20 177 678</span></a>
+      </div>
+    </div>
+    <figure class="hc-stage">
+      <canvas class="hair hc-hair" id="hc-canvas" width="360" height="560" role="img" aria-label="Tumši mati, ko iztaisno matu taisnotājs"></canvas>
+      <div class="hc-iron" aria-hidden="true">
+        <svg viewBox="0 0 300 60">
+          <rect class="hc-plate" x="6" y="8" width="250" height="18" rx="3"/>
+          <rect class="hc-plate" x="6" y="34" width="250" height="18" rx="3"/>
+          <rect class="hc-heat" x="12" y="24" width="238" height="3" rx="1.5"/>
+          <rect class="hc-heat" x="12" y="33" width="238" height="3" rx="1.5"/>
+          <rect class="hc-hinge" x="252" y="4" width="34" height="52" rx="6"/>
+          <circle class="hc-led" cx="270" cy="18" r="3"/>
+          <path class="hc-cord" d="M286 30c14 0 10 26 14 30"/>
+        </svg>
+      </div>
+      <div class="hc-steam" aria-hidden="true"></div>
+      <figcaption class="hc-cap">
+        <span data-l="lv">Ritini lejā, un taisnotājs dara savu.</span>
+        <span data-l="ru">Листай вниз, и утюжок сделает своё дело.</span>
+      </figcaption>
+    </figure>
+    <a class="hero-offer hc-offer" href="#rudens">
       <span data-l="lv">Rudens akcija: keratīna taisnošana <b>100 €</b> jebkuram garumam, kods <b>RUDENS</b></span>
       <span data-l="ru">Осенняя акция: кератиновое выпрямление <b>100 €</b> на любую длину, код <b>ОСЕНЬ</b></span>
       <span aria-hidden="true">→</span>
@@ -331,5 +417,6 @@
 
 <script src="hair.js"></script>
 <script src="script.js"></script>
+<script src="heroes.js"></script>
 </body>
 </html>

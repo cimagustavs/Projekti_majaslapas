@@ -168,7 +168,7 @@
     function readColors() {
       const cs = getComputedStyle(canvas);
       const v = (k) => cs.getPropertyValue(k).trim();
-      colors = { root: v('--hair-root'), mid: [v('--hair-mid0'), v('--hair-mid1'), v('--hair-mid2')], end: [v('--hair-end0'), v('--hair-end1'), v('--hair-end2')] };
+      colors = { cape: [v('--cape-top') || '#26201d', v('--cape-bottom') || '#0d0b0a'], root: v('--hair-root'), mid: [v('--hair-mid0'), v('--hair-mid1'), v('--hair-mid2')], end: [v('--hair-end0'), v('--hair-end1'), v('--hair-end2')] };
       grads = null;
     }
 
@@ -182,7 +182,7 @@
       const under = ctx.createLinearGradient(0, TOP, 0, HEM);
       under.addColorStop(0, rgba(colors.root, 1)); under.addColorStop(0.62, rgba(colors.mid[2], 0.95)); under.addColorStop(0.92, rgba(colors.mid[2], 0));
       const cape = ctx.createLinearGradient(0, 404, 0, 600);
-      cape.addColorStop(0, '#26201d'); cape.addColorStop(1, '#0d0b0a');
+      cape.addColorStop(0, colors.cape[0]); cape.addColorStop(1, colors.cape[1]);
       // roundness: darker towards both sides of the head
       const side = ctx.createLinearGradient(CX - 150, 0, CX + 150, 0);
       side.addColorStop(0, 'rgba(15,8,4,0.55)'); side.addColorStop(0.3, 'rgba(15,8,4,0.08)');
