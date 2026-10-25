@@ -197,22 +197,26 @@ html:not(.js) .lab { display: none; }
 .work { padding: clamp(4rem, 10vw, 8rem) var(--gutter); display: grid; gap: 2rem; }
 .work-head { display: grid; gap: 1rem; }
 .work-head p { color: var(--ink-2); }
-.pair { display: grid; gap: 1.5rem; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; max-width: 60rem; }
 .pp { margin: 0; display: grid; gap: 0.6rem; align-content: start; }
-/* the photos come from phone screenshots: never show them bigger than they are */
-.pp img { width: 100%; max-width: 317px; aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
-.pp > img { width: 75%; }
-.pp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; max-width: 650px; }
-.pp-label { font: 800 clamp(2rem, 6vw, 2.8rem)/1 var(--display); font-optical-sizing: none; font-variation-settings: 'opsz' 11; }
+.pp img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--r); }
+.pp-label { font: 800 clamp(2.3rem, 7vw, 3.4rem)/1 var(--display); font-optical-sizing: none; font-variation-settings: 'opsz' 11; }
 .pp-after .pp-label { color: var(--rose); }
 .pp figcaption { color: var(--muted); font-size: 0.92rem; line-height: 1.3; }
 .pp-arrow { display: none; }
+/* these two come from phone screenshots: never show them bigger than they are */
+.more { display: flex; flex-wrap: wrap; align-items: end; gap: 0.75rem; }
+.more p { flex-basis: 100%; font-weight: 600; }
+.more img { width: min(44vw, 190px); aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
 .js .pp-after.reveal { transition-delay: 350ms; }
 
 @media (min-width: 900px) {
-  .pair { grid-template-columns: minmax(0, 317px) auto minmax(0, 650px); justify-content: start; align-items: center; column-gap: 2.5rem; }
-  .pp > img { width: 100%; }
-  .pp-arrow { display: block; font-size: 2rem; color: var(--rose); }
+  .work { grid-template-columns: minmax(0, 58rem) minmax(0, 13rem); grid-template-areas: 'head head' 'pair more'; align-items: end; column-gap: 3rem; justify-content: start; }
+  .work-head { grid-area: head; }
+  .pair { grid-area: pair; grid-template-columns: 1fr auto 1fr; align-items: center; column-gap: 1.5rem; }
+  .more { grid-area: more; padding-bottom: 2.2rem; }
+  .more img { width: 100%; }
+  .pp-arrow { display: block; font-size: 2rem; color: var(--rose); padding-top: 3rem; }
 }
 
 /* services */
