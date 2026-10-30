@@ -2,7 +2,7 @@
 
 Izaicinājums (SCHWENK, RTU, Green Liberty): *Kā panākt, lai būvniecības atkritumi tiktu izmantoti atbilstoši aprites ekonomikas principiem?*
 
-Lietotnes nosaukums: **Būvgružu birža**.
+Lietotnes nosaukums: **Būvgružu birža**. Komanda: **Alanguka**.
 
 ## Laika plāns — 3 minūtes, 5 slaidi (Canva)
 
@@ -100,12 +100,12 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 ### Slaids 3 — Kā tas darbojas (0:15) · runā: Gustavs
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
 
-### Demo (1:00) · runā: Gustavs
+### Video no lietotnes (1:00) · Gustavs komentē video
 > Šī ir Anna, viņa remontē māju. *[jau pieslēgta — reģistrāciju nerādīt]* Viņai ir vecie grīdas dēļi un betona lauskas. Viņa nofotografē materiālu, izvēlas veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē Anna redz tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaka nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir Annas kontā. Gruži nonāk pārstrādē, nevis mežā.
 
 Demo noteikumi:
-- Konts jau pieslēgts, dati jau sagatavoti — neko nerakstīt dzīvajā.
-- Iepriekš ierakstīt demo video. Ja lietotne uzkaras — rāda video, nevis labo.
+- Demo ir īss video no lietotnes (ievietots 3. slaidā Canva), nevis dzīvs demo.
+- Video bez skaņas, ne garāks par 1:00; Gustavs komentē pa virsu. Izmēģināt sinhronu runu ar video.
 - Atlīdzības aprēķinam lietotnē izmantot Anetes formulu un cenas (`ekonomika.md`), nevis izdomātus skaitļus.
 
 ### Slaids 4 — Ekonomika (0:30) · runā: Gustavs
@@ -140,6 +140,8 @@ Demo noteikumi:
    > Pieņem tikai sašķirotas kategorijas, punktā materiālu pārbauda un sver. Nepareizi sašķirots — nav atlīdzības.
 6. **Ko darīsiet ar azbesta šīferi, krāsām, ģipškartonu?**
    > Azbestu, krāsas, ķīmiju un impregnētu koku nepieņemam — lietotne norāda, kur tos nodot legāli.
+6b. **Jūsu foto ir azbesta šīferis — bet jūs teicāt, ka šīferi nepieņemat. Kā lietotne atrisina tieši šo kaudzi?**
+   > Šīferi depozītā nepieņemam, jo tas ir bīstams. Bet lietotne parāda, kur to nodot legāli, un tieši tāpēc tas ir svarīgi: tas, kas nonāk mežā, nav tikai materiāls, ko varētu pārstrādāt — tas ir arī bīstams. Mēs padarām legālo ceļu redzamu visiem būvgružiem, arī tiem, par kuriem atlīdzības nav.
 6a. **Ko ar to iegūst SCHWENK?**
    > Degošās frakcijas (koksne) der kā alternatīvais kurināmais, sacietējusi java tiek drupināta kopā ar betonu. ⚠️ Skaitli "98 % no kurināmā" teikt tikai, ja Anetei ir avots.
 

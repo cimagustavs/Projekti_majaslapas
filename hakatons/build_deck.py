@@ -98,7 +98,7 @@ for i, (big, small) in enumerate([("~½", "no zemes dzīlēs iegūtajiem resursi
     text(s, x, 5.55, 2.9, 0.9, small, size=14, color=PALE)
 text(s, 0.7, 6.75, 6.5, 0.4, "Avots: hakatona izaicinājums (SCHWENK, RTU, Green Liberty)",
      size=10, color=PALE)
-placeholder(s, 7.75, 0.6, 4.95, 4.6, "FOTO\nbūvgruži mežā")
+s.shapes.add_picture("hakatons/foto-mezs.jpg", Inches(7.75), Inches(0.6), Inches(4.95), Inches(4.6))
 rect(s, 7.75, 5.45, 4.95, 1.45, WHITE, MSO_SHAPE.ROUNDED_RECTANGLE)
 text(s, 8.05, 5.6, 4.4, 1.2,
      [("„Izvedam būvgružus lēti!”", {"size": 20, "bold": True, "font": HEAD, "color": DARK}),
@@ -154,10 +154,10 @@ for i, (h, sub) in enumerate(steps):
          align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
     text(s, 1.8, y - 0.02, 5.2, 0.5, h, size=22, color=INK, font=HEAD, bold=True)
     text(s, 1.8, y + 0.45, 5.2, 0.4, sub, size=15, color=MUTED)
-for i in range(3):
-    placeholder(s, 7.5 + i * 1.85, 1.0, 1.65, 5.9, f"Ekrāns {i + 1}")
+rect(s, 8.3, 0.6, 3.6, 6.3, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
+placeholder(s, 8.45, 0.75, 3.3, 6.0, "VIDEO\nno lietotnes\n(ievelc Canva)")
 notes(s, "0:15 — Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu "
-         "kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.\n\n[DEMO 1:00]")
+         "kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.\n\n[VIDEO 1:00 — Gustavs komentē]")
 
 # 4 — Ekonomika
 s = prs.slides.add_slide(BLANK)
@@ -199,7 +199,7 @@ text(s, 0.7, 1.6, 11.9, 2.6, "Lai būvgruži atgrieztos būvniecībā, nevis me�
      size=48, color=WHITE, font=HEAD, bold=True, align=PP_ALIGN.CENTER, spacing=1.0)
 text(s, 0.7, 4.3, 11.9, 0.7, "Būvgružu birža", size=28, color=PALE, font=HEAD, bold=True,
      align=PP_ALIGN.CENTER)
-text(s, 0.7, 5.0, 11.9, 0.5, "Komandas nosaukums", size=18, color=PALE, align=PP_ALIGN.CENTER)
+text(s, 0.7, 5.0, 11.9, 0.5, "Komanda Alanguka", size=18, color=PALE, align=PP_ALIGN.CENTER)
 text(s, 0.7, 6.2, 11.9, 0.6, "Paldies! Jautājumi?", size=22, color=WHITE, align=PP_ALIGN.CENTER)
 notes(s, "0:10 — Būvgružu birža — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! "
          "Labprāt atbildēsim uz jautājumiem.")
