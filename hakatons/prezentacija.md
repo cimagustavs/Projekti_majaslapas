@@ -11,7 +11,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 | 1 | Problēma + kāpēc tā notiek (apvienots) | 0:35 |
 | 2 | Risinājums: depozīta sistēma būvgružiem | 0:30 |
 | 3 | Kā tas darbojas → **demo** | 0:15 + 1:00 |
-| 4 | Kāpēc tas strādās (aprite, finansējums, krāpšana, pilots) | 0:30 |
+| 4 | Ekonomika: cik var maksāt (Anetes aprēķini) | 0:30 |
 | 5 | Noslēgums | 0:10 |
 
 ~130 vārdi minūtē → visa runa ≤ ~390 vārdi. Zemāk esošie runas teksti ir jāsaīsina uz pusi. Detalizētās atbildes no slaida 6 paliek jautājumu daļai, nevis runai.
@@ -44,14 +44,14 @@ Lietotnes nosaukums: **Būvgružu birža**.
 ## 2. stunda — Risinājums un kā tas darbojas (slaidi 2–3)
 
 **Risinājuma formulējums:**
-> Būvgružu birža ir depozīta sistēma būvgružiem. Cilvēks sašķiro gružus, nodod tos depozīta punktā un saņem atlīdzību. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
+> Būvgružu birža ir depozīta sistēma būvgružiem. Cilvēks sašķiro gružus un nodod tos bez maksas; par vērtīgiem materiāliem (koksni) saņem naudu, par pārējiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
 
 **Kā tas atrisina katru cēloni:**
 | Cēlonis | Būvgružu birža risinājums |
 |---|---|
-| Dārgi | sašķirotus gružus pieņem bez maksas + atlīdzība |
+| Dārgi | sašķirotus gružus pieņem bez maksas — tas ir lielākais ieguvums |
 | Sarežģīti | lietotne parāda, kā šķirot un kur ir tuvākais punkts; var pieteikt pārvadātāju |
-| Nav ieguvuma | punkti, atlaides būvmateriālu veikalos vai nauda |
+| Nav ieguvuma | nauda par koksni (15–30 €/t), punkti, atlaides vai šķembas par minerālajiem materiāliem |
 
 **Kā tas darbojas — iedzīvotājs (= Gustava ekrāni):**
 1. Reģistrējas lietotnē.
@@ -64,7 +64,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 **Pašvaldība:** mazāk izgāztuvju mežos, dati par to, kur rodas būvgruži.
 
 **Runas teksts — slaids 2 (~55 vārdi, 0:30):**
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 **Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
@@ -79,8 +79,8 @@ Katram dalībniekam pajautāt trīs lietas:
 | Dalībnieks | Ko uztaisīja | Kur prezentācijā |
 |---|---|---|
 | Gustavs | lietotne: reģistrācija, materiāla pieteikšana, karte, atlīdzība | slaids 3 + demo |
-| 2. dalībnieks | _jāaizpilda_ | |
-| 3. dalībnieks | _jāaizpilda_ | |
+| Alisa | izpēte: būvatkritumu apsaimniekošana Latvijā un ārvalstīs, statistika, pārstrādes metodes, uzņēmumu piemēri, avoti (Word dokuments) | slaids 1 (fakti) + jautājumi |
+| Anete | ekonomika: atlīdzības formula, cenas pa materiāliem, uzņēmumu peļņa (sk. `ekonomika.md`) | slaids 4 + lietotnes atlīdzības aprēķins + jautājumi |
 | 4. dalībnieks (prezentācija) | problēma, risinājums, runa, jautājumi | slaidi 1, 2, 4, 5 |
 
 Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis jauns slaids.
@@ -95,20 +95,22 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 > Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 ### Slaids 3 — Kā tas darbojas (0:15) · runā: Gustavs
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
 
 ### Demo (1:00) · runā: Gustavs
-> Šī ir Anna, viņa remontē vannasistabu. *[jau pieslēgta — reģistrāciju nerādīt]* Viņa nofotografē vecās flīzes un betonu, izvēlas veidu un daudzumu — desmit maisi. Lietotne uzreiz parāda, cik punktus viņa saņems. *[atver karti]* Kartē Anna redz tuvāko nodošanas punktu un piesaka nodošanu sestdien. Ja nav piekabes — var pieteikt pārvadātāju. *[atver atlīdzību]* Punktā gružus nosver, un Annas kontā ir punkti — atlaide būvmateriālu veikalā. Gruži nonāk pārstrādē, nevis mežā.
+> Šī ir Anna, viņa remontē māju. *[jau pieslēgta — reģistrāciju nerādīt]* Viņai ir vecie grīdas dēļi un betona lauskas. Viņa nofotografē materiālu, izvēlas veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē Anna redz tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaka nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir Annas kontā. Gruži nonāk pārstrādē, nevis mežā.
 
 Demo noteikumi:
 - Konts jau pieslēgts, dati jau sagatavoti — neko nerakstīt dzīvajā.
 - Iepriekš ierakstīt demo video. Ja lietotne uzkaras — rāda video, nevis labo.
+- Atlīdzības aprēķinam lietotnē izmantot Anetes formulu un cenas (`ekonomika.md`), nevis izdomātus skaitļus.
 
-### Slaids 4 — Kāpēc tas strādās (0:30) · runā: Gustavs
-> Kāpēc tas strādās? Pirmkārt, tas ir aprites cikls: būvgruži nonāk depozīta punktā, tiek pārstrādāti un atgriežas būvniecībā kā jauns materiāls. Otrkārt, atlīdzību finansē tie, kas iegūst: pārstrādātāji, būvmateriālu veikali un pašvaldības, kas jau tagad maksā par sakopšanu. Treškārt, krāpšanu novēršam ar svēršanu, pārbaudi un limitu privātpersonām. Sākt gribam ar pilotprojektu vienā pašvaldībā.
+### Slaids 4 — Ekonomika (0:30) · runā: Gustavs
+**Uz slaida:** pārstrādātāju peļņa ~1,5–2 % · koksne 15–30 €/t · betons 1–3 €/t · ķieģeļi 0,5–1,5 €/t · formula: svars × bāzes cena × kvalitāte (A=1, B=0,3–0,5, C=0)
+> Mēs to aprēķinājām. Pārstrādātāju peļņa ir tikai ap diviem procentiem, tāpēc godīgi: par betonu lielu naudu neviens nemaksās. Reālu naudu maksā par koksni — līdz 30 eiro tonnā. Galvenais ieguvums cilvēkam ir bezmaksas pieņemšana, uzņēmumam — tīrs materiāls bez šķirošanas izmaksām. Lietotnes uzturēšanu sedz pašvaldība, kas ietaupa uz izgāztuvju sakopšanu. Sākt gribam ar pilotprojektu vienā pašvaldībā.
 
 ### Slaids 5 — Noslēgums (0:10) · runā: Gustavs
 > Būvgružu birža — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
@@ -121,11 +123,15 @@ Demo noteikumi:
 
 ### Nauda (visbīstamākie)
 1. **Šodien pieņēmēji paši iekasē maksu par būvgružiem. Kāpēc uzņēmums lai maksā jums?**
-   > Uzņēmums nemaksā par jauktiem gružiem — tikai par tīru, sašķirotu materiālu, kas aizstāj jaunu izejvielu. Turklāt atlīdzība lielākoties ir punkti un atlaides, nevis nauda.
+   > Pareizi — un tāpēc par betonu naudu nesolām. Minerālos materiālus pieņem bez maksas vai atlīdzina natūrā (šķembas, grunts). Naudu maksā tikai par koksni, kur vērtība ir ~40–60 €/t. Uzņēmums ietaupa uz šķirošanu, jo saņem tīru materiālu.
 2. **Kas finansē atlīdzību? Kāds ir biznesa modelis?**
-   > Trīs avoti: pārstrādātājs (sašķirots materiāls ir vērtīgāks), būvmateriālu veikali (atlaides atved klientu atpakaļ), pašvaldība (jau tagad maksā par izgāztuvju sakopšanu). Pilotprojektā pārbaudīsim, kāda proporcija strādā.
+   > Lietotne nepelna — tā ir bezmaksas starpnieks. Pārstrādātājs maksā tieši cilvēkam. Uzturēšanu (serveris, karte) sedz pašvaldība, ES projekts vai partneruzņēmumi kā daļu no saviem vides mērķiem. Pašvaldībai tas atmaksājas, jo tā ietaupa uz izgāztuvju sakopšanu.
 3. **Cik tas maksās un kad atmaksāsies?**
-   > Godīgi — precīzus skaitļus vēl nezinām. Tieši to noteiks pilotprojekts vienā pašvaldībā ar vienu pārstrādātāju.
+   > Mēs aprēķinājām pēc uzņēmumu publiskajiem finanšu datiem: SIA Būvgružu Pārstrāde 2024. gadā — apgrozījums 869 tūkst. €, peļņa 13,7 tūkst. € (~1,6 %). Tāpēc atlīdzība ir piesardzīga. Cenas pa materiāliem ir aplēses — tās pārbaudīsim ar uzņēmumiem pilotprojektā.
+3a. **300 kg betona dod ~0,30–0,90 € — mazāk par degvielu. Kāpēc lai kāds brauc?**
+   > Lietotne rāda tikai punktus, kur atlīdzība > degviela. Kombinējot ar koksni (300 kg → 4,5–9 €), brauciens atmaksājas. Un galvenais — cilvēks ietaupa būvgružu izvešanas maksu.
+3b. **Tā nav īsta depozīta sistēma — pudelēm depozītu samaksā pirkšanas brīdī.**
+   > Pareizi, mēs aizņemamies ideju — atlīdzība par nodošanu. Nākamais solis varētu būt depozīts būvmateriālu cenā, bet tam vajag likuma izmaiņas.
 
 ### Krāpšana un kvalitāte
 4. **Būvfirmas izliksies par privātpersonām un saņems naudu par to, par ko likums liek maksāt pašām?**
@@ -133,7 +139,9 @@ Demo noteikumi:
 5. **Cilvēki vedīs piesārņotu materiālu vai sajauks ar grunti, lai sver vairāk.**
    > Pieņem tikai sašķirotas kategorijas, punktā materiālu pārbauda un sver. Nepareizi sašķirots — nav atlīdzības.
 6. **Ko darīsiet ar azbesta šīferi, krāsām, ģipškartonu?**
-   > Bīstamos atkritumus, piemēram azbestu, nepieņemam kā depozītu — lietotne norāda, kur tos nodot legāli.
+   > Azbestu, krāsas, ķīmiju un impregnētu koku nepieņemam — lietotne norāda, kur tos nodot legāli.
+6a. **Ko ar to iegūst SCHWENK?**
+   > Degošās frakcijas (koksne) der kā alternatīvais kurināmais, sacietējusi java tiek drupināta kopā ar betonu. ⚠️ Skaitli "98 % no kurināmā" teikt tikai, ja Anetei ir avots.
 
 ### Vai cilvēki to tiešām lietos
 7. **Vai cilvēks, kurš izmet gružus mežā, vispār lejupielādēs lietotni?**
