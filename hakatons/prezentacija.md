@@ -67,7 +67,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 > Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 **Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
-> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
+> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
 
 ## 3. stunda — Komandas ieguldījums
 
@@ -87,16 +87,18 @@ Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis
 
 ---
 
-## 4. stunda — Pilns runas teksts (3:00)
+## 4. stunda — Pilns runas teksts (3:00) — visu runā Gustavs
 
-### Slaids 1 — Problēma (0:35) · runā: prezentētājs
+Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runāt un rādīt demo bez pauzēm.
+
+### Slaids 1 — Problēma (0:35) · runā: Gustavs
 > Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
-### Slaids 2 — Risinājums (0:30) · runā: prezentētājs
+### Slaids 2 — Risinājums (0:30) · runā: Gustavs
 > Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
-### Slaids 3 — Kā tas darbojas (0:15) · runā: prezentētājs
-> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
+### Slaids 3 — Kā tas darbojas (0:15) · runā: Gustavs
+> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
 
 ### Demo (1:00) · runā: Gustavs
 > Šī ir Anna, viņa remontē vannasistabu. *[jau pieslēgta — reģistrāciju nerādīt]* Viņa nofotografē vecās flīzes un betonu, izvēlas veidu un daudzumu — desmit maisi. Lietotne uzreiz parāda, cik punktus viņa saņems. *[atver karti]* Kartē Anna redz tuvāko nodošanas punktu un piesaka nodošanu sestdien. Ja nav piekabes — var pieteikt pārvadātāju. *[atver atlīdzību]* Punktā gružus nosver, un Annas kontā ir punkti — atlaide būvmateriālu veikalā. Gruži nonāk pārstrādē, nevis mežā.
@@ -105,10 +107,10 @@ Demo noteikumi:
 - Konts jau pieslēgts, dati jau sagatavoti — neko nerakstīt dzīvajā.
 - Iepriekš ierakstīt demo video. Ja lietotne uzkaras — rāda video, nevis labo.
 
-### Slaids 4 — Kāpēc tas strādās (0:30) · runā: prezentētājs
+### Slaids 4 — Kāpēc tas strādās (0:30) · runā: Gustavs
 > Kāpēc tas strādās? Pirmkārt, tas ir aprites cikls: būvgruži nonāk depozīta punktā, tiek pārstrādāti un atgriežas būvniecībā kā jauns materiāls. Otrkārt, atlīdzību finansē tie, kas iegūst: pārstrādātāji, būvmateriālu veikali un pašvaldības, kas jau tagad maksā par sakopšanu. Treškārt, krāpšanu novēršam ar svēršanu, pārbaudi un limitu privātpersonām. Sākt gribam ar pilotprojektu vienā pašvaldībā.
 
-### Slaids 5 — Noslēgums (0:10) · runā: prezentētājs
+### Slaids 5 — Noslēgums (0:10) · runā: Gustavs
 > Būvgružu birža — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
 
 ### Mēģinājums
