@@ -64,7 +64,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 **Pašvaldība:** mazāk izgāztuvju mežos, dati par to, kur rodas būvgruži.
 
 **Runas teksts — slaids 2 (~55 vārdi, 0:30):**
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 **Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
@@ -93,7 +93,7 @@ Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis
 > Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: prezentētājs
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 ### Slaids 3 — Kā tas darbojas (0:15) · runā: prezentētājs
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
