@@ -110,7 +110,7 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 5. Pēc nodošanas — atgriezeniskā saite: "No meža izglābti 300 kg".
 
 ### Video no lietotnes (1:00) · Gustavs komentē video
-> Šī ir Anna, viņa remontē māju. *[jau pieslēgta — reģistrāciju nerādīt]* Viņai ir vecie grīdas dēļi un betona lauskas. Viņa nofotografē materiālu, izvēlas veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē Anna redz tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaka nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir Annas kontā. Gruži nonāk pārstrādē, nevis mežā.
+> *[jau pieslēgta — reģistrāciju nerādīt]* Lūk, Annas telefons. Viņai ir vecie grīdas dēļi un betona lauskas. Viņa nofotografē materiālu, izvēlas veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē Anna redz tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaka nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir Annas kontā. Gruži nonāk pārstrādē, nevis mežā.
 
 Demo noteikumi:
 - Demo ir īss video no lietotnes (ievietots 3. slaidā Canva), nevis dzīvs demo.
