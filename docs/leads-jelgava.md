@@ -8,8 +8,8 @@ Who might buy a demo website plus marketing from Kārlis and Gustavs.
 
 | Business | Visited | Result | Next step |
 |---|---|---|---|
-| Lotes Spots | 29 Oct | Liked the demo; 350 € site + 50 €/month upkeep (first-client price) | Send the offer (`docs/piedavajums-sablons.md`) with a 50 % deposit by 1 Nov |
-| O Sole | 29 Oct | Liked it; 350 € + 50 €/month (first-client price). **No demo built yet** | Find out what it is, then send the offer; build only after the deposit |
+| Lotes Spots | 29 Oct | **Agreed**: site 350 € + 50 €/month upkeep, **plus marketing (scope and price not yet defined)** | Send the offer with a 50 % deposit; define the marketing package in writing; get the real menu, hours and photos |
+| Sole Mio | 29 Oct | **Agreed**: site 350 € + 50 €/month upkeep (first-client price). No demo built yet | Send the offer with a 50 % deposit; collect menu, hours, logo and photos; build after the deposit |
 | Clementine | 29 Oct | Liked it, but hasn't looked properly and has to talk with his wife | Send the preview video so he can show her, and agree a call-back date |
 | SKY BEAUTY | not yet | Meeting to be set for Mon 2 Nov | Bring versions A, B and C; ask for real hours, prices and their booking system |
 
