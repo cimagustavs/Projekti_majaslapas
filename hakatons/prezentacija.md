@@ -100,7 +100,7 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 > Mūsu risinājums ir Būvgružu birža, aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam: nodod un saņem. Cilvēks nodod gružus bez maksas un saņem atlīdzību: par koksni naudu, par betonu punktus. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
 
 ### Slaids 3 — Lietotāja ceļš (0:15) · runā: Gustavs
-> Paskatīsimies ar lietotāja acīm. Tu nofotografē gružus un uzreiz redzi, cik saņemsi, vēl pirms reģistrācijas. Kartē redzi tikai tos punktus, kur braukt atmaksājas. Parādīšu.
+> Paskatīsimies ar lietotāja acīm. Izvēlies materiālu, ieraksti svaru un pilsētu, un uzreiz redzi, cik saņemsi un kur ir tuvākais punkts. Bez reģistrācijas. Parādīšu.
 
 **UX principi lietotnei:**
 1. Atlīdzība redzama **pirms** reģistrācijas — reģistrācija tikai saņemot atlīdzību.
@@ -109,8 +109,8 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 4. Kartē pie katra punkta: atlīdzība mīnus degviela.
 5. Pēc nodošanas — atgriezeniskā saite: "No meža izglābti 300 kg".
 
-### Video no lietotnes (1:00) · Gustavs komentē video
-> [jau pieslēgts, reģistrāciju nerādīt] Lūk, lietotne. Man ir vecie grīdas dēļi un betona lauskas. Es nofotografēju materiālu, izvēlos veidu un daudzumu. Lietotne uzreiz parāda atlīdzību: par koksni nauda, par betonu punkti. [atver karti] Kartē redzu tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaku nodošanu. [atver atlīdzību] Punktā gružus nosver, un atlīdzība ir manā kontā. Gruži nonāk pārstrādē, nevis mežā.
+### Video no lietotnes (~0:43, `demo-video.mp4`, ierakstīts no Gustava prototipa) · Gustavs komentē video
+> Izvēlos būvkoksni, 300 kilogrami, Jelgava. Uzreiz redzu: 4 eiro, tuvākais punkts Jelgavā. Kartē redzu, kur tas ir. Ja nevaru atvest pats, piesaku savākšanu: materiāls, daudzums, pilsēta, kontakts. Nosūtīts, un uzņēmums atbrauks pats.
 
 Demo noteikumi:
 - Demo ir īss video no lietotnes (ievietots 3. slaidā Canva), nevis dzīvs demo.
@@ -122,7 +122,7 @@ Demo noteikumi:
 
 **Galvenā funkcija (runā, ne uz slaida):** lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas.
 
-> Šodien cilvēkam ir četras iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāved pašam, un nekas par to netiek. CleanR apmaiņas punkts Stopiņos jau pieņem tīrus būvgružus bez maksas un dod šķembas, bet tas ir viens punkts, un par to maz kurš zina. Būvgružu birža savieno šādus punktus vienā kartē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas.
+> Šodien cilvēkam ir četras iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāved pašam, un nekas par to netiek. CleanR apmaiņas punkts Stopiņos jau pieņem tīrus būvgružus bez maksas un dod šķembas, bet tas ir viens punkts, un par to maz kurš zina. Būvgružu birža savieno šādus punktus vienā kartē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un kur ir tuvākais punkts.
 
 > ⚠️ Salīdzinājums ir vispārīgs (kategorijas, ne konkrēti uzņēmumi). Ja Alisas izpētē ir nosaukti konkurenti (piem., lietotnes vai platformas ārvalstīs), pievienot tos jautājumu atbildēm.
 

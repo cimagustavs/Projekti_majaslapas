@@ -136,25 +136,31 @@ notes(s, '0:30. Mūsu risinājums ir Būvgružu birža, aprites ekonomikas platf
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
 kicker(s, 0.7, 0.6, "Lietotāja pieredze")
-text(s, 0.7, 1.0, 7.2, 0.9, "Lietotāja ceļš", size=40, color=DARK, font=HEAD, bold=True)
-text(s, 0.7, 1.75, 7.2, 0.5, "No gružu kaudzes līdz atlīdzībai četros soļos", size=17, color=MUTED)
-steps = [("Nofotografē", "Izvēlas veidu un daudzumu maisos"),
-         ("Uzreiz redz atlīdzību", "Cik saņems un vai braukt atmaksājas"),
-         ("Izvēlas punktu kartē", "Tikai tur, kur atlīdzība > degvielas izmaksas"),
-         ("Nodod un saņem", "Nosver, pārbauda, atlīdzība kontā")]
-rect(s, 0.5, 2.55 + 1.08 - 0.14, 7.5, 1.03, PALE, MSO_SHAPE.ROUNDED_RECTANGLE)
-text(s, 5.9, 2.55 + 1.08 - 0.05, 1.95, 0.3, "GALVENĀ FUNKCIJA", size=10, color=DARK, font=HEAD,
+text(s, 0.7, 1.0, 5.2, 0.9, "Lietotāja ceļš", size=40, color=DARK, font=HEAD, bold=True)
+text(s, 0.7, 1.75, 5.2, 0.5, "Bez reģistrācijas, dažos klikšķos", size=17, color=MUTED)
+steps = [("Izvēlas materiālu", "Koksne, betons, ķieģeļi, grants"),
+         ("Uzreiz redz atlīdzību", "Pēc svara, kvalitātes un pilsētas"),
+         ("Izvēlas punktu kartē", "Tuvākie punkti ar attālumu un cenu"),
+         ("Atved vai piesaka savākšanu", "Uzņēmums atbrauc pats")]
+rect(s, 0.5, 2.55 + 1.08 - 0.14, 5.25, 1.03, PALE, MSO_SHAPE.ROUNDED_RECTANGLE)
+text(s, 3.6, 2.55 + 1.08 - 0.07, 2.05, 0.3, "GALVENĀ FUNKCIJA", size=9, color=DARK, font=HEAD,
      bold=True, align=PP_ALIGN.RIGHT)
 for i, (h, sub) in enumerate(steps):
     y = 2.55 + i * 1.08
     rect(s, 0.7, y, 0.75, 0.75, DARK, MSO_SHAPE.OVAL)
     text(s, 0.7, y, 0.75, 0.75, str(i + 1), size=22, color=WHITE, font=HEAD, bold=True,
          align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    text(s, 1.7, y - 0.02, 6.2, 0.5, h, size=21, color=INK, font=HEAD, bold=True)
-    text(s, 1.7, y + 0.42, 6.2, 0.4, sub, size=14, color=MUTED)
-rect(s, 8.3, 0.6, 3.6, 6.3, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
-placeholder(s, 8.45, 0.75, 3.3, 6.0, "VIDEO\nno lietotnes\n(ievelc Canva)")
-notes(s, '0:15. Paskatīsimies ar lietotāja acīm. Tu nofotografē gružus un uzreiz redzi, cik saņemsi, vēl pirms reģistrācijas. Kartē redzi tikai tos punktus, kur braukt atmaksājas. Parādīšu.' "\n\n[VIDEO 1:00, Gustavs komentē]")
+    text(s, 1.7, y + 0.02, 4.0, 0.5, h, size=19, color=INK, font=HEAD, bold=True)
+    text(s, 1.7, y + 0.42, 4.0, 0.4, sub, size=13, color=MUTED)
+rect(s, 6.05, 1.55, 6.9, 4.5, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
+s.shapes.add_movie("hakatons/demo-video.mp4", Inches(6.2), Inches(1.7), Inches(6.6), Inches(4.125),
+                   poster_frame_image="hakatons/demo-poster.png", mime_type="video/mp4")
+text(s, 6.05, 6.15, 6.9, 0.3, "Prototips · demo dati", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
+notes(s, "0:15. Paskatīsimies ar lietotāja acīm. Izvēlies materiālu, ieraksti svaru un pilsētu, un uzreiz redzi, "
+         "cik saņemsi un kur ir tuvākais punkts. Bez reģistrācijas. Parādīšu."
+         "\n\n[VIDEO ~43 s, Gustavs komentē: Izvēlos būvkoksni, 300 kilogrami, Jelgava. Uzreiz redzu: "
+         "4 eiro, tuvākais punkts Jelgavā. Kartē redzu, kur tas ir. Ja nevaru atvest pats, piesaku savākšanu: "
+         "materiāls, daudzums, pilsēta, kontakts. Nosūtīts, un uzņēmums atbrauks pats.]")
 
 # 4 · Kāpēc tieši mūsu risinājums
 s = prs.slides.add_slide(BLANK)
@@ -184,7 +190,7 @@ for i, (name, vals) in enumerate(rows):
              anchor=MSO_ANCHOR.MIDDLE)
 text(s, 0.7, 6.3, 11.95, 0.3, "Atlīdzība pēc pārstrādātāju cenām: koksne 15 līdz 30 €/t, betons 1 līdz 3 €/t, "
      "ķieģeļi 0,5 līdz 1,5 €/t (aplēses, jāpārbauda pilotprojektā).", size=11, color=MUTED)
-notes(s, "0:35. Šodien cilvēkam ir četras iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāved pašam, un nekas par to netiek. CleanR apmaiņas punkts Stopiņos jau pieņem tīrus būvgružus bez maksas un dod šķembas, bet tas ir viens punkts, un par to maz kurš zina. Būvgružu birža savieno šādus punktus vienā kartē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas.")
+notes(s, "0:35. Šodien cilvēkam ir četras iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāved pašam, un nekas par to netiek. CleanR apmaiņas punkts Stopiņos jau pieņem tīrus būvgružus bez maksas un dod šķembas, bet tas ir viens punkts, un par to maz kurš zina. Būvgružu birža savieno šādus punktus vienā kartē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un kur ir tuvākais punkts.")
 
 # 5 · Noslēgums
 s = prs.slides.add_slide(BLANK)
