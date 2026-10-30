@@ -1,4 +1,4 @@
-# Hakatons: būvgružu depozīta sistēma — prezentācija
+# Hakatons: Būvgružu birža — aprites ekonomikas platforma — prezentācija
 
 Izaicinājums (SCHWENK, RTU, Green Liberty): *Kā panākt, lai būvniecības atkritumi tiktu izmantoti atbilstoši aprites ekonomikas principiem?*
 
@@ -9,7 +9,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 | # | Slaids | Laiks |
 |---|---|---|
 | 1 | Problēma + kāpēc tā notiek (apvienots) | 0:35 |
-| 2 | Risinājums: depozīta sistēma būvgružiem | 0:30 |
+| 2 | Risinājums: aprites ekonomikas platforma būvgružiem | 0:30 |
 | 3 | Kā tas darbojas → **demo** | 0:15 + 1:00 |
 | 4 | Ekonomika: cik var maksāt (Anetes aprēķini) | 0:30 |
 | 5 | Noslēgums | 0:10 |
@@ -44,7 +44,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 ## 2. stunda — Risinājums un kā tas darbojas (slaidi 2–3)
 
 **Risinājuma formulējums:**
-> Būvgružu birža ir depozīta sistēma būvgružiem. Cilvēks sašķiro gružus un nodod tos bez maksas; par vērtīgiem materiāliem (koksni) saņem naudu, par pārējiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
+> Būvgružu birža ir aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Cilvēks sašķiro gružus un nodod tos bez maksas; par vērtīgiem materiāliem (koksni) saņem naudu, par pārējiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
 
 **Kā tas atrisina katru cēloni:**
 | Cēlonis | Būvgružu birža risinājums |
@@ -64,7 +64,7 @@ Lietotnes nosaukums: **Būvgružu birža**.
 **Pašvaldība:** mazāk izgāztuvju mežos, dati par to, kur rodas būvgruži.
 
 **Runas teksts — slaids 2 (~55 vārdi, 0:30):**
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Būvgružu birža ir aprites ekonomikas platforma: tā savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 **Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
@@ -95,7 +95,7 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 > Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem. Mūsu lietotne ir Būvgružu birža. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Būvgružu birža ir aprites ekonomikas platforma: tā savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 ### Slaids 3 — Kā tas darbojas (0:15) · runā: Gustavs
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
@@ -130,8 +130,8 @@ Demo noteikumi:
    > Mēs aprēķinājām pēc uzņēmumu publiskajiem finanšu datiem: SIA Būvgružu Pārstrāde 2024. gadā — apgrozījums 869 tūkst. €, peļņa 13,7 tūkst. € (~1,6 %). Tāpēc atlīdzība ir piesardzīga. Cenas pa materiāliem ir aplēses — tās pārbaudīsim ar uzņēmumiem pilotprojektā.
 3a. **300 kg betona dod ~0,30–0,90 € — mazāk par degvielu. Kāpēc lai kāds brauc?**
    > Lietotne rāda tikai punktus, kur atlīdzība > degviela. Kombinējot ar koksni (300 kg → 4,5–9 €), brauciens atmaksājas. Un galvenais — cilvēks ietaupa būvgružu izvešanas maksu.
-3b. **Tā nav īsta depozīta sistēma — pudelēm depozītu samaksā pirkšanas brīdī.**
-   > Pareizi, mēs aizņemamies ideju — atlīdzība par nodošanu. Nākamais solis varētu būt depozīts būvmateriālu cenā, bet tam vajag likuma izmaiņas.
+3b. **Ar ko jūs atšķiraties no citām "aprites ekonomikas platformām"?**
+   > Mēs aprēķinājām, cik reāli var maksāt par katru materiālu, un lietotne rāda tikai tos punktus, kur nodot atmaksājas. Tā nav tikai karte — tā ir atlīdzība, kas balstās uz uzņēmumu reālajām cenām.
 
 ### Krāpšana un kvalitāte
 4. **Būvfirmas izliksies par privātpersonām un saņems naudu par to, par ko likums liek maksāt pašām?**
@@ -151,10 +151,10 @@ Demo noteikumi:
 9. **Ar ko tas atšķiras no esošajiem šķirošanas laukumiem?**
    > Laukumi var būt mūsu nodošanas punkti. Mēs pievienojam to, kā tur trūkst: atlīdzību, informāciju, kā šķirot, un transportu.
 10. **Kas notiks ar nelegālajiem "izvedam lēti" pārvadātājiem?**
-    > Viņi var reģistrēties un vest uz depozīta punktu — legāls ienākums. Kas nereģistrējas, tos pašvaldība var redzēt pēc ziņojumiem par izgāztuvēm.
+    > Viņi var reģistrēties un vest uz nodošanas punktu — legāls ienākums. Kas nereģistrējas, tos pašvaldība var redzēt pēc ziņojumiem par izgāztuvēm.
 
 ### Īstenošana
-11. **Kas uzturēs depozīta punktus? Vai jums vajag licenci?**
+11. **Kas uzturēs nodošanas punktus? Vai jums vajag licenci?**
     > Mēs neceļam jaunus punktus — sadarbojamies ar licencētiem atkritumu apsaimniekotājiem un pārstrādātājiem. Mēs esam platforma.
 12. **Kā mērīsiet, vai tas strādā?**
     > Tonnas nodotā materiāla, procents, kas nonāk pārstrādē, un izgāztuvju skaits pilotpašvaldībā pirms un pēc.
