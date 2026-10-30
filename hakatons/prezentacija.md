@@ -4,6 +4,18 @@ Izaicinājums (SCHWENK, RTU, Green Liberty): *Kā panākt, lai būvniecības atk
 
 Darba nosaukums lietotnei: **BūvDepo** (var mainīt).
 
+## Laika plāns — 3 minūtes, 5 slaidi (Canva)
+
+| # | Slaids | Laiks |
+|---|---|---|
+| 1 | Problēma + kāpēc tā notiek (apvienots) | 0:35 |
+| 2 | Risinājums: depozīta sistēma būvgružiem | 0:30 |
+| 3 | Kā tas darbojas → **demo** | 0:15 + 1:00 |
+| 4 | Kāpēc tas strādās (aprite, finansējums, krāpšana, pilots) | 0:30 |
+| 5 | Noslēgums | 0:10 |
+
+~130 vārdi minūtē → visa runa ≤ ~390 vārdi. Zemāk esošie runas teksti ir jāsaīsina uz pusi. Detalizētās atbildes no slaida 6 paliek jautājumu daļai, nevis runai.
+
 ---
 
 ## 1. stunda — Problēma
