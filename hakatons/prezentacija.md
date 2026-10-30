@@ -69,19 +69,51 @@ Darba nosaukums lietotnei: **BūvDepo** (var mainīt).
 **Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
 
-### Slaids 5: Aprites cikls
+## 3. stunda — Komandas ieguldījums
 
-Būvgruži → depozīta punkts → pārstrāde → jauns būvmateriāls → atpakaļ būvniecībā (aplis)
+Katram dalībniekam pajautāt trīs lietas:
+1. Ko tu uztaisīji? (viens teikums)
+2. Kas no tā jāparāda žūrijai? (ekrānšāviņš, skaitlis, foto)
+3. Kurā slaidā tas iederas? (1 problēma · 2 risinājums · 3 demo · 4 kāpēc strādās)
 
-### Slaids 6: Kāpēc tas strādās (3.–4. stundā)
+| Dalībnieks | Ko uztaisīja | Kur prezentācijā |
+|---|---|---|
+| Gustavs | lietotne: reģistrācija, materiāla pieteikšana, karte, atlīdzība | slaids 3 + demo |
+| 2. dalībnieks | _jāaizpilda_ | |
+| 3. dalībnieks | _jāaizpilda_ | |
+| 4. dalībnieks (prezentācija) | problēma, risinājums, runa, jautājumi | slaidi 1, 2, 4, 5 |
 
-Atbildes uz jautājumiem, ko žūrija uzdos noteikti:
-- **Kas maksā atlīdzību?** Sašķiroti gruži bez maksas (jau ieguvums); atlīdzība punktos/atlaidēs (lētāk par naudu, cilvēks atgriežas veikalā); pašvaldības līdzfinansējums (jau tagad maksā par sakopšanu).
-- **Kā novērst krāpšanu?** Svēršana un pārbaude punktā; tikai sašķirotas kategorijas; identifikācija lietotnē; limits privātpersonai gadā (lai būvfirmas neizliekas par privātpersonām).
-- **Ko darīt, ja nav piekabes?** Lietotnē var pieteikt reģistrētu pārvadātāju.
-- **Kur sākt?** Pilotprojekts vienā pašvaldībā ar vienu pārstrādātāju.
+Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis jauns slaids.
 
 ---
+
+## 4. stunda — Pilns runas teksts (3:00)
+
+### Slaids 1 — Problēma (0:35) · runā: prezentētājs
+> Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
+
+### Slaids 2 — Risinājums (0:30) · runā: prezentētājs
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — BūvDepo. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+
+### Slaids 3 — Kā tas darbojas (0:15) · runā: prezentētājs
+> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
+
+### Demo (1:00) · runā: Gustavs
+> Šī ir Anna, viņa remontē vannasistabu. *[jau pieslēgta — reģistrāciju nerādīt]* Viņa nofotografē vecās flīzes un betonu, izvēlas veidu un daudzumu — desmit maisi. Lietotne uzreiz parāda, cik punktus viņa saņems. *[atver karti]* Kartē Anna redz tuvāko nodošanas punktu un piesaka nodošanu sestdien. Ja nav piekabes — var pieteikt pārvadātāju. *[atver atlīdzību]* Punktā gružus nosver, un Annas kontā ir punkti — atlaide būvmateriālu veikalā. Gruži nonāk pārstrādē, nevis mežā.
+
+Demo noteikumi:
+- Konts jau pieslēgts, dati jau sagatavoti — neko nerakstīt dzīvajā.
+- Iepriekš ierakstīt demo video. Ja lietotne uzkaras — rāda video, nevis labo.
+
+### Slaids 4 — Kāpēc tas strādās (0:30) · runā: prezentētājs
+> Kāpēc tas strādās? Pirmkārt, tas ir aprites cikls: būvgruži nonāk depozīta punktā, tiek pārstrādāti un atgriežas būvniecībā kā jauns materiāls. Otrkārt, atlīdzību finansē tie, kas iegūst: pārstrādātāji, būvmateriālu veikali un pašvaldības, kas jau tagad maksā par sakopšanu. Treškārt, krāpšanu novēršam ar svēršanu, pārbaudi un limitu privātpersonām. Sākt gribam ar pilotprojektu vienā pašvaldībā.
+
+### Slaids 5 — Noslēgums (0:10) · runā: prezentētājs
+> BūvDepo — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
+
+### Mēģinājums
+- Vismaz 2 pilni mēģinājumi ar hronometru, ar dzīvu demo.
+- Ja kopā > 3:00 — īsina slaidu 4 runu, ne demo.
 
 ## Žūrijas jautājumi un atbildes
 
