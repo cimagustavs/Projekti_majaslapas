@@ -1,5 +1,23 @@
 # SEO audit: four demo sites (October 2026)
 
+> **Status (commit d733902):** fixed:
+> - business schema;
+> - share previews;
+> - one H1 per page;
+> - clearer titles;
+> - `lang` on hidden language text;
+> - Lotes Spots LCP (3.2 s → 0.7 s in the same lab run);
+> - lighter photos;
+> - `robots.txt`.
+>
+> Still open, because it needs a real domain or the owner:
+> - separate `/ru/` and `/en/` URLs with hreflang;
+> - canonical tag and `sitemap.xml`;
+> - absolute `og:image` URL;
+> - self-hosted fonts;
+> - opening hours in the schema for Clementine, Lotes Spots and SKY BEAUTY (unknown so far);
+> - Google Business Profiles.
+
 Pages: `demos/clementine`, `demos/kafe-picerija`, `demos/lotes-spots`, `demos/sky-beauty`.
 How it was measured:
 - the HTML was read directly;
