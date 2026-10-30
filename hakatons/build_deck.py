@@ -4,6 +4,7 @@ from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.oxml.ns import qn
 
 DARK = RGBColor(0x24, 0x4A, 0x30)
 MID = RGBColor(0x5E, 0x8C, 0x5A)
@@ -98,7 +99,10 @@ for i, (big, small) in enumerate([("~½", "no zemes dzīlēs iegūtajiem resursi
     text(s, x, 5.55, 2.9, 0.9, small, size=14, color=PALE)
 text(s, 0.7, 6.75, 6.5, 0.4, "Avots: hakatona izaicinājums (SCHWENK, RTU, Green Liberty)",
      size=10, color=PALE)
-s.shapes.add_picture("hakatons/foto-mezs.jpg", Inches(7.75), Inches(0.6), Inches(4.95), Inches(4.6))
+photo = s.shapes.add_picture("hakatons/foto-mezs.jpg", Inches(7.75), Inches(0.6), Inches(4.95), Inches(4.6))
+photo.auto_shape_type = MSO_SHAPE.ROUNDED_RECTANGLE
+photo._element.spPr.prstGeom.get_or_add_avLst().append(
+    photo._element.spPr.prstGeom.makeelement(qn("a:gd"), {"name": "adj", "fmla": "val 8000"}))
 text(s, 7.75, 5.22, 4.95, 0.2, "Foto: iauto.lv", size=8, color=MID, align=PP_ALIGN.RIGHT)
 rect(s, 7.95, 0.8, 2.6, 1.05, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
 text(s, 7.95, 0.8, 2.6, 1.05, [("Izmest mežā", {"size": 13, "color": PALE, "after": 0}),
