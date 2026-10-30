@@ -80,3 +80,41 @@ Atbildes uz jautājumiem, ko žūrija uzdos noteikti:
 - **Kā novērst krāpšanu?** Svēršana un pārbaude punktā; tikai sašķirotas kategorijas; identifikācija lietotnē; limits privātpersonai gadā (lai būvfirmas neizliekas par privātpersonām).
 - **Ko darīt, ja nav piekabes?** Lietotnē var pieteikt reģistrētu pārvadātāju.
 - **Kur sākt?** Pilotprojekts vienā pašvaldībā ar vienu pārstrādātāju.
+
+---
+
+## Žūrijas jautājumi un atbildes
+
+### Nauda (visbīstamākie)
+1. **Šodien pieņēmēji paši iekasē maksu par būvgružiem. Kāpēc uzņēmums lai maksā jums?**
+   > Uzņēmums nemaksā par jauktiem gružiem — tikai par tīru, sašķirotu materiālu, kas aizstāj jaunu izejvielu. Turklāt atlīdzība lielākoties ir punkti un atlaides, nevis nauda.
+2. **Kas finansē atlīdzību? Kāds ir biznesa modelis?**
+   > Trīs avoti: pārstrādātājs (sašķirots materiāls ir vērtīgāks), būvmateriālu veikali (atlaides atved klientu atpakaļ), pašvaldība (jau tagad maksā par izgāztuvju sakopšanu). Pilotprojektā pārbaudīsim, kāda proporcija strādā.
+3. **Cik tas maksās un kad atmaksāsies?**
+   > Godīgi — precīzus skaitļus vēl nezinām. Tieši to noteiks pilotprojekts vienā pašvaldībā ar vienu pārstrādātāju.
+
+### Krāpšana un kvalitāte
+4. **Būvfirmas izliksies par privātpersonām un saņems naudu par to, par ko likums liek maksāt pašām?**
+   > Identifikācija lietotnē un gada limits privātpersonai.
+5. **Cilvēki vedīs piesārņotu materiālu vai sajauks ar grunti, lai sver vairāk.**
+   > Pieņem tikai sašķirotas kategorijas, punktā materiālu pārbauda un sver. Nepareizi sašķirots — nav atlīdzības.
+6. **Ko darīsiet ar azbesta šīferi, krāsām, ģipškartonu?**
+   > Bīstamos atkritumus, piemēram azbestu, nepieņemam kā depozītu — lietotne norāda, kur tos nodot legāli.
+
+### Vai cilvēki to tiešām lietos
+7. **Vai cilvēks, kurš izmet gružus mežā, vispār lejupielādēs lietotni?**
+   > Mūsu mērķis nav ļaunprātīgākie pārkāpēji, bet lielākā daļa, kas izvēlas lēto sludinājumu ērtības dēļ. Ja legālais ceļš ir izdevīgāks, viņi to izvēlēsies.
+8. **Ko darīt cilvēkam bez piekabes / vecam cilvēkam bez viedtālruņa?**
+   > Lietotnē var pieteikt reģistrētu pārvadātāju. Punktā var nodot arī bez lietotnes.
+9. **Ar ko tas atšķiras no esošajiem šķirošanas laukumiem?**
+   > Laukumi var būt mūsu nodošanas punkti. Mēs pievienojam to, kā tur trūkst: atlīdzību, informāciju, kā šķirot, un transportu.
+10. **Kas notiks ar nelegālajiem "izvedam lēti" pārvadātājiem?**
+    > Viņi var reģistrēties un vest uz depozīta punktu — legāls ienākums. Kas nereģistrējas, tos pašvaldība var redzēt pēc ziņojumiem par izgāztuvēm.
+
+### Īstenošana
+11. **Kas uzturēs depozīta punktus? Vai jums vajag licenci?**
+    > Mēs neceļam jaunus punktus — sadarbojamies ar licencētiem atkritumu apsaimniekotājiem un pārstrādātājiem. Mēs esam platforma.
+12. **Kā mērīsiet, vai tas strādā?**
+    > Tonnas nodotā materiāla, procents, kas nonāk pārstrādē, un izgāztuvju skaits pilotpašvaldībā pirms un pēc.
+13. **Ko jūs tieši uztaisījāt hakatona laikā?**
+    > Lietotnes prototipu: reģistrācija, materiāla pieteikšana, punktu karte, atlīdzība — to redzējāt demo.
