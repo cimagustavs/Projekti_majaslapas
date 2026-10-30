@@ -100,8 +100,12 @@ rect(s, 7.6, 0.85, 2.6, 1.15, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
 text(s, 7.6, 0.85, 2.6, 1.15, [("Izmest mežā", {"size": 14, "color": PALE, "after": 0}),
                                ("0 €", {"size": 34, "bold": True, "font": HEAD})],
      color=WHITE, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
-notes(s, '0:35. HOOK (lēni, ar pauzi): Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli maksā. Uzminiet, kurš ceļš uzvar. [pauze] Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, piekabes nav, kur nodot, nezināt. Internetā sludinājums: "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Nelegālais ceļš vienkārši ir lētāks.'
-         "\n\nFoto avots: https://iauto.lv/zinas/latvija/49412-izg-atkritumus-me-k-tdus-cilvkus-nosaukt-foto")
+rect(s, 7.6, 2.15, 2.6, 1.15, WHITE, MSO_SHAPE.ROUNDED_RECTANGLE)
+text(s, 7.6, 2.15, 2.6, 1.15, [("Nodot legāli", {"size": 14, "color": MUTED, "after": 0}),
+                               ("līdz 500 €/t", {"size": 26, "bold": True, "font": HEAD})],
+     color=DARK, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
+notes(s, '0:35. HOOK (lēni, ar pauzi): Izmest šo kaudzi mežā maksā nulle eiro. Nodot to legāli: līdz 500 eiro tonnā. Uzminiet, kurš ceļš uzvar. [pauze] Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, piekabes nav, kur nodot, nezināt. Internetā sludinājums: "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Nelegālais ceļš vienkārši ir lētāks.'
+         "\n\n500 €/t: azbesta šīfera nodošana, LSM 27.11.2023 (avots nr. 17).\nFoto avots: https://iauto.lv/zinas/latvija/49412-izg-atkritumus-me-k-tdus-cilvkus-nosaukt-foto")
 
 # 2 · Risinājums
 s = prs.slides.add_slide(BLANK)
@@ -161,6 +165,7 @@ cols = ["Bez maksas", "Ērti", "Atlīdzība", "Nonāk pārstrādē"]
 rows = [("Sludinājums „izvedam lēti”", ["Lēti", "Jā", "Nē", "Bieži mežā"]),
         ("Konteinera noma", ["Dārgi", "Jā", "Nē", "Jā"]),
         ("Šķirošanas laukums", ["Daļēji", "Jāved pašam", "Nē", "Jā"]),
+        ("CleanR apmaiņas punkts", ["Jā", "Viens punkts", "Šķembas", "Jā"]),
         ("Būvgružu birža", ["Jā", "Karte + pārvadātājs", "Jā", "Jā"])]
 GOOD = {"Jā", "Karte + pārvadātājs"}
 BAD = {"Nē", "Dārgi", "Bieži mežā"}
@@ -168,18 +173,18 @@ cx = [4.3, 6.4, 8.75, 10.6]
 for j, c in enumerate(cols):
     text(s, cx[j], 2.05, 2.1, 0.35, c, size=13, color=MUTED, font=HEAD, bold=True)
 for i, (name, vals) in enumerate(rows):
-    y = 2.5 + i * 0.78
+    y = 2.45 + i * 0.74
     ours = i == len(rows) - 1
-    rect(s, 0.7, y, 11.95, 0.66, DARK if ours else CARD, MSO_SHAPE.ROUNDED_RECTANGLE)
-    text(s, 0.95, y, 3.3, 0.66, name, size=16, color=WHITE if ours else INK, font=HEAD, bold=True,
+    rect(s, 0.7, y, 11.95, 0.62, DARK if ours else CARD, MSO_SHAPE.ROUNDED_RECTANGLE)
+    text(s, 0.95, y, 3.3, 0.62, name, size=16, color=WHITE if ours else INK, font=HEAD, bold=True,
          anchor=MSO_ANCHOR.MIDDLE)
     for j, v in enumerate(vals):
         col = WHITE if ours else (MID if v in GOOD else RGBColor(0xB0, 0x4A, 0x3A) if v in BAD else MUTED)
-        text(s, cx[j], y, 2.2, 0.66, v, size=15, color=col, bold=v in GOOD | BAD or ours,
+        text(s, cx[j], y, 2.2, 0.62, v, size=15, color=col, bold=v in GOOD | BAD or ours,
              anchor=MSO_ANCHOR.MIDDLE)
-text(s, 0.7, 5.85, 11.95, 0.3, "Atlīdzība pēc pārstrādātāju cenām: koksne 15 līdz 30 €/t, betons 1 līdz 3 €/t, "
+text(s, 0.7, 6.3, 11.95, 0.3, "Atlīdzība pēc pārstrādātāju cenām: koksne 15 līdz 30 €/t, betons 1 līdz 3 €/t, "
      "ķieģeļi 0,5 līdz 1,5 €/t (aplēses, jāpārbauda pilotprojektā).", size=11, color=MUTED)
-notes(s, '0:30. Šodien cilvēkam ir trīs iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāzina, kur, jāved pašam, un nekas par to netiek. No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas. To aprēķinājām pēc pārstrādātāju reālajām cenām.')
+notes(s, "0:35. Šodien cilvēkam ir četras iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāved pašam, un nekas par to netiek. CleanR apmaiņas punkts Stopiņos jau pieņem tīrus būvgružus bez maksas un dod šķembas, bet tas ir viens punkts, un par to maz kurš zina. Būvgružu birža savieno šādus punktus vienā kartē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas.")
 
 # 5 · Noslēgums
 s = prs.slides.add_slide(BLANK)
@@ -192,5 +197,19 @@ text(s, 0.7, 4.55, 11.9, 0.7, "Būvgružu birža", size=28, color=PALE, font=HEA
 text(s, 0.7, 5.2, 11.9, 0.5, "Komanda Alanguka", size=18, color=PALE, align=PP_ALIGN.CENTER)
 text(s, 0.7, 6.3, 11.9, 0.6, "Paldies! Jautājumi?", size=22, color=WHITE, align=PP_ALIGN.CENTER)
 notes(s, '0:10. Būvgružu birža. Lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.')
+
+# 6 · Avoti (pielikums, netiek prezentēts)
+s = prs.slides.add_slide(BLANK)
+bg(s, LIGHT)
+kicker(s, 0.7, 0.45, "Pielikums")
+text(s, 0.7, 0.75, 12, 0.6, "Avoti", size=26, color=DARK, font=HEAD, bold=True)
+src = [l.strip() for l in open("hakatons/avoti.txt", encoding="utf-8") if l.strip()]
+per = -(-len(src) // 3)
+for c in range(3):
+    chunk = src[c * per:(c + 1) * per]
+    text(s, 0.7 + c * 4.05, 1.5, 3.85, 5.8,
+         [(f"{c * per + i + 1}. {t}", {"after": 4}) for i, t in enumerate(chunk)],
+         size=7.5, color=INK, spacing=1.0)
+notes(s, "Pielikums. Netiek rādīts prezentācijas laikā; atvērt tikai, ja žūrija jautā par avotiem.")
 
 prs.save("hakatons/buvgruzu-birza.pptx")

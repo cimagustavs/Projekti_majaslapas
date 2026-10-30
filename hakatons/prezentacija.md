@@ -94,7 +94,7 @@ Mentora prasība: visa prezentācija caur lietotāja pieredzi (bez izdomātas pe
 Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runāt un rādīt demo bez pauzēm.
 
 ### Slaids 1 — Problēma (0:35) · runā: Gustavs
-> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli maksā. Uzminiet, kurš ceļš uzvar. [pauze] Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, piekabes nav, kur nodot, nezināt. Internetā sludinājums: "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Nelegālais ceļš vienkārši ir lētāks.
+> **HOOK (lēni, ar pauzi):** Izmest šo kaudzi mežā maksā nulle eiro. Nodot to legāli: līdz 500 eiro tonnā. Uzminiet, kurš ceļš uzvar. [pauze] Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, piekabes nav, kur nodot, nezināt. Internetā sludinājums: "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Nelegālais ceļš vienkārši ir lētāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
 > Mūsu risinājums ir Būvgružu birža, aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam: nodod un saņem. Cilvēks nodod gružus bez maksas un saņem atlīdzību: par koksni naudu, par betonu punktus. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
@@ -117,12 +117,12 @@ Demo noteikumi:
 - Video bez skaņas, ne garāks par 1:00; Gustavs komentē pa virsu. Izmēģināt sinhronu runu ar video.
 - Atlīdzības aprēķinam lietotnē izmantot Anetes formulu un cenas (`ekonomika.md`), nevis izdomātus skaitļus.
 
-### Slaids 4 — Kāpēc tieši mūsu risinājums (0:30) · runā: Gustavs
+### Slaids 4 — Kāpēc tieši mūsu risinājums (0:35) · runā: Gustavs
 **Uz slaida:** salīdzinājums ar alternatīvām (sludinājums, konteinera noma, šķirošanas laukums, Būvgružu birža) + galvenā funkcija.
 
 **Galvenā funkcija (runā, ne uz slaida):** lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas.
 
-> Šodien cilvēkam ir trīs iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāzina, kur, jāved pašam, un nekas par to netiek. No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas. To aprēķinājām pēc pārstrādātāju reālajām cenām.
+> Šodien cilvēkam ir četras iespējas. Sludinājums: lēti, bet gruži bieži nonāk mežā. Konteiners: legāli, bet dārgi. Šķirošanas laukums: jāved pašam, un nekas par to netiek. CleanR apmaiņas punkts Stopiņos jau pieņem tīrus būvgružus bez maksas un dod šķembas, bet tas ir viens punkts, un par to maz kurš zina. Būvgružu birža savieno šādus punktus vienā kartē. Un galvenais: lietotne uzreiz parāda, cik saņemsi un vai braukt atmaksājas.
 
 > ⚠️ Salīdzinājums ir vispārīgs (kategorijas, ne konkrēti uzņēmumi). Ja Alisas izpētē ir nosaukti konkurenti (piem., lietotnes vai platformas ārvalstīs), pievienot tos jautājumu atbildēm.
 
@@ -144,6 +144,8 @@ Demo noteikumi:
    > Mēs aprēķinājām pēc uzņēmumu publiskajiem finanšu datiem: SIA Būvgružu Pārstrāde 2024. gadā — apgrozījums 869 tūkst. €, peļņa 13,7 tūkst. € (~1,6 %). Tāpēc atlīdzība ir piesardzīga. Cenas pa materiāliem ir aplēses — tās pārbaudīsim ar uzņēmumiem pilotprojektā.
 3a. **300 kg betona dod ~0,30–0,90 € — mazāk par degvielu. Kāpēc lai kāds brauc?**
    > Lietotne rāda tikai punktus, kur atlīdzība > degviela. Kombinējot ar koksni (300 kg → 4,5–9 €), brauciens atmaksājas. Un galvenais — cilvēks ietaupa būvgružu izvešanas maksu.
+3d. **CleanR Stopiņos jau pieņem būvgružus bez maksas. Kāpēc vajag jūs?**
+   > CleanR punkts ir labs piemērs, ka modelis strādā, un tas varētu būt mūsu pirmais partneris. Bet tas ir viens punkts, par to maz kurš zina, un tur nevar uzzināt iepriekš, vai braukt atmaksājas. Mēs savienojam šādus punktus vienā kartē un pievienojam atlīdzību un pārvadātāju.
 3c. **Kas ir jūsu konkurenti?**
    > Cilvēkam šodien ir trīs ceļi: sludinājums "izvedam lēti", konteinera noma un šķirošanas laukums. Neviens no tiem nedod atlīdzību un nepasaka iepriekš, vai nodot atmaksājas.
 3b. **Ar ko jūs atšķiraties no citām "aprites ekonomikas platformām"?**
@@ -178,3 +180,8 @@ Demo noteikumi:
     > Tonnas nodotā materiāla, procents, kas nonāk pārstrādē, un izgāztuvju skaits pilotpašvaldībā pirms un pēc.
 13. **Ko jūs tieši uztaisījāt hakatona laikā?**
     > Lietotnes prototipu: reģistrācija, materiāla pieteikšana, punktu karte, atlīdzība — to redzējāt demo.
+
+
+## Avoti
+
+Pilns saraksts: `avoti.txt` (6. slaids, pielikums). 500 €/t par azbesta šīfera nodošanu: LSM, 27.11.2023 (nr. 17).
