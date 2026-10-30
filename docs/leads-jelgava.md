@@ -4,6 +4,15 @@ Who might buy a demo website plus marketing from Kārlis and Gustavs.
 
 **Status: a first list, not verified.** It was built from web search only. Business directories, Facebook, Instagram and Google Maps were blocked in the session that made it. Before contacting anyone, check each lead on your phone in 30 seconds: open Google Maps, search the name, and look for a **Website** button.
 
+## Status
+
+| Business | Visited | Result | Next step |
+|---|---|---|---|
+| Lotes Spots | 29 Oct | Liked the demo, around 350 € discussed | Send the offer (`docs/piedavajums-sablons.md`) with a 50 % deposit by 1 Nov |
+| O Sole | 29 Oct | Liked it, around 350 € discussed. **No demo built yet** | Find out what it is, then send the offer; build only after the deposit |
+| Clementine | 29 Oct | Liked it, but hasn't looked properly and has to talk with his wife | Send the preview video so he can show her, and agree a call-back date |
+| SKY BEAUTY | not yet | Meeting to be set for Mon 2 Nov | Bring versions A, B and C; ask for real hours, prices and their booking system |
+
 ## How leads are scored (out of 100)
 
 The ECC lead-intelligence weights are for investors and founders on X and LinkedIn. These are adapted for local walk-in businesses:
