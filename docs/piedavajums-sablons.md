@@ -8,7 +8,9 @@ Labdien, [vārds]!
 
 Paldies, ka vakar atradāt laiku. Kā sarunājām, lūk, piedāvājums [uzņēmuma nosaukums] mājaslapai.
 
-**Cena: [350] €** (vienreizējs maksājums)
+**Cena: 350 €** (vienreizējs maksājums). Tā ir pirmo klientu cena; parastā cena ir [parastā cena] €.
+
+**Pretī lūdzam:** atļauju rādīt jūsu lapu kā mūsu darba piemēru un īsu atsauksmi Google, kad lapa ir gatava.
 
 **Iekļauts:**
 - mājaslapa, ko redzējāt paraugā, ar jūsu īsto ēdienkarti, cenām, darba laiku un bildēm;
@@ -21,11 +23,17 @@ Paldies, ka vakar atradāt laiku. Kā sarunājām, lūk, piedāvājums [uzņēmu
 
 **Termiņš:** [14] dienas no brīža, kad saņemam materiālus un avansu.
 
-**Apmaksa:** 50 % avanss ([175] €) pirms darba sākšanas, atlikums, kad lapa ir gatava.
+**Apmaksa:** 50 % avanss (175 €) pirms darba sākšanas, atlikums, kad lapa ir gatava.
 
 **Nav iekļauts:** domēna gada maksa (ap [10–15] € gadā, maksā pats uzņēmums), jaunas sadaļas pēc palaišanas un izmaiņas pēc 2 labojumu kārtām.
 
-**Pēc palaišanas, ja vēlaties:** lapas uzturēšana, kas ietver cenu un ēdienkartes izmaiņas un Google profila uzturēšanu: [20] € mēnesī. Šo varat izlemt vēlāk.
+**Uzturēšana: 50 € mēnesī**, no lapas palaišanas dienas. Tajā ietilpst:
+- lapa ir pieejama internetā, un mēs uzraugām, lai tā strādā;
+- ēdienkartes, cenu, darba laika un akciju izmaiņas, līdz [4] reizēm mēnesī;
+- Google profila uzturēšana: darba laiks, bildes un atbildes uz jautājumiem;
+- [1] jauna bilde vai ieraksts lapā mēnesī.
+
+Uzturēšanu var pārtraukt ar 1 mēneša brīdinājumu.
 
 Ja viss der, atrakstiet "jā", un aizsūtīsim rēķinu avansam.
 
