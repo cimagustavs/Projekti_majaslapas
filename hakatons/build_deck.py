@@ -141,26 +141,28 @@ notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas
          "Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk "
          "jaunu izejvielu ieguves.")
 
-# 3 — Kā tas darbojas
+# 3 — Lietotāja ceļš
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
-kicker(s, 0.7, 0.6, "Kā tas darbojas")
-text(s, 0.7, 1.0, 6.5, 0.9, "Četri soļi lietotnē", size=40, color=DARK, font=HEAD, bold=True)
-steps = [("Reģistrējies", "Konts lietotnē"),
-         ("Piesaki materiālu", "Foto, veids, kvalitāte, daudzums"),
-         ("Izvēlies punktu kartē", "Tikai tur, kur atlīdzība > degvielas izmaksas"),
-         ("Nodod un saņem", "Nosver, pārbauda, atlīdzība kontā")]
+kicker(s, 0.7, 0.6, "Lietotāja pieredze")
+text(s, 0.7, 1.0, 7.2, 0.9, "Anna remontē māju", size=40, color=DARK, font=HEAD, bold=True)
+text(s, 0.7, 1.75, 7.2, 0.5, "Vecie grīdas dēļi un betona lauskas — ko darīt?", size=17, color=MUTED)
+steps = [("Nofotografē", "Izvēlas veidu un daudzumu maisos — lietotne parāda, kā šķirot"),
+         ("Uzreiz redz atlīdzību", "Vēl pirms reģistrācijas — bez riska, bez pūlēm"),
+         ("Izvēlas punktu kartē", "Tikai tur, kur atlīdzība > degvielas izmaksas"),
+         ("Nodod un saņem", "Nosver, pārbauda — atlīdzība kontā")]
 for i, (h, sub) in enumerate(steps):
-    y = 2.2 + i * 1.2
-    c = rect(s, 0.7, y, 0.8, 0.8, DARK, MSO_SHAPE.OVAL)
-    text(s, 0.7, y, 0.8, 0.8, str(i + 1), size=24, color=WHITE, font=HEAD, bold=True,
+    y = 2.55 + i * 1.08
+    rect(s, 0.7, y, 0.75, 0.75, DARK, MSO_SHAPE.OVAL)
+    text(s, 0.7, y, 0.75, 0.75, str(i + 1), size=22, color=WHITE, font=HEAD, bold=True,
          align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    text(s, 1.8, y - 0.02, 5.2, 0.5, h, size=22, color=INK, font=HEAD, bold=True)
-    text(s, 1.8, y + 0.45, 5.2, 0.4, sub, size=15, color=MUTED)
+    text(s, 1.7, y - 0.02, 6.2, 0.5, h, size=21, color=INK, font=HEAD, bold=True)
+    text(s, 1.7, y + 0.42, 6.2, 0.4, sub, size=14, color=MUTED)
 rect(s, 8.3, 0.6, 3.6, 6.3, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
 placeholder(s, 8.45, 0.75, 3.3, 6.0, "VIDEO\nno lietotnes\n(ievelc Canva)")
-notes(s, "0:15 — Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu "
-         "kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.\n\n[VIDEO 1:00 — Gustavs komentē]")
+notes(s, "0:15 — Paskatīsimies ar Annas acīm. Viņa nofotografē gružus un uzreiz redz, cik saņems — vēl "
+         "pirms reģistrācijas. Kartē redz tikai tos punktus, kur braukt atmaksājas. Parādīšu."
+         "\n\n[VIDEO 1:00 — Gustavs komentē]")
 
 # 4 — Kāpēc tieši mūsu risinājums
 s = prs.slides.add_slide(BLANK)

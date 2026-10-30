@@ -97,8 +97,15 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
 > Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēkiem: bezmaksas nodošana un atlīdzība — par koksni nauda, par betonu punkti. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
 
-### Slaids 3 — Kā tas darbojas (0:15) · runā: Gustavs
-> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
+### Slaids 3 — Lietotāja pieredze: Anna remontē māju (0:15) · runā: Gustavs
+> Paskatīsimies ar Annas acīm. Viņa nofotografē gružus un uzreiz redz, cik saņems — vēl pirms reģistrācijas. Kartē redz tikai tos punktus, kur braukt atmaksājas. Parādīšu.
+
+**UX principi lietotnei:**
+1. Atlīdzība redzama **pirms** reģistrācijas — reģistrācija tikai saņemot atlīdzību.
+2. Kvalitāte ar 2–3 jā/nē jautājumiem (krāsots? ar naglām? ar armatūru?), nevis "A/B/C".
+3. Daudzums maisos vai piekabēs, nevis tonnās — lietotne pārrēķina pēc Anetes koeficientiem (betons ~1,5 t/m³, koksne ~0,5 t/m³).
+4. Kartē pie katra punkta: atlīdzība mīnus degviela.
+5. Pēc nodošanas — atgriezeniskā saite: "No meža izglābti 300 kg".
 
 ### Video no lietotnes (1:00) · Gustavs komentē video
 > Šī ir Anna, viņa remontē māju. *[jau pieslēgta — reģistrāciju nerādīt]* Viņai ir vecie grīdas dēļi un betona lauskas. Viņa nofotografē materiālu, izvēlas veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē Anna redz tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaka nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir Annas kontā. Gruži nonāk pārstrādē, nevis mežā.
