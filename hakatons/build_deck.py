@@ -90,7 +90,7 @@ kicker(s, 0.7, 0.6, "Problēma", PALE)
 text(s, 0.7, 1.05, 6.6, 2.4, "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē",
      size=40, color=WHITE, font=HEAD, bold=True, spacing=1.0)
 text(s, 0.7, 3.55, 6.3, 1.0,
-     "Anna remontē māju. Piekabes nav, kur nodot, nezina, legāli ir dārgi. Nelegālais ceļš ir lētāks un vienkāršāks.",
+     "Remontē māju? Piekabes nav, kur nodot, nezini, legāli ir dārgi. Nelegālais ceļš ir lētāks un vienkāršāks.",
      size=18, color=PALE)
 for i, (big, small) in enumerate([("~½", "no zemes dzīlēs iegūtajiem resursiem patērē būvniecība"),
                                   ("> ⅓", "no visiem ES atkritumiem ir būvniecības atkritumi")]):
@@ -114,8 +114,8 @@ text(s, 8.05, 5.6, 4.4, 1.2,
       ("Viens zvans — un gruži nonāk mežā.", {"size": 14, "color": MUTED})],
      anchor=MSO_ANCHOR.MIDDLE)
 notes(s, "0:35 — HOOK (lēni, ar pauzi): Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. "
-         "Uzminiet, kurš ceļš uzvar. [pauze] Šī ir Anna. Viņa remontē māju: veci dēļi, betona lauskas, "
-         "piekabes nav, kur nodot — nezina. Internetā — \"izvedam būvgružus lēti\". Viens zvans, un gruži "
+         "Uzminiet, kurš ceļš uzvar. [pauze] Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, "
+         "piekabes nav, kur nodot — nezināt. Internetā — \"izvedam būvgružus lēti\". Viens zvans, un gruži "
          "nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — "
          "nelegālais ceļš vienkārši ir lētāks.\n\n"
          "Foto avots: https://iauto.lv/zinas/latvija/49412-izg-atkritumus-me-k-tdus-cilvkus-nosaukt-foto")
@@ -143,9 +143,9 @@ for i, (h, items) in enumerate(cards):
     rect(s, x, 3.0, 3.8, 0.12, MID)
     text(s, x + 0.35, 3.4, 3.1, 0.6, h, size=24, color=DARK, font=HEAD, bold=True)
     text(s, x + 0.35, 4.2, 3.1, 2.5, [("•  " + t, {"after": 12}) for t in items], size=16)
-notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno Annu "
-         "ar uzņēmumiem, kas pārstrādā būvgružus. Princips kā pudeļu depozītam — nodod un saņem. Anna "
-         "nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. "
+notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, "
+         "kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un "
+         "saņem. Cilvēks nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. "
          "Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk "
          "jaunu izejvielu ieguves.")
 
@@ -153,7 +153,7 @@ notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
 kicker(s, 0.7, 0.6, "Lietotāja pieredze")
-text(s, 0.7, 1.0, 7.2, 0.9, "Annas ceļš", size=40, color=DARK, font=HEAD, bold=True)
+text(s, 0.7, 1.0, 7.2, 0.9, "Lietotāja ceļš", size=40, color=DARK, font=HEAD, bold=True)
 text(s, 0.7, 1.75, 7.2, 0.5, "No gružu kaudzes līdz atlīdzībai četros soļos", size=17, color=MUTED)
 steps = [("Nofotografē", "Izvēlas veidu un daudzumu maisos — lietotne parāda, kā šķirot"),
          ("Uzreiz redz atlīdzību", "Cik saņems un vai braukt atmaksājas — vēl pirms reģistrācijas"),
@@ -171,15 +171,15 @@ for i, (h, sub) in enumerate(steps):
     text(s, 1.7, y + 0.42, 6.2, 0.4, sub, size=14, color=MUTED)
 rect(s, 8.3, 0.6, 3.6, 6.3, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
 placeholder(s, 8.45, 0.75, 3.3, 6.0, "VIDEO\nno lietotnes\n(ievelc Canva)")
-notes(s, "0:15 — Paskatīsimies ar Annas acīm. Viņa nofotografē gružus un uzreiz redz, cik saņems — vēl "
-         "pirms reģistrācijas. Kartē redz tikai tos punktus, kur braukt atmaksājas. Parādīšu."
+notes(s, "0:15 — Paskatīsimies ar lietotāja acīm. Tu nofotografē gružus un uzreiz redzi, cik saņemsi — vēl "
+         "pirms reģistrācijas. Kartē redzi tikai tos punktus, kur braukt atmaksājas. Parādīšu."
          "\n\n[VIDEO 1:00 — Gustavs komentē]")
 
 # 4 — Kāpēc tieši mūsu risinājums
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
 kicker(s, 0.7, 0.6, "Kāpēc tieši mūsu risinājums")
-text(s, 0.7, 1.0, 12, 0.9, "Annas iespējas šodien", size=40, color=DARK, font=HEAD, bold=True)
+text(s, 0.7, 1.0, 12, 0.9, "Iespējas šodien", size=40, color=DARK, font=HEAD, bold=True)
 cols = ["Bez maksas", "Ērti", "Atlīdzība", "Nonāk pārstrādē"]
 rows = [("Sludinājums „izvedam lēti”", ["Lēti", "Jā", "Nē", "Bieži mežā"]),
         ("Konteinera noma", ["Dārgi", "Jā", "Nē", "Jā"]),
@@ -208,7 +208,7 @@ text(s, 1.0, 5.75, 11.4, 1.05,
      color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
 text(s, 0.7, 6.9, 11.95, 0.3, "Atlīdzība pēc pārstrādātāju cenām: koksne 15–30 €/t, betons 1–3 €/t, "
      "ķieģeļi 0,5–1,5 €/t (aplēses, jāpārbauda pilotprojektā).", size=10, color=MUTED)
-notes(s, "0:30 — Šodien Annai ir trīs iespējas. Sludinājums — lēti, bet gruži bieži nonāk mežā. Konteiners — "
+notes(s, "0:30 — Šodien cilvēkam ir trīs iespējas. Sludinājums — lēti, bet gruži bieži nonāk mežā. Konteiners — "
          "legāli, bet dārgi. Šķirošanas laukums — jāzina, kur, jāved pašam, un nekas par to netiek. "
          "No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un mūsu "
          "galvenā funkcija: nofotografē — un uzreiz redzi, cik saņemsi un kur nodot atmaksājas. To "

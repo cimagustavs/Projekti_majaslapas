@@ -35,7 +35,7 @@ Lietotnes nosaukums: **Būvgružu birža**. Komanda: **Alanguka**.
 **Uz slaida:** uzlīme uz foto "Izmest mežā: 0 €" (hook), virsraksts "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē", foto ar gružiem mežā, abi fakti, sludinājums "Izvedam būvgružus lēti".
 
 **Runas teksts (~70 vārdi):**
-> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. Uzminiet, kurš ceļš uzvar. *[pauze]* Šī ir Anna. Viņa remontē māju: veci dēļi, betona lauskas, piekabes nav, kur nodot — nezina. Internetā — "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — nelegālais ceļš vienkārši ir lētāks.
+> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. Uzminiet, kurš ceļš uzvar. *[pauze]* Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, piekabes nav, kur nodot — nezināt. Internetā — "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — nelegālais ceļš vienkārši ir lētāks.
 
 > ⚠️ Ja atradīsiet reālas cenas (ss.lv sludinājums pret legālu pieņemšanu), ielieciet vienu salīdzinājumu slaidā — tas ir spēcīgāks par jebkuru apgalvojumu.
 
@@ -89,18 +89,18 @@ Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis
 
 ## 4. stunda — Pilns runas teksts (3:00) — visu runā Gustavs
 
-Mentora prasība: visa prezentācija caur lietotāja pieredzi — viena persona (Anna) no 1. līdz 4. slaidam.
+Mentora prasība: visa prezentācija caur lietotāja pieredzi (bez izdomātas personas — "jūs/tu" un "cilvēks").
 
 Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runāt un rādīt demo bez pauzēm.
 
 ### Slaids 1 — Problēma (0:35) · runā: Gustavs
-> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. Uzminiet, kurš ceļš uzvar. *[pauze]* Šī ir Anna. Viņa remontē māju: veci dēļi, betona lauskas, piekabes nav, kur nodot — nezina. Internetā — "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — nelegālais ceļš vienkārši ir lētāks.
+> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. Uzminiet, kurš ceļš uzvar. *[pauze]* Iedomājieties, ka remontējat māju: veci dēļi, betona lauskas, piekabes nav, kur nodot — nezināt. Internetā — "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — nelegālais ceļš vienkārši ir lētāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
-> Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno Annu ar uzņēmumiem, kas pārstrādā būvgružus. Princips kā pudeļu depozītam — nodod un saņem. Anna nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
+> Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēks nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
 
-### Slaids 3 — Lietotāja pieredze: Annas ceļš (0:15) · runā: Gustavs
-> Paskatīsimies ar Annas acīm. Viņa nofotografē gružus un uzreiz redz, cik saņems — vēl pirms reģistrācijas. Kartē redz tikai tos punktus, kur braukt atmaksājas. Parādīšu.
+### Slaids 3 — Lietotāja ceļš (0:15) · runā: Gustavs
+> Paskatīsimies ar lietotāja acīm. Tu nofotografē gružus un uzreiz redzi, cik saņemsi — vēl pirms reģistrācijas. Kartē redzi tikai tos punktus, kur braukt atmaksājas. Parādīšu.
 
 **UX principi lietotnei:**
 1. Atlīdzība redzama **pirms** reģistrācijas — reģistrācija tikai saņemot atlīdzību.
@@ -110,7 +110,7 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 5. Pēc nodošanas — atgriezeniskā saite: "No meža izglābti 300 kg".
 
 ### Video no lietotnes (1:00) · Gustavs komentē video
-> *[jau pieslēgta — reģistrāciju nerādīt]* Lūk, Annas telefons. Viņai ir vecie grīdas dēļi un betona lauskas. Viņa nofotografē materiālu, izvēlas veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē Anna redz tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaka nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir Annas kontā. Gruži nonāk pārstrādē, nevis mežā.
+> *[jau pieslēgta — reģistrāciju nerādīt]* Lūk, lietotne. Man ir vecie grīdas dēļi un betona lauskas. Es nofotografēju materiālu, izvēlos veidu un kvalitāti. Lietotne uzreiz aprēķina atlīdzību: svars reiz cena reiz kvalitāte. Par koksni — nauda, par betonu — punkti. *[atver karti]* Kartē redzu tikai tos punktus, kur atlīdzība ir lielāka par degvielas izmaksām, un piesaku nodošanu. *[atver atlīdzību]* Punktā gružus nosver, un atlīdzība ir manā kontā. Gruži nonāk pārstrādē, nevis mežā.
 
 Demo noteikumi:
 - Demo ir īss video no lietotnes (ievietots 3. slaidā Canva), nevis dzīvs demo.
@@ -122,7 +122,7 @@ Demo noteikumi:
 
 **Galvenā funkcija (viena!):** Nofotografē — uzreiz redzi, cik saņemsi un kur nodot atmaksājas.
 
-> Šodien Annai ir trīs iespējas. Sludinājums — lēti, bet gruži bieži nonāk mežā. Konteiners — legāli, bet dārgi. Šķirošanas laukums — jāzina, kur, jāved pašam, un nekas par to netiek. No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un mūsu galvenā funkcija: nofotografē — un uzreiz redzi, cik saņemsi un kur nodot atmaksājas. To aprēķinājām pēc pārstrādātāju reālajām cenām.
+> Šodien cilvēkam ir trīs iespējas. Sludinājums — lēti, bet gruži bieži nonāk mežā. Konteiners — legāli, bet dārgi. Šķirošanas laukums — jāzina, kur, jāved pašam, un nekas par to netiek. No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un mūsu galvenā funkcija: nofotografē — un uzreiz redzi, cik saņemsi un kur nodot atmaksājas. To aprēķinājām pēc pārstrādātāju reālajām cenām.
 
 > ⚠️ Salīdzinājums ir vispārīgs (kategorijas, ne konkrēti uzņēmumi). Ja Alisas izpētē ir nosaukti konkurenti (piem., lietotnes vai platformas ārvalstīs), pievienot tos jautājumu atbildēm.
 
