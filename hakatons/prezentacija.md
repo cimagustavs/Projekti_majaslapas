@@ -18,78 +18,56 @@ Darba nosaukums lietotnei: **BūvDepo** (var mainīt).
 
 ---
 
-## 1. stunda — Problēma
+## 1. stunda — Problēma (slaids 1, 0:35)
 
-### Slaids 1: Problēma
+**Problēmas formulējums:**
+> Cilvēkiem nav pietiekami vienkārši un izdevīgi šķirot un legāli nodot būvgružus. Tāpēc lēts sludinājums uzvar, un materiāli, ko varētu pārstrādāt, nonāk mežā.
 
-**Virsraksts:** Būvgruži mežā ir lētāki nekā būvgruži pārstrādē
+**Trīs cēloņi:**
+1. **Dārgi** — legāli nodot būvgružus maksā, nelegāli ir lētāk.
+2. **Sarežģīti** — cilvēks nezina, kur nodot, kā šķirot, un bieži nav transporta.
+3. **Nav ieguvuma** — par pareizu rīcību cilvēks neko nesaņem.
 
-**Uz slaida:**
-- Foto: būvgruži mežā (Latvijā)
-- Ekrānšāviņš: sludinājums "Izvedam būvgružus lēti"
+**Sekas:** piesārņoti meži un karjeri, zaudēti resursi (betonu un ķieģeļus varētu pārstrādāt), pašvaldības maksā par sakopšanu.
 
-**Runas teksts (~40 s):**
-> Iedomājieties, ka jūs remontējat dzīvokli. Jums ir 30 maisi ar betonu, ķieģeļiem un flīzēm. Jums nav piekabes, un jūs nezināt, kur tos nodot. Internetā ir sludinājums: "Izvedam būvgružus lēti". Viens zvans, un gruži ir prom. Bet daļa no tiem nonāk šeit — mežā vai karjerā. Un tur tie vairs nekad netiks izmantoti.
+**Fakti (no organizatoru plakāta):** būvniecība patērē ~1/2 no zemes dzīlēs iegūtajiem resursiem; būvniecības atkritumi ir > 1/3 no visiem ES atkritumiem.
 
-### Slaids 2: Kāpēc tā notiek
+**Uz slaida:** virsraksts "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē", foto ar gružiem mežā, abi fakti, sludinājums "Izvedam būvgružus lēti".
 
-**Virsraksts:** Cilvēkiem nav pietiekami vienkārši un izdevīgi šķirot un nodot būvgružus
+**Runas teksts (~70 vārdi):**
+> Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
-**Uz slaida:**
-
-| | Nelegāli | Legāli |
-|---|---|---|
-| Cena | lēti (sludinājums) | dārgāk (konteiners / pieņemšanas maksa) |
-| Piepūle | viens zvans | jāzina kur, kā šķirot, jāved pašam |
-| Rezultāts | mežs, karjers | pārstrāde |
-
-> ⚠️ Cenas jāieliek reālas: 2–3 sludinājumi no ss.lv pret vietējā atkritumu apsaimniekotāja cenu. Neizdomāt skaitļus.
-
-**Fakti (no organizatoru plakāta — drīkst citēt):**
-- Būvniecība patērē ~**1/2** no zemes dzīlēs iegūtajiem resursiem.
-- Būvniecības atkritumi ir **> 1/3** no visiem ES atkritumiem.
-- Latvijā daļa būvgružu nonāk mežos un karjeros.
-
-**Runas teksts (~40 s):**
-> Problēma nav tā, ka cilvēki ir slikti. Problēma ir tā, ka šodien nelegālais ceļš ir lētāks un vienkāršāks par legālo. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Betons un ķieģeļi ir pārstrādājami — bet tikai tad, ja tie ir sašķiroti un nonāk pie pārstrādātāja, nevis mežā.
-
-**Kurš cieš:**
-- **Iedzīvotājs** — nezina, kur un kā nodot nelielu daudzumu, un tas maksā.
-- **Pašvaldība** — maksā par izgāztuvju sakopšanu un nezina, no kurienes tās nāk.
-- **Ražotāji/pārstrādātāji** — nesaņem tīru, sašķirotu materiālu; jaukti gruži nav izmantojami.
+> ⚠️ Ja atradīsiet reālas cenas (ss.lv sludinājums pret legālu pieņemšanu), ielieciet vienu salīdzinājumu slaidā — tas ir spēcīgāks par jebkuru apgalvojumu.
 
 ---
 
-## 2. stunda — Risinājums un kā tas darbojas
+## 2. stunda — Risinājums un kā tas darbojas (slaidi 2–3)
 
-### Slaids 3: Risinājums
+**Risinājuma formulējums:**
+> BūvDepo ir depozīta sistēma būvgružiem. Cilvēks sašķiro gružus, nodod tos depozīta punktā un saņem atlīdzību. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
 
-**Virsraksts:** Depozīta sistēma — tikai būvgružiem
+**Kā tas atrisina katru cēloni:**
+| Cēlonis | BūvDepo risinājums |
+|---|---|
+| Dārgi | sašķirotus gružus pieņem bez maksas + atlīdzība |
+| Sarežģīti | lietotne parāda, kā šķirot un kur ir tuvākais punkts; var pieteikt pārvadātāju |
+| Nav ieguvuma | punkti, atlaides būvmateriālu veikalos vai nauda |
 
-**Viens teikums:**
-> Šodien izmest būvgružus mežā ir lētāk nekā nodot tos legāli. BūvDepo to apgriež otrādi — sašķirot un nodot kļūst izdevīgāk.
+**Kā tas darbojas — iedzīvotājs (= Gustava ekrāni):**
+1. Reģistrējas lietotnē.
+2. Piesaka materiālu: foto, veids (betons, ķieģeļi, koks, metāls), daudzums, atrašanās vieta.
+3. Kartē izvēlas nodošanas punktu — atved pats vai piesaka reģistrētu pārvadātāju.
+4. Punktā gružus nosver un pārbauda → saņem atlīdzību lietotnē.
 
-**Trīs ieguvēji:**
-- 👤 **Iedzīvotājs** — nodod sašķirotus gružus bez maksas un saņem atlīdzību (punkti, atlaides būvmateriālu veikalos vai nauda).
-- 🏭 **Uzņēmums** — saņem tīru, sašķirotu materiālu, ko pārstrādāt un izmantot vēlreiz.
-- 🏛️ **Pašvaldība** — mazāk izgāztuvju mežos un dati par to, kur rodas būvgruži.
+**Kā tas darbojas — uzņēmums:** redz, cik un kāda materiāla gaidāms → pārstrādā (piem., betons → šķembas ceļiem un pamatiem) → ietaupa uz jaunu izejvielu ieguvi.
 
-**Runas teksts (~30 s):**
-> Latvijā jau visi zina depozīta sistēmu pudelēm: atnes pudeli — saņem naudu. Mēs piedāvājam to pašu būvgružiem. Cilvēks sašķiro un nodod, un saņem atlīdzību. Uzņēmums saņem materiālu, ko var pārstrādāt. Ieguvēji ir abi.
+**Pašvaldība:** mazāk izgāztuvju mežos, dati par to, kur rodas būvgruži.
 
-### Slaids 4: Kā tas darbojas
+**Runas teksts — slaids 2 (~55 vārdi, 0:30):**
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — BūvDepo. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
-> Šis slaids sakrīt ar Gustava lietotnes ekrāniem — tā demo un prezentācija stāsta vienu stāstu.
-
-1. **Reģistrējies** — konts lietotnē.
-2. **Piesaki materiālu** — foto, veids (betons, ķieģeļi, koks, metāls…), daudzums, atrašanās vieta. Lietotne parāda, kā sašķirot.
-3. **Izvēlies nodošanas punktu kartē** — atved pats vai piesaki reģistrētu pārvadātāju.
-4. **Nodod un saņem atlīdzību** — punktā gružus nosver, tu saņem QR čeku un punktus/atlaidi/naudu.
-
-**Uzņēmuma pusē:** redz, cik un kāda materiāla gaidāms → pārstrādā (piem., betons → šķembas ceļiem un pamatiem) → ietaupa uz jaunu izejvielu ieguvi.
-
-**Runas teksts (~40 s, tad pāreja uz demo):**
-> Lūk, kā tas izskatās. Anna remontē vannasistabu. Viņa nofotografē vecās flīzes un betonu, norāda daudzumu, un lietotne parāda tuvāko nodošanas punktu un cik viņa saņems. Viņa atved gružus, tos nosver, un viņa saņem punktus, ko izmantot būvmateriālu veikalā. Gruži nonāk pārstrādē, nevis mežā. Gustavs to tagad parādīs dzīvajā.
+**Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
+> Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
 
 ### Slaids 5: Aprites cikls
 
