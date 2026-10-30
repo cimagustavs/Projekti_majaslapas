@@ -334,7 +334,7 @@ const copyHTML = copyBtn.innerHTML;
 copyBtn.addEventListener('click', async () => {
   const code = root.lang === 'lv' ? 'RUDENS' : 'ОСЕНЬ';
   try { await navigator.clipboard.writeText(code); } catch {}
-  copyBtn.innerHTML = '<span data-l="lv">Nokopēts ✓</span><span data-l="ru">Скопировано ✓</span>';
+  copyBtn.innerHTML = '<span data-l="lv">Nokopēts ✓</span><span data-l="ru" lang="ru">Скопировано ✓</span>';
   setTimeout(() => { copyBtn.innerHTML = copyHTML; }, 2000);
 });
 
@@ -370,7 +370,7 @@ const MONTH = {
   lv: ['janvārī', 'februārī', 'martā', 'aprīlī', 'maijā', 'jūnijā', 'jūlijā', 'augustā', 'septembrī', 'oktobrī', 'novembrī', 'decembrī'],
   ru: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
 };
-const SAMPLE_TAG = '<small class="sample"><span data-l="lv">paraugs</span><span data-l="ru">пример</span></small>';
+const SAMPLE_TAG = '<small class="sample"><span data-l="lv">paraugs</span><span data-l="ru" lang="ru">пример</span></small>';
 
 const bookForm = document.getElementById('book');
 const svcList = document.getElementById('svc-list');
@@ -390,7 +390,7 @@ function duration(min, lang) {
   const hs = lang === 'lv' ? 'h' : 'ч', ms = lang === 'lv' ? 'min' : 'мин';
   return [h ? `${h} ${hs}` : '', m ? `${m} ${ms}` : ''].filter(Boolean).join(' ');
 }
-const both = (fn) => `<span data-l="lv">${fn('lv')}</span><span data-l="ru">${fn('ru')}</span>`;
+const both = (fn) => `<span data-l="lv">${fn('lv')}</span><span data-l="ru" lang="ru">${fn('ru')}</span>`;
 
 svcList.innerHTML = SERVICES.map((x) => `
   <label class="svc">
