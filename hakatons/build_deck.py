@@ -158,7 +158,7 @@ s.shapes.add_movie("hakatons/demo-video.mp4", Inches(6.2), Inches(1.7), Inches(6
 text(s, 6.05, 6.15, 6.9, 0.3, "Prototips · demo dati", size=10, color=MUTED, align=PP_ALIGN.RIGHT)
 notes(s, "0:15. Paskatīsimies ar lietotāja acīm. Izvēlies materiālu, ieraksti svaru un pilsētu, un uzreiz redzi, "
          "cik saņemsi un kur ir tuvākais punkts. Bez reģistrācijas. Parādīšu."
-         "\n\n[VIDEO ~43 s, Gustavs komentē: Izvēlos būvkoksni, 300 kilogrami, Jelgava. Uzreiz redzu: "
+         "\n\n[VIDEO ~33 s, Gustavs komentē: Izvēlos būvkoksni, 300 kilogrami, Jelgava. Uzreiz redzu: "
          "4 eiro, tuvākais punkts Jelgavā. Kartē redzu, kur tas ir. Ja nevaru atvest pats, piesaku savākšanu: "
          "materiāls, daudzums, pilsēta, kontakts. Nosūtīts, un uzņēmums atbrauks pats.]")
 

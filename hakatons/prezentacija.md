@@ -109,7 +109,7 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 4. Kartē pie katra punkta: atlīdzība mīnus degviela.
 5. Pēc nodošanas — atgriezeniskā saite: "No meža izglābti 300 kg".
 
-### Video no lietotnes (~0:43, `demo-video.mp4`, ierakstīts no Gustava prototipa) · Gustavs komentē video
+### Video no lietotnes (~0:33, `demo-video.mp4`, ierakstīts no Gustava prototipa) · Gustavs komentē video
 > Izvēlos būvkoksni, 300 kilogrami, Jelgava. Uzreiz redzu: 4 eiro, tuvākais punkts Jelgavā. Kartē redzu, kur tas ir. Ja nevaru atvest pats, piesaku savākšanu: materiāls, daudzums, pilsēta, kontakts. Nosūtīts, un uzņēmums atbrauks pats.
 
 Demo noteikumi:
