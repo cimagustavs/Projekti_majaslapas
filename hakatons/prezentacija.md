@@ -11,7 +11,7 @@ Lietotnes nosaukums: **Būvgružu birža**. Komanda: **Alanguka**.
 | 1 | Problēma + kāpēc tā notiek (apvienots) | 0:35 |
 | 2 | Risinājums: aprites ekonomikas platforma būvgružiem | 0:30 |
 | 3 | Kā tas darbojas → **demo** | 0:15 + 1:00 |
-| 4 | Ekonomika: cik var maksāt (Anetes aprēķini) | 0:30 |
+| 4 | Kāpēc tieši mūsu risinājums (+ Anetes cenas) | 0:30 |
 | 5 | Noslēgums | 0:10 |
 
 ~130 vārdi minūtē → visa runa ≤ ~390 vārdi. Zemāk esošie runas teksti ir jāsaīsina uz pusi. Detalizētās atbildes no slaida 6 paliek jautājumu daļai, nevis runai.
@@ -95,7 +95,7 @@ Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runā
 > Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
-> Būvgružu birža ir aprites ekonomikas platforma: tā savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēks sašķiro gružus un nodod tos bez maksas — tas jau ir ietaupījums. Par koksni viņš saņem naudu, par betonu un ķieģeļiem — punktus vai pārstrādātas šķembas. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēkiem: bezmaksas nodošana un atlīdzība — par koksni nauda, par betonu punkti. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
 
 ### Slaids 3 — Kā tas darbojas (0:15) · runā: Gustavs
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Parādīšu, kā tas izskatās.
@@ -108,9 +108,9 @@ Demo noteikumi:
 - Video bez skaņas, ne garāks par 1:00; Gustavs komentē pa virsu. Izmēģināt sinhronu runu ar video.
 - Atlīdzības aprēķinam lietotnē izmantot Anetes formulu un cenas (`ekonomika.md`), nevis izdomātus skaitļus.
 
-### Slaids 4 — Ekonomika (0:30) · runā: Gustavs
-**Uz slaida:** pārstrādātāju peļņa ~1,5–2 % · koksne 15–30 €/t · betons 1–3 €/t · ķieģeļi 0,5–1,5 €/t · formula: svars × bāzes cena × kvalitāte (A=1, B=0,3–0,5, C=0)
-> Mēs to aprēķinājām. Pārstrādātāju peļņa ir tikai ap diviem procentiem, tāpēc godīgi: par betonu lielu naudu neviens nemaksās. Reālu naudu maksā par koksni — līdz 30 eiro tonnā. Galvenais ieguvums cilvēkam ir bezmaksas pieņemšana, uzņēmumam — tīrs materiāls bez šķirošanas izmaksām. Lietotnes uzturēšanu sedz pašvaldība, kas ietaupa uz izgāztuvju sakopšanu. Sākt gribam ar pilotprojektu vienā pašvaldībā.
+### Slaids 4 — Kāpēc tieši mūsu risinājums (0:30) · runā: Gustavs
+**Uz slaida:** 1 Izdevīgi · 2 Reāli aprēķināts · 3 Atmaksājas braukt · 4 Bez jaunas infrastruktūras + cenas (koksne 15–30 €/t, betons 1–3 €/t, ķieģeļi 0,5–1,5 €/t) un formula.
+> Kāpēc tieši mūsu risinājums? Pirmkārt, tas ir izdevīgi, nevis tikai pareizi — mēs nepaļaujamies uz cilvēku apziņu. Otrkārt, mēs to aprēķinājām: pārstrādātāju peļņa ir ap diviem procentiem, tāpēc par koksni maksājam naudu, par betonu — punktus. Treškārt, lietotne rāda tikai tos punktus, kur braukt atmaksājas. Un mums nevajag jaunu infrastruktūru — sākam ar pilotprojektu vienā pašvaldībā.
 
 ### Slaids 5 — Noslēgums (0:10) · runā: Gustavs
 > Būvgružu birža — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
