@@ -32,10 +32,10 @@ Lietotnes nosaukums: **Būvgružu birža**. Komanda: **Alanguka**.
 
 **Fakti (no organizatoru plakāta):** būvniecība patērē ~1/2 no zemes dzīlēs iegūtajiem resursiem; būvniecības atkritumi ir > 1/3 no visiem ES atkritumiem.
 
-**Uz slaida:** virsraksts "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē", foto ar gružiem mežā, abi fakti, sludinājums "Izvedam būvgružus lēti".
+**Uz slaida:** uzlīme uz foto "Izmest mežā: 0 €" (hook), virsraksts "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē", foto ar gružiem mežā, abi fakti, sludinājums "Izvedam būvgružus lēti".
 
 **Runas teksts (~70 vārdi):**
-> Šī ir Anna. Viņa remontē māju, un viņai ir kaudze vecu dēļu un betona lausku. Piekabes nav, kur nodot, nezina, legāli ir dārgi. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
+> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. Uzminiet, kurš ceļš uzvar. *[pauze]* Šī ir Anna. Viņa remontē māju: veci dēļi, betona lauskas, piekabes nav, kur nodot — nezina. Internetā — "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — nelegālais ceļš vienkārši ir lētāks.
 
 > ⚠️ Ja atradīsiet reālas cenas (ss.lv sludinājums pret legālu pieņemšanu), ielieciet vienu salīdzinājumu slaidā — tas ir spēcīgāks par jebkuru apgalvojumu.
 
@@ -94,7 +94,7 @@ Mentora prasība: visa prezentācija caur lietotāja pieredzi — viena persona 
 Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runāt un rādīt demo bez pauzēm.
 
 ### Slaids 1 — Problēma (0:35) · runā: Gustavs
-> Šī ir Anna. Viņa remontē māju, un viņai ir kaudze vecu dēļu un betona lausku. Piekabes nav, kur nodot, nezina, legāli ir dārgi. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
+> **HOOK (lēni, ar pauzi):** Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. Uzminiet, kurš ceļš uzvar. *[pauze]* Šī ir Anna. Viņa remontē māju: veci dēļi, betona lauskas, piekabes nav, kur nodot — nezina. Internetā — "izvedam būvgružus lēti". Viens zvans, un gruži nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — nelegālais ceļš vienkārši ir lētāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
 > Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno Annu ar uzņēmumiem, kas pārstrādā būvgružus. Princips kā pudeļu depozītam — nodod un saņem. Anna nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.

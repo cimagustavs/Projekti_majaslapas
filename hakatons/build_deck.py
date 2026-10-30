@@ -100,25 +100,29 @@ text(s, 0.7, 6.75, 6.5, 0.4, "Avots: hakatona izaicinājums (SCHWENK, RTU, Green
      size=10, color=PALE)
 s.shapes.add_picture("hakatons/foto-mezs.jpg", Inches(7.75), Inches(0.6), Inches(4.95), Inches(4.6))
 text(s, 7.75, 5.22, 4.95, 0.2, "Foto: iauto.lv", size=8, color=MID, align=PP_ALIGN.RIGHT)
+rect(s, 7.95, 0.8, 2.6, 1.05, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
+text(s, 7.95, 0.8, 2.6, 1.05, [("Izmest mežā", {"size": 13, "color": PALE, "after": 0}),
+                               ("0 €", {"size": 30, "bold": True, "font": HEAD})],
+     color=WHITE, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, spacing=1.0)
 rect(s, 7.75, 5.45, 4.95, 1.45, WHITE, MSO_SHAPE.ROUNDED_RECTANGLE)
 text(s, 8.05, 5.6, 4.4, 1.2,
      [("„Izvedam būvgružus lēti!”", {"size": 20, "bold": True, "font": HEAD, "color": DARK}),
       ("Viens zvans — un gruži nonāk mežā.", {"size": 14, "color": MUTED})],
      anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "0:35 — Šī ir Anna. Viņa remontē māju, un viņai ir kaudze vecu dēļu un betona lausku. "
-         "Piekabes nav, kur nodot, nezina, legāli ir dārgi. Internetā — \"izvedam būvgružus lēti\". Viens zvans, "
-         "un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē "
-         "iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma "
-         "nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.\n\n"
+notes(s, "0:35 — HOOK (lēni, ar pauzi): Izmest būvgružus mežā maksā nulle eiro. Nodot tos legāli — maksā. "
+         "Uzminiet, kurš ceļš uzvar. [pauze] Šī ir Anna. Viņa remontē māju: veci dēļi, betona lauskas, "
+         "piekabes nav, kur nodot — nezina. Internetā — \"izvedam būvgružus lēti\". Viens zvans, un gruži "
+         "nonāk mežā. Un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos — "
+         "nelegālais ceļš vienkārši ir lētāks.\n\n"
          "Foto avots: https://iauto.lv/zinas/latvija/49412-izg-atkritumus-me-k-tdus-cilvkus-nosaukt-foto")
 
 # 2 — Risinājums
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
-kicker(s, 0.7, 0.6, "Risinājums")
+kicker(s, 0.7, 0.6, "Risinājums · aprites ekonomikas platforma")
 text(s, 0.7, 1.0, 10, 0.9, "Būvgružu birža", size=44, color=DARK, font=HEAD, bold=True)
-text(s, 0.7, 1.85, 10.2, 0.6, "Aprites ekonomikas platforma būvgružiem. Savieno cilvēkus, kuriem ir "
-     "būvgruži, ar uzņēmumiem, kas tos pārstrādā.", size=18, color=MUTED)
+text(s, 0.7, 1.8, 10.2, 1.0, "Motivē cilvēkus viegli un bez maksas vai pat par atlīdzību šķirot būvgružus, "
+     "bet uzņēmumiem ļauj atkārtoti izmantot materiālus jaunu produktu ražošanā.", size=16, color=MUTED)
 s.shapes.add_picture("hakatons/logo.png", Inches(11.2), Inches(0.55), Inches(1.45))
 cards = [("Cilvēkiem", ["Nodod sašķirotus gružus bez maksas",
                         "Par koksni: nauda",
