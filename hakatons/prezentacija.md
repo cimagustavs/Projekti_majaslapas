@@ -116,8 +116,13 @@ Demo noteikumi:
 - Atlīdzības aprēķinam lietotnē izmantot Anetes formulu un cenas (`ekonomika.md`), nevis izdomātus skaitļus.
 
 ### Slaids 4 — Kāpēc tieši mūsu risinājums (0:30) · runā: Gustavs
-**Uz slaida:** 1 Izdevīgi · 2 Reāli aprēķināts · 3 Atmaksājas braukt · 4 Bez jaunas infrastruktūras + cenas (koksne 15–30 €/t, betons 1–3 €/t, ķieģeļi 0,5–1,5 €/t) un formula.
-> Kāpēc tieši mūsu risinājums? Pirmkārt, tas ir izdevīgi, nevis tikai pareizi — mēs nepaļaujamies uz cilvēku apziņu. Otrkārt, mēs to aprēķinājām: pārstrādātāju peļņa ir ap diviem procentiem, tāpēc par koksni maksājam naudu, par betonu — punktus. Treškārt, lietotne rāda tikai tos punktus, kur braukt atmaksājas. Un mums nevajag jaunu infrastruktūru — sākam ar pilotprojektu vienā pašvaldībā.
+**Uz slaida:** salīdzinājums ar alternatīvām (sludinājums, konteinera noma, šķirošanas laukums, Būvgružu birža) + galvenā funkcija.
+
+**Galvenā funkcija (viena!):** Nofotografē — uzreiz redzi, cik saņemsi un kur nodot atmaksājas.
+
+> Šodien Annai ir trīs iespējas. Sludinājums — lēti, bet gruži bieži nonāk mežā. Konteiners — legāli, bet dārgi. Šķirošanas laukums — jāzina, kur, jāved pašam, un nekas par to netiek. No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un mūsu galvenā funkcija: nofotografē — un uzreiz redzi, cik saņemsi un kur nodot atmaksājas. To aprēķinājām pēc pārstrādātāju reālajām cenām.
+
+> ⚠️ Salīdzinājums ir vispārīgs (kategorijas, ne konkrēti uzņēmumi). Ja Alisas izpētē ir nosaukti konkurenti (piem., lietotnes vai platformas ārvalstīs), pievienot tos jautājumu atbildēm.
 
 ### Slaids 5 — Noslēgums (0:10) · runā: Gustavs
 > Būvgružu birža — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
@@ -137,6 +142,8 @@ Demo noteikumi:
    > Mēs aprēķinājām pēc uzņēmumu publiskajiem finanšu datiem: SIA Būvgružu Pārstrāde 2024. gadā — apgrozījums 869 tūkst. €, peļņa 13,7 tūkst. € (~1,6 %). Tāpēc atlīdzība ir piesardzīga. Cenas pa materiāliem ir aplēses — tās pārbaudīsim ar uzņēmumiem pilotprojektā.
 3a. **300 kg betona dod ~0,30–0,90 € — mazāk par degvielu. Kāpēc lai kāds brauc?**
    > Lietotne rāda tikai punktus, kur atlīdzība > degviela. Kombinējot ar koksni (300 kg → 4,5–9 €), brauciens atmaksājas. Un galvenais — cilvēks ietaupa būvgružu izvešanas maksu.
+3c. **Kas ir jūsu konkurenti?**
+   > Cilvēkam šodien ir trīs ceļi: sludinājums "izvedam lēti", konteinera noma un šķirošanas laukums. Neviens no tiem nedod atlīdzību un nepasaka iepriekš, vai nodot atmaksājas.
 3b. **Ar ko jūs atšķiraties no citām "aprites ekonomikas platformām"?**
    > Mēs aprēķinājām, cik reāli var maksāt par katru materiālu, un lietotne rāda tikai tos punktus, kur nodot atmaksājas. Tā nav tikai karte — tā ir atlīdzība, kas balstās uz uzņēmumu reālajām cenām.
 

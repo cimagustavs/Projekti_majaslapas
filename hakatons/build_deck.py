@@ -117,12 +117,12 @@ s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
 kicker(s, 0.7, 0.6, "Risinājums")
 text(s, 0.7, 1.0, 10, 0.9, "Būvgružu birža", size=44, color=DARK, font=HEAD, bold=True)
-text(s, 0.7, 1.85, 10.2, 0.6, "Aprites ekonomikas platforma būvgružiem — savieno cilvēkus, kuriem ir "
+text(s, 0.7, 1.85, 10.2, 0.6, "Aprites ekonomikas platforma būvgružiem. Savieno cilvēkus, kuriem ir "
      "būvgruži, ar uzņēmumiem, kas tos pārstrādā.", size=18, color=MUTED)
 s.shapes.add_picture("hakatons/logo.png", Inches(11.2), Inches(0.55), Inches(1.45))
 cards = [("Cilvēkiem", ["Nodod sašķirotus gružus bez maksas",
-                        "Par koksni — nauda",
-                        "Par betonu un ķieģeļiem — punkti vai pārstrādātas šķembas"]),
+                        "Par koksni: nauda",
+                        "Par betonu un ķieģeļiem: punkti vai šķembas"]),
          ("Uzņēmumiem", ["Tīrs, sašķirots materiāls",
                          "Bez šķirošanas izmaksām",
                          "Lētāka izejviela nekā jauna"]),
@@ -134,7 +134,7 @@ for i, (h, items) in enumerate(cards):
     rect(s, x, 3.0, 3.8, 3.8, CARD, MSO_SHAPE.ROUNDED_RECTANGLE)
     rect(s, x, 3.0, 3.8, 0.12, MID)
     text(s, x + 0.35, 3.4, 3.1, 0.6, h, size=24, color=DARK, font=HEAD, bold=True)
-    text(s, x + 0.35, 4.2, 3.1, 2.5, [("— " + t, {"after": 12}) for t in items], size=16)
+    text(s, x + 0.35, 4.2, 3.1, 2.5, [("•  " + t, {"after": 12}) for t in items], size=16)
 notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, "
          "kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un "
          "saņem. Cilvēkiem: bezmaksas nodošana un atlīdzība — par koksni nauda, par betonu punkti. "
@@ -148,9 +148,12 @@ kicker(s, 0.7, 0.6, "Lietotāja pieredze")
 text(s, 0.7, 1.0, 7.2, 0.9, "Anna remontē māju", size=40, color=DARK, font=HEAD, bold=True)
 text(s, 0.7, 1.75, 7.2, 0.5, "Vecie grīdas dēļi un betona lauskas — ko darīt?", size=17, color=MUTED)
 steps = [("Nofotografē", "Izvēlas veidu un daudzumu maisos — lietotne parāda, kā šķirot"),
-         ("Uzreiz redz atlīdzību", "Vēl pirms reģistrācijas — bez riska, bez pūlēm"),
+         ("Uzreiz redz atlīdzību", "Cik saņems un vai braukt atmaksājas — vēl pirms reģistrācijas"),
          ("Izvēlas punktu kartē", "Tikai tur, kur atlīdzība > degvielas izmaksas"),
          ("Nodod un saņem", "Nosver, pārbauda — atlīdzība kontā")]
+rect(s, 0.5, 2.55 + 1.08 - 0.14, 7.5, 1.03, PALE, MSO_SHAPE.ROUNDED_RECTANGLE)
+text(s, 5.9, 2.55 + 1.08 - 0.05, 1.95, 0.3, "GALVENĀ FUNKCIJA", size=10, color=DARK, font=HEAD,
+     bold=True, align=PP_ALIGN.RIGHT)
 for i, (h, sub) in enumerate(steps):
     y = 2.55 + i * 1.08
     rect(s, 0.7, y, 0.75, 0.75, DARK, MSO_SHAPE.OVAL)
@@ -168,36 +171,40 @@ notes(s, "0:15 — Paskatīsimies ar Annas acīm. Viņa nofotografē gružus un 
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
 kicker(s, 0.7, 0.6, "Kāpēc tieši mūsu risinājums")
-text(s, 0.7, 1.0, 12, 0.9, "Izdevīgi, nevis tikai pareizi", size=40, color=DARK, font=HEAD, bold=True)
-reasons = [("Izdevīgi", "Nepaļaujamies uz apziņu — legālais ceļš kļūst lētāks par mežu"),
-           ("Reāli aprēķināts", "Atlīdzība balstīta uz pārstrādātāju cenām un peļņu (~2 %)"),
-           ("Atmaksājas braukt", "Lietotne rāda tikai punktus, kur atlīdzība > degvielas izmaksas"),
-           ("Bez jaunas infrastruktūras", "Izmanto esošos licencētos punktus — sākam ar vienu pašvaldību")]
-for i, (h, sub) in enumerate(reasons):
-    x = 0.7 + (i % 2) * 6.05
-    y = 2.15 + (i // 2) * 1.6
-    rect(s, x, y, 5.85, 1.4, CARD, MSO_SHAPE.ROUNDED_RECTANGLE)
-    rect(s, x + 0.3, y + 0.3, 0.8, 0.8, DARK, MSO_SHAPE.OVAL)
-    text(s, x + 0.3, y + 0.3, 0.8, 0.8, str(i + 1), size=22, color=WHITE, font=HEAD, bold=True,
-         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
-    text(s, x + 1.35, y + 0.22, 4.3, 0.5, h, size=20, color=INK, font=HEAD, bold=True)
-    text(s, x + 1.35, y + 0.7, 4.3, 0.6, sub, size=14, color=MUTED)
-rect(s, 0.7, 5.45, 11.9, 1.1, DARK, MSO_SHAPE.ROUNDED_RECTANGLE)
-prices = [("Koksne", "15–30 €/t"), ("Betons", "1–3 €/t"), ("Ķieģeļi", "0,5–1,5 €/t")]
-for i, (m, p) in enumerate(prices):
-    x = 1.0 + i * 2.75
-    text(s, x, 5.55, 2.6, 0.4, m, size=13, color=PALE)
-    text(s, x, 5.9, 2.6, 0.5, p, size=22, color=WHITE, font=HEAD, bold=True)
-text(s, 9.15, 5.55, 3.3, 0.9, [("Atlīdzība =", {"size": 13, "color": PALE}),
-                               ("svars × cena × kvalitāte", {"size": 15, "bold": True, "font": HEAD})],
-     color=WHITE)
-text(s, 0.7, 6.7, 11.9, 0.3, "€/t — aplēses pēc uzņēmumu datiem, jāpārbauda pilotprojektā.",
-     size=10, color=MUTED)
-notes(s, "0:30 — Kāpēc tieši mūsu risinājums? Pirmkārt, tas ir izdevīgi, nevis tikai pareizi — mēs "
-         "nepaļaujamies uz cilvēku apziņu. Otrkārt, mēs to aprēķinājām: pārstrādātāju peļņa ir ap diviem "
-         "procentiem, tāpēc par koksni maksājam naudu, par betonu — punktus. Treškārt, lietotne rāda tikai "
-         "tos punktus, kur braukt atmaksājas. Un mums nevajag jaunu infrastruktūru — sākam ar "
-         "pilotprojektu vienā pašvaldībā.")
+text(s, 0.7, 1.0, 12, 0.9, "Annas iespējas šodien", size=40, color=DARK, font=HEAD, bold=True)
+cols = ["Bez maksas", "Ērti", "Atlīdzība", "Nonāk pārstrādē"]
+rows = [("Sludinājums „izvedam lēti”", ["Lēti", "Jā", "Nē", "Bieži mežā"]),
+        ("Konteinera noma", ["Dārgi", "Jā", "Nē", "Jā"]),
+        ("Šķirošanas laukums", ["Daļēji", "Jāved pašam", "Nē", "Jā"]),
+        ("Būvgružu birža", ["Jā", "Karte + pārvadātājs", "Jā", "Jā"])]
+GOOD = {"Jā", "Karte + pārvadātājs"}
+BAD = {"Nē", "Dārgi", "Bieži mežā"}
+cx = [4.3, 6.4, 8.75, 10.6]
+for j, c in enumerate(cols):
+    text(s, cx[j], 2.05, 2.1, 0.35, c, size=13, color=MUTED, font=HEAD, bold=True)
+for i, (name, vals) in enumerate(rows):
+    y = 2.5 + i * 0.78
+    ours = i == len(rows) - 1
+    rect(s, 0.7, y, 11.95, 0.66, DARK if ours else CARD, MSO_SHAPE.ROUNDED_RECTANGLE)
+    text(s, 0.95, y, 3.3, 0.66, name, size=16, color=WHITE if ours else INK, font=HEAD, bold=True,
+         anchor=MSO_ANCHOR.MIDDLE)
+    for j, v in enumerate(vals):
+        col = WHITE if ours else (MID if v in GOOD else RGBColor(0xB0, 0x4A, 0x3A) if v in BAD else MUTED)
+        text(s, cx[j], y, 2.2, 0.66, v, size=15, color=col, bold=v in GOOD | BAD or ours,
+             anchor=MSO_ANCHOR.MIDDLE)
+rect(s, 0.7, 5.75, 11.95, 1.05, MID, MSO_SHAPE.ROUNDED_RECTANGLE)
+text(s, 1.0, 5.75, 11.4, 1.05,
+     [("Galvenā funkcija", {"size": 12, "color": PALE, "after": 2}),
+      ("Nofotografē — uzreiz redzi, cik saņemsi un kur nodot atmaksājas", {"size": 21, "bold": True,
+                                                                          "font": HEAD})],
+     color=WHITE, anchor=MSO_ANCHOR.MIDDLE)
+text(s, 0.7, 6.9, 11.95, 0.3, "Atlīdzība pēc pārstrādātāju cenām: koksne 15–30 €/t, betons 1–3 €/t, "
+     "ķieģeļi 0,5–1,5 €/t (aplēses, jāpārbauda pilotprojektā).", size=10, color=MUTED)
+notes(s, "0:30 — Šodien Annai ir trīs iespējas. Sludinājums — lēti, bet gruži bieži nonāk mežā. Konteiners — "
+         "legāli, bet dārgi. Šķirošanas laukums — jāzina, kur, jāved pašam, un nekas par to netiek. "
+         "No šīm iespējām tikai Būvgružu biržā nodot ir bez maksas, ar atlīdzību un pārstrādē. Un mūsu "
+         "galvenā funkcija: nofotografē — un uzreiz redzi, cik saņemsi un kur nodot atmaksājas. To "
+         "aprēķinājām pēc pārstrādātāju reālajām cenām.")
 
 # 5 — Noslēgums
 s = prs.slides.add_slide(BLANK)
