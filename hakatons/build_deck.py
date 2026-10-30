@@ -99,6 +99,7 @@ for i, (big, small) in enumerate([("~½", "no zemes dzīlēs iegūtajiem resursi
 text(s, 0.7, 6.75, 6.5, 0.4, "Avots: hakatona izaicinājums (SCHWENK, RTU, Green Liberty)",
      size=10, color=PALE)
 s.shapes.add_picture("hakatons/foto-mezs.jpg", Inches(7.75), Inches(0.6), Inches(4.95), Inches(4.6))
+text(s, 7.75, 5.22, 4.95, 0.2, "Foto: iauto.lv", size=8, color=MID, align=PP_ALIGN.RIGHT)
 rect(s, 7.75, 5.45, 4.95, 1.45, WHITE, MSO_SHAPE.ROUNDED_RECTANGLE)
 text(s, 8.05, 5.6, 4.4, 1.2,
      [("„Izvedam būvgružus lēti!”", {"size": 20, "bold": True, "font": HEAD, "color": DARK}),
@@ -108,7 +109,8 @@ notes(s, "0:35 — Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 mai
          "Nav piekabes, nezināt, kur tos nodot. Internetā — \"izvedam būvgružus lēti\". Viens zvans, "
          "un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē "
          "iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma "
-         "nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.")
+         "nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.\n\n"
+         "Foto avots: https://iauto.lv/zinas/latvija/49412-izg-atkritumus-me-k-tdus-cilvkus-nosaukt-foto")
 
 # 2 — Risinājums
 s = prs.slides.add_slide(BLANK)
