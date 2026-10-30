@@ -35,7 +35,7 @@ Lietotnes nosaukums: **Būvgružu birža**. Komanda: **Alanguka**.
 **Uz slaida:** virsraksts "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē", foto ar gružiem mežā, abi fakti, sludinājums "Izvedam būvgružus lēti".
 
 **Runas teksts (~70 vārdi):**
-> Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
+> Šī ir Anna. Viņa remontē māju, un viņai ir kaudze vecu dēļu un betona lausku. Piekabes nav, kur nodot, nezina, legāli ir dārgi. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 > ⚠️ Ja atradīsiet reālas cenas (ss.lv sludinājums pret legālu pieņemšanu), ielieciet vienu salīdzinājumu slaidā — tas ir spēcīgāks par jebkuru apgalvojumu.
 
@@ -89,15 +89,17 @@ Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis
 
 ## 4. stunda — Pilns runas teksts (3:00) — visu runā Gustavs
 
+Mentora prasība: visa prezentācija caur lietotāja pieredzi — viena persona (Anna) no 1. līdz 4. slaidam.
+
 Laptopu un slaidus pārslēdz prezentācijas atbildīgais, lai Gustavs var runāt un rādīt demo bez pauzēm.
 
 ### Slaids 1 — Problēma (0:35) · runā: Gustavs
-> Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
+> Šī ir Anna. Viņa remontē māju, un viņai ir kaudze vecu dēļu un betona lausku. Piekabes nav, kur nodot, nezina, legāli ir dārgi. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: Gustavs
-> Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un saņem. Cilvēkiem: bezmaksas nodošana un atlīdzība — par koksni nauda, par betonu punkti. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
+> Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno Annu ar uzņēmumiem, kas pārstrādā būvgružus. Princips kā pudeļu depozītam — nodod un saņem. Anna nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk jaunu izejvielu ieguves.
 
-### Slaids 3 — Lietotāja pieredze: Anna remontē māju (0:15) · runā: Gustavs
+### Slaids 3 — Lietotāja pieredze: Annas ceļš (0:15) · runā: Gustavs
 > Paskatīsimies ar Annas acīm. Viņa nofotografē gružus un uzreiz redz, cik saņems — vēl pirms reģistrācijas. Kartē redz tikai tos punktus, kur braukt atmaksājas. Parādīšu.
 
 **UX principi lietotnei:**

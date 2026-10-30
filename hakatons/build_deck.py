@@ -89,7 +89,7 @@ kicker(s, 0.7, 0.6, "Problēma", PALE)
 text(s, 0.7, 1.05, 6.6, 2.4, "Būvgruži mežā ir lētāki nekā būvgruži pārstrādē",
      size=40, color=WHITE, font=HEAD, bold=True, spacing=1.0)
 text(s, 0.7, 3.55, 6.3, 1.0,
-     "Nelegāli izmest būvgružus ir lētāk un vienkāršāk nekā tos sašķirot un nodot legāli.",
+     "Anna remontē māju. Piekabes nav, kur nodot, nezina, legāli ir dārgi. Nelegālais ceļš ir lētāks un vienkāršāks.",
      size=18, color=PALE)
 for i, (big, small) in enumerate([("~½", "no zemes dzīlēs iegūtajiem resursiem patērē būvniecība"),
                                   ("> ⅓", "no visiem ES atkritumiem ir būvniecības atkritumi")]):
@@ -105,8 +105,8 @@ text(s, 8.05, 5.6, 4.4, 1.2,
      [("„Izvedam būvgružus lēti!”", {"size": 20, "bold": True, "font": HEAD, "color": DARK}),
       ("Viens zvans — un gruži nonāk mežā.", {"size": 14, "color": MUTED})],
      anchor=MSO_ANCHOR.MIDDLE)
-notes(s, "0:35 — Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. "
-         "Nav piekabes, nezināt, kur tos nodot. Internetā — \"izvedam būvgružus lēti\". Viens zvans, "
+notes(s, "0:35 — Šī ir Anna. Viņa remontē māju, un viņai ir kaudze vecu dēļu un betona lausku. "
+         "Piekabes nav, kur nodot, nezina, legāli ir dārgi. Internetā — \"izvedam būvgružus lēti\". Viens zvans, "
          "un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē "
          "iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma "
          "nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.\n\n"
@@ -135,9 +135,9 @@ for i, (h, items) in enumerate(cards):
     rect(s, x, 3.0, 3.8, 0.12, MID)
     text(s, x + 0.35, 3.4, 3.1, 0.6, h, size=24, color=DARK, font=HEAD, bold=True)
     text(s, x + 0.35, 4.2, 3.1, 2.5, [("•  " + t, {"after": 12}) for t in items], size=16)
-notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno cilvēkus, "
-         "kuriem ir būvgruži, ar uzņēmumiem, kas tos pārstrādā. Princips kā pudeļu depozītam — nodod un "
-         "saņem. Cilvēkiem: bezmaksas nodošana un atlīdzība — par koksni nauda, par betonu punkti. "
+notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas platforma, kas savieno Annu "
+         "ar uzņēmumiem, kas pārstrādā būvgružus. Princips kā pudeļu depozītam — nodod un saņem. Anna "
+         "nodod gružus bez maksas un saņem atlīdzību — par koksni naudu, par betonu punktus. "
          "Uzņēmumiem: tīrs materiāls bez šķirošanas izmaksām. Videi: mazāk izgāztuvju mežos un mazāk "
          "jaunu izejvielu ieguves.")
 
@@ -145,8 +145,8 @@ notes(s, "0:30 — Mūsu risinājums ir Būvgružu birža — aprites ekonomikas
 s = prs.slides.add_slide(BLANK)
 bg(s, LIGHT)
 kicker(s, 0.7, 0.6, "Lietotāja pieredze")
-text(s, 0.7, 1.0, 7.2, 0.9, "Anna remontē māju", size=40, color=DARK, font=HEAD, bold=True)
-text(s, 0.7, 1.75, 7.2, 0.5, "Vecie grīdas dēļi un betona lauskas — ko darīt?", size=17, color=MUTED)
+text(s, 0.7, 1.0, 7.2, 0.9, "Annas ceļš", size=40, color=DARK, font=HEAD, bold=True)
+text(s, 0.7, 1.75, 7.2, 0.5, "No gružu kaudzes līdz atlīdzībai četros soļos", size=17, color=MUTED)
 steps = [("Nofotografē", "Izvēlas veidu un daudzumu maisos — lietotne parāda, kā šķirot"),
          ("Uzreiz redz atlīdzību", "Cik saņems un vai braukt atmaksājas — vēl pirms reģistrācijas"),
          ("Izvēlas punktu kartē", "Tikai tur, kur atlīdzība > degvielas izmaksas"),
