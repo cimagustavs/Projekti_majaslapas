@@ -2,7 +2,7 @@
 
 Izaicinājums (SCHWENK, RTU, Green Liberty): *Kā panākt, lai būvniecības atkritumi tiktu izmantoti atbilstoši aprites ekonomikas principiem?*
 
-Darba nosaukums lietotnei: **BūvDepo** (var mainīt).
+Lietotnes nosaukums: **Būvgružu birža**.
 
 ## Laika plāns — 3 minūtes, 5 slaidi (Canva)
 
@@ -44,10 +44,10 @@ Darba nosaukums lietotnei: **BūvDepo** (var mainīt).
 ## 2. stunda — Risinājums un kā tas darbojas (slaidi 2–3)
 
 **Risinājuma formulējums:**
-> BūvDepo ir depozīta sistēma būvgružiem. Cilvēks sašķiro gružus, nodod tos depozīta punktā un saņem atlīdzību. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
+> Būvgružu birža ir depozīta sistēma būvgružiem. Cilvēks sašķiro gružus, nodod tos depozīta punktā un saņem atlīdzību. Uzņēmums saņem tīru materiālu, ko pārstrādāt un izmantot vēlreiz.
 
 **Kā tas atrisina katru cēloni:**
-| Cēlonis | BūvDepo risinājums |
+| Cēlonis | Būvgružu birža risinājums |
 |---|---|
 | Dārgi | sašķirotus gružus pieņem bez maksas + atlīdzība |
 | Sarežģīti | lietotne parāda, kā šķirot un kur ir tuvākais punkts; var pieteikt pārvadātāju |
@@ -64,7 +64,7 @@ Darba nosaukums lietotnei: **BūvDepo** (var mainīt).
 **Pašvaldība:** mazāk izgāztuvju mežos, dati par to, kur rodas būvgruži.
 
 **Runas teksts — slaids 2 (~55 vārdi, 0:30):**
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — BūvDepo. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 **Runas teksts — slaids 3 (~25 vārdi, 0:15, tad demo):**
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
@@ -93,7 +93,7 @@ Noteikums: ja kaut kas neiederas 3 minūtēs, tas iet uz jautājumu daļu, nevis
 > Iedomājieties: jūs remontējat dzīvokli, un jums ir 30 maisi ar betonu un flīzēm. Nav piekabes, nezināt, kur tos nodot. Internetā — "izvedam būvgružus lēti". Viens zvans, un problēma atrisināta. Bet daļa šo gružu nonāk mežā. Būvniecība patērē pusi no visiem zemē iegūtajiem resursiem, un būvgruži ir vairāk nekā trešdaļa no visiem ES atkritumiem. Problēma nav cilvēkos. Problēma ir tā, ka nelegālais ceļš ir lētāks un vienkāršāks.
 
 ### Slaids 2 — Risinājums (0:30) · runā: prezentētājs
-> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — BūvDepo. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
+> Latvijā visi zina depozīta sistēmu pudelēm. Mēs piedāvājam to pašu būvgružiem — Būvgružu birža. Cilvēks sašķiro gružus, nodod tos depozīta punktā bez maksas un saņem atlīdzību — punktus, atlaides būvmateriālu veikalos vai naudu. Uzņēmums saņem tīru materiālu, ko var pārstrādāt un izmantot vēlreiz. Pašvaldībai — mazāk izgāztuvju mežos. Ieguvēji ir visi.
 
 ### Slaids 3 — Kā tas darbojas (0:15) · runā: prezentētājs
 > Lietotnē tie ir četri soļi: reģistrējies, piesaki materiālu ar foto, izvēlies punktu kartē un saņem atlīdzību. Gustavs to tagad parādīs.
@@ -109,7 +109,7 @@ Demo noteikumi:
 > Kāpēc tas strādās? Pirmkārt, tas ir aprites cikls: būvgruži nonāk depozīta punktā, tiek pārstrādāti un atgriežas būvniecībā kā jauns materiāls. Otrkārt, atlīdzību finansē tie, kas iegūst: pārstrādātāji, būvmateriālu veikali un pašvaldības, kas jau tagad maksā par sakopšanu. Treškārt, krāpšanu novēršam ar svēršanu, pārbaudi un limitu privātpersonām. Sākt gribam ar pilotprojektu vienā pašvaldībā.
 
 ### Slaids 5 — Noslēgums (0:10) · runā: prezentētājs
-> BūvDepo — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
+> Būvgružu birža — lai būvgruži atgrieztos būvniecībā, nevis mežā. Paldies! Labprāt atbildēsim uz jautājumiem.
 
 ### Mēģinājums
 - Vismaz 2 pilni mēģinājumi ar hronometru, ar dzīvu demo.
