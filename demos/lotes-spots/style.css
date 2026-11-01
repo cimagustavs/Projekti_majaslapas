@@ -76,7 +76,6 @@ img { max-width: 100%; }
 }
 .sign {
   display: block; width: min(80vw, 50dvh, 32rem); height: auto; aspect-ratio: 1278 / 1284; overflow: visible;
-  -webkit-box-reflect: below 0.5rem linear-gradient(transparent 62%, rgb(255 255 255 / 0.12));
   transition: opacity 180ms linear;
 }
 
