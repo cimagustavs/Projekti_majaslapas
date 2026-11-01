@@ -1,7 +1,9 @@
 // High-resolution recording: slow every CSS/WAAPI animation down with CDP, take full-DPR screenshots
 // as fast as possible, stamp each frame with "animation time", and drive scrolling from that same clock.
 import fs from 'fs';
-import { chromium } from 'playwright';
+// require() finds a globally installed Playwright; an ES import only looks next to this file
+import { createRequire } from 'module';
+const { chromium } = createRequire(import.meta.url)('playwright');
 
 const S = process.argv[2];
 const RATE = Number(process.env.RATE || 0.2);
