@@ -14,7 +14,7 @@ function plan(mobile) {
   const steps = [];
   if (V === 'a') {
     steps.push({ hold: 7.0 });
-    if (mobile) steps.push({ click: '.comb-toggle' }, { hold: 0.6 }, { tdrag: [0.42, 0.12, 0.86], dur: 1.0 }, { hold: 0.2 }, { tdrag: [0.58, 0.12, 0.88], dur: 1.0 }, { hold: 1.2 }, { click: '.comb-toggle' }, { hold: 0.4 });
+    if (mobile) steps.push({ tdrag: [0.5, 0.072, 0.86], dur: 1.0 }, { hold: 0.9 }, { tdrag: [0.5, 0.072, 0.88], dur: 1.0 }, { hold: 1.2 });
     else steps.push({ comb: [0.42, 0.14, 0.86], dur: 1.1 }, { comb: [0.58, 0.14, 0.88], dur: 1.0 }, { hold: 1.4 });
     steps.push({ scroll: { hero: 0.45 }, dur: 2.4 }, { hold: 1.2 });
   }

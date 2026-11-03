@@ -260,27 +260,31 @@
       const endIdx = rev >= 1 ? () => pts : (i) => Math.floor(clamp(rev * 1.6 - (i % 40) / 40 * 0.6, 0, 1) * pts);
       const zero = () => 0;
 
-      // dense underlayer so the head never looks see-through
-      ctx.globalAlpha = 0.96 * clamp(rev * 1.5 - 0.3, 0, 1);
-      // the underlayer fades out before the ends, so thin frizzy tips don't sit on a hard edge;
-      // sleek hair is dense right down to the cut
+      // solid underlayer: the head of hair is never see-through. Only the last stretch of frizzy
+      // ends thins out; sleek hair stays solid right down to the cut
+      ctx.globalAlpha = clamp(rev * 1.5 - 0.3, 0, 1);
       const under = ctx.createLinearGradient(0, TOP, 0, HEM);
       const sl = 1 - st.f;
       under.addColorStop(0, rgba(colors.root, 1));
-      under.addColorStop(0.62 + 0.3 * sl, rgba(colors.mid[2], 0.95));
-      under.addColorStop(Math.min(1, 0.92 + 0.08 * sl), rgba(colors.mid[2], 0));
+      under.addColorStop(0.45, rgba(colors.mid[2], 1));
+      under.addColorStop(0.84 + 0.13 * sl, rgba(colors.mid[0], 1));
+      under.addColorStop(Math.min(1, 0.95 + 0.05 * sl), rgba(colors.mid[0], 0));
       ctx.fillStyle = under;
       ctx.beginPath();
       massPoints(st).forEach((q, k) => (k ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])));
       ctx.closePath(); ctx.fill();
 
-      // strands, batched by colour and thickness
-      const skip = 1, thick = 1;
+      // a darker back layer of thick strands fills the gaps between the fine ones, like the
+      // shadowed hair underneath the top layer
+      ctx.strokeStyle = grads.under; ctx.lineWidth = 3.2; ctx.globalAlpha = 1;
+      strokeSet((s, i) => i % 2 === 0, zero, endIdx);
+
+      // strands, batched by colour and thickness, fully opaque
       for (let tone = 0; tone < 3; tone++) {
         ctx.strokeStyle = grads.tone[tone];
-        for (const [lo, hi, w, a] of [[0, 1.1, 1.0, 0.8], [1.1, 9, 1.7, 0.93]]) {
-          ctx.lineWidth = w * thick; ctx.globalAlpha = a;
-          strokeSet((s, i) => i % skip === 0 && s.tone === tone && s.w >= lo && s.w < hi, zero, endIdx);
+        for (const [lo, hi, w, a] of [[0, 1.1, 1.05, 0.95], [1.1, 9, 1.75, 1]]) {
+          ctx.lineWidth = w; ctx.globalAlpha = a;
+          strokeSet((s) => s.tone === tone && s.w >= lo && s.w < hi, zero, endIdx);
         }
       }
 
@@ -379,6 +383,8 @@
           if (d < reach) {
             const k = 1 - (d / reach) ** 2;
             s.cu = s.comb > 0.5 ? Math.max(s.cu, u + 0.06) : u + 0.06;
+            // past the middle, the comb pass carries on through to the ends
+            if (u > 0.4) s.cuT = 1.1;
             s.comb = Math.max(s.comb, k); s.hold = Math.max(s.hold, hold); hit = true;
           }
         });
@@ -386,7 +392,7 @@
       },
       // whole-head brush stroke down to fraction u of the length
       brush(u, hold) {
-        strands.forEach((s) => { s.comb = 1; s.cu = u; s.hold = hold; });
+        strands.forEach((s) => { s.comb = 1; s.cu = u; s.cuT = 0; s.hold = hold; });
       },
       // combed strands frizz back up after a moment; returns true while anything is still moving
       relax(dt, speed) {
@@ -395,6 +401,8 @@
         strands.forEach((s) => {
           if (s.comb <= 0) return;
           busy = true;
+          if (s.cuT > s.cu) s.cu = Math.min(s.cuT, s.cu + dt * 1.8);
+          else s.cuT = 0;
           if (s.hold > 0) s.hold -= dt;
           else s.comb = Math.max(0, s.comb - dt * speed);
         });

@@ -50,7 +50,7 @@
 - Marketplace `davepoon/buildwithclaude` was added (169 third-party plugins). None are installed.
 
 ## Pending Tasks
-- [ ] User picks hero version A, B or C, then make it the default and remove the others.
+- [x] Version A kept (user's favourite); B and C removed on 3 Nov.
 - [ ] Real opening hours and prices from the salon, replacing everything marked PARAUGS. Also the real name of the "gludināšana vieglām lokām" procedure.
 - [ ] Ask the salon whether they already use a booking system. That decides how real booking is wired.
 - [ ] A native speaker should check the Russian text.

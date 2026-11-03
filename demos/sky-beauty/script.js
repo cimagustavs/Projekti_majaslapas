@@ -18,7 +18,8 @@ const revealStart = performance.now();
 hero.draw();
 
 let fTarget = 1;
-let touchComb = false, combIdle;
+const coarse = matchMedia('(pointer: coarse)').matches;
+let holding = false;
 let cap = -1;
 let introDone = reduce;
 let sweepStart = null;
@@ -74,6 +75,7 @@ function heroFrame(now) {
       sweepStart = null;
       combEl.classList.remove('on');
       combEl.style.width = '';
+      restComb();
     }
   } else if (!hero.relax(dt, 0.4) && introDone && cap === 0) {
     setCap(1);
@@ -104,8 +106,7 @@ function onHeroScroll() {
   heroSection.style.setProperty('--p', clamp(scrollY / h, 0, 1).toFixed(4));
   const s = clamp(scrollY / (h * 0.42), 0, 1);
   fTarget = 1 - smooth(s);
-  if (touchComb && s > 0.5) setTouchComb(false);
-  if (touchComb) return;
+  if (holding) return;
   if (s > 0.55) setCap(2);
   else if (cap === 2) setCap(1);
 }
@@ -114,6 +115,7 @@ onHeroScroll();
 
 if (reduce) {
   setCap(1);
+  requestAnimationFrame(restComb);
 } else {
   setTimeout(() => {
     if (cap === 2) { introDone = true; return; }
@@ -146,45 +148,47 @@ if (finePointer) {
   });
 }
 heroSvg.addEventListener('touchmove', (e) => {
-  if (touchComb) return;
   for (const t of e.touches) combAt(t.clientX, t.clientY);
 }, { passive: true });
 
-// Phones: the hair fills most of the first screen, so dragging on it normally scrolls the page.
-// "Izķemmē pats" switches the hair into comb mode until "Gatavs" or 10 s without a touch.
-const combToggle = heroFig.querySelector('.comb-toggle');
-function setTouchComb(on) {
-  touchComb = on;
-  heroFig.classList.toggle('touch-comb', on);
-  combToggle.setAttribute('aria-pressed', on);
-  clearTimeout(combIdle);
-  if (on) {
-    if (scrollY > 0) scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-    setCap(3);
-    combIdle = setTimeout(() => setTouchComb(false), 10000);
-  } else {
-    combEl.classList.remove('on');
-    if (cap === 3) setCap(1);
-  }
+// Phones: the comb rests on top of the hair. Picking it up combs; dragging the hair itself still scrolls.
+const REST_Y = TOP + 18;
+function restComb() {
+  if (!coarse || holding) return;
+  combEl.style.width = '';
+  combTo(200, REST_Y);
+  combEl.classList.add('rest');
 }
-combToggle.addEventListener('click', () => setTouchComb(!touchComb));
-function touchCombMove(e) {
-  if (!touchComb || e.pointerType === 'mouse') return;
-  const { over, p } = combAt(e.clientX, e.clientY, 34, 4);
-  combEl.classList.toggle('on', over);
-  // keep the comb just above the fingertip so it stays visible
-  if (over) combTo(p.x, p.y - 18);
-  clearTimeout(combIdle);
-  combIdle = setTimeout(() => setTouchComb(false), 10000);
+function holdMove(e) {
+  if (!holding) return;
+  const p = hero.toView(e.clientX, e.clientY);
+  const x = clamp(p.x, 60, 340), y = clamp(p.y + 14, TOP, HEM + 10);
+  hero.comb(x, y, 46, 4);
+  combTo(x, y - 14);
 }
-heroSvg.addEventListener('pointerdown', (e) => {
-  if (!touchComb || e.pointerType === 'mouse') return;
-  heroSvg.setPointerCapture(e.pointerId);
-  touchCombMove(e);
+combEl.addEventListener('pointerdown', (e) => {
+  if (!coarse || sweepStart !== null) return;
+  holding = true;
+  combEl.setPointerCapture(e.pointerId);
+  combEl.classList.replace('rest', 'held');
+  setCap(3);
+  holdMove(e);
+  e.preventDefault();
 });
-heroSvg.addEventListener('pointermove', touchCombMove);
-heroSvg.addEventListener('pointerup', () => combEl.classList.remove('on'));
-heroSvg.addEventListener('pointercancel', () => combEl.classList.remove('on'));
+combEl.addEventListener('pointermove', holdMove);
+function drop() {
+  if (!holding) return;
+  holding = false;
+  combEl.classList.remove('held');
+  // the comb glides back to the top so it can be picked up again
+  combEl.style.transition = 'transform 500ms cubic-bezier(0.23, 1, 0.32, 1), opacity 200ms';
+  restComb();
+  setTimeout(() => { combEl.style.transition = ''; }, 520);
+  setTimeout(() => { if (!holding && cap === 3) setCap(1); }, 1800);
+}
+combEl.addEventListener('pointerup', drop);
+combEl.addEventListener('pointercancel', drop);
+addEventListener('resize', () => { if (combEl.classList.contains('rest')) restComb(); });
 
 /* ---------- formula quiz ---------- */
 

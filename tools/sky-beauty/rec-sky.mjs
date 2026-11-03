@@ -6,14 +6,14 @@ import { createRequire } from 'module';
 const { chromium } = createRequire(import.meta.url)('playwright');
 
 const S = process.argv[2];
-const RATE = 0.2; // animations run at 1/5 speed while we capture
+const RATE = Number(process.env.RATE || 0.2); // animations run this much slower while we capture
 const URL = 'http://localhost:8765/demos/sky-beauty/';
 
 function plan(mobile) {
   const y = (sel, off) => ({ sel, off });
   const steps = [{ hold: 7.2 }];
   if (!mobile) steps.push({ comb: [0.42, 0.14, 0.86], dur: 1.1 }, { comb: [0.58, 0.14, 0.88], dur: 1.0 }, { hold: 1.4 });
-  else steps.push({ click: '.comb-toggle' }, { hold: 0.8 }, { tdrag: [0.42, 0.12, 0.86], dur: 1.0 }, { hold: 0.2 }, { tdrag: [0.56, 0.12, 0.88], dur: 1.0 }, { hold: 0.2 }, { tdrag: [0.5, 0.12, 0.88], dur: 0.9 }, { hold: 1.2 }, { click: '.comb-toggle' }, { hold: 0.6 });
+  else steps.push({ tdrag: [0.5, 0.072, 0.86], dur: 1.0 }, { hold: 0.9 }, { tdrag: [0.5, 0.072, 0.88], dur: 1.0 }, { hold: 0.9 }, { tdrag: [0.5, 0.072, 0.88], dur: 0.9 }, { hold: 1.2 });
   steps.push({ scroll: { hero: 0.45 }, dur: 2.6 }, { hold: 0.8 });
   steps.push({ scroll: y('#formula', mobile ? 10 : 40), dur: 1.4 }, { hold: 0.8 });
   if (mobile) steps.push({ scroll: y('#quiz', 20), dur: 0.8 });
