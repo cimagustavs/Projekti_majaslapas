@@ -53,6 +53,14 @@ async function run(browser, name, w, h, dsf) {
     const st = window.setTimeout.bind(window);
     window.setTimeout = (fn, d, ...a) => st(fn, (d || 0) / rate, ...a);
   }, RATE);
+  // slowed-down compositor animations don't always reach the screenshot: show the headline without its entrance
+  await ctx.addInitScript(() => {
+    document.addEventListener('DOMContentLoaded', () => {
+      const st = document.createElement('style');
+      st.textContent = '.js .hero .hero-title, .js .hero .hero-more, .js .hero .hero-title em { animation: none !important; }';
+      document.head.append(st);
+    });
+  });
   const p = await ctx.newPage();
   const cdp = await ctx.newCDPSession(p);
   await cdp.send('Animation.enable');
