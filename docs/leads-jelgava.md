@@ -55,6 +55,24 @@ Only facts from their own public pages are used. Invented or sample content in t
 
 Next step for tier 2: check each one on Google Maps and fill in "website: none / weak / good". Drop the ones with a good site, then score the rest.
 
+## Round 2 (found 3 Nov, not yet checked on Google Maps)
+
+A walking route through the centre:
+
+| # | Business | Address | Type | Why it fits | Source |
+|---|---|---|---|---|---|
+| 1 | Otto | Lielā iela 17 | lunch restaurant | Daily menu changes, so a site with "today's lunch" is useful | zl.lv listing |
+| 2 | Madara | Lielā iela 22 | restaurant | Main street, visual food | Jelgava restaurant directory |
+| 3 | Flower shops | Lielā iela 9 and Lielā iela 34 | flowers | Very visual; orders and delivery fit a site | flower-shop.zl.lv |
+| 4 | Rausis | Vaļņu iela 10 | pastry shop and café | Cakes and pastries; custom orders like the Clementine cake section | zl.lv |
+| 5 | Silva | centre | bistro and pastry shop | Canapés and cakes to order; Mon–Fri 9–18, Sat 10–16 | visit.jelgava.lv |
+| 6 | ME TIME STUDIO | Raiņa iela 34 | beauty studio | New, 0 reviews on Fresha, so it needs to get known; the SKY BEAUTY demo is the perfect example | fresha.com |
+| 7 | Simple Kebab | Katoļu iela 6A | kebab and pizza | On Wolt; "the tastiest kebab in Jelgava" deserves its own page | wolt.com |
+| 8 | KRO Kebabnīca | (check) | kebab | First kebab shop in Jelgava, since 2016 | visit.jelgava.lv |
+| 9 | Promenāde | Dobeles iela 2 | café | 4.2 ★ on Google | restaurantguru |
+
+Check before visiting: Pakčoi was listed at Lielā iela 3, the same address as Lotes Spots, so it may be closed.
+
 ## Outreach
 
 The best channel for a local business is **walking in with the demo open on a phone**. After that comes an Instagram or Facebook message, then a call. Email is the weakest. Never send anything in bulk, and never with the same text.
