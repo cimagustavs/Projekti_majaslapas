@@ -73,6 +73,29 @@ A walking route through the centre:
 
 Check before visiting: Pakčoi was listed at Lielā iela 3, the same address as Lotes Spots, so it may be closed.
 
+## Round 3: not food (found 3 Nov, not yet checked on Google Maps)
+
+People find these businesses by searching Google ("autoserviss Jelgava", "suņu frizētava Jelgava"), and each customer is worth tens to hundreds of euros. That makes the case for a website easier than for a café.
+
+| Business | Address | Type | Why it fits | Source |
+|---|---|---|---|---|
+| Gentle Paws Jelgava | (check) | dog and cat grooming | Visual (before/after like SKY BEAUTY), needs bookings | zl.lv |
+| BarberDog | Dobeles šoseja 7 | dog grooming | Same as above | zl.lv |
+| ME TIME STUDIO | Raiņa iela 34 | beauty studio | New, 0 reviews; show the SKY BEAUTY demo | fresha.com |
+| Mad Barbers | Garozas iela 15A | barber | Books through Fresha; sell the brand and the Google profile | fresha.com |
+| SANLatino | Raiņa iela 28 | dance fitness | Schedule, sign-ups, video: an active page sells | visit.jelgava.lv |
+| Anru Motors | Garozas 15A, Dobeles šoseja | car service | Two sites, since 2003 | zl.lv |
+| DZ Automeistars | Rūpniecības 5A | car service and tyres | Tyre-change season: online booking | zl.lv |
+| Auto Ritms | (check) | steering and tyres | More than 10,000 tyres: stock and booking | zl.lv |
+| J.A. Wealding | Dambja 11 | car service | Newer business, needs to get known | zl.lv |
+| Mītavas Elektra | Vaļņu iela 8 | electrician | Homeowners search Google; a call button matters | zl.lv |
+| SECCO | Peldu iela 7 | electrics and plumbing | Same as above | zl.lv |
+| Flower shops | Lielā 9, Lielā 34, Driksas 15 | flowers | Very visual; orders and delivery | flower-shop.zl.lv |
+
+Skip: Fitland (a big club, probably already has a site), and companies that only sell to other businesses (Mezo, Elektromontāžas serviss, Akvedukts).
+
+Competitor signal: someone has already built `santehnikisjelgava.pages.dev`, a free-hosted plumber site for Jelgava. Others are doing the same thing, so speed matters.
+
 ## Outreach
 
 The best channel for a local business is **walking in with the demo open on a phone**. After that comes an Instagram or Facebook message, then a call. Email is the weakest. Never send anything in bulk, and never with the same text.
