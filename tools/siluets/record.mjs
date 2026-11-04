@@ -34,9 +34,9 @@ async function run(b, name, w, h, dsf) {
     let i = idx; while (i + 1 < steps.length && steps[i + 1].start <= t) i++;
     while (idx < i) {
       idx++; const s = steps[idx];
-      if (s.scroll) { from = await p.evaluate(() => scrollY); to = await p.evaluate((x) => { const el = document.querySelector(x.center || x.sel); const r = el.getBoundingClientRect(); return x.center ? scrollY + r.top + r.height / 2 - innerHeight / 2 : scrollY + r.top - x.off; }, s.scroll); }
-      if (s.fill) await p.fill(s.fill[0], s.fill[1]);
-      if (s.click) { const bx = await p.locator(s.click).boundingBox(); if (bx) { const cx = bx.x + bx.width * 0.5, cy = bx.y + Math.min(bx.height / 2, 28); if (m) await p.touchscreen.tap(cx, cy); else { await p.mouse.move(cx, cy, { steps: 6 }); await p.mouse.click(cx, cy); } } }
+      if (s.scroll) { from = await p.evaluate(() => scrollY); to = await p.evaluate((x) => { const el = document.querySelector(x.center || x.sel); if (!el) return scrollY; const r = el.getBoundingClientRect(); return x.center ? scrollY + r.top + r.height / 2 - innerHeight / 2 : scrollY + r.top - x.off; }, s.scroll); }
+      if (s.fill) await p.fill(s.fill[0], s.fill[1], { timeout: 3000 }).catch(() => console.log('fill failed', s.fill[0]));
+      if (s.click) { const bx = await p.locator(s.click).boundingBox({ timeout: 3000 }).catch(() => null); if (!bx) console.log('missing', s.click, 'at', t.toFixed(1)); if (bx) { const cx = bx.x + bx.width * 0.5, cy = bx.y + Math.min(bx.height / 2, 28); if (m) await p.touchscreen.tap(cx, cy); else { await p.mouse.move(cx, cy, { steps: 6 }); await p.mouse.click(cx, cy); } } }
     }
     const s = steps[idx];
     if (s && s.scroll) await p.evaluate((y) => scrollTo(0, y), from + (to - from) * ease(Math.min(1, (t - s.start) / s.dur)));
