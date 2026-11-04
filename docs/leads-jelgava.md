@@ -96,6 +96,28 @@ Skip: Fitland (a big club, probably already has a site), and companies that only
 
 Competitor signal: someone has already built `santehnikisjelgava.pages.dev`, a free-hosted plumber site for Jelgava. Others are doing the same thing, so speed matters.
 
+## Ability to pay: public register data (4 Nov)
+
+Sources: the Company Register and the VID open data on taxes paid and employees in 2024 (data.gov.lv). This shows taxes paid, not revenue. It is a rough sign of size.
+
+| Lead from the app | Legal entity found | 2024: taxes paid, employees | Reading |
+|---|---|---|---|
+| Siluets salons | SIA "SILUETS 1", Raiņa 18-6 | 3.4k€, 2 (2023: 0.5k€, 1) | Real salon, growing; can pay for a 350 € site |
+| Skaistumburve | SIA "SKAISTUMBURVE", Pasta 38-44 | 7.9k€, 3 | Can pay; said no on 6 Oct |
+| RE FRESH Detailing | SIA "RE FRESH", Loka maģistrāle 13-36 | 0 €, 0 (2023 too) | Declares nothing: tiny or a side business. Take the deposit before any work |
+| Pet Cave | SIA "PET CAVE", registered 11 Jun 2026, VAT payer | no data yet (new) | New business, setting up: needs to be found online |
+| Gold Line, Tatjanas estētika, Gentle Paws, MAGIC, Mīluļu Stiliņš, Orhideja | not found as companies | — | Probably self-employed people with no public figures: smaller budgets |
+
+The best-paying beauty businesses in Jelgava by taxes paid in 2024 (new leads; check their websites):
+
+| Company | Address | Taxes paid, employees |
+|---|---|---|
+| SIA "BAGIART" | Meiju ceļš 28-6 | 85.3k€, 19 |
+| SIA "EB-Beauty" | Katoļu iela 19-37 | 63.6k€, 9 |
+| SIA "SKAISTUMS I UN I" | Lielā iela 13 | 23.9k€, 5 |
+| SIA "BETO" (hairdressing) | Viktorijas iela 25 | 10.1k€, 6 |
+| SIA "Jolly" (hairdressing) | Atmodas iela 86-26 | 11.2k€, 3 |
+
 ## Outreach
 
 The best channel for a local business is **walking in with the demo open on a phone**. After that comes an Instagram or Facebook message, then a call. Email is the weakest. Never send anything in bulk, and never with the same text.
