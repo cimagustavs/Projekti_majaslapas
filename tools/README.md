@@ -32,3 +32,9 @@ ffmpeg -f concat -safe 0 -i <work-dir>/hq/dators/list.txt \
 |---|---|
 | `record.mjs` | `node tools/lotes-spots/record.mjs <work-dir> [dators\|telefons\|both]`: same frame recorder, for the Lotes Spots page. |
 | `trace-logo.py` | Turns the neon panda logo bitmap into the vector `img/panda/logo.svg`. Needs `numpy`, `Pillow` and `potracer`. |
+
+## inspo/
+
+| Script | What it does |
+|---|---|
+| `look.mjs` | `node tools/inspo/look.mjs <url> <out-dir> [seconds]`: opens an animation reference in a real browser, scrolls it, and saves screenshots, a short video and the page text. Used by the `niche-motion` skill. |
