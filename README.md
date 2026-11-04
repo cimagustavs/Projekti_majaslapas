@@ -15,6 +15,7 @@ Or watch the `.mp4` recordings in the same folder.
 | Kafe-Picērija (pizzeria) | `demos/kafe-picerija/` | `preview/kafe-picerija/picerija-demo.html` | LV / RU |
 | Lotes Spots (family café) | `demos/lotes-spots/` | `preview/lotes-spots/lotes-spots-demo.html` | LV |
 | SKY BEAUTY (beauty salon) | `demos/sky-beauty/` | `preview/sky-beauty/sky-beauty-demo.html` | LV / RU |
+| Siluets (beauty salon) | `demos/siluets/` | `preview/siluets/siluets-demo.html` | LV / RU |
 
 To open the full source version instead: GitHub → **Code → Download ZIP**, unzip, open `demos/<demo>/index.html`.
 
