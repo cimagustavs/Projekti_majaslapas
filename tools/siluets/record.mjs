@@ -10,7 +10,7 @@ function plan(m) {
   st.push({ scroll: { sel: '#cenas', off: 30 }, dur: 1.4 }, { hold: 0.6 }, { click: 'details.pg >> nth=3' }, { hold: 1.4 });
   st.push({ scroll: { sel: '#kursi', off: 30 }, dur: 1.4 }, { hold: 1.6 });
   st.push({ scroll: { sel: '#darbi', off: 30 }, dur: 1.2 }, { hold: 1.0 });
-  st.push({ scroll: { sel: '#pieraksts', off: 20 }, dur: 1.4 }, { hold: 0.6 }, { click: '.chip[data-g="sothys"]' }, { hold: 0.7 });
+  st.push({ scroll: { sel: '#pieraksts', off: 20 }, dur: 1.4 }, { hold: 0.6 }, { click: '.chip[data-g="lpg"]' }, { hold: 0.7 });
   if (m) st.push({ scroll: { center: '#svc-list' }, dur: 0.6 });
   st.push({ click: '.svc >> nth=0' }, { hold: 0.9 }, { scroll: { center: '#days' }, dur: 0.5 }, { click: '.day:not([disabled]) >> nth=1' }, { hold: 0.8 });
   st.push({ scroll: { center: '#slots' }, dur: 0.5 }, { click: '.slot:not([disabled]) >> nth=1' }, { hold: 0.8 }, { scroll: { center: 'input[name=talr]' }, dur: 0.5 });
@@ -36,7 +36,8 @@ async function run(b, name, w, h, dsf) {
       idx++; const s = steps[idx];
       if (s.scroll) { from = await p.evaluate(() => scrollY); to = await p.evaluate((x) => { const el = document.querySelector(x.center || x.sel); if (!el) return scrollY; const r = el.getBoundingClientRect(); return x.center ? scrollY + r.top + r.height / 2 - innerHeight / 2 : scrollY + r.top - x.off; }, s.scroll); }
       if (s.fill) await p.fill(s.fill[0], s.fill[1], { timeout: 3000 }).catch(() => console.log('fill failed', s.fill[0]));
-      if (s.click) { const bx = await p.locator(s.click).boundingBox({ timeout: 3000 }).catch(() => null); if (!bx) console.log('missing', s.click, 'at', t.toFixed(1)); if (bx) { const cx = bx.x + bx.width * 0.5, cy = bx.y + Math.min(bx.height / 2, 28); if (m) await p.touchscreen.tap(cx, cy); else { await p.mouse.move(cx, cy, { steps: 6 }); await p.mouse.click(cx, cy); } } }
+      if (s.click) { await p.locator(s.click).first().evaluate((el) => el.scrollIntoView({ block: 'nearest', inline: 'center' })).catch(() => {});
+        const bx = await p.locator(s.click).first().boundingBox({ timeout: 3000 }).catch(() => null); if (!bx) console.log('missing', s.click, 'at', t.toFixed(1)); if (bx) { const cx = bx.x + bx.width * 0.5, cy = bx.y + Math.min(bx.height / 2, 28); if (m) await p.touchscreen.tap(cx, cy); else { await p.mouse.move(cx, cy, { steps: 6 }); await p.mouse.click(cx, cy); } } }
     }
     const s = steps[idx];
     if (s && s.scroll) await p.evaluate((y) => scrollTo(0, y), from + (to - from) * ease(Math.min(1, (t - s.start) / s.dur)));
