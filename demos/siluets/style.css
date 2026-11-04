@@ -69,14 +69,13 @@ p { margin: 0; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 
 .picker { display: grid; gap: 1rem; align-items: start; }
-.figure { position: relative; margin: 0 auto; width: min(64vw, 17rem); aspect-ratio: 200 / 460; }
-.body { width: 100%; height: 100%; overflow: visible; }
-.body .hair { fill: #e3c6ad; }
-.body .skin { fill: #f2dfcf; stroke: var(--cocoa); stroke-width: 1.4; stroke-linejoin: round; }
+.figure { position: relative; margin: 0 auto; height: min(78vh, 34rem); aspect-ratio: 327 / 1100; }
+.body-img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.body { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .zone-fill ellipse { fill: var(--terra); opacity: 0; transition: opacity 400ms var(--ease-out); }
-.zone-fill ellipse.on { opacity: 0.16; }
-.js .body .line { stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; animation: draw-line 2.2s var(--ease-out) 200ms forwards, fill-in 900ms ease 1.6s forwards; }
-.js .body .hair, .js .body .aura { opacity: 0; animation: fade-in 1s ease 1.4s forwards; }
+.zone-fill ellipse.on { opacity: 0.22; }
+.js .body-img { opacity: 0; transform: translateY(14px); animation: fig-in 1.2s var(--ease-out) 150ms forwards; }
+@keyframes fig-in { to { opacity: 1; transform: none; } }
 @keyframes draw-line { to { stroke-dashoffset: 0; } }
 @keyframes fill-in { to { fill-opacity: 1; } }
 @keyframes fade-in { to { opacity: 1; } }
@@ -92,7 +91,7 @@ p { margin: 0; }
 .dot.on { background: var(--terra); color: #fff8f1; border-color: var(--terra); }
 .dot.on::before { background: #fff8f1; animation: none; }
 .dot:active { transform: scale(0.96); }
-.js .dot { opacity: 0; animation: fade-in 500ms ease forwards; animation-delay: calc(2.1s + var(--i, 0) * 120ms); }
+.js .dot { opacity: 0; animation: fade-in 500ms ease forwards; animation-delay: calc(1s + var(--i, 0) * 110ms); }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgb(176 90 58 / 0.45); } 80%, 100% { box-shadow: 0 0 0 10px rgb(176 90 58 / 0); } }
 
 .zone-panel { background: #fffaf4; border: 1px solid var(--line); border-radius: 16px; padding: 1.2rem; min-height: 8rem; box-shadow: 0 18px 40px -30px rgb(58 38 32 / 0.6); }
@@ -113,9 +112,8 @@ p { margin: 0; }
 @media (min-width: 900px) {
   .hero { grid-template-columns: 1fr 1.1fr; align-items: center; column-gap: 3rem; min-height: calc(100dvh - 90px); }
   .picker { grid-template-columns: auto minmax(0, 1fr); gap: 1.5rem; align-items: center; }
-  .figure { width: min(30vh, 16rem); height: auto; }
+  .figure { height: min(76vh, 40rem); }
 }
-@media (min-width: 900px) and (min-height: 760px) { .figure { width: 17rem; } }
 
 /* facts */
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border-block: 1px solid var(--line); }
@@ -277,6 +275,6 @@ html:not(.js) .book-form { display: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .js .body .line, .js .body .hair, .js .body .aura, .js .dot { animation: none; opacity: 1; stroke-dashoffset: 0; fill-opacity: 1; }
+  .js .body-img, .js .dot { animation: none; opacity: 1; transform: none; }
   .dot::before, .slot, .zone-panel.show, .ticket.show { animation: none; }
 }
