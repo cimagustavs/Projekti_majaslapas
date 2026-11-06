@@ -20,4 +20,4 @@ Research and sources: `docs/siluets-izpete.md`.
 - manicure and pedicure bookings closed;
 - the equipment pictures.
 
-**Sample**, marked on the page: the opening times, before/after, reviews, booking slots and durations.
+**Sample**, marked on the page: the free consultation (bookable as the first chip), the gift cards, the opening times, before/after, reviews, booking slots and durations.

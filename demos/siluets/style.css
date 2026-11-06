@@ -294,3 +294,26 @@ html:not(.js) .book-form { display: none; }
   .js .body-img, .js .dot { animation: none; opacity: 1; transform: none; }
   .dot::before, .slot, .zone-panel.show, .ticket.show { animation: none; }
 }
+
+/* help: consultation + gift card */
+.help { padding: clamp(4rem, 9vw, 7rem) var(--gutter); }
+.help-grid { display: grid; gap: 1.2rem; }
+.help-card { background: #fffaf4; border: 1px solid var(--line); border-radius: 18px; padding: clamp(1.4rem, 3vw, 2.2rem); display: grid; gap: 0.9rem; align-content: start; }
+.help-card h3 { margin: 0; font: 500 clamp(1.6rem, 3.5vw, 2.1rem)/1.1 var(--display); }
+.help-card p { margin: 0; color: var(--ink-2); }
+.help-card .btn { justify-self: start; }
+.help-kicker { font-weight: 600; color: var(--terra) !important; font-size: 0.9rem; }
+.help-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; }
+.help-list li { padding-left: 1.3rem; position: relative; }
+.help-list li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 0.6rem; height: 2px; background: var(--terra); }
+.gcard { position: relative; aspect-ratio: 1.6; max-width: 24rem; border-radius: 14px; background: var(--terra); color: #fff8f1; padding: 1.1rem 1.3rem;
+  display: grid; grid-template-rows: auto 1fr auto auto; box-shadow: 0 18px 36px -24px rgba(58, 38, 32, 0.7); overflow: hidden; }
+.gcard::before { content: ''; position: absolute; inset: 0.45rem; border: 1px solid rgba(255, 248, 241, 0.35); border-radius: 10px; pointer-events: none; }
+.gcard-brand { font: italic 500 1.5rem/1 var(--display); }
+.gcard-amount { align-self: end; font: 500 clamp(2.6rem, 8vw, 3.4rem)/1 var(--display); font-variant-numeric: tabular-nums; }
+.gcard-what { font-size: 0.95rem; opacity: 0.92; }
+.gcard-foot { font-size: 0.72rem; letter-spacing: 0.04em; opacity: 0.75; margin-top: 0.6rem; }
+.gift-pick { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.gift-pick .chip[aria-pressed='true'] { background: var(--cocoa); color: var(--cream); border-color: var(--cocoa); }
+.help > .demo-note { margin-top: 1.4rem; }
+@media (min-width: 900px) { .help-grid { grid-template-columns: 1fr 1fr; } }

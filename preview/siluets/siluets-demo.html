@@ -319,6 +319,29 @@ html:not(.js) .book-form { display: none; }
   .dot::before, .slot, .zone-panel.show, .ticket.show { animation: none; }
 }
 
+/* help: consultation + gift card */
+.help { padding: clamp(4rem, 9vw, 7rem) var(--gutter); }
+.help-grid { display: grid; gap: 1.2rem; }
+.help-card { background: #fffaf4; border: 1px solid var(--line); border-radius: 18px; padding: clamp(1.4rem, 3vw, 2.2rem); display: grid; gap: 0.9rem; align-content: start; }
+.help-card h3 { margin: 0; font: 500 clamp(1.6rem, 3.5vw, 2.1rem)/1.1 var(--display); }
+.help-card p { margin: 0; color: var(--ink-2); }
+.help-card .btn { justify-self: start; }
+.help-kicker { font-weight: 600; color: var(--terra) !important; font-size: 0.9rem; }
+.help-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; }
+.help-list li { padding-left: 1.3rem; position: relative; }
+.help-list li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 0.6rem; height: 2px; background: var(--terra); }
+.gcard { position: relative; aspect-ratio: 1.6; max-width: 24rem; border-radius: 14px; background: var(--terra); color: #fff8f1; padding: 1.1rem 1.3rem;
+  display: grid; grid-template-rows: auto 1fr auto auto; box-shadow: 0 18px 36px -24px rgba(58, 38, 32, 0.7); overflow: hidden; }
+.gcard::before { content: ''; position: absolute; inset: 0.45rem; border: 1px solid rgba(255, 248, 241, 0.35); border-radius: 10px; pointer-events: none; }
+.gcard-brand { font: italic 500 1.5rem/1 var(--display); }
+.gcard-amount { align-self: end; font: 500 clamp(2.6rem, 8vw, 3.4rem)/1 var(--display); font-variant-numeric: tabular-nums; }
+.gcard-what { font-size: 0.95rem; opacity: 0.92; }
+.gcard-foot { font-size: 0.72rem; letter-spacing: 0.04em; opacity: 0.75; margin-top: 0.6rem; }
+.gift-pick { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.gift-pick .chip[aria-pressed='true'] { background: var(--cocoa); color: var(--cream); border-color: var(--cocoa); }
+.help > .demo-note { margin-top: 1.4rem; }
+@media (min-width: 900px) { .help-grid { grid-template-columns: 1fr 1fr; } }
+
 </style>
 </head>
 <body>
@@ -497,6 +520,44 @@ html:not(.js) .book-form { display: none; }
   <ul><li><span><span data-l="lv">Pedikīrs</span><span data-l="ru" lang="ru">Педикюр</span></span><b>20 €</b></li><li><span><span data-l="lv">Pedikīrs ar gelish</span><span data-l="ru" lang="ru">Педикюр с gelish</span></span><b>25 €</b></li><li><span><span data-l="lv">Kāju pirkstu apstrāde + gelish</span><span data-l="ru" lang="ru">Обработка пальцев + gelish</span></span><b>18 €</b></li></ul>
 </details>
 <!--/prices--></div>
+</section>
+
+<section class="help" id="palidziba">
+  <div class="sec-head reveal">
+    <h2><span data-l="lv">Nezini, ar ko sākt?</span><span data-l="ru" lang="ru">Не знаешь, с чего начать?</span></h2>
+    <p><span data-l="lv">Nav jāzina procedūras nosaukums. Pastāsti, kas traucē, un mēs ieteiksim. Vai uzdāvini to kādam citam.</span><span data-l="ru" lang="ru">Не нужно знать название процедуры. Расскажи, что беспокоит, и мы подскажем. Или подари это кому-то.</span></p>
+  </div>
+  <div class="help-grid">
+    <article class="help-card reveal">
+      <p class="help-kicker"><span data-l="lv">Konsultācija · 20 min · bez maksas</span><span data-l="ru" lang="ru">Консультация · 20 мин · бесплатно</span></p>
+      <h3><span data-l="lv">Apskatīsim un ieteiksim</span><span data-l="ru" lang="ru">Посмотрим и подскажем</span></h3>
+      <ul class="help-list">
+        <li><span data-l="lv">“apelsīna miza”, tūska, smaguma sajūta kājās</span><span data-l="ru" lang="ru">«апельсиновая корка», отёки, тяжесть в ногах</span></li>
+        <li><span data-l="lv">ādas tonuss, krunciņas, pigmentācija</span><span data-l="ru" lang="ru">тонус кожи, морщинки, пигментация</span></li>
+        <li><span data-l="lv">nevēlami matiņi: kura metode un cik reižu</span><span data-l="ru" lang="ru">нежелательные волоски: какой метод и сколько раз</span></li>
+      </ul>
+      <p><span data-l="lv">Kosmetoloģe izstāstīs, kura procedūra der tieši tev, cik reižu vajag un cik tas izmaksās kopā.</span><span data-l="ru" lang="ru">Косметолог расскажет, какая процедура подходит именно тебе, сколько сеансов нужно и сколько это будет стоить.</span></p>
+      <a class="btn btn-solid" href="#pieraksts" data-book-group="konsult"><span data-l="lv">Pieteikties konsultācijai</span><span data-l="ru" lang="ru">Записаться на консультацию</span></a>
+    </article>
+    <article class="help-card gift reveal">
+      <p class="help-kicker"><span data-l="lv">Dāvanu karte</span><span data-l="ru" lang="ru">Подарочная карта</span></p>
+      <h3><span data-l="lv">Uzdāvini procedūru</span><span data-l="ru" lang="ru">Подари процедуру</span></h3>
+      <div class="gcard" aria-live="polite">
+        <span class="gcard-brand">Siluets</span>
+        <span class="gcard-amount" data-gift-amount>50 €</span>
+        <span class="gcard-what" data-gift-what><span data-l="lv">jebkurai procedūrai</span><span data-l="ru" lang="ru">на любую процедуру</span></span>
+        <span class="gcard-foot"><span data-l="lv">dāvanu karte · Raiņa iela 18, Jelgava</span><span data-l="ru" lang="ru">подарочная карта · ул. Райня 18, Елгава</span></span>
+      </div>
+      <div class="gift-pick" role="group" aria-label="Summa">
+        <button type="button" class="chip" data-gift="25" aria-pressed="false">25 €</button>
+        <button type="button" class="chip" data-gift="50" aria-pressed="true">50 €</button>
+        <button type="button" class="chip" data-gift="100" aria-pressed="false">100 €</button>
+        <button type="button" class="chip" data-gift="200" data-gift-lv="LPG abonements, 10 × 20 min" data-gift-ru="абонемент LPG, 10 × 20 мин" aria-pressed="false"><span data-l="lv">LPG 10×</span><span data-l="ru" lang="ru">LPG 10×</span></button>
+      </div>
+      <a class="btn btn-line" href="tel:+37120220533"><span data-l="lv">Pasūtīt pa tālruni</span><span data-l="ru" lang="ru">Заказать по телефону</span></a>
+    </article>
+  </div>
+  <p class="demo-note reveal"><span data-l="lv">Demo: bezmaksas konsultācija un dāvanu kartes ir piedāvājuma paraugs, salonam tās jāapstiprina.</span><span data-l="ru" lang="ru">Демо: бесплатная консультация и подарочные карты для примера, салон должен их подтвердить.</span></p>
 </section>
 
 <section class="courses" id="kursi">
@@ -911,9 +972,13 @@ const err = document.getElementById('book-error');
 const steps = [...form.querySelectorAll('.bstep')];
 const bk = { g: null, i: null, day: null, time: null };
 
-const bookable = GROUPS.filter((g) => g.items.some((it) => it[3]));
+// a free consultation, bookable but not in the price list (a sample: the salon has to confirm it)
+const CONSULT = { id: 'konsult', lv: 'Konsultācija', ru: 'Консультация', items: [['Ādas un figūras izvērtēšana', 'Оценка кожи и фигуры', '0', 20]] };
+const BOOK_GROUPS = [CONSULT, ...GROUPS];
+const price = (s, l) => (parseFloat(s) ? eur(s) : l === 'ru' ? 'бесплатно' : 'bez maksas');
+const bookable = BOOK_GROUPS.filter((g) => g.items.some((it) => it[3]));
 chips.innerHTML = bookable.map((g) => `<button type="button" class="chip" data-g="${g.id}">${both(g.lv, g.ru)}</button>`).join('');
-const groupById = (id) => GROUPS.find((g) => g.id === id);
+const groupById = (id) => BOOK_GROUPS.find((g) => g.id === id);
 const item = () => groupById(bk.g).items[bk.i];
 const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
@@ -926,7 +991,7 @@ function renderServices() {
     const off = g.closed;
     return `<label class="svc${off ? ' off' : ''}"><input type="radio" name="svc" value="${i}" ${bk.i === i ? 'checked' : ''} ${off ? 'disabled' : ''}>
       <span class="n">${both(it[0], it[1])}</span>
-      <span class="m">${off ? both('pieraksts slēgts', 'запись закрыта') : both(`${it[3]} min · ${eur(it[2])}`, `${it[3]} мин · ${eur(it[2])}`)}</span></label>`;
+      <span class="m">${off ? both('pieraksts slēgts', 'запись закрыта') : both(`${it[3]} min · ${price(it[2], 'lv')}`, `${it[3]} мин · ${price(it[2], 'ru')}`)}</span></label>`;
   }).join('');
 }
 
@@ -1020,6 +1085,25 @@ document.addEventListener('click', (e) => {
   if (first) { bk.g = first.g.id; bk.i = first.idx; bk.day = null; bk.time = null; ticket.hidden = true; form.hidden = false; refresh(); }
 });
 
+// "Pieteikties konsultācijai" opens the booking with the consultation already picked
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-book-group]'); if (!a) return;
+  bk.g = a.dataset.bookGroup; bk.i = 0; bk.day = null; bk.time = null; ticket.hidden = true; form.hidden = false; refresh();
+});
+
+/* ---------- gift card (demo: ordered by phone or in the salon) ---------- */
+
+const gift = document.querySelector('.gift');
+if (gift) {
+  const amount = gift.querySelector('[data-gift-amount]'), what = gift.querySelector('[data-gift-what]');
+  gift.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-gift]'); if (!b) return;
+    gift.querySelectorAll('[data-gift]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    amount.textContent = b.dataset.gift + ' €';
+    what.innerHTML = b.dataset.giftLv ? both(b.dataset.giftLv, b.dataset.giftRu) : both('jebkurai procedūrai', 'на любую процедуру');
+  });
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = form.elements.vards.value.trim(), phone = form.elements.talr.value.replace(/[^\d+]/g, '');
@@ -1031,7 +1115,7 @@ form.addEventListener('submit', (e) => {
   document.getElementById('ticket-rows').innerHTML =
     row('Procedūra', 'Процедура', both(`${g.lv}: ${it[0]}`, `${g.ru}: ${it[1]}`)) +
     row('Laiks', 'Время', both(`${dateText('lv')}, ${hm(bk.time)}`, `${dateText('ru')}, ${hm(bk.time)}`)) +
-    row('Cena', 'Цена', eur(it[2])) +
+    row('Cena', 'Цена', both(price(it[2], 'lv'), price(it[2], 'ru'))) +
     row('Kur', 'Где', 'Raiņa iela 18, Jelgava') +
     row('Vārds', 'Имя', name.replace(/[<>&]/g, ''));
   form.hidden = true; ticket.hidden = false;

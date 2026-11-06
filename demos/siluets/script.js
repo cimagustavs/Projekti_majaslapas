@@ -100,9 +100,13 @@ const err = document.getElementById('book-error');
 const steps = [...form.querySelectorAll('.bstep')];
 const bk = { g: null, i: null, day: null, time: null };
 
-const bookable = GROUPS.filter((g) => g.items.some((it) => it[3]));
+// a free consultation, bookable but not in the price list (a sample: the salon has to confirm it)
+const CONSULT = { id: 'konsult', lv: 'Konsultācija', ru: 'Консультация', items: [['Ādas un figūras izvērtēšana', 'Оценка кожи и фигуры', '0', 20]] };
+const BOOK_GROUPS = [CONSULT, ...GROUPS];
+const price = (s, l) => (parseFloat(s) ? eur(s) : l === 'ru' ? 'бесплатно' : 'bez maksas');
+const bookable = BOOK_GROUPS.filter((g) => g.items.some((it) => it[3]));
 chips.innerHTML = bookable.map((g) => `<button type="button" class="chip" data-g="${g.id}">${both(g.lv, g.ru)}</button>`).join('');
-const groupById = (id) => GROUPS.find((g) => g.id === id);
+const groupById = (id) => BOOK_GROUPS.find((g) => g.id === id);
 const item = () => groupById(bk.g).items[bk.i];
 const iso = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
@@ -115,7 +119,7 @@ function renderServices() {
     const off = g.closed;
     return `<label class="svc${off ? ' off' : ''}"><input type="radio" name="svc" value="${i}" ${bk.i === i ? 'checked' : ''} ${off ? 'disabled' : ''}>
       <span class="n">${both(it[0], it[1])}</span>
-      <span class="m">${off ? both('pieraksts slēgts', 'запись закрыта') : both(`${it[3]} min · ${eur(it[2])}`, `${it[3]} мин · ${eur(it[2])}`)}</span></label>`;
+      <span class="m">${off ? both('pieraksts slēgts', 'запись закрыта') : both(`${it[3]} min · ${price(it[2], 'lv')}`, `${it[3]} мин · ${price(it[2], 'ru')}`)}</span></label>`;
   }).join('');
 }
 
@@ -209,6 +213,25 @@ document.addEventListener('click', (e) => {
   if (first) { bk.g = first.g.id; bk.i = first.idx; bk.day = null; bk.time = null; ticket.hidden = true; form.hidden = false; refresh(); }
 });
 
+// "Pieteikties konsultācijai" opens the booking with the consultation already picked
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-book-group]'); if (!a) return;
+  bk.g = a.dataset.bookGroup; bk.i = 0; bk.day = null; bk.time = null; ticket.hidden = true; form.hidden = false; refresh();
+});
+
+/* ---------- gift card (demo: ordered by phone or in the salon) ---------- */
+
+const gift = document.querySelector('.gift');
+if (gift) {
+  const amount = gift.querySelector('[data-gift-amount]'), what = gift.querySelector('[data-gift-what]');
+  gift.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-gift]'); if (!b) return;
+    gift.querySelectorAll('[data-gift]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+    amount.textContent = b.dataset.gift + ' €';
+    what.innerHTML = b.dataset.giftLv ? both(b.dataset.giftLv, b.dataset.giftRu) : both('jebkurai procedūrai', 'на любую процедуру');
+  });
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = form.elements.vards.value.trim(), phone = form.elements.talr.value.replace(/[^\d+]/g, '');
@@ -220,7 +243,7 @@ form.addEventListener('submit', (e) => {
   document.getElementById('ticket-rows').innerHTML =
     row('Procedūra', 'Процедура', both(`${g.lv}: ${it[0]}`, `${g.ru}: ${it[1]}`)) +
     row('Laiks', 'Время', both(`${dateText('lv')}, ${hm(bk.time)}`, `${dateText('ru')}, ${hm(bk.time)}`)) +
-    row('Cena', 'Цена', eur(it[2])) +
+    row('Cena', 'Цена', both(price(it[2], 'lv'), price(it[2], 'ru'))) +
     row('Kur', 'Где', 'Raiņa iela 18, Jelgava') +
     row('Vārds', 'Имя', name.replace(/[<>&]/g, ''));
   form.hidden = true; ticket.hidden = false;
