@@ -59,25 +59,6 @@ function pickZone(z) {
 }
 dots.forEach((d) => d.addEventListener('click', () => pickZone(d.dataset.zone)));
 
-/* ---------- counters ---------- */
-
-const counters = new IntersectionObserver((entries) => {
-  entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    counters.unobserve(e.target);
-    const el = e.target, to = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || '';
-    if (reduce) return;
-    const t0 = performance.now();
-    const step = (now) => {
-      const k = clamp((now - t0) / 1400, 0, 1), v = to * (1 - Math.pow(1 - k, 3));
-      el.textContent = v.toFixed(dec).replace('.', ',') + suf;
-      if (k < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  });
-}, { threshold: 0.6 });
-document.querySelectorAll('[data-count]').forEach((el) => counters.observe(el));
-
 /* ---------- before / after ---------- */
 
 const ba = document.querySelector('.ba');

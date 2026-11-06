@@ -96,11 +96,33 @@
     <p><span data-l="lv">Aparāts LPG Cellu M6 Alliance izlīdzina ādu, atjauno tās tvirtumu un samazina apjomu. Skaitļi ir no ražotāja pētījumiem, ko citējam savā lapā.</span><span data-l="ru" lang="ru">Аппарат LPG Cellu M6 Alliance выравнивает кожу, возвращает упругость и уменьшает объёмы. Цифры из исследований производителя, которые мы приводим на своём сайте.</span></p>
   </div>
   <div class="stats">
-    <div class="stat reveal"><b data-count="67" data-suffix="%">67%</b><span><span data-l="lv">sieviešu “apelsīna miza” izlīdzinājās</span><span data-l="ru" lang="ru">женщин отметили сглаживание «апельсиновой корки»</span></span></div>
-    <div class="stat reveal"><b data-count="71" data-suffix="%">71%</b><span><span data-l="lv">pamanīja tvirtāku, elastīgāku ādu</span><span data-l="ru" lang="ru">отметили более упругую кожу</span></span></div>
-    <div class="stat reveal"><b data-count="3.4" data-suffix=" cm" data-dec="1">3,4 cm</b><span><span data-l="lv">mazāks apjoms pēc 3 procedūrām</span><span data-l="ru" lang="ru">уменьшение объёма после 3 процедур</span></span></div>
+    <div class="stat reveal"><b>67%</b><span><span data-l="lv">sieviešu “apelsīna miza” izlīdzinājās</span><span data-l="ru" lang="ru">женщин отметили сглаживание «апельсиновой корки»</span></span></div>
+    <div class="stat reveal"><b>71%</b><span><span data-l="lv">pamanīja tvirtāku, elastīgāku ādu</span><span data-l="ru" lang="ru">отметили более упругую кожу</span></span></div>
+    <div class="stat reveal"><b>3,4 cm</b><span><span data-l="lv">mazāks apjoms pēc 3 procedūrām</span><span data-l="ru" lang="ru">уменьшение объёма после 3 процедур</span></span></div>
   </div>
-  <figure class="results-img reveal"><img src="img/lpg-aparats.webp" alt="LPG Cellu M6 Alliance aparāts un procedūra" width="676" height="450" loading="lazy"></figure>
+  <figure class="lpg" aria-label="LPG galviņa izlīdzina ādu">
+    <div class="lpg-skin">
+      <canvas width="300" height="200" role="img" aria-label="Āda ar apelsīna mizas faktūru, ko izlīdzina LPG galviņa"></canvas>
+      <button class="lpg-head" type="button" aria-label="LPG galviņa: velc pa ādu">
+        <svg viewBox="0 0 80 90" aria-hidden="true">
+          <path d="M40 22C40 12 50 6 62 2" fill="none" stroke="#3a2620" stroke-width="5" stroke-linecap="round"/>
+          <rect x="2" y="22" width="76" height="66" rx="18" fill="#3a2620"/>
+          <rect x="10" y="30" width="60" height="50" rx="10" fill="#1f1411"/>
+          <rect x="15" y="32" width="24" height="46" rx="6" fill="#d8c1b0"/>
+          <rect x="41" y="32" width="24" height="46" rx="6" fill="#d8c1b0"/>
+          <path d="M18 20h21M41 20h21M18 25h21M41 25h21M18 30h21M41 30h21M18 35h21M41 35h21M18 40h21M41 40h21M18 45h21M41 45h21M18 50h21M41 50h21M18 55h21M41 55h21M18 60h21M41 60h21" transform="translate(0 15)" stroke="#9c7b68" stroke-opacity=".55" stroke-width="1.4"/>
+          <path d="M20 34v42M46 34v42" stroke="#fff" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+          <rect x="30" y="24" width="20" height="3" rx="1.5" fill="#b05a3a"/>
+        </svg>
+      </button>
+    </div>
+    <figcaption>
+      <span class="lpg-hint"><span data-l="lv">Ritini vai velc galviņu pa ādu</span><span data-l="ru" lang="ru">Прокрутите или ведите насадку по коже</span></span>
+      <span class="lpg-hint lpg-hint-done"><span data-l="lv">Tā strādā LPG: rullīši un vakuums izlīdzina ādu</span><span data-l="ru" lang="ru">Так работает LPG: ролики и вакуум выравнивают кожу</span></span>
+      <span class="lpg-meter"><span data-l="lv">izlīdzināts</span><span data-l="ru" lang="ru">выровнено</span> <b data-smooth>0%</b></span>
+      <button class="lpg-reset" type="button"><span data-l="lv">No jauna</span><span data-l="ru" lang="ru">Заново</span></button>
+    </figcaption>
+  </figure>
 </section>
 
 <section class="prices" id="cenas">
@@ -320,5 +342,6 @@
 
 <script src="data.js"></script>
 <script src="script.js"></script>
+<script src="lpg.js"></script>
 </body>
 </html>

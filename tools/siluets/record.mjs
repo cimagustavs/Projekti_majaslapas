@@ -6,7 +6,7 @@ const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
 function plan(m) {
   const st = [{ hold: 3.6 }, { click: '.dot[data-zone="seja"]' }, { hold: 1.4 }, { click: '.dot[data-zone="kermenis"]' }, { hold: 1.6 }];
   if (m) st.push({ scroll: { center: '#zone-panel' }, dur: 1 }, { hold: 1.4 });
-  st.push({ scroll: { sel: '.facts', off: 60 }, dur: 1.4 }, { hold: 0.8 }, { scroll: { sel: '.results', off: 40 }, dur: 1.2 }, { hold: 2.2 });
+  st.push({ scroll: { sel: '.facts', off: 60 }, dur: 1.4 }, { hold: 0.8 }, { scroll: { sel: '.lpg', off: m ? 520 : 420 }, dur: 1.2 }, { hold: 0.8 }, { scroll: { center: '.lpg' }, dur: 3.2 }, { hold: 2 });
   st.push({ scroll: { sel: '#cenas', off: 30 }, dur: 1.4 }, { hold: 0.6 }, { click: 'details.pg >> nth=3' }, { hold: 1.4 });
   st.push({ scroll: { sel: '#kursi', off: 30 }, dur: 1.4 }, { hold: 1.6 });
   st.push({ scroll: { sel: '#darbi', off: 30 }, dur: 1.2 }, { hold: 1.0 });

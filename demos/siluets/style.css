@@ -129,10 +129,26 @@ p { margin: 0; }
 .stat { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
 .stat b { font: 500 clamp(3rem, 9vw, 4.4rem)/1 var(--display); color: var(--terra); min-width: 5.5ch; font-variant-numeric: tabular-nums; }
 .stat span { color: var(--ink-2); }
-.results-img { margin: 0; border-radius: 16px; overflow: hidden; background: #fff; }
+.lpg { margin: 0; display: grid; gap: 0.8rem; }
+.lpg-skin { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 3 / 2; touch-action: pan-y; cursor: crosshair;
+  box-shadow: 0 1px 0 var(--line), 0 24px 50px -30px rgba(58, 38, 32, 0.45); }
+.lpg-skin canvas { display: block; width: 100%; height: 100%; }
+/* the patch is a curve of the body: darker toward the edges */
+.lpg-skin::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 40% 35%, transparent 55%, rgba(90, 50, 35, 0.28) 100%); }
+.lpg-head { position: absolute; left: 0; top: 0; width: 21%; aspect-ratio: 80 / 90; padding: 0; border: 0; background: none;
+  cursor: grab; touch-action: none; z-index: 1; filter: drop-shadow(0 10px 10px rgba(58, 38, 32, 0.35)); will-change: transform; }
+.lpg-head svg { display: block; width: 100%; height: 100%; }
+.lpg.dragging .lpg-head { cursor: grabbing; }
+.lpg figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; font-size: 0.92rem; color: var(--ink-2); }
+.lpg-meter b { font: 500 1.3rem/1 var(--display); color: var(--terra); font-variant-numeric: tabular-nums; }
+.lpg-hint { flex: 1 1 12rem; }
+.lpg-hint-done, .lpg.done .lpg-hint { display: none; }
+.lpg.done .lpg-hint-done { display: inline; color: var(--cocoa); }
+.lpg-reset { min-height: 2.5rem; padding: 0 0.9rem; border: 1.5px solid var(--line); border-radius: var(--r); background: none; font: 600 0.85rem var(--body); color: var(--cocoa); cursor: pointer; }
 @media (min-width: 900px) {
   .results { grid-template-columns: 1fr 1fr; grid-template-areas: 'text img' 'stats img'; column-gap: 4rem; align-items: start; }
-  .results-text { grid-area: text; } .stats { grid-area: stats; } .results-img { grid-area: img; align-self: center; }
+  .results-text { grid-area: text; } .stats { grid-area: stats; } .lpg { grid-area: img; align-self: center; }
 }
 
 /* section heads */

@@ -17,6 +17,7 @@ Before looking anything up, write one sentence: **what does this business physic
 | Lotes Spots | a neon panda sign in the window | the sign flickers on, the panda leaves on scroll |
 | Kafe-Picērija | 2 pizzas = a free cheese pizza | an order board that adds the gift |
 | Siluets | treatments per body zone | pick a zone on the figure, see its prices |
+| Siluets | LPG rollers smoothing "orange peel" skin | skin lit by a low light; the LPG head rolls over it on scroll (or by drag) and leaves it smooth (`demos/siluets/lpg.js`) |
 
 Ask for each new business: what is the tool (iron, needle, oven, wrench, scissors), what is the material (dough, paint, glass, fur), and what is the before → after? An animation built on one of those is niche by definition.
 
