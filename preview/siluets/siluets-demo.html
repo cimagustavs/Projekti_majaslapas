@@ -319,7 +319,7 @@ html:not(.js) .book-form { display: none; }
   .dot::before, .slot, .zone-panel.show, .ticket.show { animation: none; }
 }
 
-/* help: consultation + gift card */
+/* help: consultation + call */
 .help { padding: clamp(4rem, 9vw, 7rem) var(--gutter); }
 .help-grid { display: grid; gap: 1.2rem; }
 .help-card { background: #fffaf4; border: 1px solid var(--line); border-radius: 18px; padding: clamp(1.4rem, 3vw, 2.2rem); display: grid; gap: 0.9rem; align-content: start; }
@@ -330,15 +330,8 @@ html:not(.js) .book-form { display: none; }
 .help-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; }
 .help-list li { padding-left: 1.3rem; position: relative; }
 .help-list li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 0.6rem; height: 2px; background: var(--terra); }
-.gcard { position: relative; aspect-ratio: 1.6; max-width: 24rem; border-radius: 14px; background: var(--terra); color: #fff8f1; padding: 1.1rem 1.3rem;
-  display: grid; grid-template-rows: auto 1fr auto auto; box-shadow: 0 18px 36px -24px rgba(58, 38, 32, 0.7); overflow: hidden; }
-.gcard::before { content: ''; position: absolute; inset: 0.45rem; border: 1px solid rgba(255, 248, 241, 0.35); border-radius: 10px; pointer-events: none; }
-.gcard-brand { font: italic 500 1.5rem/1 var(--display); }
-.gcard-amount { align-self: end; font: 500 clamp(2.6rem, 8vw, 3.4rem)/1 var(--display); font-variant-numeric: tabular-nums; }
-.gcard-what { font-size: 0.95rem; opacity: 0.92; }
-.gcard-foot { font-size: 0.72rem; letter-spacing: 0.04em; opacity: 0.75; margin-top: 0.6rem; }
-.gift-pick { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.gift-pick .chip[aria-pressed='true'] { background: var(--cocoa); color: var(--cream); border-color: var(--cocoa); }
+.call-num { font: 500 clamp(2.4rem, 7vw, 3.2rem)/1 var(--display); color: var(--terra); text-decoration: none; font-variant-numeric: tabular-nums; justify-self: start; }
+.call-num:hover { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 2px; }
 .help > .demo-note { margin-top: 1.4rem; }
 @media (min-width: 900px) { .help-grid { grid-template-columns: 1fr 1fr; } }
 
@@ -525,7 +518,7 @@ html:not(.js) .book-form { display: none; }
 <section class="help" id="palidziba">
   <div class="sec-head reveal">
     <h2><span data-l="lv">Nezini, ar ko sākt?</span><span data-l="ru" lang="ru">Не знаешь, с чего начать?</span></h2>
-    <p><span data-l="lv">Nav jāzina procedūras nosaukums. Pastāsti, kas traucē, un mēs ieteiksim. Vai uzdāvini to kādam citam.</span><span data-l="ru" lang="ru">Не нужно знать название процедуры. Расскажи, что беспокоит, и мы подскажем. Или подари это кому-то.</span></p>
+    <p><span data-l="lv">Nav jāzina procedūras nosaukums. Pastāsti, kas traucē, un mēs ieteiksim: klātienē vai pa tālruni.</span><span data-l="ru" lang="ru">Не нужно знать название процедуры. Расскажи, что беспокоит, и мы подскажем: на месте или по телефону.</span></p>
   </div>
   <div class="help-grid">
     <article class="help-card reveal">
@@ -539,25 +532,15 @@ html:not(.js) .book-form { display: none; }
       <p><span data-l="lv">Kosmetoloģe izstāstīs, kura procedūra der tieši tev, cik reižu vajag un cik tas izmaksās kopā.</span><span data-l="ru" lang="ru">Косметолог расскажет, какая процедура подходит именно тебе, сколько сеансов нужно и сколько это будет стоить.</span></p>
       <a class="btn btn-solid" href="#pieraksts" data-book-group="konsult"><span data-l="lv">Pieteikties konsultācijai</span><span data-l="ru" lang="ru">Записаться на консультацию</span></a>
     </article>
-    <article class="help-card gift reveal">
-      <p class="help-kicker"><span data-l="lv">Dāvanu karte</span><span data-l="ru" lang="ru">Подарочная карта</span></p>
-      <h3><span data-l="lv">Uzdāvini procedūru</span><span data-l="ru" lang="ru">Подари процедуру</span></h3>
-      <div class="gcard" aria-live="polite">
-        <span class="gcard-brand">Siluets</span>
-        <span class="gcard-amount" data-gift-amount>50 €</span>
-        <span class="gcard-what" data-gift-what><span data-l="lv">jebkurai procedūrai</span><span data-l="ru" lang="ru">на любую процедуру</span></span>
-        <span class="gcard-foot"><span data-l="lv">dāvanu karte · Raiņa iela 18, Jelgava</span><span data-l="ru" lang="ru">подарочная карта · ул. Райня 18, Елгава</span></span>
-      </div>
-      <div class="gift-pick" role="group" aria-label="Summa">
-        <button type="button" class="chip" data-gift="25" aria-pressed="false">25 €</button>
-        <button type="button" class="chip" data-gift="50" aria-pressed="true">50 €</button>
-        <button type="button" class="chip" data-gift="100" aria-pressed="false">100 €</button>
-        <button type="button" class="chip" data-gift="200" data-gift-lv="LPG abonements, 10 × 20 min" data-gift-ru="абонемент LPG, 10 × 20 мин" aria-pressed="false"><span data-l="lv">LPG 10×</span><span data-l="ru" lang="ru">LPG 10×</span></button>
-      </div>
-      <a class="btn btn-line" href="tel:+37120220533"><span data-l="lv">Pasūtīt pa tālruni</span><span data-l="ru" lang="ru">Заказать по телефону</span></a>
+    <article class="help-card call reveal">
+      <p class="help-kicker"><span data-l="lv">Pa tālruni</span><span data-l="ru" lang="ru">По телефону</span></p>
+      <h3><span data-l="lv">Sazvani, izrunāsim</span><span data-l="ru" lang="ru">Позвони, обсудим</span></h3>
+      <p><span data-l="lv">Ja ērtāk ir parunāt, zvani. Pastāsti, kas traucē, un kosmetoloģe ieteiks procedūru vai pierakstīs tevi uz konsultāciju.</span><span data-l="ru" lang="ru">Если удобнее поговорить, звони. Расскажи, что беспокоит, и косметолог подскажет процедуру или запишет на консультацию.</span></p>
+      <a class="call-num" href="tel:+37120220533" aria-label="Zvanīt 20 220 533">20 220 533</a>
+      <p class="status" data-status></p>
     </article>
   </div>
-  <p class="demo-note reveal"><span data-l="lv">Demo: bezmaksas konsultācija un dāvanu kartes ir piedāvājuma paraugs, salonam tās jāapstiprina.</span><span data-l="ru" lang="ru">Демо: бесплатная консультация и подарочные карты для примера, салон должен их подтвердить.</span></p>
+  <p class="demo-note reveal"><span data-l="lv">Demo: bezmaksas konsultācija ir piedāvājuma paraugs, salonam tā jāapstiprina.</span><span data-l="ru" lang="ru">Демо: бесплатная консультация для примера, салон должен её подтвердить.</span></p>
 </section>
 
 <section class="courses" id="kursi">
@@ -938,18 +921,21 @@ ba.querySelector('.ba-range').addEventListener('input', (e) => ba.style.setPrope
 
 /* ---------- open now ---------- */
 
-const statusEl = document.querySelector('[data-status]');
+const statusEls = document.querySelectorAll('[data-status]');
 function status() {
+  const html = statusText();
+  statusEls.forEach((el) => { el.classList.toggle('open', html.open); el.innerHTML = html.text; });
+}
+function statusText() {
   const now = new Date(), d = now.getDay(), h = OPEN[d], mins = now.getHours() * 60 + now.getMinutes();
   const open = h && mins >= h[0] * 60 && mins < h[1] * 60;
-  statusEl.classList.toggle('open', !!open);
-  if (open) { statusEl.innerHTML = both(`Tagad atvērts, līdz ${h[1]}:00`, `Сейчас открыто, до ${h[1]}:00`); return; }
+  if (open) return { open: true, text: both(`Tagad atvērts, līdz ${h[1]}:00`, `Сейчас открыто, до ${h[1]}:00`) };
   let k = 0, nd;
   do { k++; nd = (d + k) % 7; } while (!OPEN[nd] && k < 8);
   if (h && mins < h[0] * 60) { nd = d; k = 0; }
   const name = [['svētdien', 'в воскресенье'], ['pirmdien', 'в понедельник'], ['otrdien', 'во вторник'], ['trešdien', 'в среду'], ['ceturtdien', 'в четверг'], ['piektdien', 'в пятницу'], ['sestdien', 'в субботу']][nd];
   const when = k === 0 ? ['šodien', 'сегодня'] : k === 1 ? ['rīt', 'завтра'] : name;
-  statusEl.innerHTML = both(`Slēgts. Atveram ${when[0]} ${OPEN[nd][0]}:00`, `Закрыто. Откроемся ${when[1]} в ${OPEN[nd][0]}:00`);
+  return { open: false, text: both(`Slēgts. Atveram ${when[0]} ${OPEN[nd][0]}:00`, `Закрыто. Откроемся ${when[1]} в ${OPEN[nd][0]}:00`) };
 }
 status();
 setInterval(status, 60000);
@@ -1090,19 +1076,6 @@ document.addEventListener('click', (e) => {
   const a = e.target.closest('[data-book-group]'); if (!a) return;
   bk.g = a.dataset.bookGroup; bk.i = 0; bk.day = null; bk.time = null; ticket.hidden = true; form.hidden = false; refresh();
 });
-
-/* ---------- gift card (demo: ordered by phone or in the salon) ---------- */
-
-const gift = document.querySelector('.gift');
-if (gift) {
-  const amount = gift.querySelector('[data-gift-amount]'), what = gift.querySelector('[data-gift-what]');
-  gift.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-gift]'); if (!b) return;
-    gift.querySelectorAll('[data-gift]').forEach((x) => x.setAttribute('aria-pressed', x === b));
-    amount.textContent = b.dataset.gift + ' €';
-    what.innerHTML = b.dataset.giftLv ? both(b.dataset.giftLv, b.dataset.giftRu) : both('jebkurai procedūrai', 'на любую процедуру');
-  });
-}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();

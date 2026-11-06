@@ -66,18 +66,21 @@ ba.querySelector('.ba-range').addEventListener('input', (e) => ba.style.setPrope
 
 /* ---------- open now ---------- */
 
-const statusEl = document.querySelector('[data-status]');
+const statusEls = document.querySelectorAll('[data-status]');
 function status() {
+  const html = statusText();
+  statusEls.forEach((el) => { el.classList.toggle('open', html.open); el.innerHTML = html.text; });
+}
+function statusText() {
   const now = new Date(), d = now.getDay(), h = OPEN[d], mins = now.getHours() * 60 + now.getMinutes();
   const open = h && mins >= h[0] * 60 && mins < h[1] * 60;
-  statusEl.classList.toggle('open', !!open);
-  if (open) { statusEl.innerHTML = both(`Tagad atvērts, līdz ${h[1]}:00`, `Сейчас открыто, до ${h[1]}:00`); return; }
+  if (open) return { open: true, text: both(`Tagad atvērts, līdz ${h[1]}:00`, `Сейчас открыто, до ${h[1]}:00`) };
   let k = 0, nd;
   do { k++; nd = (d + k) % 7; } while (!OPEN[nd] && k < 8);
   if (h && mins < h[0] * 60) { nd = d; k = 0; }
   const name = [['svētdien', 'в воскресенье'], ['pirmdien', 'в понедельник'], ['otrdien', 'во вторник'], ['trešdien', 'в среду'], ['ceturtdien', 'в четверг'], ['piektdien', 'в пятницу'], ['sestdien', 'в субботу']][nd];
   const when = k === 0 ? ['šodien', 'сегодня'] : k === 1 ? ['rīt', 'завтра'] : name;
-  statusEl.innerHTML = both(`Slēgts. Atveram ${when[0]} ${OPEN[nd][0]}:00`, `Закрыто. Откроемся ${when[1]} в ${OPEN[nd][0]}:00`);
+  return { open: false, text: both(`Slēgts. Atveram ${when[0]} ${OPEN[nd][0]}:00`, `Закрыто. Откроемся ${when[1]} в ${OPEN[nd][0]}:00`) };
 }
 status();
 setInterval(status, 60000);
@@ -218,19 +221,6 @@ document.addEventListener('click', (e) => {
   const a = e.target.closest('[data-book-group]'); if (!a) return;
   bk.g = a.dataset.bookGroup; bk.i = 0; bk.day = null; bk.time = null; ticket.hidden = true; form.hidden = false; refresh();
 });
-
-/* ---------- gift card (demo: ordered by phone or in the salon) ---------- */
-
-const gift = document.querySelector('.gift');
-if (gift) {
-  const amount = gift.querySelector('[data-gift-amount]'), what = gift.querySelector('[data-gift-what]');
-  gift.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-gift]'); if (!b) return;
-    gift.querySelectorAll('[data-gift]').forEach((x) => x.setAttribute('aria-pressed', x === b));
-    amount.textContent = b.dataset.gift + ' €';
-    what.innerHTML = b.dataset.giftLv ? both(b.dataset.giftLv, b.dataset.giftRu) : both('jebkurai procedūrai', 'на любую процедуру');
-  });
-}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
