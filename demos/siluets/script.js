@@ -226,8 +226,8 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const name = form.elements.vards.value.trim(), phone = form.elements.talr.value.replace(/[^\d+]/g, '');
   err.innerHTML = '';
-  if (name.length < 2) { err.innerHTML = both('Ierakstiet savu vārdu.', 'Напишите своё имя.'); form.elements.vards.focus(); return; }
-  if (phone.replace('+', '').length < 8) { err.innerHTML = both('Ierakstiet tālruni, lai varam apstiprināt.', 'Напишите телефон, чтобы мы могли подтвердить.'); form.elements.talr.focus(); return; }
+  if (name.length < 2) { err.innerHTML = both('Ieraksti savu vārdu.', 'Напиши своё имя.'); form.elements.vards.focus(); return; }
+  if (phone.replace('+', '').length < 8) { err.innerHTML = both('Ieraksti tālruni, lai varam apstiprināt.', 'Напиши телефон, чтобы мы могли подтвердить.'); form.elements.talr.focus(); return; }
   const it = item(), g = groupById(bk.g);
   const row = (a, b, v) => `<div><dt>${both(a, b)}</dt><dd>${v}</dd></div>`;
   document.getElementById('ticket-rows').innerHTML =

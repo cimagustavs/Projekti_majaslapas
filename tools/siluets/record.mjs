@@ -8,6 +8,7 @@ function plan(m) {
   if (m) st.push({ scroll: { center: '#zone-panel' }, dur: 1 }, { hold: 1.4 });
   st.push({ scroll: { sel: '.facts', off: 60 }, dur: 1.4 }, { hold: 0.8 }, { scroll: { sel: '.lpg', off: m ? 520 : 420 }, dur: 1.2 }, { hold: 0.8 }, { scroll: { center: '.lpg' }, dur: 3.2 }, { hold: 2 });
   st.push({ scroll: { sel: '#cenas', off: 30 }, dur: 1.4 }, { hold: 0.6 }, { click: 'details.pg >> nth=3' }, { hold: 1.4 });
+  st.push({ scroll: { sel: '#palidziba', off: 30 }, dur: 1.4 }, { hold: 2 });
   st.push({ scroll: { sel: '#kursi', off: 30 }, dur: 1.4 }, { hold: 1.6 });
   st.push({ scroll: { sel: '#darbi', off: 30 }, dur: 1.2 }, { hold: 1.0 });
   st.push({ scroll: { sel: '#pieraksts', off: 20 }, dur: 1.4 }, { hold: 0.6 }, { click: '.chip[data-g="lpg"]' }, { hold: 0.7 });

@@ -12,10 +12,13 @@ const num = (s) => s.split('–').map((x) => { const v = parseFloat(x); return N
 const eur = (s) => num(s) + ' €';
 const min = (g) => Math.min(...g.items.filter((it) => !/Abonements|Kostīms|kopā ar/.test(it[0])).map((it) => parseFloat(it[2])));
 
+// "1 procedūra / 3 procedūras", "1 процедура / 3 процедуры / 5 процедур"
+const lvCount = (n) => `${n} ${n % 10 === 1 && n % 100 !== 11 ? 'procedūra' : 'procedūras'}`;
+const ruCount = (n) => { const a = n % 10, b = n % 100; return `${n} ${a === 1 && b !== 11 ? 'процедура' : a >= 2 && a <= 4 && (b < 12 || b > 14) ? 'процедуры' : 'процедур'}`; };
 const prices = GROUPS.map((g) => `
 <details class="pg reveal">
-  <summary><span class="t">${both(g.lv, g.ru)}</span><span class="s">${g.note ? both(g.note[0], g.note[1]) : both(g.items.length + ' procedūras', g.items.length + ' процедур')}</span><span class="from">${both('no ' + eur(String(min(g))), 'от ' + eur(String(min(g))))}</span></summary>
-  ${g.closed ? `<p class="closed-note">${both('Uz doto brīdi pierakstīties nav iespējams.', 'На данный момент записаться нет возможности.')}</p>` : ''}
+  <summary><span class="t">${both(g.lv, g.ru)}</span><span class="s">${g.note ? both(g.note[0], g.note[1]) : both(lvCount(g.items.length), ruCount(g.items.length))}</span><span class="from">${both('no ' + eur(String(min(g))), 'от ' + eur(String(min(g))))}</span></summary>
+  ${g.closed ? `<p class="closed-note">${both('Pašlaik pierakstīties nav iespējams.', 'Сейчас запись закрыта.')}</p>` : ''}
   <ul>${g.items.map((it) => `<li><span>${both(it[0], it[1])}</span><b>${eur(it[2])}</b></li>`).join('')}</ul>
 </details>`).join('');
 
