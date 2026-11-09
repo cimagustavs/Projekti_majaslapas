@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=540, initial-scale=1">
+<title>kagus.eu reel</title>
+<!-- A 9:16 reel for kagus.eu, drawn as a page. render(t) sets every element for time t (seconds),
+     so tools/../render.mjs can step through it frame by frame. Open the page alone to watch it play. -->
+<style>
+@font-face { font-family: Geist; font-weight: 100 900; src: url(assets/geist-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2190-2193, U+2212; }
+@font-face { font-family: Geist; font-weight: 100 900; src: url(assets/geist-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: 'Geist Mono'; font-weight: 100 900; src: url(assets/geist-mono-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: 'Geist Mono'; font-weight: 100 900; src: url(assets/geist-mono-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA; }
+:root {
+  --bg: #05070c; --surface: #0d1526; --navy: #0b1f45; --line: #ffffff14; --line-strong: #ffffff24;
+  --fg: #eef1f8; --muted: #a2acc0; --subtle: #828ea8; --accent: #6ea1ed; --accent-strong: #4986e9; --success: #34d399;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 540px; height: 960px; overflow: hidden; background: var(--bg); color: var(--fg); font-family: Geist, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+.stage { position: relative; width: 540px; height: 960px; overflow: hidden; background: var(--bg); }
+
+/* the studio's dotted blue glow */
+.glow { position: absolute; inset: -20%; background:
+  radial-gradient(circle at center, rgb(110 161 237 / 0.55) 1px, transparent 1.6px) 0 0 / 9px 9px;
+  -webkit-mask: radial-gradient(42% 38% at var(--gx, 50%) var(--gy, 45%), #000 0%, rgb(0 0 0 / 0.35) 55%, transparent 100%);
+          mask: radial-gradient(42% 38% at var(--gx, 50%) var(--gy, 45%), #000 0%, rgb(0 0 0 / 0.35) 55%, transparent 100%); }
+.haze { position: absolute; inset: 0; background: radial-gradient(60% 45% at var(--gx, 50%) var(--gy, 45%), rgb(11 31 69 / 0.9), transparent 75%); }
+
+/* content sits in the middle, clear of Instagram's top bar and the caption at the bottom */
+.scene { position: absolute; inset: 0; padding: 0 40px 150px; display: flex; flex-direction: column; justify-content: center; }
+.mono { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); }
+.h { font-weight: 700; font-size: 66px; line-height: 1.02; letter-spacing: -0.04em; }
+.h .w { display: inline-block; will-change: transform, opacity; }
+.accent { background: linear-gradient(100deg, #b7cff6 0%, var(--accent) 45%, #9fc0f3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.strike { position: relative; display: inline-block; }
+.strike::after { content: ''; position: absolute; left: -2%; right: -2%; top: 54%; height: 6px; border-radius: 3px; background: var(--accent); transform-origin: left; transform: scaleX(var(--s, 0)); }
+.sub { margin-top: 26px; font-size: 24px; line-height: 1.35; color: var(--muted); letter-spacing: -0.01em; }
+
+/* B: booking card */
+.card { position: relative; align-self: center; margin-top: 40px; width: 420px; padding: 26px; border-radius: 22px;
+  background: linear-gradient(180deg, #0f1a30, #0b1324); border: 1px solid var(--line-strong); box-shadow: 0 40px 80px -30px rgb(73 134 233 / 0.35); }
+.card .row { display: flex; gap: 8px; margin-top: 14px; }
+.chip { flex: 1; height: 66px; border-radius: 12px; border: 1px solid var(--line-strong); display: grid; place-items: center; font-size: 15px; color: var(--muted); }
+.chip b { display: block; font-size: 24px; color: var(--fg); font-weight: 600; line-height: 1; }
+.chip.small { height: 52px; font-size: 20px; color: var(--fg); }
+.chip.on { background: var(--accent); border-color: var(--accent); color: #05070c; }
+.chip.on b { color: #05070c; }
+.btn { margin-top: 20px; height: 62px; border-radius: 14px; background: var(--accent); color: #05070c; display: grid; place-items: center; font-weight: 600; font-size: 22px; }
+.done { position: absolute; inset: 0; border-radius: 22px; background: #0b1324; display: grid; place-content: center; justify-items: center; gap: 10px; text-align: center; }
+.check { width: 74px; height: 74px; border-radius: 50%; background: rgb(52 211 153 / 0.14); display: grid; place-items: center; }
+.check svg { width: 40px; height: 40px; }
+.done strong { font-size: 28px; letter-spacing: -0.02em; }
+.done span { color: var(--muted); font-size: 18px; line-height: 1.4; }
+.tap { position: absolute; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: rgb(238 241 248 / 0.9); box-shadow: 0 0 0 0 rgb(238 241 248 / 0.4); pointer-events: none; }
+
+/* C: steps */
+.steps { margin-top: 34px; display: grid; gap: 14px; }
+.step { display: flex; align-items: baseline; gap: 18px; }
+.step .n { font-family: 'Geist Mono', monospace; font-size: 20px; color: var(--accent); width: 34px; }
+.step .t { font-weight: 700; font-size: 64px; letter-spacing: -0.04em; line-height: 1.05; }
+.note { margin: 18px 0 0 52px; font-size: 22px; color: var(--muted); }
+
+/* D: languages */
+.slot { position: relative; height: 84px; margin-top: 30px; overflow: hidden; }
+.slot .h { position: absolute; left: 0; top: 0; white-space: nowrap; }
+.langs { display: flex; gap: 10px; margin-top: 30px; }
+.lang { min-width: 76px; height: 50px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line-strong); display: grid; place-items: center; font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--muted); }
+.lang.on { border-color: var(--accent); color: var(--fg); background: rgb(110 161 237 / 0.14); }
+.lang.more { border-style: dashed; color: var(--subtle); }
+
+/* E: outro */
+.outro { align-items: center; text-align: center; }
+.mark { width: 120px; height: auto; }
+.word { margin-top: 26px; font-weight: 700; font-size: 64px; letter-spacing: -0.045em; }
+.tag { margin-top: 14px; font-size: 24px; color: var(--muted); line-height: 1.35; }
+.cta { margin-top: 38px; height: 64px; padding: 0 30px; border-radius: 16px; background: var(--accent); color: #05070c; display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 22px; }
+.cta + .mono { margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="haze"></div>
+  <div class="glow"></div>
+
+  <!-- A: hook -->
+  <section class="scene" id="A">
+    <p class="mono" data-a="0">kagus.eu · Jelgava</p>
+    <h1 class="h" style="margin-top:22px">
+      <span class="w">Lielākā</span> <span class="w">daļa</span><br>
+      <span class="w">mājaslapu</span> <span class="w">ir</span><br>
+      <span class="w strike" id="strike">gana labas.</span>
+    </h1>
+    <h2 class="h" style="margin-top:30px"><span class="w accent" id="better1">Mēs taisām</span><br><span class="w accent" id="better2">labākas.</span></h2>
+  </section>
+
+  <!-- B: a site that works -->
+  <section class="scene" id="B">
+    <p class="mono">Mājaslapa, kas strādā</p>
+    <h2 class="h" style="margin-top:22px;font-size:52px">Klienti piesakās<br>paši. Arī naktī.</h2>
+    <div class="card" id="card">
+      <p class="mono" style="font-size:14px">Pieraksts · tavs uzņēmums</p>
+      <div class="row">
+        <div class="chip" data-day="0">O<b>11</b></div><div class="chip" data-day="1">T<b>12</b></div><div class="chip" data-day="2">C<b>13</b></div><div class="chip" data-day="3">Pk<b>14</b></div>
+      </div>
+      <div class="row">
+        <div class="chip small" data-slot="0">10:00</div><div class="chip small" data-slot="1">11:30</div><div class="chip small" data-slot="2">14:30</div>
+      </div>
+      <div class="btn" id="btn">Pieteikties</div>
+      <div class="done" id="done">
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path id="tick" d="M5 12.5l4.5 4.5L19 7.5" stroke-dasharray="22" stroke-dashoffset="22"/></svg></div>
+        <strong>Pieraksts apstiprināts</strong>
+        <span>Trešdien, 13. nov., 14:30<br>SMS atgādinājums nosūtīts</span>
+      </div>
+      <div class="tap" id="tap"></div>
+    </div>
+  </section>
+
+  <!-- C: how we work -->
+  <section class="scene" id="C">
+    <p class="mono">Kā mēs strādājam</p>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><span class="t">Izpēte</span></div>
+      <div class="step"><span class="n">02</span><span class="t">Dizains</span></div>
+      <div class="step"><span class="n">03</span><span class="t">Kods</span></div>
+      <div class="step"><span class="n">04</span><span class="t accent">Pulēšana</span></div>
+    </div>
+    <p class="note" id="note">To daļu vairums izlaiž.<br>Mēs ne.</p>
+  </section>
+
+  <!-- D: languages + found by search -->
+  <section class="scene" id="D">
+    <p class="mono">Viena lapa, trīs valodas</p>
+    <div class="slot">
+      <span class="h" data-lang="0">Latviski.</span>
+      <span class="h" data-lang="1">По-русски.</span>
+      <span class="h" data-lang="2">In English.</span>
+    </div>
+    <div class="langs">
+      <span class="lang" data-chip="0">LV</span><span class="lang" data-chip="1">RU</span><span class="lang" data-chip="2">EN</span><span class="lang more" id="more">+21</span>
+    </div>
+    <p class="sub" id="seo">Un tā, ka tevi saprot<br><span style="color:var(--fg)">Google un ChatGPT.</span></p>
+  </section>
+
+  <!-- E: outro -->
+  <section class="scene outro" id="E">
+    <img class="mark" src="assets/logo.png" alt="kagus.eu">
+    <p class="word">kagus.eu</p>
+    <p class="tag">Divi cilvēki.<br>Dizains un kods vienās rokās.</p>
+    <span class="cta">Raksti mums <span aria-hidden="true">→</span></span>
+    <p class="mono">@kagus.eu</p>
+  </section>
+</div>
+
+<script>
+const DURATION = 18;
+const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const seg = (t, a, b) => clamp((t - a) / (b - a));                  // 0..1 progress between a and b
+const out = (k) => 1 - Math.pow(1 - k, 4);                          // ease-out, close to the site's (.23,1,.32,1)
+const inout = (k) => (k < 0.5 ? 8 * k ** 4 : 1 - Math.pow(-2 * k + 2, 4) / 2);
+const lerp = (a, b, k) => a + (b - a) * k;
+function show(el, k, dy = 24) { el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dy}px)`; }
+// scene visibility: fade in over 0.35 s, out over 0.3 s, with a small drift up on exit
+function scene(el, t, a, b) {
+  const kin = out(seg(t, a, a + 0.35)), kout = seg(t, b - 0.3, b);
+  el.style.opacity = t < a || t > b ? 0 : kin * (1 - kout);
+  el.style.transform = `translateY(${-kout * 30}px)`;
+  return t >= a && t <= b;
+}
+
+const A = $('#A'), B = $('#B'), C = $('#C'), D = $('#D'), E = $('#E');
+const wordsA = $$('#A h1 .w'), card = $('#card'), tap = $('#tap'), done = $('#done');
+
+function render(t) {
+  // background glow drifts slowly; it sits lower in the outro
+  const st = $('#stage').style;
+  st.setProperty('--gx', (50 + Math.sin(t * 0.5) * 8).toFixed(2) + '%');
+  st.setProperty('--gy', lerp(42, 40, seg(t, 14, 15)) + Math.cos(t * 0.4) * 5 + '%');
+
+  // A 0–3.4: words land one by one, "gana labas" is struck through, the answer appears
+  if (scene(A, t, 0, 3.4)) {
+    show($('#A .mono'), out(seg(t, 0, 0.4)), 10);
+    wordsA.forEach((w, i) => show(w, out(seg(t, 0.08 + i * 0.12, 0.08 + i * 0.12 + 0.45)), 40));
+    $('#strike').style.setProperty('--s', inout(seg(t, 1.15, 1.55)).toFixed(3));
+    $('#strike').style.color = `rgb(238 241 248 / ${lerp(1, 0.45, seg(t, 1.2, 1.6))})`;
+    show($('#better1'), out(seg(t, 1.6, 2.1)), 40);
+    show($('#better2'), out(seg(t, 1.75, 2.25)), 40);
+  }
+
+  // B 3.4–7.8: a booking card; a finger taps day, time, button; it confirms
+  if (scene(B, t, 3.4, 7.8)) {
+    show($('#B .h'), out(seg(t, 3.45, 3.9)), 30);
+    show(card, out(seg(t, 3.7, 4.2)), 60);
+    const day = t > 4.75 ? 2 : -1, slot = t > 5.55 ? 2 : -1, press = seg(t, 6.2, 6.35) - seg(t, 6.35, 6.5);
+    $$('[data-day]').forEach((c) => c.classList.toggle('on', +c.dataset.day === day));
+    $$('[data-slot]').forEach((c) => c.classList.toggle('on', +c.dataset.slot === slot));
+    $('#btn').style.transform = `scale(${1 - press * 0.04})`;
+    // finger path inside the card (card-relative px): day 13 → 14:30 → button
+    const cr = card.getBoundingClientRect();
+    const at = (sel) => { const r = $(sel).getBoundingClientRect(); return [r.left - cr.left + r.width / 2, r.top - cr.top + r.height / 2]; };
+    const d = at('[data-day="2"]'), s = at('[data-slot="2"]'), b = at('#btn');
+    const pts = [[300, 330, 4.2], [...d, 4.7], [...d, 5.0], [...s, 5.5], [...s, 5.9], [...b, 6.2], [...b, 6.6]];
+    let p = pts[0];
+    for (let i = 1; i < pts.length; i++) if (t >= pts[i - 1][2]) { const k = inout(seg(t, pts[i - 1][2], pts[i][2])); p = [lerp(pts[i - 1][0], pts[i][0], k), lerp(pts[i - 1][1], pts[i][1], k)]; }
+    const tapping = [4.7, 5.5, 6.2].some((x) => t >= x && t < x + 0.25);
+    tap.style.left = p[0] + 'px'; tap.style.top = p[1] + 'px';
+    tap.style.opacity = seg(t, 4.2, 4.4) * (1 - seg(t, 6.45, 6.6));
+    tap.style.transform = `scale(${tapping ? 0.82 : 1})`;
+    tap.style.boxShadow = `0 0 0 ${tapping ? 10 : 0}px rgb(238 241 248 / 0.25)`;
+    const kd = out(seg(t, 6.5, 6.85));
+    done.style.opacity = kd; done.style.transform = `scale(${lerp(0.96, 1, kd)})`;
+    $('#tick').style.strokeDashoffset = 22 * (1 - out(seg(t, 6.75, 7.15)));
+  }
+
+  // C 7.8–11.6: four steps, one by one; the fourth is the point
+  if (scene(C, t, 7.8, 11.6)) {
+    show($('#C .mono'), out(seg(t, 7.85, 8.2)), 10);
+    $$('.step').forEach((s, i) => {
+      show(s, out(seg(t, 8.0 + i * 0.5, 8.45 + i * 0.5)), 40);
+      s.style.opacity = +s.style.opacity * (i < 3 && t > 10.0 ? lerp(1, 0.35, seg(t, 10.0, 10.3)) : 1);
+    });
+    show($('#note'), out(seg(t, 10.15, 10.6)), 20);
+  }
+
+  // D 11.6–14.8: LV → RU → EN in one slot, chips follow, then the search line
+  if (scene(D, t, 11.6, 14.8)) {
+    show($('#D .mono'), out(seg(t, 11.65, 12.0)), 10);
+    const times = [11.7, 12.35, 13.0];
+    $$('[data-lang]').forEach((el, i) => {
+      const kin = out(seg(t, times[i], times[i] + 0.35)), kout = i < 2 ? out(seg(t, times[i + 1], times[i + 1] + 0.3)) : 0;
+      el.style.opacity = kin * (1 - kout);
+      el.style.transform = `translateY(${(1 - kin) * 70 - kout * 70}px)`;
+    });
+    const cur = t >= 13.0 ? 2 : t >= 12.35 ? 1 : 0;
+    $$('[data-chip]').forEach((c) => c.classList.toggle('on', +c.dataset.chip === cur));
+    show($('.langs'), out(seg(t, 11.8, 12.2)), 16);
+    show($('#more'), out(seg(t, 13.3, 13.6)), 10);
+    show($('#seo'), out(seg(t, 13.55, 14.0)), 20);
+  }
+
+  // E 14.8–18: logo, name, line, call to action (held to the end)
+  if (scene(E, t, 14.8, DURATION + 1)) {
+    const km = out(seg(t, 14.85, 15.4));
+    $('.mark').style.opacity = km; $('.mark').style.transform = `scale(${lerp(0.7, 1, km)}) rotate(${lerp(-8, 0, km)}deg)`;
+    show($('.word'), out(seg(t, 15.1, 15.55)), 24);
+    show($('.tag'), out(seg(t, 15.35, 15.8)), 20);
+    show($('.cta'), out(seg(t, 15.7, 16.15)), 20);
+    show($('#E .mono'), out(seg(t, 15.9, 16.3)), 10);
+  }
+}
+window.render = render;
+window.DURATION = DURATION;
+
+// watching the page directly: play in a loop. render.mjs adds ?still and drives render(t) itself.
+if (!location.search.includes('still')) {
+  const t0 = performance.now();
+  const loop = (now) => { render(((now - t0) / 1000) % DURATION); requestAnimationFrame(loop); };
+  document.fonts.ready.then(() => requestAnimationFrame(loop));
+} else render(0);
+</script>
+</body>
+</html>
