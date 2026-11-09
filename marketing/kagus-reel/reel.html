@@ -5,253 +5,399 @@
 <meta name="viewport" content="width=540, initial-scale=1">
 <title>kagus.eu reel</title>
 <!-- A 9:16 reel for kagus.eu, drawn as a page. render(t) sets every element for time t (seconds),
-     so tools/../render.mjs can step through it frame by frame. Open the page alone to watch it play. -->
+     so render.mjs can step through it frame by frame (with sub-frames for motion blur).
+     Open the page alone to watch it play. -->
 <style>
 @font-face { font-family: Geist; font-weight: 100 900; src: url(assets/geist-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+2190-2193, U+2212; }
 @font-face { font-family: Geist; font-weight: 100 900; src: url(assets/geist-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+1E00-1EFF; }
 @font-face { font-family: 'Geist Mono'; font-weight: 100 900; src: url(assets/geist-mono-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
 @font-face { font-family: 'Geist Mono'; font-weight: 100 900; src: url(assets/geist-mono-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA; }
 :root {
-  --bg: #05070c; --surface: #0d1526; --navy: #0b1f45; --line: #ffffff14; --line-strong: #ffffff24;
+  --bg: #05070c; --surface: #0d1526; --line: #ffffff14; --line-strong: #ffffff24;
   --fg: #eef1f8; --muted: #a2acc0; --subtle: #828ea8; --accent: #6ea1ed; --accent-strong: #4986e9; --success: #34d399;
 }
 * { box-sizing: border-box; margin: 0; }
 html, body { width: 540px; height: 960px; overflow: hidden; background: var(--bg); color: var(--fg); font-family: Geist, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-.stage { position: relative; width: 540px; height: 960px; overflow: hidden; background: var(--bg); }
+.stage { position: relative; width: 540px; height: 960px; overflow: hidden; background: var(--bg); isolation: isolate; }
+.abs { position: absolute; }
 
-/* the studio's dotted blue glow */
-.glow { position: absolute; inset: -20%; background:
-  radial-gradient(circle at center, rgb(110 161 237 / 0.55) 1px, transparent 1.6px) 0 0 / 9px 9px;
-  -webkit-mask: radial-gradient(42% 38% at var(--gx, 50%) var(--gy, 45%), #000 0%, rgb(0 0 0 / 0.35) 55%, transparent 100%);
-          mask: radial-gradient(42% 38% at var(--gx, 50%) var(--gy, 45%), #000 0%, rgb(0 0 0 / 0.35) 55%, transparent 100%); }
-.haze { position: absolute; inset: 0; background: radial-gradient(60% 45% at var(--gx, 50%) var(--gy, 45%), rgb(11 31 69 / 0.9), transparent 75%); }
+/* ---------- world: a dotted floor receding to a horizon, a light from above ---------- */
+.floor-wrap { position: absolute; left: -50%; right: -50%; top: 520px; height: 900px; perspective: 520px; perspective-origin: 50% 0; }
+.floor { position: absolute; inset: 0; transform-origin: 50% 0; transform: rotateX(74deg);
+  background: radial-gradient(circle, rgb(110 161 237 / 0.75) 1.1px, transparent 1.7px) 0 0 / 22px 22px;
+  -webkit-mask: linear-gradient(180deg, transparent 0%, #000 22%, #000 70%, transparent 100%), radial-gradient(60% 100% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-composite: source-in; mask-composite: intersect; }
+.horizon { position: absolute; left: 0; right: 0; top: 470px; height: 120px; background: radial-gradient(50% 50% at 50% 50%, rgb(73 134 233 / 0.55), transparent 70%); filter: blur(20px); }
+.beam { position: absolute; left: 50%; top: -260px; width: 900px; height: 1100px; margin-left: -450px;
+  background: conic-gradient(from 180deg at 50% 0%, transparent 162deg, rgb(110 161 237 / 0.18) 175deg, rgb(160 195 245 / 0.28) 180deg, rgb(110 161 237 / 0.18) 185deg, transparent 198deg);
+  filter: blur(14px); transform-origin: 50% 0; }
+.dust { position: absolute; inset: 0; background: radial-gradient(circle, rgb(110 161 237 / 0.5) 1px, transparent 1.6px) 0 0 / 9px 9px;
+  -webkit-mask: radial-gradient(40% 30% at 50% 40%, #000, transparent 80%); mask: radial-gradient(40% 30% at 50% 40%, #000, transparent 80%); opacity: 0.35; }
+.grain { position: absolute; inset: -60px; pointer-events: none; opacity: 0.09; mix-blend-mode: overlay; z-index: 50;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.vignette { position: absolute; inset: 0; pointer-events: none; z-index: 49; background: radial-gradient(120% 80% at 50% 45%, transparent 55%, rgb(0 0 0 / 0.6) 100%); }
 
-/* content sits in the middle, clear of Instagram's top bar and the caption at the bottom */
-.scene { position: absolute; inset: 0; padding: 0 40px 150px; display: flex; flex-direction: column; justify-content: center; }
-.mono { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); }
-.h { font-weight: 700; font-size: 66px; line-height: 1.02; letter-spacing: -0.04em; }
-.h .w { display: inline-block; will-change: transform, opacity; }
-.accent { background: linear-gradient(100deg, #b7cff6 0%, var(--accent) 45%, #9fc0f3 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.strike { position: relative; display: inline-block; }
-.strike::after { content: ''; position: absolute; left: -2%; right: -2%; top: 54%; height: 6px; border-radius: 3px; background: var(--accent); transform-origin: left; transform: scaleX(var(--s, 0)); }
-.sub { margin-top: 26px; font-size: 24px; line-height: 1.35; color: var(--muted); letter-spacing: -0.01em; }
+.cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+.scene { position: absolute; inset: 0; }
 
-/* B: booking card */
-.card { position: relative; align-self: center; margin-top: 40px; width: 420px; padding: 26px; border-radius: 22px;
-  background: linear-gradient(180deg, #0f1a30, #0b1324); border: 1px solid var(--line-strong); box-shadow: 0 40px 80px -30px rgb(73 134 233 / 0.35); }
-.card .row { display: flex; gap: 8px; margin-top: 14px; }
-.chip { flex: 1; height: 66px; border-radius: 12px; border: 1px solid var(--line-strong); display: grid; place-items: center; font-size: 15px; color: var(--muted); }
-.chip b { display: block; font-size: 24px; color: var(--fg); font-weight: 600; line-height: 1; }
-.chip.small { height: 52px; font-size: 20px; color: var(--fg); }
-.chip.on { background: var(--accent); border-color: var(--accent); color: #05070c; }
-.chip.on b { color: #05070c; }
-.btn { margin-top: 20px; height: 62px; border-radius: 14px; background: var(--accent); color: #05070c; display: grid; place-items: center; font-weight: 600; font-size: 22px; }
-.done { position: absolute; inset: 0; border-radius: 22px; background: #0b1324; display: grid; place-content: center; justify-items: center; gap: 10px; text-align: center; }
-.check { width: 74px; height: 74px; border-radius: 50%; background: rgb(52 211 153 / 0.14); display: grid; place-items: center; }
-.check svg { width: 40px; height: 40px; }
-.done strong { font-size: 28px; letter-spacing: -0.02em; }
-.done span { color: var(--muted); font-size: 18px; line-height: 1.4; }
-.tap { position: absolute; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: rgb(238 241 248 / 0.9); box-shadow: 0 0 0 0 rgb(238 241 248 / 0.4); pointer-events: none; }
+/* ---------- type ---------- */
+.mono { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); }
+.mono i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 10px; vertical-align: 2px; box-shadow: 0 0 12px var(--accent); font-style: normal; }
+.h { font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; }
+.ln { display: block; overflow: hidden; padding: 0.04em 0 0.1em; margin-bottom: -0.1em; }
+.ln > .in { display: inline-block; transform-origin: 0 100%; will-change: transform; }
+.light { font-weight: 300; color: var(--muted); }
+.sheen { background-image: linear-gradient(100deg, #8fb2ee 0%, #6ea1ed 30%, #ffffff 48%, #6ea1ed 62%, #4986e9 100%); background-size: 260% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.strike { position: relative; }
+.strike::after { content: ''; position: absolute; left: -1%; right: -2%; top: 52%; height: 5px; border-radius: 3px; background: var(--accent); box-shadow: 0 0 18px var(--accent);
+  transform-origin: left; transform: scaleX(var(--s, 0)); }
 
-/* C: steps */
-.steps { margin-top: 34px; display: grid; gap: 14px; }
-.step { display: flex; align-items: baseline; gap: 18px; }
-.step .n { font-family: 'Geist Mono', monospace; font-size: 20px; color: var(--accent); width: 34px; }
-.step .t { font-weight: 700; font-size: 64px; letter-spacing: -0.04em; line-height: 1.05; }
-.note { margin: 18px 0 0 52px; font-size: 22px; color: var(--muted); }
+/* ---------- B: phone ---------- */
+.b-head { left: 40px; right: 40px; top: 118px; }
+.phone-wrap { position: absolute; left: 0; right: 0; top: 268px; height: 560px; perspective: 1100px; }
+.phone { position: absolute; left: 50%; top: 0; width: 262px; height: 540px; margin-left: -131px; border-radius: 46px; padding: 9px;
+  background: linear-gradient(145deg, #2b3140, #0c0f15 40%, #1a1f2a); transform-style: preserve-3d;
+  box-shadow: inset 0 0 0 1.5px #3a4252, inset 0 0 0 4px #07090d, 0 60px 90px -40px rgb(73 134 233 / 0.55), 0 30px 60px -20px rgb(0 0 0 / 0.8); }
+.screen { position: relative; height: 100%; border-radius: 38px; overflow: hidden; background: linear-gradient(180deg, #0b1222, #070b14 60%); padding: 44px 16px 0; }
+.island { position: absolute; top: 9px; left: 50%; width: 82px; height: 24px; margin-left: -41px; border-radius: 13px; background: #000; z-index: 3; }
+.status { position: absolute; top: 12px; left: 22px; right: 22px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; z-index: 2; }
+.status .bars { display: flex; gap: 2px; align-items: flex-end; } .status .bars b { width: 3px; background: var(--fg); border-radius: 1px; }
+.biz { display: flex; align-items: center; gap: 10px; }
+.biz .av { width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #9cc0f5, #3e6fc2); }
+.biz strong { font-size: 14px; display: block; } .biz span { font-size: 11px; color: var(--subtle); }
+.ui-title { margin-top: 18px; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; }
+.days { display: flex; gap: 6px; margin-top: 12px; }
+.day { flex: 1; height: 58px; border-radius: 12px; background: #0f1a2e; border: 1px solid var(--line); display: grid; place-content: center; text-align: center; font-size: 11px; color: var(--subtle); }
+.day b { font-size: 19px; color: var(--fg); font-weight: 600; line-height: 1.1; }
+.slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px; }
+.slot { height: 40px; border-radius: 10px; background: #0f1a2e; border: 1px solid var(--line); display: grid; place-items: center; font-size: 14px; font-weight: 500; }
+.slot.gone { color: #4b556b; text-decoration: line-through; }
+.on { background: var(--accent) !important; border-color: var(--accent) !important; color: #05070c !important; box-shadow: 0 8px 24px -8px rgb(110 161 237 / 0.8); }
+.on b { color: #05070c !important; }
+.sum { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: #0f1a2e; border: 1px solid var(--line-strong); display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.sum b { color: var(--fg); font-weight: 600; }
+.pbtn { position: absolute; left: 16px; right: 16px; bottom: 22px; height: 52px; border-radius: 14px; background: var(--accent); color: #05070c; display: grid; place-items: center; font-weight: 600; font-size: 16px; box-shadow: 0 12px 30px -10px rgb(110 161 237 / 0.8); }
+.ok { position: absolute; inset: 0; background: linear-gradient(180deg, #0b1424, #070b14); display: grid; place-content: center; justify-items: center; text-align: center; gap: 10px; padding: 0 18px; }
+.ok .ring { width: 78px; height: 78px; border-radius: 50%; display: grid; place-items: center; background: rgb(52 211 153 / 0.12); box-shadow: 0 0 0 1px rgb(52 211 153 / 0.35), 0 0 40px rgb(52 211 153 / 0.25); }
+.ok svg { width: 40px; height: 40px; }
+.ok strong { font-size: 21px; letter-spacing: -0.02em; } .ok span { font-size: 13px; color: var(--muted); line-height: 1.45; }
+.notif { position: absolute; left: 10px; right: 10px; top: 40px; padding: 11px 12px; border-radius: 18px; background: rgb(40 48 66 / 0.92); display: flex; gap: 10px; align-items: center; z-index: 4;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.5); }
+.notif .ic { width: 30px; height: 30px; border-radius: 8px; background: var(--success); flex: none; display: grid; place-items: center; color: #05070c; font-weight: 700; font-size: 14px; }
+.notif p { font-size: 12px; line-height: 1.3; color: var(--fg); } .notif p b { display: block; font-size: 12px; }
+.glare { position: absolute; inset: 0; border-radius: 46px; pointer-events: none; z-index: 5;
+  background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / 0.13) 47%, rgb(255 255 255 / 0.03) 52%, transparent 60%); background-size: 300% 100%; }
+.tap { position: absolute; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: rgb(238 241 248 / 0.92); z-index: 6; pointer-events: none; }
+.tap::after { content: ''; position: absolute; inset: -12px; border-radius: 50%; border: 2px solid rgb(238 241 248 / var(--r, 0)); transform: scale(var(--rs, 0.6)); }
 
-/* D: languages */
-.slot { position: relative; height: 84px; margin-top: 30px; overflow: hidden; }
-.slot .h { position: absolute; left: 0; top: 0; white-space: nowrap; }
-.langs { display: flex; gap: 10px; margin-top: 30px; }
-.lang { min-width: 76px; height: 50px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line-strong); display: grid; place-items: center; font-family: 'Geist Mono', monospace; font-size: 18px; color: var(--muted); }
-.lang.on { border-color: var(--accent); color: var(--fg); background: rgb(110 161 237 / 0.14); }
-.lang.more { border-style: dashed; color: var(--subtle); }
+/* ---------- C: process ---------- */
+.big-n { position: absolute; left: 0; right: 0; top: 150px; height: 360px; overflow: hidden; text-align: center; }
+.big-n span { position: absolute; left: 0; right: 0; font-family: 'Geist Mono', monospace; font-weight: 200; font-size: 330px; line-height: 360px; letter-spacing: -0.06em;
+  color: transparent; -webkit-text-stroke: 1.3px rgb(110 161 237 / 0.42); }
+.c-word { position: absolute; left: 0; right: 0; top: 380px; height: 110px; text-align: center; }
+.c-word .h { position: absolute; left: 0; right: 0; font-size: 92px; }
+.bar { position: absolute; left: 70px; right: 70px; top: 540px; display: flex; gap: 8px; }
+.bar i { flex: 1; height: 4px; border-radius: 2px; background: rgb(255 255 255 / 0.1); overflow: hidden; position: relative; }
+.bar i::after { content: ''; position: absolute; inset: 0; background: var(--accent); box-shadow: 0 0 10px var(--accent); transform-origin: left; transform: scaleX(var(--f, 0)); }
+.c-note { position: absolute; left: 0; right: 0; top: 585px; text-align: center; font-size: 25px; color: var(--muted); line-height: 1.35; }
 
-/* E: outro */
-.outro { align-items: center; text-align: center; }
-.mark { width: 120px; height: auto; }
-.word { margin-top: 26px; font-weight: 700; font-size: 64px; letter-spacing: -0.045em; }
-.tag { margin-top: 14px; font-size: 24px; color: var(--muted); line-height: 1.35; }
-.cta { margin-top: 38px; height: 64px; padding: 0 30px; border-radius: 16px; background: var(--accent); color: #05070c; display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 22px; }
-.cta + .mono { margin-top: 18px; }
+/* ---------- D: languages ---------- */
+.orbit { position: absolute; left: 50%; top: 395px; width: 0; height: 0; }
+.orbit span { position: absolute; left: 0; top: 0; font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; letter-spacing: 0.05em; padding: 7px 12px; border-radius: 10px;
+  border: 1px solid var(--line-strong); background: rgb(13 21 38 / 0.85); color: var(--muted); white-space: nowrap; }
+.orbit span.hot { border-color: var(--accent); color: var(--fg); background: rgb(30 54 98 / 0.9); box-shadow: 0 0 24px -4px rgb(110 161 237 / 0.7); }
+.d-word { position: absolute; left: 0; right: 0; top: 352px; height: 90px; text-align: center; z-index: 20; }
+.d-word .h { position: absolute; left: 0; right: 0; font-size: 80px; text-shadow: 0 10px 40px rgb(5 7 12 / 0.9); }
+.d-sub { position: absolute; left: 0; right: 0; top: 590px; text-align: center; font-size: 25px; line-height: 1.35; color: var(--muted); z-index: 21; }
+.d-sub b { color: var(--fg); font-weight: 600; }
+
+/* ---------- E: outro ---------- */
+.e-logo { position: absolute; left: 50%; top: 258px; width: 132px; height: 194px; margin-left: -66px; }
+.e-logo img { width: 100%; height: 100%; display: block; }
+.streak { position: absolute; top: 352px; left: 0; width: 540px; height: 2px; background: linear-gradient(90deg, transparent, #cfe0fb 40%, #fff 50%, #cfe0fb 60%, transparent); box-shadow: 0 0 20px 4px rgb(110 161 237 / 0.7); }
+.e-word { position: absolute; left: 0; right: 0; top: 488px; text-align: center; font-weight: 700; font-size: 74px; letter-spacing: -0.05em; }
+.e-word span { display: inline-block; }
+.e-tag { position: absolute; left: 0; right: 0; top: 584px; text-align: center; font-size: 24px; color: var(--muted); line-height: 1.4; }
+.e-tag b { color: var(--fg); font-weight: 600; }
+.cta { position: absolute; left: 50%; top: 680px; width: 280px; height: 66px; margin-left: -140px; border-radius: 18px; padding: 1.5px; }
+.cta .bd { position: absolute; inset: 0; border-radius: 18px; background: conic-gradient(from var(--a, 0deg), rgb(110 161 237 / 0.2), #cfe0fb, rgb(110 161 237 / 0.2) 30%, rgb(110 161 237 / 0.2)); }
+.cta .in { position: relative; height: 100%; border-radius: 16.5px; background: linear-gradient(180deg, #7aaaf0, #4f8be9); color: #05070c; display: grid; place-items: center; font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+.e-handle { position: absolute; left: 0; right: 0; top: 768px; text-align: center; }
 </style>
 </head>
 <body>
 <div class="stage" id="stage">
-  <div class="haze"></div>
-  <div class="glow"></div>
+  <div class="beam" id="beam"></div>
+  <div class="horizon" id="horizon"></div>
+  <div class="floor-wrap"><div class="floor" id="floor"></div></div>
+  <div class="dust" id="dust"></div>
 
-  <!-- A: hook -->
-  <section class="scene" id="A">
-    <p class="mono" data-a="0">kagus.eu · Jelgava</p>
-    <h1 class="h" style="margin-top:22px">
-      <span class="w">Lielākā</span> <span class="w">daļa</span><br>
-      <span class="w">mājaslapu</span> <span class="w">ir</span><br>
-      <span class="w strike" id="strike">gana labas.</span>
-    </h1>
-    <h2 class="h" style="margin-top:30px"><span class="w accent" id="better1">Mēs taisām</span><br><span class="w accent" id="better2">labākas.</span></h2>
-  </section>
-
-  <!-- B: a site that works -->
-  <section class="scene" id="B">
-    <p class="mono">Mājaslapa, kas strādā</p>
-    <h2 class="h" style="margin-top:22px;font-size:52px">Klienti piesakās<br>paši. Arī naktī.</h2>
-    <div class="card" id="card">
-      <p class="mono" style="font-size:14px">Pieraksts · tavs uzņēmums</p>
-      <div class="row">
-        <div class="chip" data-day="0">O<b>11</b></div><div class="chip" data-day="1">T<b>12</b></div><div class="chip" data-day="2">C<b>13</b></div><div class="chip" data-day="3">Pk<b>14</b></div>
+  <div class="cam" id="cam">
+    <!-- A: hook -->
+    <section class="scene" id="A">
+      <div class="abs" style="left:40px;right:40px;top:200px">
+        <p class="mono" id="a-kick"><i></i>kagus.eu · Jelgava</p>
+        <div class="h" style="font-size:70px;margin-top:22px" id="a-block">
+          <span class="ln"><span class="in">Lielākā daļa</span></span>
+          <span class="ln"><span class="in light">mājaslapu ir</span></span>
+          <span class="ln"><span class="in strike" id="strike">gana labas.</span></span>
+        </div>
       </div>
-      <div class="row">
-        <div class="chip small" data-slot="0">10:00</div><div class="chip small" data-slot="1">11:30</div><div class="chip small" data-slot="2">14:30</div>
+      <div class="abs" style="left:40px;right:40px;top:520px" id="a-better">
+        <div class="h" style="font-size:88px">
+          <span class="ln"><span class="in">Mēs taisām</span></span>
+          <span class="ln"><span class="in sheen" id="better">labākas.</span></span>
+        </div>
       </div>
-      <div class="btn" id="btn">Pieteikties</div>
-      <div class="done" id="done">
-        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path id="tick" d="M5 12.5l4.5 4.5L19 7.5" stroke-dasharray="22" stroke-dashoffset="22"/></svg></div>
-        <strong>Pieraksts apstiprināts</strong>
-        <span>Trešdien, 13. nov., 14:30<br>SMS atgādinājums nosūtīts</span>
+    </section>
+
+    <!-- B: a site that books clients by itself -->
+    <section class="scene" id="B">
+      <div class="abs b-head">
+        <div class="h" style="font-size:52px">
+          <span class="ln"><span class="in">Klienti piesakās</span></span>
+          <span class="ln"><span class="in">paši. <span class="sheen" id="b-night">Arī naktī.</span></span></span>
+        </div>
       </div>
-      <div class="tap" id="tap"></div>
-    </div>
-  </section>
+      <div class="phone-wrap">
+        <div class="phone" id="phone">
+          <div class="screen">
+            <div class="island"></div>
+            <div class="status"><span>02:14</span><span class="bars"><b style="height:5px"></b><b style="height:7px"></b><b style="height:9px"></b><b style="height:11px"></b></span></div>
+            <div class="biz"><span class="av"></span><div><strong>Tavs salons</strong><span>Online pieraksts</span></div></div>
+            <p class="ui-title">Izvēlies laiku</p>
+            <div class="days">
+              <div class="day" data-day="0">O<b>11</b></div><div class="day" data-day="1">T<b>12</b></div><div class="day" data-day="2">C<b>13</b></div><div class="day" data-day="3">Pk<b>14</b></div>
+            </div>
+            <div class="slots">
+              <div class="slot gone">10:00</div><div class="slot">11:30</div><div class="slot gone">12:00</div>
+              <div class="slot">13:00</div><div class="slot" data-slot="1">14:30</div><div class="slot">16:00</div>
+            </div>
+            <div class="sum" id="sum"><span>Manikīrs · 60 min</span><b>25 €</b></div>
+            <div class="pbtn" id="pbtn">Pieteikties</div>
+            <div class="ok" id="ok">
+              <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path id="tick" d="M5 12.5l4.5 4.5L19 7.5" stroke-dasharray="22" stroke-dashoffset="22"/></svg></div>
+              <strong>Pieraksts apstiprināts</strong>
+              <span>Trešdien, 13. nov., 14:30</span>
+            </div>
+            <div class="notif" id="notif"><span class="ic">✓</span><p><b>Tavs salons</b>Gaidīsim tevi trešdien 14:30. Atgādināsim dienu iepriekš.</p></div>
+          </div>
+          <div class="glare" id="glare"></div>
+          <div class="tap" id="tap"></div>
+        </div>
+      </div>
+    </section>
 
-  <!-- C: how we work -->
-  <section class="scene" id="C">
-    <p class="mono">Kā mēs strādājam</p>
-    <div class="steps">
-      <div class="step"><span class="n">01</span><span class="t">Izpēte</span></div>
-      <div class="step"><span class="n">02</span><span class="t">Dizains</span></div>
-      <div class="step"><span class="n">03</span><span class="t">Kods</span></div>
-      <div class="step"><span class="n">04</span><span class="t accent">Pulēšana</span></div>
-    </div>
-    <p class="note" id="note">To daļu vairums izlaiž.<br>Mēs ne.</p>
-  </section>
+    <!-- C: how we work -->
+    <section class="scene" id="C">
+      <p class="mono abs" style="left:0;right:0;top:150px;text-align:center" id="c-kick"><i></i>Kā mēs strādājam</p>
+      <div class="big-n" id="bign"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+      <div class="c-word" id="cword"><span class="h">Izpēte</span><span class="h">Dizains</span><span class="h">Kods</span><span class="h sheen" id="polish">Pulēšana</span></div>
+      <div class="bar" id="bar"><i></i><i></i><i></i><i></i></div>
+      <p class="c-note" id="c-note">To daļu vairums izlaiž.<br><span style="color:var(--fg)">Mēs ne.</span></p>
+    </section>
 
-  <!-- D: languages + found by search -->
-  <section class="scene" id="D">
-    <p class="mono">Viena lapa, trīs valodas</p>
-    <div class="slot">
-      <span class="h" data-lang="0">Latviski.</span>
-      <span class="h" data-lang="1">По-русски.</span>
-      <span class="h" data-lang="2">In English.</span>
-    </div>
-    <div class="langs">
-      <span class="lang" data-chip="0">LV</span><span class="lang" data-chip="1">RU</span><span class="lang" data-chip="2">EN</span><span class="lang more" id="more">+21</span>
-    </div>
-    <p class="sub" id="seo">Un tā, ka tevi saprot<br><span style="color:var(--fg)">Google un ChatGPT.</span></p>
-  </section>
+    <!-- D: languages -->
+    <section class="scene" id="D">
+      <p class="mono abs" style="left:0;right:0;top:150px;text-align:center" id="d-kick"><i></i>Viena lapa · 24 valodas</p>
+      <div class="orbit" id="ring"></div>
+      <div class="d-word" id="dword"><span class="h">Latviski.</span><span class="h">По-русски.</span><span class="h">In English.</span></div>
+      <p class="d-sub" id="d-sub">Un tā, ka tevi saprot<br><b>Google un ChatGPT.</b></p>
+    </section>
 
-  <!-- E: outro -->
-  <section class="scene outro" id="E">
-    <img class="mark" src="assets/logo.png" alt="kagus.eu">
-    <p class="word">kagus.eu</p>
-    <p class="tag">Divi cilvēki.<br>Dizains un kods vienās rokās.</p>
-    <span class="cta">Raksti mums <span aria-hidden="true">→</span></span>
-    <p class="mono">@kagus.eu</p>
-  </section>
+    <!-- E: outro -->
+    <section class="scene" id="E">
+      <div class="e-logo" id="elogo"><img src="assets/logo.png" alt="kagus.eu"></div>
+      <div class="streak" id="streak"></div>
+      <p class="e-word" id="eword"></p>
+      <p class="e-tag" id="etag">Divi cilvēki.<br><b>Dizains un kods vienās rokās.</b></p>
+      <div class="cta" id="cta"><span class="bd" id="ctabd"></span><span class="in">Raksti mums →</span></div>
+      <p class="mono e-handle" id="ehandle">@kagus.eu</p>
+    </section>
+  </div>
+
+  <div class="vignette"></div>
+  <div class="grain" id="grain"></div>
 </div>
 
 <script>
-const DURATION = 18;
-const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+const DURATION = 19;
+const $ = (s) => document.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-const seg = (t, a, b) => clamp((t - a) / (b - a));                  // 0..1 progress between a and b
-const out = (k) => 1 - Math.pow(1 - k, 4);                          // ease-out, close to the site's (.23,1,.32,1)
-const inout = (k) => (k < 0.5 ? 8 * k ** 4 : 1 - Math.pow(-2 * k + 2, 4) / 2);
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const expo = (k) => (k >= 1 ? 1 : 1 - Math.pow(2, -10 * k));                     // ease-out-expo
+const quart = (k) => 1 - Math.pow(1 - k, 4);
+const inout = (k) => (k < 0.5 ? 16 * k ** 5 : 1 - Math.pow(-2 * k + 2, 5) / 2);  // ease-in-out-quint
 const lerp = (a, b, k) => a + (b - a) * k;
-function show(el, k, dy = 24) { el.style.opacity = k; el.style.transform = `translateY(${(1 - k) * dy}px)`; }
-// scene visibility: fade in over 0.35 s, out over 0.3 s, with a small drift up on exit
-function scene(el, t, a, b) {
-  const kin = out(seg(t, a, a + 0.35)), kout = seg(t, b - 0.3, b);
-  el.style.opacity = t < a || t > b ? 0 : kin * (1 - kout);
-  el.style.transform = `translateY(${-kout * 30}px)`;
-  return t >= a && t <= b;
+const set = (el, o) => Object.assign(el.style, o);
+function fx(el, { o = 1, x = 0, y = 0, s = 1, r = 0, blur = 0, rx = 0, ry = 0, z = 0 } = {}) {
+  el.style.opacity = o;
+  el.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateX(${rx}deg) rotateY(${ry}deg) rotate(${r}deg) scale(${s})`;
+  el.style.filter = blur > 0.05 ? `blur(${blur}px)` : 'none';
+}
+// masked line reveal: each line rises from behind its own edge
+function lines(root, t, start, gap = 0.09, dur = 0.8) {
+  $$('.ln > .in', root).forEach((el, i) => {
+    const k = expo(seg(t, start + i * gap, start + i * gap + dur));
+    el.style.transform = `translateY(${(1 - k) * 110}%) rotate(${(1 - k) * 4}deg)`;
+  });
+}
+const vis = (el, t, a, b) => { const on = t >= a && t < b; el.style.visibility = on ? 'visible' : 'hidden'; return on; };
+// centre of an element inside the phone, in the phone's own coordinates
+function inPhone(e, ph) { let x = 0, y = 0, n = e; while (n && n !== ph) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; } return [x + e.offsetWidth / 2, y + e.offsetHeight / 2]; }
+
+const S = { A: $('#A'), B: $('#B'), C: $('#C'), D: $('#D'), E: $('#E') };
+
+// language ring: 12 of the 24 languages, the three live ones lit
+const CODES = ['LV', 'RU', 'EN', 'DE', 'LT', 'ET', 'FI', 'SV', 'PL', 'FR', 'ES', 'IT'];
+$('#ring').innerHTML = CODES.map((c, i) => `<span class="${i < 3 ? 'hot' : ''}">${c}</span>`).join('');
+// outro wordmark, one span per letter
+$('#eword').innerHTML = [...'kagus.eu'].map((c) => `<span>${c}</span>`).join('');
+
+function world(t) {
+  $('#floor').style.backgroundPosition = `0 ${(t * 34) % 22}px`;
+  const flare = 1 + 0.6 * Math.exp(-((t - 15.6) ** 2) * 3);          // the light swells as the logo lands
+  set($('#beam'), { opacity: (0.75 + Math.sin(t * 1.3) * 0.08) * flare, transform: `rotate(${Math.sin(t * 0.35) * 5}deg)` });
+  $('#horizon').style.opacity = 0.8 * flare;
+  $('#dust').style.transform = `translateY(${-t * 6}px)`;
+  // grain jumps every frame so it reads as film, not a texture
+  const n = Math.floor(t * 30), gx = ((n * 73) % 120) - 60, gy = ((n * 151) % 120) - 60;
+  $('#grain').style.transform = `translate(${gx}px, ${gy}px)`;
+  // slow camera push inside each scene
+  const cuts = [0, 3.7, 8.4, 12.2, 15.2, DURATION];
+  let i = 0; while (i < cuts.length - 2 && t >= cuts[i + 1]) i++;
+  $('#cam').style.transform = `scale(${1 + 0.045 * seg(t, cuts[i], cuts[i + 1])})`;
 }
 
-const A = $('#A'), B = $('#B'), C = $('#C'), D = $('#D'), E = $('#E');
-const wordsA = $$('#A h1 .w'), card = $('#card'), tap = $('#tap'), done = $('#done');
-
 function render(t) {
-  // background glow drifts slowly; it sits lower in the outro
-  const st = $('#stage').style;
-  st.setProperty('--gx', (50 + Math.sin(t * 0.5) * 8).toFixed(2) + '%');
-  st.setProperty('--gy', lerp(42, 40, seg(t, 14, 15)) + Math.cos(t * 0.4) * 5 + '%');
+  world(t);
 
-  // A 0–3.4: words land one by one, "gana labas" is struck through, the answer appears
-  if (scene(A, t, 0, 3.4)) {
-    show($('#A .mono'), out(seg(t, 0, 0.4)), 10);
-    wordsA.forEach((w, i) => show(w, out(seg(t, 0.08 + i * 0.12, 0.08 + i * 0.12 + 0.45)), 40));
-    $('#strike').style.setProperty('--s', inout(seg(t, 1.15, 1.55)).toFixed(3));
-    $('#strike').style.color = `rgb(238 241 248 / ${lerp(1, 0.45, seg(t, 1.2, 1.6))})`;
-    show($('#better1'), out(seg(t, 1.6, 2.1)), 40);
-    show($('#better2'), out(seg(t, 1.75, 2.25)), 40);
+  /* A 0–3.7: hook */
+  if (vis(S.A, t, 0, 3.7)) {
+    fx($('#a-kick'), { o: quart(seg(t, 0, 0.5)), y: (1 - quart(seg(t, 0, 0.5))) * 10 });
+    lines($('#a-block'), t, 0.05, 0.11, 0.9);
+    $('#strike').style.setProperty('--s', inout(seg(t, 1.25, 1.65)).toFixed(3));
+    // the old line sinks back into depth while the answer comes forward
+    const back1 = inout(seg(t, 1.6, 2.2));
+    fx($('#a-block').parentElement, { o: lerp(1, 0.28, back1), s: lerp(1, 0.9, back1), y: -back1 * 40, blur: back1 * 3 });
+    lines($('#a-better'), t, 1.85, 0.12, 0.9);
+    $('#better').style.backgroundPosition = `${lerp(110, -10, seg(t, 2.3, 3.2))}% 0`;
+    // exit: zoom through the words
+    const ex = Math.pow(seg(t, 3.25, 3.7), 2.2);
+    fx(S.A, { o: 1 - ex, s: 1 + ex * 2.2, blur: ex * 16 });
   }
 
-  // B 3.4–7.8: a booking card; a finger taps day, time, button; it confirms
-  if (scene(B, t, 3.4, 7.8)) {
-    show($('#B .h'), out(seg(t, 3.45, 3.9)), 30);
-    show(card, out(seg(t, 3.7, 4.2)), 60);
-    const day = t > 4.75 ? 2 : -1, slot = t > 5.55 ? 2 : -1, press = seg(t, 6.2, 6.35) - seg(t, 6.35, 6.5);
-    $$('[data-day]').forEach((c) => c.classList.toggle('on', +c.dataset.day === day));
-    $$('[data-slot]').forEach((c) => c.classList.toggle('on', +c.dataset.slot === slot));
-    $('#btn').style.transform = `scale(${1 - press * 0.04})`;
-    // finger path inside the card (card-relative px): day 13 → 14:30 → button
-    const cr = card.getBoundingClientRect();
-    const at = (sel) => { const r = $(sel).getBoundingClientRect(); return [r.left - cr.left + r.width / 2, r.top - cr.top + r.height / 2]; };
-    const d = at('[data-day="2"]'), s = at('[data-slot="2"]'), b = at('#btn');
-    const pts = [[300, 330, 4.2], [...d, 4.7], [...d, 5.0], [...s, 5.5], [...s, 5.9], [...b, 6.2], [...b, 6.6]];
+  /* B 3.7–8.4: a phone books a client by itself */
+  if (vis(S.B, t, 3.55, 8.4)) {
+    const kin = expo(seg(t, 3.55, 4.4));
+    fx(S.B, { o: seg(t, 3.55, 3.8) * (1 - seg(t, 8.15, 8.4)), blur: (1 - seg(t, 3.55, 3.9)) * 10 });
+    lines($('.b-head'), t, 3.75, 0.12, 0.8);
+    $('#b-night').style.backgroundPosition = `${lerp(110, -10, seg(t, 4.3, 5.4))}% 0`;
+    // phone: flies in from depth, settles at an angle, floats, turns to camera while tapped, swings out
+    const ph = $('#phone'), out = inout(seg(t, 7.85, 8.4));
+    const ry = lerp(-58, -16, kin) + Math.sin(t * 1.1) * 2.5 + inout(seg(t, 4.6, 5.3)) * 10 + out * 70;
+    const rx = lerp(24, 8, kin) + Math.cos(t * 0.9) * 1.5;
+    fx(ph, { o: seg(t, 3.6, 3.9), rx, ry, z: lerp(-500, 0, kin) - out * 200, y: lerp(120, 0, kin) + Math.sin(t * 1.6) * 4 + out * 60, r: lerp(-6, 0, kin), blur: out * 6 });
+    $('#glare').style.backgroundPosition = `${lerp(120, -20, seg(t, 3.9, 5.2)) + (ry + 16) * 0.8}% 0`;
+    // taps: day 13 → 14:30 → button
+    $$('[data-day]').forEach((c) => c.classList.toggle('on', t > 5.0 && c.dataset.day === '2'));
+    $$('[data-slot]').forEach((c) => c.classList.toggle('on', t > 5.75));
+    const d = inPhone($('[data-day="2"]'), ph), s = inPhone($('[data-slot="1"]'), ph), b = inPhone($('#pbtn'), ph);
+    const pts = [[230, 600, 4.4], [...d, 4.95], [...d, 5.3], [...s, 5.7], [...s, 6.1], [...b, 6.45], [...b, 6.8]];
     let p = pts[0];
     for (let i = 1; i < pts.length; i++) if (t >= pts[i - 1][2]) { const k = inout(seg(t, pts[i - 1][2], pts[i][2])); p = [lerp(pts[i - 1][0], pts[i][0], k), lerp(pts[i - 1][1], pts[i][1], k)]; }
-    const tapping = [4.7, 5.5, 6.2].some((x) => t >= x && t < x + 0.25);
-    tap.style.left = p[0] + 'px'; tap.style.top = p[1] + 'px';
-    tap.style.opacity = seg(t, 4.2, 4.4) * (1 - seg(t, 6.45, 6.6));
-    tap.style.transform = `scale(${tapping ? 0.82 : 1})`;
-    tap.style.boxShadow = `0 0 0 ${tapping ? 10 : 0}px rgb(238 241 248 / 0.25)`;
-    const kd = out(seg(t, 6.5, 6.85));
-    done.style.opacity = kd; done.style.transform = `scale(${lerp(0.96, 1, kd)})`;
-    $('#tick').style.strokeDashoffset = 22 * (1 - out(seg(t, 6.75, 7.15)));
+    const tk = [4.95, 5.7, 6.45].map((x) => seg(t, x, x + 0.45)).find((k) => k > 0 && k < 1) || 0;
+    const tap = $('#tap');
+    set(tap, { left: p[0] + 'px', top: p[1] + 'px', opacity: seg(t, 4.4, 4.6) * (1 - seg(t, 6.7, 6.85)), transform: `scale(${tk > 0 && tk < 0.35 ? 0.8 : 1})` });
+    tap.style.setProperty('--r', (tk > 0 ? 0.6 * (1 - tk) : 0).toFixed(2)); tap.style.setProperty('--rs', (0.6 + tk * 0.9).toFixed(2));
+    $('#pbtn').style.transform = `scale(${1 - (seg(t, 6.45, 6.55) - seg(t, 6.55, 6.7)) * 0.05})`;
+    const ksum = expo(seg(t, 5.85, 6.25));
+    fx($('#sum'), { o: ksum, y: (1 - ksum) * 10 });
+    const ko = expo(seg(t, 6.75, 7.2));
+    fx($('#ok'), { o: ko, s: lerp(0.94, 1, ko) });
+    $('#tick').style.strokeDashoffset = 22 * (1 - quart(seg(t, 6.95, 7.35)));
+    const kn = expo(seg(t, 7.25, 7.7));
+    fx($('#notif'), { o: kn, y: lerp(-70, 0, kn), s: lerp(0.92, 1, kn) });
   }
 
-  // C 7.8–11.6: four steps, one by one; the fourth is the point
-  if (scene(C, t, 7.8, 11.6)) {
-    show($('#C .mono'), out(seg(t, 7.85, 8.2)), 10);
-    $$('.step').forEach((s, i) => {
-      show(s, out(seg(t, 8.0 + i * 0.5, 8.45 + i * 0.5)), 40);
-      s.style.opacity = +s.style.opacity * (i < 3 && t > 10.0 ? lerp(1, 0.35, seg(t, 10.0, 10.3)) : 1);
+  /* C 8.4–12.2: how we work */
+  if (vis(S.C, t, 8.25, 12.2)) {
+    fx(S.C, { o: seg(t, 8.25, 8.5) * (1 - seg(t, 11.9, 12.2)), blur: (1 - seg(t, 8.25, 8.6)) * 12 + seg(t, 11.9, 12.2) * 14, s: 1 + seg(t, 11.9, 12.2) * 0.3 });
+    fx($('#c-kick'), { o: quart(seg(t, 8.35, 8.8)) });
+    const steps = [8.45, 9.2, 9.95, 10.7];
+    // huge outlined numbers roll like a counter; the words cross with a blur
+    $$('#bign span').forEach((n, i) => {
+      const kin = expo(seg(t, steps[i], steps[i] + 0.6)), kout = i < 3 ? expo(seg(t, steps[i + 1], steps[i + 1] + 0.6)) : 0;
+      fx(n, { o: kin * (1 - kout), y: (1 - kin) * 360 - kout * 360 });
     });
-    show($('#note'), out(seg(t, 10.15, 10.6)), 20);
-  }
-
-  // D 11.6–14.8: LV → RU → EN in one slot, chips follow, then the search line
-  if (scene(D, t, 11.6, 14.8)) {
-    show($('#D .mono'), out(seg(t, 11.65, 12.0)), 10);
-    const times = [11.7, 12.35, 13.0];
-    $$('[data-lang]').forEach((el, i) => {
-      const kin = out(seg(t, times[i], times[i] + 0.35)), kout = i < 2 ? out(seg(t, times[i + 1], times[i + 1] + 0.3)) : 0;
-      el.style.opacity = kin * (1 - kout);
-      el.style.transform = `translateY(${(1 - kin) * 70 - kout * 70}px)`;
+    $$('#cword .h').forEach((w, i) => {
+      const kin = expo(seg(t, steps[i] + 0.05, steps[i] + 0.55)), kout = i < 3 ? quart(seg(t, steps[i + 1] - 0.05, steps[i + 1] + 0.25)) : 0;
+      fx(w, { o: kin * (1 - kout), y: (1 - kin) * 30 - kout * 20, blur: (1 - kin) * 14 + kout * 14, s: lerp(1.08, 1, kin) });
     });
-    const cur = t >= 13.0 ? 2 : t >= 12.35 ? 1 : 0;
-    $$('[data-chip]').forEach((c) => c.classList.toggle('on', +c.dataset.chip === cur));
-    show($('.langs'), out(seg(t, 11.8, 12.2)), 16);
-    show($('#more'), out(seg(t, 13.3, 13.6)), 10);
-    show($('#seo'), out(seg(t, 13.55, 14.0)), 20);
+    $$('#bar i').forEach((b, i) => b.style.setProperty('--f', inout(seg(t, steps[i] + 0.1, steps[i] + 0.7)).toFixed(3)));
+    fx($('#bar'), { o: quart(seg(t, 8.5, 8.9)) });
+    // "Pulēšana": a polish of light runs across the word
+    $('#polish').style.backgroundPosition = `${lerp(115, -15, inout(seg(t, 11.0, 11.8)))}% 0`;
+    const kn = expo(seg(t, 11.1, 11.6));
+    fx($('#c-note'), { o: kn, y: (1 - kn) * 20, blur: (1 - kn) * 6 });
   }
 
-  // E 14.8–18: logo, name, line, call to action (held to the end)
-  if (scene(E, t, 14.8, DURATION + 1)) {
-    const km = out(seg(t, 14.85, 15.4));
-    $('.mark').style.opacity = km; $('.mark').style.transform = `scale(${lerp(0.7, 1, km)}) rotate(${lerp(-8, 0, km)}deg)`;
-    show($('.word'), out(seg(t, 15.1, 15.55)), 24);
-    show($('.tag'), out(seg(t, 15.35, 15.8)), 20);
-    show($('.cta'), out(seg(t, 15.7, 16.15)), 20);
-    show($('#E .mono'), out(seg(t, 15.9, 16.3)), 10);
+  /* D 12.2–15.2: languages */
+  if (vis(S.D, t, 12.05, 15.25)) {
+    const collapse = inout(seg(t, 14.75, 15.2));
+    fx(S.D, { o: seg(t, 12.05, 12.35) * (1 - seg(t, 14.95, 15.25)), blur: (1 - seg(t, 12.05, 12.45)) * 12 });
+    fx($('#d-kick'), { o: quart(seg(t, 12.15, 12.6)) * (1 - collapse) });
+    // a ring of languages turns in 3D around the word, then collapses into the centre
+    const spin = t * 34 + Math.pow(seg(t, 14.5, 15.2), 2) * 260;
+    const R = lerp(232, 10, collapse), kring = expo(seg(t, 12.2, 13.0));
+    $$('#ring span').forEach((sp, i) => {
+      const a = ((i / CODES.length) * 360 + spin) * Math.PI / 180;
+      const x = Math.sin(a) * R * kring, z = Math.cos(a) * R * kring, y = z * 0.36;    // seen from a little above: the front passes under the word, the back above it
+      const sc = (900 / (900 - z)) * lerp(0.6, 1, kring);
+      const depth = (Math.cos(a) + 1) / 2;
+      sp.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${sc})`;
+      sp.style.opacity = kring * lerp(0.25, 1, depth) * (1 - collapse);
+      sp.style.zIndex = z > 0 ? 30 : 10;
+      sp.style.filter = depth < 0.4 ? `blur(${(0.4 - depth) * 5}px)` : 'none';
+    });
+    const times = [12.3, 13.0, 13.7];
+    $$('#dword .h').forEach((w, i) => {
+      const kin = expo(seg(t, times[i], times[i] + 0.45)), kout = i < 2 ? quart(seg(t, times[i + 1] - 0.05, times[i + 1] + 0.25)) : collapse;
+      fx(w, { o: kin * (1 - kout), blur: (1 - kin) * 16 + kout * 16, s: lerp(0.92, 1, kin) * (i === 2 ? lerp(1, 0.8, collapse) : 1), y: (1 - kin) * 10 });
+    });
+    const ks = expo(seg(t, 13.95, 14.4));
+    fx($('#d-sub'), { o: ks * (1 - collapse), y: (1 - ks) * 16, blur: (1 - ks) * 6 });
+  }
+
+  /* E 15.2–19: outro */
+  if (vis(S.E, t, 15.0, DURATION + 1)) {
+    S.E.style.opacity = seg(t, 15.0, 15.2);
+    // a streak of light crosses; the logo is revealed behind it
+    const ks = inout(seg(t, 15.15, 15.85));
+    const sx = lerp(-540, 540, ks) * 0.6;
+    fx($('#streak'), { o: Math.sin(Math.PI * ks), x: sx });
+    const rev = clamp((sx + 66) / 132);
+    const logo = $('#elogo');
+    logo.style.clipPath = `inset(0 ${((1 - rev) * 100).toFixed(2)}% 0 0)`;
+    const kl = expo(seg(t, 15.3, 16.2));
+    logo.style.transform = `scale(${lerp(0.9, 1, kl)})`;
+    logo.style.filter = `drop-shadow(0 0 ${lerp(40, 14, kl)}px rgb(110 161 237 / ${lerp(0.9, 0.45, kl)}))`;
+    $$('#eword span').forEach((c, i) => {
+      const k = expo(seg(t, 15.75 + i * 0.045, 16.35 + i * 0.045));
+      fx(c, { o: k, y: (1 - k) * 26, blur: (1 - k) * 10 });
+    });
+    const kt = expo(seg(t, 16.3, 16.9));
+    fx($('#etag'), { o: kt, y: (1 - kt) * 14 });
+    const kc = expo(seg(t, 16.65, 17.3));
+    fx($('#cta'), { o: kc, y: (1 - kc) * 20, s: lerp(0.94, 1, kc) });
+    $('#ctabd').style.setProperty('--a', (t * 140) % 360 + 'deg');
+    fx($('#ehandle'), { o: quart(seg(t, 17.0, 17.5)) });
   }
 }
 window.render = render;
 window.DURATION = DURATION;
 
-// watching the page directly: play in a loop. render.mjs adds ?still and drives render(t) itself.
 if (!location.search.includes('still')) {
   const t0 = performance.now();
   const loop = (now) => { render(((now - t0) / 1000) % DURATION); requestAnimationFrame(loop); };
