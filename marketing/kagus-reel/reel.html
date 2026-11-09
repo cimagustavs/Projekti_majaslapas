@@ -257,7 +257,7 @@ $('#eword').innerHTML = [...'kagus.eu'].map((c) => `<span>${c}</span>`).join('')
 
 function world(t) {
   $('#floor').style.backgroundPosition = `0 ${(t * 34) % 22}px`;
-  const flare = 1 + 0.6 * Math.exp(-((t - 15.6) ** 2) * 3);          // the light swells as the logo lands
+  const flare = 1 + 0.6 * Math.exp(-((t - 15.3) ** 2) * 3);          // the light swells as the logo lands
   set($('#beam'), { opacity: (0.75 + Math.sin(t * 1.3) * 0.08) * flare, transform: `rotate(${Math.sin(t * 0.35) * 5}deg)` });
   $('#horizon').style.opacity = 0.8 * flare;
   $('#dust').style.transform = `translateY(${-t * 6}px)`;
@@ -371,16 +371,16 @@ function render(t) {
   }
 
   /* E 15.2–19: outro */
-  if (vis(S.E, t, 15.0, DURATION + 1)) {
-    S.E.style.opacity = seg(t, 15.0, 15.2);
+  if (vis(S.E, t, 14.85, DURATION + 1)) {
+    S.E.style.opacity = seg(t, 14.85, 15.0);
     // a streak of light crosses; the logo is revealed behind it
-    const ks = inout(seg(t, 15.15, 15.85));
+    const ks = inout(seg(t, 14.9, 15.55));
     const sx = lerp(-540, 540, ks) * 0.6;
     fx($('#streak'), { o: Math.sin(Math.PI * ks), x: sx });
     const rev = clamp((sx + 66) / 132);
     const logo = $('#elogo');
     logo.style.clipPath = `inset(0 ${((1 - rev) * 100).toFixed(2)}% 0 0)`;
-    const kl = expo(seg(t, 15.3, 16.2));
+    const kl = expo(seg(t, 15.05, 15.95));
     logo.style.transform = `scale(${lerp(0.9, 1, kl)})`;
     logo.style.filter = `drop-shadow(0 0 ${lerp(40, 14, kl)}px rgb(110 161 237 / ${lerp(0.9, 0.45, kl)}))`;
     $$('#eword span').forEach((c, i) => {
