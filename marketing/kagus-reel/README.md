@@ -1,4 +1,4 @@
-# kagus.eu reel (Latvian, 19 s, 1080×1920)
+# kagus.eu reel (Latvian, 20.5 s, 1080×1920)
 
 - `kagus-reel.mp4`: the reel, 30 fps, with motion blur, sound effects and a quiet pad (-14 LUFS).
 - `kagus-reel-efekti.mp4`: sound effects only. Use it when you add music in Instagram, so the two don't clash.
@@ -32,8 +32,8 @@ ffmpeg -i kagus-reel-bez-skanas.mp4 -i out.wav -map 0:v -map 1:a -c:v copy \
 | 0.0 | "Lielākā daļa mājaslapu ir gana labas. Mēs taisām labākas." |
 | 3.8 | "Tavi klienti piesakās paši. Arī divos naktī." |
 | 8.5 | "Izpēte. Dizains. Kods. Un pulēšana, ko vairums izlaiž." |
-| 12.3 | "Latviski, krieviski, angliski. Un Google tevi atrod." |
-| 15.4 | "kagus punkts e u. Raksti mums." |
+| 13.8 | "Latviski, krieviski, angliski. Un Google tevi atrod." |
+| 16.9 | "kagus punkts e u. Raksti mums." |
 
 **Look:**
 - A dotted floor that recedes to a lit horizon, under a beam of light from above.
@@ -47,9 +47,9 @@ ffmpeg -i kagus-reel-bez-skanas.mp4 -i out.wav -map 0:v -map 1:a -c:v copy \
 |---|---|
 | 0–3.7 s | "Lielākā daļa mājaslapu ir ~~gana labas~~." The line sinks back, "Mēs taisām labākas." comes forward, and the camera zooms through the words. |
 | 3.7–8.4 s | "Klienti piesakās paši. Arī naktī." A 3D phone flies in, showing 02:14 on the clock. A finger picks a day and a time and taps Pieteikties. The booking is confirmed and a reminder notification drops in. |
-| 8.4–12.2 s | "Kā mēs strādājam." Huge outlined numbers 01–04 roll past, with Izpēte, Dizains, Kods and Pulēšana. A light polishes the last word: "To daļu vairums izlaiž. Mēs ne." |
-| 12.2–15.2 s | A ring of language codes turns in 3D around Latviski, По-русски and In English, then collapses into the centre. |
-| 15.2–19 s | A streak of light reveals the logo, then kagus.eu letter by letter, the tagline, and a "Raksti mums" button with a moving edge light. |
+| 8.4–13.7 s | "Kā mēs strādājam." Huge outlined numbers 01–04 roll past, with Izpēte, Dizains, Kods and Pulēšana. A light polishes the last word: "To daļu vairums izlaiž. Mēs ne." |
+| 13.7–16.7 s | A ring of language codes turns in 3D around Latviski, По-русски and In English, then collapses into the centre. |
+| 16.7–20.5 s | A streak of light reveals the logo, then kagus.eu letter by letter, the tagline, and a "Raksti mums" button with a moving edge light. |
 
 No client work or client names are shown.
 

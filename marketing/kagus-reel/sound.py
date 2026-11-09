@@ -15,7 +15,9 @@ import numpy as np
 from scipy import signal
 
 SR = 48000
-DUR = 19.0
+DUR = 20.5
+# reel.html holds the picture for HOLD s at FREEZE; sounds after that point move with it
+FREEZE, HOLD = 12.0, 1.5
 N = int(SR * DUR)
 rng = np.random.default_rng(7)
 
@@ -26,8 +28,10 @@ def t_axis(n):
     return np.arange(n) / SR
 
 
-def place(x, at, gain=1.0, pan=0.0):
-    """Add a mono or stereo sound at time `at` (s). pan -1 left … +1 right."""
+def place(x, at, gain=1.0, pan=0.0, shift=True):
+    """Add a mono or stereo sound at scene time `at` (s). pan -1 left … +1 right."""
+    if shift and at >= FREEZE:
+        at += HOLD
     if x.ndim == 1:
         left, right = np.cos((pan + 1) * np.pi / 4), np.sin((pan + 1) * np.pi / 4)
         x = np.stack([x * left, x * right], axis=1) * np.sqrt(2)
@@ -196,8 +200,8 @@ def tail_pad(start):
 
 def build(sfx_only):
     if not sfx_only:
-        place(pad(0.0, 15.05), 0.0, gain=0.16)
-        place(tail_pad(15.25), 15.25, gain=0.10)
+        place(pad(0.0, 15.05 + HOLD), 0.0, gain=0.16)
+        place(tail_pad(15.25 + HOLD), 15.25, gain=0.10)
 
     # A: hook
     place(thud(70, 0.5), 0.04, 0.4)
@@ -222,7 +226,9 @@ def build(sfx_only):
         place(click(1200 + i * 220, 0.04), at, 0.3)
         place(whoosh(0.35, 800, 3000, peak=0.5, q=1.5), at - 0.1, 0.2)
     place(shimmer(0.9, 6000, 13000), 11.0, 0.16, pan=-0.2)               # the polish
-    place(whoosh(0.5, 600, 4000, peak=0.7), 11.85, 0.35)
+    place(thud(64, 0.6, 1.4), 11.42, 0.3)                                # "Mēs ne." lands
+    place(shimmer(1.0, 5000, 11000), 12.15, 0.12, pan=0.2, shift=False)  # light across "Mēs ne."
+    place(whoosh(0.5, 600, 4000, peak=0.7), 11.85 + HOLD, 0.35, shift=False)
 
     # D: languages
     for i, at in enumerate((12.3, 13.0, 13.7)):

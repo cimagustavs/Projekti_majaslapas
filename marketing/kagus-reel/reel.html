@@ -100,7 +100,9 @@ html, body { width: 540px; height: 960px; overflow: hidden; background: var(--bg
 .bar { position: absolute; left: 70px; right: 70px; top: 540px; display: flex; gap: 8px; }
 .bar i { flex: 1; height: 4px; border-radius: 2px; background: rgb(255 255 255 / 0.1); overflow: hidden; position: relative; }
 .bar i::after { content: ''; position: absolute; inset: 0; background: var(--accent); box-shadow: 0 0 10px var(--accent); transform-origin: left; transform: scaleX(var(--f, 0)); }
-.c-note { position: absolute; left: 0; right: 0; top: 585px; text-align: center; font-size: 25px; color: var(--muted); line-height: 1.35; }
+.c-note { position: absolute; left: 0; right: 0; top: 572px; text-align: center; }
+.c-note .ln:first-child .in { font-weight: 400; font-size: 32px; letter-spacing: -0.02em; color: #cfd6e4; }
+.c-note .ln:last-child .in { font-weight: 800; font-size: 66px; letter-spacing: -0.045em; line-height: 1; }
 
 /* ---------- D: languages ---------- */
 .orbit { position: absolute; left: 50%; top: 395px; width: 0; height: 0; }
@@ -195,7 +197,7 @@ html, body { width: 540px; height: 960px; overflow: hidden; background: var(--bg
       <div class="big-n" id="bign"><span>01</span><span>02</span><span>03</span><span>04</span></div>
       <div class="c-word" id="cword"><span class="h">Izpēte</span><span class="h">Dizains</span><span class="h">Kods</span><span class="h sheen" id="polish">Pulēšana</span></div>
       <div class="bar" id="bar"><i></i><i></i><i></i><i></i></div>
-      <p class="c-note" id="c-note">To daļu vairums izlaiž.<br><span style="color:var(--fg)">Mēs ne.</span></p>
+      <div class="c-note" id="c-note"><span class="ln"><span class="in">To daļu vairums izlaiž.</span></span><span class="ln"><span class="in sheen" id="mesne">Mēs ne.</span></span></div>
     </section>
 
     <!-- D: languages -->
@@ -222,7 +224,10 @@ html, body { width: 540px; height: 960px; overflow: hidden; background: var(--bg
 </div>
 
 <script>
-const DURATION = 19;
+const DURATION = 20.5;
+// The reel holds still on "To daļu vairums izlaiž. Mēs ne." so it can be read:
+// from FREEZE the scene clock stops for HOLD seconds while the world (floor, light, camera) keeps moving.
+const FREEZE = 12.0, HOLD = 1.5;
 const $ = (s) => document.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const seg = (t, a, b) => clamp((t - a) / (b - a));
@@ -257,7 +262,7 @@ $('#eword').innerHTML = [...'kagus.eu'].map((c) => `<span>${c}</span>`).join('')
 
 function world(t) {
   $('#floor').style.backgroundPosition = `0 ${(t * 34) % 22}px`;
-  const flare = 1 + 0.6 * Math.exp(-((t - 15.3) ** 2) * 3);          // the light swells as the logo lands
+  const flare = 1 + 0.6 * Math.exp(-((t - 15.3 - HOLD) ** 2) * 3);          // the light swells as the logo lands
   set($('#beam'), { opacity: (0.75 + Math.sin(t * 1.3) * 0.08) * flare, transform: `rotate(${Math.sin(t * 0.35) * 5}deg)` });
   $('#horizon').style.opacity = 0.8 * flare;
   $('#dust').style.transform = `translateY(${-t * 6}px)`;
@@ -265,13 +270,14 @@ function world(t) {
   const n = Math.floor(t * 30), gx = ((n * 73) % 120) - 60, gy = ((n * 151) % 120) - 60;
   $('#grain').style.transform = `translate(${gx}px, ${gy}px)`;
   // slow camera push inside each scene
-  const cuts = [0, 3.7, 8.4, 12.2, 15.2, DURATION];
+  const cuts = [0, 3.7, 8.4, 12.2 + HOLD, 15.2 + HOLD, DURATION];
   let i = 0; while (i < cuts.length - 2 && t >= cuts[i + 1]) i++;
   $('#cam').style.transform = `scale(${1 + 0.045 * seg(t, cuts[i], cuts[i + 1])})`;
 }
 
-function render(t) {
-  world(t);
+function render(real) {
+  world(real);
+  const t = real >= FREEZE ? Math.max(FREEZE, real - HOLD) : real;
 
   /* A 0–3.7: hook */
   if (vis(S.A, t, 0, 3.7)) {
@@ -321,9 +327,9 @@ function render(t) {
     fx($('#notif'), { o: kn, y: lerp(-70, 0, kn), s: lerp(0.92, 1, kn) });
   }
 
-  /* C 8.4–12.2: how we work */
-  if (vis(S.C, t, 8.25, 12.2)) {
-    fx(S.C, { o: seg(t, 8.25, 8.5) * (1 - seg(t, 11.9, 12.2)), blur: (1 - seg(t, 8.25, 8.6)) * 12 + seg(t, 11.9, 12.2) * 14, s: 1 + seg(t, 11.9, 12.2) * 0.3 });
+  /* C 8.4–12.3 (+ hold): how we work */
+  if (vis(S.C, t, 8.25, 12.3)) {
+    fx(S.C, { o: seg(t, 8.25, 8.5) * (1 - seg(t, 12.0, 12.3)), blur: (1 - seg(t, 8.25, 8.6)) * 12 + seg(t, 12.0, 12.3) * 14, s: 1 + seg(t, 12.0, 12.3) * 0.3 });
     fx($('#c-kick'), { o: quart(seg(t, 8.35, 8.8)) });
     const steps = [8.45, 9.2, 9.95, 10.7];
     // huge outlined numbers roll like a counter; the words cross with a blur
@@ -339,8 +345,9 @@ function render(t) {
     fx($('#bar'), { o: quart(seg(t, 8.5, 8.9)) });
     // "Pulēšana": a polish of light runs across the word
     $('#polish').style.backgroundPosition = `${lerp(115, -15, inout(seg(t, 11.0, 11.8)))}% 0`;
-    const kn = expo(seg(t, 11.1, 11.6));
-    fx($('#c-note'), { o: kn, y: (1 - kn) * 20, blur: (1 - kn) * 6 });
+    // the point of the scene: lines rise in, then a light runs across "Mēs ne." while the clock holds
+    lines($('#c-note'), t, 11.05, 0.32, 0.8);
+    $('#mesne').style.backgroundPosition = `${lerp(110, -10, inout(seg(real, 12.15, 13.15)))}% 0`;
   }
 
   /* D 12.2–15.2: languages */
