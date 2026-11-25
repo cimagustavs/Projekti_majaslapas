@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=540, initial-scale=1">
+<title>Grilvista sample reel</title>
+<!-- A 15 s, 9:16 sample reel for Grilvista (pitch material, not published).
+     render(t) sets every element for time t, so ../kagus-reel/render.mjs can render it frame by frame.
+     The food photos are AI illustrations; the real reel would use footage from the filming day. -->
+<style>
+@import url(assets/fonts/local.css);
+:root { --red: #d92b31; --red-dark: #a91d22; --cream: #fff4e6; --ink: #140c0a; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 540px; height: 960px; overflow: hidden; background: #000; }
+.stage { position: relative; width: 540px; height: 960px; overflow: hidden; background: var(--ink); isolation: isolate; font-family: Figtree, system-ui, sans-serif; color: var(--cream); }
+.shot { position: absolute; inset: 0; overflow: hidden; }
+.shot .img { position: absolute; inset: -4%; background-size: cover; background-position: center; will-change: transform; }
+.shade { position: absolute; inset: 0; pointer-events: none; }
+.big { font-family: Anton, Impact, sans-serif; text-transform: uppercase; line-height: 0.92; letter-spacing: 0.005em; }
+.ln { display: block; overflow: hidden; padding-top: 0.2em; margin-top: -0.14em; }
+.ln > span { display: inline-block; will-change: transform; }
+.tag { display: inline-block; background: var(--red); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; padding: 7px 12px 6px; border-radius: 4px; }
+.whip { position: absolute; top: -10%; bottom: -10%; width: 140%; left: 0; background: var(--red); z-index: 20; }
+.flash { position: absolute; inset: 0; background: #fff6ea; z-index: 21; pointer-events: none; }
+.grain { position: absolute; inset: -60px; pointer-events: none; opacity: 0.11; mix-blend-mode: overlay; z-index: 50;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.vignette { position: absolute; inset: 0; pointer-events: none; z-index: 49; background: radial-gradient(120% 85% at 50% 45%, transparent 55%, rgb(0 0 0 / 0.55) 100%); }
+
+/* S1 */
+#s1-word { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-size: 124px; color: var(--cream); text-shadow: 0 10px 40px rgb(0 0 0 / 0.55); }
+#s1-sub { position: absolute; left: 40px; right: 40px; top: 470px; text-align: center; font-size: 48px; text-shadow: 0 4px 24px rgb(0 0 0 / 0.85), 0 0 2px rgb(0 0 0 / 0.6); }
+/* S2 */
+#s2-text { position: absolute; left: 36px; right: 36px; top: 140px; font-size: 96px; }
+#s2-text .r { color: var(--red); -webkit-text-stroke: 0; text-shadow: none; }
+#s2-text .o { color: transparent; -webkit-text-stroke: 2px var(--cream); }
+/* S3 */
+#s3-head { position: absolute; left: 36px; right: 36px; top: 120px; font-size: 64px; text-shadow: 0 6px 30px rgb(0 0 0 / 0.6); }
+.call { position: absolute; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.call .dot { width: 14px; height: 14px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgb(217 43 49 / 0.85); flex: none; }
+.call .bar { height: 2px; background: #fff; width: 46px; transform-origin: left; }
+.call .lab { background: #fff; color: var(--ink); font-weight: 700; font-size: 19px; padding: 7px 11px; border-radius: 6px; box-shadow: 0 8px 20px rgb(0 0 0 / 0.35); }
+.call.left { flex-direction: row-reverse; }
+.call.left .bar { transform-origin: right; }
+/* S4 */
+#s4-words { position: absolute; left: 0; right: 0; top: 330px; height: 140px; text-align: center; }
+#s4-words .big { position: absolute; left: 0; right: 0; font-size: 112px; text-shadow: 0 10px 40px rgb(0 0 0 / 0.6); }
+/* S5 */
+#s5 { background: var(--red); }
+#s5 .dots { position: absolute; inset: 0; background: radial-gradient(circle, rgb(255 255 255 / 0.10) 1.4px, transparent 1.9px) 0 0 / 14px 14px; }
+#s5 .burst { position: absolute; left: 50%; top: 330px; width: 1100px; height: 1100px; margin: -550px 0 0 -550px;
+  background: repeating-conic-gradient(from 0deg, rgb(255 255 255 / 0.07) 0 8deg, transparent 8deg 20deg); border-radius: 50%; }
+#s5-logo { position: absolute; left: 50%; top: 210px; width: 230px; height: 230px; margin-left: -115px; border-radius: 50%;
+  box-shadow: 0 0 0 7px var(--cream), 0 24px 60px rgb(0 0 0 / 0.35); background: url(assets/logo.png) center / cover; }
+#s5-name { position: absolute; left: 0; right: 0; top: 478px; text-align: center; font-size: 104px; color: var(--cream); }
+#s5-addr { position: absolute; left: 0; right: 0; top: 592px; text-align: center; font-weight: 700; font-size: 25px; color: #fff; }
+#s5-handle { position: absolute; left: 50%; top: 650px; width: 260px; margin-left: -130px; height: 60px; border-radius: 30px; background: var(--cream); color: var(--red);
+  display: grid; place-items: center; font-weight: 700; font-size: 26px; box-shadow: 0 14px 30px rgb(0 0 0 / 0.25); }
+#s5-note { position: absolute; left: 0; right: 0; top: 760px; text-align: center; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(255 244 230 / 0.65); }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- S1: the crunch -->
+  <section class="shot" id="s1">
+    <div class="img" style="background-image:url(assets/skin.png)"></div>
+    <div class="shade" id="s1-shade" style="background:radial-gradient(70% 30% at 50% 52%, rgb(0 0 0 / 0.55), transparent 100%), linear-gradient(180deg, rgb(0 0 0 / 0.35), transparent 30%, transparent 55%, rgb(0 0 0 / 0.55))"></div>
+    <div id="s1-word" class="big">Kraukšķ.</div>
+    <div id="s1-sub" class="big"><span class="ln"><span>Kraukšķīga āriene.</span></span><span class="ln"><span style="color:#ffd3a8">Sulīga iekša.</span></span></div>
+  </section>
+
+  <!-- S2: the grill -->
+  <section class="shot" id="s2">
+    <div class="img" style="background-image:url(assets/rotisserie.png)"></div>
+    <div class="shade" style="background:linear-gradient(180deg, rgb(0 0 0 / 0.65), rgb(0 0 0 / 0.1) 45%, transparent 60%, rgb(0 0 0 / 0.4))"></div>
+    <div id="s2-text" class="big"><span class="ln"><span>Grilēta,</span></span><span class="ln"><span class="o">nevis</span></span><span class="ln"><span class="r">fritēta.</span></span></div>
+  </section>
+
+  <!-- S3: the plate -->
+  <section class="shot" id="s3">
+    <div class="img" id="s3-img" style="background-image:url(assets/plate.png)">
+      <div class="call" id="c1" style="left:58%;top:62%"><span class="dot"></span><span class="bar"></span><span class="lab">¼ vistas</span></div>
+      <div class="call" id="c2" style="left:44%;top:34%"><span class="dot"></span><span class="bar"></span><span class="lab">grilēti dārzeņi</span></div>
+      <div class="call" id="c3" style="left:24%;top:45%"><span class="dot"></span><span class="bar"></span><span class="lab">cepti kartupeļi</span></div>
+      <div class="call" id="c4" style="left:9%;top:53%"><span class="dot"></span><span class="bar"></span><span class="lab">mērce</span></div>
+    </div>
+    <div class="shade" style="background:linear-gradient(180deg, rgb(0 0 0 / 0.6), transparent 32%)"></div>
+    <div id="s3-head" class="big"><span class="ln"><span>Viens šķīvis.</span></span><span class="ln"><span style="color:#ffb37a">Viss iekšā.</span></span></div>
+  </section>
+
+  <!-- S4: the room -->
+  <section class="shot" id="s4">
+    <div class="img" style="background-image:url(assets/ambience.png)"></div>
+    <div class="shade" style="background:linear-gradient(180deg, rgb(0 0 0 / 0.45), rgb(0 0 0 / 0.15) 50%, rgb(0 0 0 / 0.5))"></div>
+    <div id="s4-words"><span class="big">Pusdienās.</span><span class="big">Vakarā.</span><span class="big" style="color:#ffb37a">Ar draugiem.</span></div>
+  </section>
+
+  <!-- S5: end card -->
+  <section class="shot" id="s5">
+    <div class="dots"></div>
+    <div class="burst" id="burst"></div>
+    <div id="s5-logo"></div>
+    <div id="s5-name" class="big">Grilvista</div>
+    <div id="s5-addr">Krišjāņa Valdemāra iela · Rīga</div>
+    <div id="s5-handle">@grilvista</div>
+    <div id="s5-note">Paraugs · kagus.eu</div>
+  </section>
+
+  <div class="whip" id="whip"></div>
+  <div class="flash" id="flash"></div>
+  <div class="vignette"></div>
+  <div class="grain" id="grain"></div>
+</div>
+
+<script>
+const DURATION = 15;
+const $ = (s) => document.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const expo = (k) => (k >= 1 ? 1 : 1 - Math.pow(2, -10 * k));
+const quart = (k) => 1 - Math.pow(1 - k, 4);
+const inout = (k) => (k < 0.5 ? 16 * k ** 5 : 1 - Math.pow(-2 * k + 2, 5) / 2);
+const backOut = (k) => { const c = 1.7; return 1 + (c + 1) * Math.pow(k - 1, 3) + c * Math.pow(k - 1, 2); };
+const lerp = (a, b, k) => a + (b - a) * k;
+function fx(el, { o = 1, x = 0, y = 0, s = 1, r = 0, blur = 0 } = {}) {
+  el.style.opacity = o;
+  el.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`;
+  el.style.filter = blur > 0.05 ? `blur(${blur}px)` : 'none';
+}
+function lines(root, t, start, gap = 0.1, dur = 0.6) {
+  $$('.ln > span', root).forEach((el, i) => {
+    const k = expo(seg(t, start + i * gap, start + i * gap + dur));
+    el.style.transform = `translateY(${(1 - k) * 135}%)`;
+  });
+}
+// a "slam": word lands big and settles with a little shake
+function slam(el, t, at, from = 1.8) {
+  const k = seg(t, at, at + 0.22), settle = seg(t, at + 0.22, at + 0.5);
+  const shake = settle > 0 && settle < 1 ? Math.sin(settle * 40) * (1 - settle) * 5 : 0;
+  fx(el, { o: k > 0 ? 1 : 0, s: lerp(from, 1, quart(k)), x: shake, blur: (1 - k) * 8 });
+}
+
+// shots and their cut times; each shot drifts (Ken Burns) while it is on screen
+const CUTS = [0, 2.8, 5.6, 9.8, 12.4, DURATION];
+const SHOTS = ['#s1', '#s2', '#s3', '#s4', '#s5'].map((s) => $(s));
+const MOVES = [
+  (k) => `scale(${lerp(1.0, 1.16, k)}) translateY(${lerp(0, -10, k)}px)`,      // creep into the skin
+  (k) => `scale(1.12) translateY(${lerp(30, -40, k)}px)`,                         // tilt up the rotisserie
+  (k) => `scale(${lerp(1.04, 1.12, k)}) translate(${lerp(6, -8, k)}px, ${lerp(0, 12, k)}px)`,
+  (k) => `scale(${lerp(1.12, 1.02, k)}) translateX(${lerp(-14, 10, k)}px)`,       // pull back on the room
+  (k) => 'none',
+];
+
+function render(t) {
+  // grain jumps every frame
+  const n = Math.floor(t * 30);
+  $('#grain').style.transform = `translate(${((n * 73) % 120) - 60}px, ${((n * 151) % 120) - 60}px)`;
+
+  // which shot is on, plus the whip transition between shots
+  SHOTS.forEach((el, i) => {
+    const a = CUTS[i], b = CUTS[i + 1];
+    const on = t >= a - 0.2 && t < b + 0.2;
+    el.style.visibility = on ? 'visible' : 'hidden';
+    if (!on) return;
+    const k = seg(t, a, b);
+    const img = el.querySelector('.img'); if (img) img.style.transform = MOVES[i](k);
+    // incoming shot slides in from the right behind the whip, outgoing slides left
+    const kin = i === 0 ? 1 : expo(seg(t, a - 0.05, a + 0.3)), kout = i === SHOTS.length - 1 ? 0 : inout(seg(t, b - 0.18, b + 0.05));
+    el.style.transform = `translateX(${(1 - kin) * 160 - kout * 160}px)`;
+    el.style.filter = (1 - kin) + kout > 0.02 ? `blur(${((1 - kin) + kout) * 14}px)` : 'none';
+    el.style.zIndex = i;
+  });
+  // red whip sweeps across on every cut except into the end card, which gets a flash
+  const whipCuts = [2.8, 5.6, 9.8];
+  let wx = 2000;
+  for (const c of whipCuts) { const k = seg(t, c - 0.2, c + 0.2); if (k > 0 && k < 1) wx = lerp(560, -760, inout(k)); }
+  $('#whip').style.transform = `translateX(${wx}px) skewX(-14deg)`;
+  $('#flash').style.opacity = Math.max(0, 1 - Math.abs(t - 12.42) / 0.16) * 0.9;
+
+  /* S1 */
+  slam($('#s1-word'), t, 0.2, 2.2);
+  lines($('#s1-sub'), t, 1.15, 0.16, 0.55);
+  $('#s1-word').style.top = `${lerp(300, 250, inout(seg(t, 1.0, 1.4)))}px`;
+  $('#s1-shade').style.opacity = 0.6 + 0.4 * seg(t, 1.0, 1.4);
+
+  /* S2 */
+  lines($('#s2-text'), t, 3.0, 0.18, 0.55);
+  const kr = seg(t, 4.05, 4.3);
+  $('#s2-text .r').style.transform = `translateY(${(1 - expo(seg(t, 3.36, 3.91))) * 135}%) scale(${1 + Math.sin(kr * Math.PI) * 0.08})`;
+
+  /* S3 */
+  lines($('#s3-head'), t, 5.8, 0.16, 0.55);
+  ['#c1', '#c2', '#c3', '#c4'].forEach((id, i) => {
+    const at = 6.5 + i * 0.55, el = $(id);
+    const kd = backOut(seg(t, at, at + 0.35)), kb = expo(seg(t, at + 0.1, at + 0.4)), kl = expo(seg(t, at + 0.2, at + 0.55));
+    el.querySelector('.dot').style.transform = `scale(${kd})`;
+    el.querySelector('.bar').style.transform = `scaleX(${kb})`;
+    fx(el.querySelector('.lab'), { o: kl, s: lerp(0.8, 1, kl), x: (1 - kl) * (el.classList.contains('left') ? 14 : -14) });
+  });
+
+  /* S4: three words slam in turn */
+  $$('#s4-words .big').forEach((w, i) => {
+    const at = 10.0 + i * 0.75;
+    if (t < at) { fx(w, { o: 0 }); return; }
+    const out = i < 2 ? seg(t, at + 0.68, at + 0.78) : 0;
+    slam(w, t, at, 1.7);
+    if (out > 0) fx(w, { o: 1 - out, s: 1 - out * 0.1, blur: out * 6 });
+  });
+
+  /* S5: end card */
+  const kl = backOut(seg(t, 12.45, 12.95));
+  fx($('#s5-logo'), { s: lerp(0.3, 1, kl), r: lerp(-120, 0, expo(seg(t, 12.45, 13.0))), o: seg(t, 12.45, 12.55) });
+  $('#burst').style.transform = `rotate(${t * 12}deg) scale(${lerp(0.6, 1, expo(seg(t, 12.4, 13.2)))})`;
+  const kn = expo(seg(t, 12.75, 13.2));
+  fx($('#s5-name'), { o: kn, y: (1 - kn) * 40, s: lerp(1.15, 1, kn) });
+  const ka = expo(seg(t, 13.05, 13.45));
+  fx($('#s5-addr'), { o: ka, y: (1 - ka) * 16 });
+  const kh = backOut(seg(t, 13.3, 13.75));
+  fx($('#s5-handle'), { o: seg(t, 13.3, 13.4), s: lerp(0.6, 1, kh) });
+  fx($('#s5-note'), { o: quart(seg(t, 13.8, 14.2)) * 1 });
+}
+window.render = render;
+window.DURATION = DURATION;
+
+if (!location.search.includes('still')) {
+  const t0 = performance.now();
+  const loop = (now) => { render(((now - t0) / 1000) % DURATION); requestAnimationFrame(loop); };
+  document.fonts.ready.then(() => requestAnimationFrame(loop));
+} else render(0);
+</script>
+</body>
+</html>
