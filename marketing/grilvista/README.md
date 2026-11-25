@@ -24,8 +24,9 @@ What the agent already promised them:
 
 ## Open before sending
 
-- [ ] The price in the plan (`___ €` placeholder).
-- [ ] Confirm the deliverables: 12 videos, 3 stories a week, 1–2 filming days.
+- [x] No price in the PDF. Price is discussed in person at the meeting, to judge his response.
+- [ ] Confirm the deliverables: 15 videos on IG and TikTok (30 posts), 3 stories a week, filming 4× a month.
+- [ ] Ad boost budget: separate from our fee, agree at the meeting.
 - [ ] How the voice-overs get made: our own voices, ElevenLabs (about €20–25 a month), or a Russian native speaker.
 - [ ] Rights to the photographer's material.
 - [x] The owner is Rainis. He is Latvian, so send the LV version.

@@ -57,6 +57,10 @@ aside { display: grid; align-content: start; gap: 3mm; }
 .month ul { list-style: none; padding: 0; display: grid; gap: 1.8mm; }
 .month li { display: flex; gap: 2.5mm; align-items: baseline; font-size: 8.9pt; line-height: 1.3; }
 .month li b { font-family: Anton, sans-serif; font-weight: 400; font-size: 14pt; color: #fff; min-width: 9mm; line-height: 1; }
+.boost { border: 0.6mm solid var(--red); border-radius: 3mm; padding: 3.4mm 3.6mm; background: #fff; }
+.boost ul { list-style: none; padding: 0; display: grid; gap: 1.6mm; }
+.boost li { position: relative; padding-left: 4mm; font-size: 8.7pt; line-height: 1.3; font-weight: 600; }
+.boost li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 2mm; height: 2mm; border-radius: 50%; background: var(--red); }
 .price { border: 0.6mm solid var(--red); border-radius: 3mm; padding: 3.4mm 4mm; background: #fff; }
 .price .big { color: var(--red); font-size: 24pt; margin-top: 1.5mm; line-height: 1.15; }
 .price .todo { display: inline-block; padding: 0 2mm; line-height: 1.1; }
@@ -131,24 +135,30 @@ footer { margin: 4mm 14mm 8mm; padding-top: 4mm; border-top: 0.4mm solid var(--l
       <div class="month">
         <h2 class="big"><span data-l="lv">Mēnesī</span><span data-l="en">Every month</span></h2>
         <ul>
-          <li><b>12</b><span><span data-l="lv">video Instagram un TikTok</span><span data-l="en">videos for Instagram and TikTok</span></span></li>
+          <li><b>15</b><span><span data-l="lv">video Instagram un TikTok (30 publikācijas)</span><span data-l="en">videos on Instagram and TikTok (30 posts)</span></span></li>
           <li><b>3×</b><span><span data-l="lv">stāsti nedēļā</span><span data-l="en">stories a week</span></span></li>
           <li><b>4×</b><span><span data-l="lv">filmēšana pie jums</span><span data-l="en">filming at your place</span></span></li>
           <li><b>1</b><span><span data-l="lv">atskaite ar skaitļiem un nākamā mēneša plānu</span><span data-l="en">report with the numbers and next month's plan</span></span></li>
         </ul>
       </div>
-      <div class="price">
-        <p style="margin:0;font-weight:700;color:var(--ink)"><span data-l="lv">Cena</span><span data-l="en">Price</span></p>
-        <div class="big"><span class="todo">___ €</span><span style="font-size:12pt;color:var(--ink-2)"> / <span data-l="lv">mēn.</span><span data-l="en">month</span></span></div>
-        <p><span data-l="lv">Cenā ir viss, kas minēts šajā lapā.</span><span data-l="en">Everything on this page is included.</span></p>
+      <div class="boost">
+        <h2 class="big"><span data-l="lv">Maksimāla redzamība</span><span data-l="en">Maximum exposure</span></h2>
+        <ul>
+          <li><span data-l="lv">Atzīme un vieta katrā video: Valdemāra iela, Rīga</span><span data-l="en">Tag and location on every video: Valdemāra iela, Riga</span></li>
+          <li><span data-l="lv">Viesu un blogeru stāstus pārpublicējam un saglabājam</span><span data-l="en">Guest and blogger stories reposted and kept</span></li>
+          <li><span data-l="lv">Ielūdzam Rīgas pārtikas blogerus nogaršot</span><span data-l="en">Riga food bloggers invited for a taste</span></li>
+          <li><span data-l="lv">Konkurss: „Atzīmē draugu, laimē vakariņas divatā”</span><span data-l="en">Giveaway: "Tag a friend, win dinner for two"</span></li>
+          <li><span data-l="lv">Labākos video paceļam ar reklāmu Rīgā</span><span data-l="en">Best videos boosted with ads in Riga</span></li>
+          <li><span data-l="lv">QR pie kases: Google atsauksmes un Instagram</span><span data-l="en">QR at the till: Google reviews and Instagram</span></li>
+        </ul>
       </div>
     </aside>
   </main>
 
   <footer>
     <div class="next">
-      <div class="big"><span data-l="lv">Nākamais solis: filmēšanas diena</span><span data-l="en">Next step: a filming day</span></div>
-      <p><span data-l="lv">Atbraucam pusdienlaikā (12–14) un vakarā (18–20). Kura diena jums der?</span><span data-l="en">We come at lunch (12–2 pm) and in the evening (6–8 pm). Which day suits you?</span></p>
+      <div class="big"><span data-l="lv">Nākamais solis: tikšanās</span><span data-l="en">Next step: let's meet</span></div>
+      <p><span data-l="lv">Parādām idejas klātienē un vienojamies par pirmo filmēšanas dienu.</span><span data-l="en">We show you the ideas in person and agree on the first filming day.</span></p>
     </div>
     <div class="sign"><b>kagus.eu</b><br>Kārlis &amp; Gustavs · @kagus.eu</div>
   </footer>
