@@ -29,12 +29,18 @@ h1 .soft { color: #ffd9c4; }
 main { padding: 6mm 14mm 0; display: grid; grid-template-columns: 1fr 52mm; gap: 8mm; }
 h2 { font-size: 14pt; color: var(--red); margin-bottom: 1.8mm; }
 section + section { margin-top: 4mm; }
+.intro { font-size: 9.4pt; color: var(--ink-2); margin-bottom: 2mm; }
+.formats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 2mm; }
+.formats div { background: var(--red); color: #fff; border-radius: 2.4mm; padding: 2mm 2.8mm; }
+.formats b { display: block; font-size: 9.6pt; }
+.formats span span { font-size: 8.6pt; opacity: 0.92; }
 .now { display: grid; gap: 1.3mm; }
 .now p { padding-left: 5mm; position: relative; }
 .now p::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--red); }
 .now b { font-weight: 700; }
 .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
 .step { background: #fff; border: 0.3mm solid var(--line); border-radius: 3mm; padding: 2.3mm 3mm; }
+.step.wide { grid-column: 1 / -1; }
 .step .n { font-family: Anton, sans-serif; color: var(--red); font-size: 13pt; line-height: 1; }
 .step strong { display: block; font-size: 9.8pt; margin: 0.8mm 0 0.5mm; }
 .step > span:last-child { color: var(--ink-2); font-size: 8.7pt; line-height: 1.35; display: block; }
@@ -74,29 +80,32 @@ footer { margin: 4mm 14mm 8mm; padding-top: 4mm; border-top: 0.4mm solid var(--l
       <span class="from"><span data-l="lv">Sagatavots Grilvista<br>2026. gada novembris</span><span data-l="en">Prepared for Grilvista<br>November 2026</span></span>
     </div>
     <h1 class="big"><span data-l="lv">Instagram un TikTok.<br><span class="soft">Pirmās 90 dienas.</span></span><span data-l="en">Instagram and TikTok.<br><span class="soft">The first 90 days.</span></span></h1>
-    <p class="lede"><span data-l="lv">Cilvēki jau runā par jūsu vistu. Mūsu darbs ir panākt, lai tie, kas to dzird, atrod jūs, redz dzīvu vietu un atnāk.</span><span data-l="en">People are already talking about your chicken. Our job is to make sure that whoever hears about it finds you, sees a place that's alive, and comes in.</span></p>
+    <p class="lede"><span data-l="lv">Jūs esat atvērušies, tagad par to jāuzzina visai Rīgai. Mēs uzņemamies Instagram un TikTok, lai jūs varat cept vistas.</span><span data-l="en">You're open. Now all of Riga needs to know. We take over Instagram and TikTok, so you can focus on the chicken.</span></p>
   </header>
 
   <main>
     <div>
       <section>
-        <h2 class="big"><span data-l="lv">Kur esat tagad</span><span data-l="en">Where you are now</span></h2>
-        <div class="now">
-          <p><span data-l="lv"><b>Viesi paši liek stāstus</b> par jūsu ēdienu, un jūs tos pārpublicējat. Tas ir labākais, ar ko sākt.</span><span data-l="en"><b>Guests post stories</b> about your food on their own, and you repost them. That is the best possible start.</span></p>
-          <p><span data-l="lv"><b>Bet profilā pēdējais ieraksts ir no 2021. gada.</b> Kas atnāk no stāsta, redz vietu, kas izskatās slēgta.</span><span data-l="en"><b>But the last post on the profile is from 2021.</b> Anyone who taps through from a story sees a place that looks closed.</span></p>
-          <p><span data-l="lv"><b>Stāsti pazūd pēc 24 stundām.</b> Viss labais, ko viesi saka, pazūd līdz ar tiem.</span><span data-l="en"><b>Stories disappear after 24 hours,</b> and everything good your guests say disappears with them.</span></p>
+        <h2 class="big"><span data-l="lv">Ko filmēsim</span><span data-l="en">What we'll film</span></h2>
+        <p class="intro"><span data-l="lv">Mēs paši esam kadrā. Sērijas, kuras cilvēki gaida un kuras atkārtojam katru nedēļu:</span><span data-l="en">We're on camera ourselves, in series people come back for every week.</span></p>
+        <div class="formats">
+          <div><b><span data-l="lv">„Rīgas jaunākā vista”</span><span data-l="en">"Riga's newest chicken"</span></b><span><span data-l="lv">Nogaršojam, reaģējam, vērtējam no 1 līdz 10.</span><span data-l="en">We taste, react and rate it out of 10.</span></span></div>
+          <div><b><span data-l="lv">Akls tests uz ielas</span><span data-l="en">Blind street test</span></b><span><span data-l="lv">Garāmgājēji Valdemāra ielā garšo un min.</span><span data-l="en">Passers-by taste and guess.</span></span></div>
+          <div><b><span data-l="lv">„Uzmini cenu”</span><span data-l="en">"Guess the price"</span></b><span><span data-l="lv">Kurš minēs tuvāk, tas ēd bez maksas.</span><span data-l="en">The closest guess eats for free.</span></span></div>
+          <div><b><span data-l="lv">Viena maiņa Grilvista</span><span data-l="en">One shift at Grilvista</span></b><span><span data-l="lv">Viens no mums aiz letes: pasūtījumi, grils, rinda.</span><span data-l="en">One of us behind the counter.</span></span></div>
+          <div><b><span data-l="lv">Kraukšķa tests</span><span data-l="en">The crunch test</span></b><span><span data-l="lv">Kumoss tuvplānā, ar skaņu.</span><span data-l="en">A close-up bite, with the sound.</span></span></div>
+          <div><b><span data-l="lv">Atbildes uz komentāriem</span><span data-l="en">Replies to comments</span></b><span><span data-l="lv">„Vai vista ir sausa?” Pārbaudām kadrā.</span><span data-l="en">"Is it dry?" We check on camera.</span></span></div>
         </div>
       </section>
 
       <section>
         <h2 class="big"><span data-l="lv">Ko mēs darām</span><span data-l="en">What we do</span></h2>
         <div class="steps">
-          <div class="step"><span class="n">01</span><strong><span data-l="lv">Profils kārtībā 1. nedēļā</span><span data-l="en">Profile fixed in week 1</span></strong><span><span data-l="lv">Bio ar adresi un darba laiku, izceltie stāsti: Ēdienkarte, Kur mēs esam, Ko saka viesi.</span><span data-l="en">Bio with address and hours, story highlights: Menu, Where we are, What guests say.</span></span></div>
-          <div class="step"><span class="n">02</span><strong><span data-l="lv">Filmējam pie jums</span><span data-l="en">We film on site</span></strong><span><span data-l="lv">1–2 reizes mēnesī, pusdienlaikā un vakarā: grils, ēdiens, cilvēki, atmosfēra.</span><span data-l="en">1–2 times a month, at lunch and in the evening: the grill, the food, the people, the mood.</span></span></div>
+          <div class="step"><span class="n">01</span><strong><span data-l="lv">Profils kārtībā 1. nedēļā</span><span data-l="en">Profile fixed in week 1</span></strong><span><span data-l="lv">Bio ar adresi un darba laiku, izceltie stāsti: Ēdienkarte, Kur mēs esam, Ko saka viesi.</span><span data-l="en">Bio with address and hours; highlights: Menu, Where we are, Reviews.</span></span></div>
+          <div class="step"><span class="n">02</span><strong><span data-l="lv">Filmējam pie jums</span><span data-l="en">We film on site</span></strong><span><span data-l="lv">Katru nedēļu, pusdienlaikā un vakarā: mēs kadrā, grils, ēdiens, cilvēki.</span><span data-l="en">Every week, lunch and evening: us, the food, the people.</span></span></div>
           <div class="step"><span class="n">03</span><strong><span data-l="lv">Strādājam ar jūsu fotogrāfu</span><span data-l="en">We work with your photographer</span></strong><span><span data-l="lv">Rediģējam viņa foto un video un pārvēršam tos postos un reelos.</span><span data-l="en">We edit their photos and video and turn them into posts and reels.</span></span></div>
           <div class="step"><span class="n">04</span><strong><span data-l="lv">Video ar balsi</span><span data-l="en">Video with voice-over</span></strong><span><span data-l="lv">Latviski un angliski, krieviski pēc vēlēšanās. Instagram un TikTok.</span><span data-l="en">In Latvian and English, Russian if you like. For Instagram and TikTok.</span></span></div>
-          <div class="step"><span class="n">05</span><strong><span data-l="lv">Vadām kontus jūsu vietā</span><span data-l="en">We run the accounts for you</span></strong><span><span data-l="lv">Publicējam, atbildam uz komentāriem un ziņām. Jūs reizi nedēļā apstiprināt plānu, un viss.</span><span data-l="en">We post and answer comments and messages. You approve the plan once a week, and that's it.</span></span></div>
-          <div class="step"><span class="n">06</span><strong><span data-l="lv">Viesu balss paliek</span><span data-l="en">Guests' words stay</span></strong><span><span data-l="lv">Labākos viesu stāstus saglabājam izceltajos stāstos un reelos, nevis ļaujam tiem pazust.</span><span data-l="en">We keep the best guest stories in highlights and reels instead of letting them vanish.</span></span></div>
+          <div class="step wide"><span class="n">05</span><strong><span data-l="lv">Vadām kontus jūsu vietā</span><span data-l="en">We run the accounts for you</span></strong><span><span data-l="lv">Publicējam, atbildam uz komentāriem un ziņām. Jūs reizi nedēļā apstiprināt plānu, un viss.</span><span data-l="en">We post and answer comments and messages. You approve the plan once a week, and that's it.</span></span></div>
         </div>
       </section>
 
@@ -110,21 +119,21 @@ footer { margin: 4mm 14mm 8mm; padding-top: 4mm; border-top: 0.4mm solid var(--l
           <span data-l="lv">Google atsauksmes</span><span data-l="en">Google reviews</span>
           <span data-l="lv">Promo kods pie kases</span><span data-l="en">Promo code at the till</span>
         </div>
-        <p class="honest"><span data-l="lv">Skaitļus iepriekš nesolām, jo jaunai vietai to godīgi nevar zināt neviens. Promo kods (piemēram, „TIKTOK”) parāda, cik cilvēku atnāca tieši no video.</span><span data-l="en">We don't promise numbers up front, because nobody can honestly know them for a new place. A promo code (for example "TIKTOK") shows how many people came in because of the videos.</span></p>
+        <p class="honest"><span data-l="lv">Promo kods (piemēram, „TIKTOK”) parāda, cik cilvēku atnāca tieši no video.</span><span data-l="en">A promo code (for example "TIKTOK") shows how many people came in because of the videos.</span></p>
       </section>
     </div>
 
     <aside>
       <div>
         <div class="frames"><img src="frame-1.9.jpg" alt=""><img src="frame-8.9.jpg" alt=""><img src="frame-14.5.jpg" alt=""></div>
-        <p class="cap" style="margin-top:1.6mm"><span data-l="lv">Kadri no 15 s parauga, kas pievienots šai ziņai. Ēdiens ir ilustrācija; īstajos video būs jūsu ēdiens un jūsu vieta.</span><span data-l="en">Frames from the 15 s sample sent with this message. The food is an illustration; the real videos will show your food and your place.</span></p>
+        <p class="cap" style="margin-top:1.6mm"><span data-l="lv">Montāžas paraugs: šādi apstrādājam fotogrāfa materiālu. Ēdiens šeit ir ilustrācija, īstajos video būs jūsu ēdiens.</span><span data-l="en">Editing sample: this is how we finish the photographer's material. The food here is an illustration; the real videos will show yours.</span></p>
       </div>
       <div class="month">
         <h2 class="big"><span data-l="lv">Mēnesī</span><span data-l="en">Every month</span></h2>
         <ul>
           <li><b>12</b><span><span data-l="lv">video Instagram un TikTok</span><span data-l="en">videos for Instagram and TikTok</span></span></li>
           <li><b>3×</b><span><span data-l="lv">stāsti nedēļā</span><span data-l="en">stories a week</span></span></li>
-          <li><b>1–2</b><span><span data-l="lv">filmēšanas dienas pie jums</span><span data-l="en">filming days at your place</span></span></li>
+          <li><b>4×</b><span><span data-l="lv">filmēšana pie jums</span><span data-l="en">filming at your place</span></span></li>
           <li><b>1</b><span><span data-l="lv">atskaite ar skaitļiem un nākamā mēneša plānu</span><span data-l="en">report with the numbers and next month's plan</span></span></li>
         </ul>
       </div>
