@@ -25,7 +25,7 @@ What the agent already promised them:
 ## Open before sending
 
 - [x] No price in the PDF. Price is discussed in person at the meeting, to judge his response.
-- [ ] Confirm the deliverables: 15 videos on IG and TikTok (30 posts), 3 stories a week, filming 4× a month.
+- [ ] Volume not decided yet; the plan shows ranges: 15–30 videos, 30–60 posts, 2–4 filming sessions, 12–30 stories a month.
 - [ ] Ad boost budget: separate from our fee, agree at the meeting.
 - [ ] How the voice-overs get made: our own voices, ElevenLabs (about €20–25 a month), or a Russian native speaker.
 - [ ] Rights to the photographer's material.
