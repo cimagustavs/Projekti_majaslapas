@@ -57,9 +57,16 @@ aside { display: grid; align-content: start; gap: 3mm; }
 .month ul { list-style: none; padding: 0; display: grid; gap: 1.8mm; }
 .month li { display: flex; gap: 2.5mm; align-items: baseline; font-size: 8.9pt; line-height: 1.3; }
 .month li b { font-family: Anton, sans-serif; font-weight: 400; font-size: 14pt; color: #fff; min-width: 9mm; line-height: 1; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm; }
+.tiles div { background: rgb(255 255 255 / 0.06); border: 0.3mm solid rgb(255 255 255 / 0.12); border-radius: 2.2mm; padding: 2mm 2.4mm 1.8mm; }
+.tiles b { display: block; font-family: Anton, sans-serif; font-weight: 400; font-size: 22pt; line-height: 1; color: #fff; letter-spacing: 0.01em; }
+.tiles div:first-child b, .tiles div:nth-child(2) b { color: #ff8a5c; }
+.tiles span span { display: block; margin-top: 1mm; font-size: 8.2pt; line-height: 1.25; color: rgb(255 244 230 / 0.85); }
+.plus { margin-top: 2.2mm; font-size: 8.4pt; line-height: 1.3; color: rgb(255 244 230 / 0.8); }
 .boost { border: 0.6mm solid var(--red); border-radius: 3mm; padding: 3.4mm 3.6mm; background: #fff; }
-.boost ul { list-style: none; padding: 0; display: grid; gap: 1.6mm; }
-.boost li { position: relative; padding-left: 4mm; font-size: 8.7pt; line-height: 1.3; font-weight: 600; }
+.boost h2 { font-size: 12.5pt; }
+.boost ul { list-style: none; padding: 0; display: grid; gap: 1.3mm; }
+.boost li { position: relative; padding-left: 4mm; font-size: 8.3pt; line-height: 1.3; font-weight: 600; }
 .boost li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 2mm; height: 2mm; border-radius: 50%; background: var(--red); }
 .price { border: 0.6mm solid var(--red); border-radius: 3mm; padding: 3.4mm 4mm; background: #fff; }
 .price .big { color: var(--red); font-size: 24pt; margin-top: 1.5mm; line-height: 1.15; }
@@ -130,16 +137,17 @@ footer { margin: 4mm 14mm 8mm; padding-top: 4mm; border-top: 0.4mm solid var(--l
     <aside>
       <div>
         <div class="frames"><img src="frame-1.9.jpg" alt=""><img src="frame-8.9.jpg" alt=""><img src="frame-14.5.jpg" alt=""></div>
-        <p class="cap" style="margin-top:1.6mm"><span data-l="lv">Montāžas paraugs: šādi apstrādājam fotogrāfa materiālu. Ēdiens šeit ir ilustrācija, īstajos video būs jūsu ēdiens.</span><span data-l="en">Editing sample: this is how we finish the photographer's material. The food here is an illustration; the real videos will show yours.</span></p>
+        <p class="cap" style="margin-top:1.6mm"><span data-l="lv">Montāžas paraugs. Ēdiens šeit ir ilustrācija, īstajos video būs jūsu ēdiens.</span><span data-l="en">Editing sample. The food here is an illustration; the real videos will show yours.</span></p>
       </div>
       <div class="month">
-        <h2 class="big"><span data-l="lv">Mēnesī</span><span data-l="en">Every month</span></h2>
-        <ul>
-          <li><b>15</b><span><span data-l="lv">video Instagram un TikTok (30 publikācijas)</span><span data-l="en">videos on Instagram and TikTok (30 posts)</span></span></li>
-          <li><b>3×</b><span><span data-l="lv">stāsti nedēļā</span><span data-l="en">stories a week</span></span></li>
-          <li><b>4×</b><span><span data-l="lv">filmēšana pie jums</span><span data-l="en">filming at your place</span></span></li>
-          <li><b>1</b><span><span data-l="lv">atskaite ar skaitļiem un nākamā mēneša plānu</span><span data-l="en">report with the numbers and next month's plan</span></span></li>
-        </ul>
+        <h2 class="big"><span data-l="lv">Katru mēnesi</span><span data-l="en">Every month</span></h2>
+        <div class="tiles">
+          <div><b>15</b><span><span data-l="lv">video</span><span data-l="en">videos</span></span></div>
+          <div><b>30</b><span><span data-l="lv">publikācijas IG + TikTok</span><span data-l="en">posts on IG + TikTok</span></span></div>
+          <div><b>4</b><span><span data-l="lv">filmēšanas reizes pie jums</span><span data-l="en">filming sessions at your place</span></span></div>
+          <div><b>12</b><span><span data-l="lv">un vairāk stāstu</span><span data-l="en">or more stories</span></span></div>
+        </div>
+        <p class="plus"><span data-l="lv">+ atskaite ar skaitļiem un nākamā mēneša plāns</span><span data-l="en">+ a report with the numbers and next month's plan</span></p>
       </div>
       <div class="boost">
         <h2 class="big"><span data-l="lv">Maksimāla redzamība</span><span data-l="en">Maximum exposure</span></h2>
