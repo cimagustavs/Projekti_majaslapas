@@ -28,4 +28,4 @@ What the agent already promised them:
 - [ ] Confirm the deliverables: 12 videos, 3 stories a week, 1–2 filming days.
 - [ ] How the voice-overs get made: our own voices, ElevenLabs (about €20–25 a month), or a Russian native speaker.
 - [ ] Rights to the photographer's material.
-- [ ] The owner's name: the agent's voice note sounds like "Rainārs".
+- [x] The owner is Rainis. He is Latvian, so send the LV version.
