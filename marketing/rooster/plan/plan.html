@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>The Rooster × kagus.eu</title>
+<!-- One-page plan for The Rooster, Riga Old Town (A4). Latvian by default, ?lang=en for English. Exported to PDF by export.mjs. -->
+<style>
+@import url(../../grilvista/assets/fonts/local.css);
+@page { size: A4; margin: 0; }
+:root { --red: #a3262c; --red-dark: #7d1a1f; --gold: #d9ad5b; --wood: #2b1a12; --cream: #fbf3e6; --ink: #1f1510; --ink-2: #5b4a40; --line: #e6d6c0; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 210mm; height: 297mm; background: var(--cream); color: var(--ink); font: 500 9.6pt/1.4 Figtree, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { position: relative; width: 210mm; height: 297mm; overflow: hidden; display: flex; flex-direction: column; }
+main { flex: 1 1 auto; min-height: 0; }
+header, footer { flex: none; }
+.big { font-family: Anton, Impact, sans-serif; text-transform: uppercase; letter-spacing: 0.005em; line-height: 0.95; font-weight: 400; }
+html[lang='lv'] [data-l='en'], html[lang='en'] [data-l='lv'] { display: none !important; }
+
+header { background: var(--wood); color: #fff; padding: 9mm 14mm 8mm; position: relative; overflow: hidden; }
+header::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle, rgb(217 173 91 / 0.14) 1.2px, transparent 1.7px) 0 0 / 12px 12px; pointer-events: none; }
+.mark { font-family: Anton, sans-serif; font-size: 24pt; letter-spacing: 0.02em; color: var(--gold); line-height: 1; text-transform: uppercase; }
+.top { display: flex; align-items: center; gap: 5mm; position: relative; z-index: 1; }
+.logo { width: 19mm; height: 19mm; border-radius: 50%; background: url(../assets/logo.png) center / cover; box-shadow: 0 0 0 1.4mm #fff; flex: none; }
+.x { font-size: 13pt; font-weight: 700; opacity: 0.9; }
+.top .from { margin-left: auto; text-align: right; font-size: 9pt; opacity: 0.9; line-height: 1.35; }
+h1 { position: relative; z-index: 1; margin-top: 4.5mm; font-size: 32pt; line-height: 1.04; }
+h1 .soft { color: var(--gold); }
+.lede { position: relative; z-index: 1; margin-top: 3mm; max-width: 150mm; font-size: 10.6pt; color: #fff; opacity: 0.95; }
+
+main { padding: 6mm 14mm 0; display: grid; grid-template-columns: 1fr 52mm; gap: 8mm; }
+h2 { font-size: 14pt; color: var(--red); margin-bottom: 1.8mm; }
+section + section { margin-top: 4mm; }
+.intro { font-size: 9.4pt; color: var(--ink-2); margin-bottom: 2mm; }
+.formats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 2mm; }
+.formats div { background: var(--red); color: #fff; border-radius: 2.4mm; padding: 2mm 2.8mm; }
+.formats b { display: block; font-size: 9.6pt; }
+.formats span span { font-size: 8.6pt; opacity: 0.92; }
+.now { display: grid; gap: 1.3mm; }
+.now p { padding-left: 5mm; position: relative; }
+.now p::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 2.4mm; height: 2.4mm; border-radius: 50%; background: var(--red); }
+.now b { font-weight: 700; }
+.steps { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+.step { background: #fff; border: 0.3mm solid var(--line); border-radius: 3mm; padding: 2.3mm 3mm; }
+.step.wide { grid-column: 1 / -1; }
+.step .n { font-family: Anton, sans-serif; color: var(--red); font-size: 13pt; line-height: 1; }
+.step strong { display: block; font-size: 9.8pt; margin: 0.8mm 0 0.5mm; }
+.step > span:last-child { color: var(--ink-2); font-size: 8.7pt; line-height: 1.35; display: block; }
+.measure { display: flex; flex-wrap: wrap; gap: 1.6mm; }
+.measure span { border: 0.3mm solid var(--line); background: #fff; border-radius: 10mm; padding: 0.8mm 2.6mm; font-size: 8.6pt; font-weight: 600; }
+.honest { margin-top: 1.8mm; font-size: 8.7pt; color: var(--ink-2); }
+
+aside { display: grid; align-content: start; gap: 3mm; }
+.frames { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5mm; }
+.frames img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 1.6mm; display: block; }
+.cap { font-size: 8.4pt; color: var(--ink-2); line-height: 1.35; }
+.month { background: var(--ink); color: var(--cream); border-radius: 3mm; padding: 4mm; }
+.month h2 { color: var(--gold); }
+.month ul { list-style: none; padding: 0; display: grid; gap: 1.8mm; }
+.month li { display: flex; gap: 2.5mm; align-items: baseline; font-size: 8.9pt; line-height: 1.3; }
+.month li b { font-family: Anton, sans-serif; font-weight: 400; font-size: 14pt; color: #fff; min-width: 9mm; line-height: 1; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm; }
+.tiles div { background: rgb(255 255 255 / 0.06); border: 0.3mm solid rgb(255 255 255 / 0.12); border-radius: 2.2mm; padding: 2mm 2.4mm 1.8mm; }
+.tiles b { display: block; font-family: Anton, sans-serif; font-weight: 400; font-size: 19pt; white-space: nowrap; line-height: 1; color: #fff; letter-spacing: 0.01em; }
+.tiles div:first-child b, .tiles div:nth-child(2) b { color: var(--gold); }
+.tiles span span { display: block; margin-top: 1mm; font-size: 8.2pt; line-height: 1.25; color: rgb(255 244 230 / 0.85); }
+.plus { margin-top: 2.2mm; font-size: 8.4pt; line-height: 1.3; color: rgb(255 244 230 / 0.8); }
+.boost { border: 0.6mm solid var(--red); border-radius: 3mm; padding: 3.4mm 3.6mm; background: #fff; }
+.boost h2 { font-size: 12.5pt; }
+.boost ul { list-style: none; padding: 0; display: grid; gap: 1.3mm; }
+.boost li { position: relative; padding-left: 4mm; font-size: 8.3pt; line-height: 1.3; font-weight: 600; }
+.boost li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 2mm; height: 2mm; border-radius: 50%; background: var(--red); }
+.price { border: 0.6mm solid var(--red); border-radius: 3mm; padding: 3.4mm 4mm; background: #fff; }
+.price .big { color: var(--red); font-size: 24pt; margin-top: 1.5mm; line-height: 1.15; }
+.price .todo { display: inline-block; padding: 0 2mm; line-height: 1.1; }
+.price .todo { background: #ffe25a; color: #000; font-weight: 700; padding: 0 1mm; }
+.price p { font-size: 8.8pt; color: var(--ink-2); margin-top: 1mm; }
+
+footer { margin: 4mm 14mm 8mm; padding-top: 4mm; border-top: 0.4mm solid var(--line); display: flex; align-items: center; gap: 6mm; }
+.next { flex: 1; }
+.next .big { font-size: 17pt; color: var(--red); }
+.next p { font-size: 9.8pt; color: var(--ink-2); margin-top: 0.8mm; }
+.sign { text-align: right; font-size: 9.4pt; line-height: 1.4; }
+.sign b { font-family: Anton, sans-serif; font-weight: 400; font-size: 15pt; letter-spacing: 0.01em; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="top">
+      <span class="mark">The Rooster</span>
+      <span class="x">× kagus.eu</span>
+      <span class="from"><span data-l="lv">Sagatavots The Rooster<br>2026. gada novembris</span><span data-l="en">Prepared for The Rooster<br>November 2026</span></span>
+    </div>
+    <h1 class="big"><span data-l="lv">Instagram un TikTok.<br><span class="soft">Pirmās 90 dienas.</span></span><span data-l="en">Instagram and TikTok.<br><span class="soft">The first 90 days.</span></span></h1>
+    <p class="lede"><span data-l="lv">Vecrīgā katru dienu garām iet tūristi un rīdzinieki. Mēs parūpēsimies, lai viņi The Rooster ierauga jau telefonā, pirms vēl ir pie jūsu durvīm.</span><span data-l="en">Old Town is full of tourists and locals walking past every day. We make sure they see The Rooster on their phone before they reach your door.</span></p>
+  </header>
+
+  <main>
+    <div>
+      <section>
+        <h2 class="big"><span data-l="lv">Ko filmēsim</span><span data-l="en">What we'll film</span></h2>
+        <p class="intro"><span data-l="lv">Mēs paši esam kadrā. Sērijas, kuras cilvēki gaida un kuras regulāri atkārtojam:</span><span data-l="en">We're on camera ourselves, in series people keep coming back for.</span></p>
+        <div class="formats">
+          <div><b><span data-l="lv">Ziemassvētku tirdziņš</span><span data-l="en">The Christmas market</span></b><span><span data-l="lv">Ko ēst Doma laukumā? Jūsu stends galvenajā lomā.</span><span data-l="en">What to eat on Dome Square, starring your stand.</span></span></div>
+          <div><b><span data-l="lv">Tūristi nogaršo</span><span data-l="en">Tourists taste test</span></b><span><span data-l="lv">„No kurienes esi?” Pirmais kumoss un reakcija.</span><span data-l="en">"Where are you from?" First bite, first reaction.</span></span></div>
+          <div><b><span data-l="lv">Vecrīga 30 sekundēs</span><span data-l="en">Old Town in 30 seconds</span></b><span><span data-l="lv">No Doma laukuma līdz jūsu durvīm.</span><span data-l="en">From Dome Square to your door.</span></span></div>
+          <div><b><span data-l="lv">„Uzmini cenu”</span><span data-l="en">"Guess the price"</span></b><span><span data-l="lv">Kurš minēs tuvāk, tas ēd bez maksas.</span><span data-l="en">The closest guess eats for free.</span></span></div>
+          <div><b><span data-l="lv">Virtuvē</span><span data-l="en">In the kitchen</span></b><span><span data-l="lv">Kā top jūsu firmas ēdiens.</span><span data-l="en">How your signature dish is made.</span></span></div>
+          <div><b><span data-l="lv">Atbildes uz komentāriem</span><span data-l="en">Replies to comments</span></b><span><span data-l="lv">„Kur paēst Vecrīgā?” Atbildam kadrā.</span><span data-l="en">"Where to eat in Old Town?" We answer on camera.</span></span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="big"><span data-l="lv">Ko mēs darām</span><span data-l="en">What we do</span></h2>
+        <div class="steps">
+          <div class="step"><span class="n">01</span><strong><span data-l="lv">Konti gatavi 1 dienā</span><span data-l="en">Accounts live in 1 day</span></strong><span><span data-l="lv">Izveidojam The Rooster Instagram un TikTok: bio, adrese, darba laiks, ēdienkarte, rezervāciju saite.</span><span data-l="en">We set up The Rooster on Instagram and TikTok: bio, address, hours, menu, booking link.</span></span></div>
+          <div class="step"><span class="n">02</span><strong><span data-l="lv">Filmējam pie jums</span><span data-l="en">We film on site</span></strong><span><span data-l="lv">2–4 reizes mēnesī: restorāns, tirdziņa stends, ēdiens, viesi, mēs kadrā.</span><span data-l="en">2–4 times a month: the restaurant, the market stand, the food, the guests, us on camera.</span></span></div>
+          <div class="step"><span class="n">03</span><strong><span data-l="lv">Kopā ar The Crust</span><span data-l="en">Together with The Crust</span></strong><span><span data-l="lv">Saskaņojam ar The Crust kontu: kopīgi posti un savstarpēja reklāma.</span><span data-l="en">We coordinate with The Crust's account: joint posts and cross-promotion.</span></span></div>
+          <div class="step"><span class="n">04</span><strong><span data-l="lv">Angliski tūristiem</span><span data-l="en">English for tourists</span></strong><span><span data-l="lv">Video un subtitri angliski, arī latviski un krieviski pēc vēlēšanās.</span><span data-l="en">Videos and captions in English, plus Latvian and Russian if you like.</span></span></div>
+          <div class="step wide"><span class="n">05</span><strong><span data-l="lv">Vadām kontus jūsu vietā</span><span data-l="en">We run the accounts for you</span></strong><span><span data-l="lv">Publicējam, atbildam uz komentāriem un ziņām. Jūs reizi nedēļā apstiprināt plānu, un viss.</span><span data-l="en">We post and answer comments and messages. You approve the plan once a week, and that's it.</span></span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="big"><span data-l="lv">Ko mērām katru mēnesi</span><span data-l="en">What we report every month</span></h2>
+        <div class="measure">
+          <span data-l="lv">Sasniegtie cilvēki</span><span data-l="en">People reached</span>
+          <span data-l="lv">Profila apmeklējumi</span><span data-l="en">Profile visits</span>
+          <span data-l="lv">Sekotāji</span><span data-l="en">Followers</span>
+          <span data-l="lv">Saglabāšanas un dalīšanās</span><span data-l="en">Saves and shares</span>
+          <span data-l="lv">Google un TripAdvisor atsauksmes</span><span data-l="en">Google and TripAdvisor reviews</span>
+          <span data-l="lv">Rezervācijas no saites</span><span data-l="en">Bookings from the link</span>
+        </div>
+        <p class="honest"><span data-l="lv">Rezervāciju saite profilā parāda, cik galdiņu atnāca tieši no Instagram un TikTok.</span><span data-l="en">The booking link on the profile shows how many tables came straight from Instagram and TikTok.</span></p>
+      </section>
+    </div>
+
+    <aside>
+      <div>
+        <div class="frames"><img src="frame-1.jpg" alt=""><img src="frame-2.jpg" alt=""><img src="frame-3.jpg" alt=""></div>
+        <p class="cap" style="margin-top:1.6mm"><span data-l="lv">The Rooster un stends tirdziņā atvēršanas dienā. No šādiem kadriem sākas video.</span><span data-l="en">The Rooster and the market stand on opening day. This is where the videos start.</span></p>
+      </div>
+      <div class="month">
+        <h2 class="big"><span data-l="lv">Katru mēnesi</span><span data-l="en">Every month</span></h2>
+        <div class="tiles">
+          <div><b>15–30</b><span><span data-l="lv">video</span><span data-l="en">videos</span></span></div>
+          <div><b>30–60</b><span><span data-l="lv">publikācijas IG + TikTok</span><span data-l="en">posts on IG + TikTok</span></span></div>
+          <div><b>2–4</b><span><span data-l="lv">filmēšanas reizes pie jums</span><span data-l="en">filming sessions at your place</span></span></div>
+          <div><b>12–30</b><span><span data-l="lv">stāsti</span><span data-l="en">stories</span></span></div>
+        </div>
+        <p class="plus"><span data-l="lv">+ atskaite ar skaitļiem un nākamā mēneša plāns</span><span data-l="en">+ a report with the numbers and next month's plan</span></p>
+      </div>
+      <div class="boost">
+        <h2 class="big"><span data-l="lv">Maksimāla redzamība</span><span data-l="en">Maximum exposure</span></h2>
+        <ul>
+          <li><span data-l="lv">Vieta katrā video: Vecrīga, Doma laukums</span><span data-l="en">Location on every video: Old Town, Dome Square</span></li>
+          <li><span data-l="lv">#oldtownriga, #rigachristmasmarket, lai atrod tūristi</span><span data-l="en">#oldtownriga, #rigachristmasmarket, so tourists find you</span></li>
+          <li><span data-l="lv">QR uz galdiem un pie stenda: Google un TripAdvisor</span><span data-l="en">QR on tables and at the stand: Google and TripAdvisor</span></li>
+          <li><span data-l="lv">Ielūdzam Rīgas ceļojumu un ēdiena blogerus</span><span data-l="en">Riga travel and food bloggers invited</span></li>
+          <li><span data-l="lv">Labākos video rādām cilvēkiem, kas tagad ir Rīgā</span><span data-l="en">Best videos shown to people who are in Riga right now</span></li>
+          <li><span data-l="lv">Kopīgi konkursi ar The Crust</span><span data-l="en">Joint giveaways with The Crust</span></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="next">
+      <div class="big"><span data-l="lv">Nākamais solis: tikšanās</span><span data-l="en">Next step: let's meet</span></div>
+      <p><span data-l="lv">Parādām idejas klātienē un vienojamies par pirmo filmēšanas dienu.</span><span data-l="en">We show you the ideas in person and agree on the first filming day.</span></p>
+    </div>
+    <div class="sign"><b>kagus.eu</b><br>Kārlis &amp; Gustavs · @kagus.eu</div>
+  </footer>
+</div>
+<script>if (location.search.includes('lang=en')) document.documentElement.lang = 'en';</script>
+</body>
+</html>
