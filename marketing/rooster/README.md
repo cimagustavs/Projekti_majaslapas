@@ -6,7 +6,7 @@ The plan is the same idea as Grilvista's, adjusted for tourists: English first, 
 
 ## Files
 
-- `plan/plan.html`: a one-page A4 plan. LV by default, `?lang=en` for English. `node marketing/rooster/plan/export.mjs` writes `rooster-plans-lv.pdf`, `rooster-plans-en.pdf` and previews. The fonts are shared with `marketing/grilvista/assets/fonts`.
+- `plan/plan.html` (variant A) and `plan/plan-b.html` (variant B: photo cards, a timeline, a numbers band): one-page A4 plans with the same content. LV by default, `?lang=en` for English. `node marketing/rooster/plan/export.mjs` writes `rooster-plans-lv.pdf`, `rooster-plans-en.pdf` and previews. The fonts are shared with `marketing/grilvista/assets/fonts`.
 - `plan/frame-1..3.jpg`: stills from Shaun's video (the storefront, the Christmas window, the market stand).
 
 ## Open
